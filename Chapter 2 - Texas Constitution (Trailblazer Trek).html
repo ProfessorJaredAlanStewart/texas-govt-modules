@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: The Texas Constitution - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin: 1.5rem auto;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .start-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        input[type="text"] {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-blue);
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            margin-top: 1rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .section-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .report-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .report-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .definition-box {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 1000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .feedback {
+            display: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        .complete-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 2rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .complete-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .metric-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .grade-display {
+            background: var(--success);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .timeline-date {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            background: var(--bg-section);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-left: 2rem;
+            flex: 1;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .info-box {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏛️ Chapter 2: The Texas Constitution - Trailblazer Trek</h1>
+        <div class="score-display">
+            Score: <span id="totalPoints">0</span> | Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <div id="pointsPopup"></div>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>📜 The Texas Constitution</h2>
+                <p>Journey Through Texas' Constitutional History</p>
+                <div class="hero-emoji">⭐</div>
+            </div>
+
+            <div class="start-section">
+                <h3>🤠 Welcome, Future Texas Constitutional Scholar!</h3>
+                <p>In this interactive journey, you'll explore the fascinating evolution of Texas' constitutional history, from its days under Mexican rule through its current constitution. Discover how Texas transformed from a Mexican state to an independent republic to a U.S. state, and learn about the documents that shaped our unique political identity.</p>
+                
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="Enter your name">
+                    <button class="btn-primary" onclick="startAdventure()">Start Your Constitutional Journey!</button>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>📊 Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar">0%</div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 2rem; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e0e0e0; color: var(--primary-blue); font-size: 1.5rem;">📚 Chapter Sections</h3>
+            <div class="sections-grid">
+                <div class="section-card" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction & Constitutional Foundations</h3>
+                    <p>Learn what a constitution is and why Texas has had so many different constitutions throughout its history.</p>
+                    <div class="points-indicator">🏆 190 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Mexican Era Constitutions (1824-1827)</h3>
+                    <p>Explore Texas under Mexican rule and the constitutions that governed early Texas settlers.</p>
+                    <div class="points-indicator">🏆 190 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Independence & Early Statehood (1836-1845)</h3>
+                    <p>Discover the constitutions of the Republic of Texas and its transition to U.S. statehood.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Civil War & Reconstruction (1861-1869)</h3>
+                    <p>Examine how the Civil War and Reconstruction shaped Texas' constitutional development.</p>
+                    <div class="points-indicator">🏆 190 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>The Current Constitution of 1876</h3>
+                    <p>Understand the constitution that still governs Texas today and its unique features.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Final Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction & Constitutional Foundations -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>Section 1: Introduction & Constitutional Foundations</h2>
+                </div>
+
+                <p>Welcome to your exploration of Texas' constitutional history! Texas has a unique story among American states, having been governed by multiple constitutions that reflect its journey from Mexican territory to independent nation to U.S. state.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution</div>
+                    <p>A body of fundamental principles or established precedents according to which a state or other organization is acknowledged to be governed. It establishes the structure of government, defines powers and limitations, and protects individual rights.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🤔 Click to discover: Why has Texas had so many constitutions?</div>
+                    <div class="card-content">
+                        <p><strong>Texas' Unique Constitutional Journey:</strong></p>
+                        <ul>
+                            <li>Between 1824 and 1876, Texas experienced dramatic political changes</li>
+                            <li>Texas was part of Mexico (1824-1836)</li>
+                            <li>An independent republic (1836-1845)</li>
+                            <li>A state in the Confederate States (1861-1865)</li>
+                            <li>A state in the United States (1845-1861, 1865-present)</li>
+                        </ul>
+                        <p>Each transition required new founding documents to legally establish Texas and define the scope and powers of its government.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Learning Objectives for This Chapter:</strong>
+                    <ul>
+                        <li>Define what a constitution is and its purpose</li>
+                        <li>Discuss the various constitutions that have governed Texas</li>
+                        <li>Describe the current Texas Constitution of 1876</li>
+                        <li>Understand how Texas' unique history shaped its constitutional development</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 35)">
+                    <div class="card-prompt">📊 Click to explore: Key Functions of a Constitution</div>
+                    <div class="card-content">
+                        <p><strong>What Does a Constitution Do?</strong></p>
+                        <ul>
+                            <li><strong>Establishes Government Structure:</strong> Defines branches of government and their relationships</li>
+                            <li><strong>Allocates Powers:</strong> Specifies what government can and cannot do</li>
+                            <li><strong>Protects Rights:</strong> Guarantees individual freedoms and liberties</li>
+                            <li><strong>Sets Procedures:</strong> Outlines how laws are made and changed</li>
+                            <li><strong>Defines Citizenship:</strong> Establishes who belongs to the political community</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <h3>Timeline of Texas Constitutions</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1824</div>
+                        <div class="timeline-content">Federal Constitution of the United Mexican States</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1827</div>
+                        <div class="timeline-content">Constitution of Coahuila and Texas</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1836</div>
+                        <div class="timeline-content">Constitution of the Republic of Texas</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1845</div>
+                        <div class="timeline-content">Constitution of 1845 (Statehood)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1861</div>
+                        <div class="timeline-content">Constitution of 1861 (Confederate)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1866</div>
+                        <div class="timeline-content">Constitution of 1866 (Post-Civil War)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1869</div>
+                        <div class="timeline-content">Constitution of 1869 (Reconstruction)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1876</div>
+                        <div class="timeline-content">Current Texas Constitution</div>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What distinguishes Texas from other U.S. states in terms of its constitutional history?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It has the oldest constitution</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">Its unique history as an independent nation and multiple political transitions</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It has never changed its constitution</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It doesn't have a state constitution</div>
+                    <div class="feedback" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-3', 30)">
+                    <div class="card-prompt">🎯 Click to learn: Why Understanding Constitutional History Matters</div>
+                    <div class="card-content">
+                        <p><strong>The Importance of Constitutional Knowledge:</strong></p>
+                        <ul>
+                            <li><strong>Civic Engagement:</strong> Understanding your rights and responsibilities as a citizen</li>
+                            <li><strong>Historical Context:</strong> Appreciating how past events shape current governance</li>
+                            <li><strong>Political Participation:</strong> Making informed decisions in elections and policy debates</li>
+                            <li><strong>Legal Framework:</strong> Knowing the foundation of Texas law and government</li>
+                        </ul>
+                        <p>The Texas Constitution affects everything from education funding to property rights to criminal justice!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What is the primary purpose of a constitution?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">To create political parties</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">To establish international treaties</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 35)">To establish fundamental principles of governance and protect rights</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">To collect taxes</div>
+                    <div class="feedback" id="feedback-q1-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">How many constitutions has Texas operated under since 1824?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">Three</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">Five</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-3', 30)">Eight</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">Ten</div>
+                    <div class="feedback" id="feedback-q1-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(1)">✅ Complete Section 1</button>
+            </div>
+        </div>
+
+        <!-- Section 2: Mexican Era Constitutions -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Section 2: Mexican Era Constitutions (1824-1827)</h2>
+                </div>
+
+                <p>Constitutional government in Texas began under Mexican rule. Understanding these early constitutions helps explain the tensions that eventually led to Texas independence.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Federal Constitution of the United Mexican States (1824)</div>
+                    <p>The first constitution to govern Texas, patterned after the U.S. Constitution but more closely resembling the Spanish Constitution of 1812. It established Mexico as a federal republic with states having significant autonomy.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">📜 Click to explore: Key Features of the 1824 Mexican Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Important Provisions:</strong></p>
+                        <ul>
+                            <li><strong>Religion:</strong> Catholicism was the official state religion, supported by public treasury</li>
+                            <li><strong>Executive:</strong> President and Vice President elected for 4-year terms by state legislatures</li>
+                            <li><strong>Congress:</strong> Two houses meeting annually from January 1 to April 15</li>
+                            <li><strong>Judiciary:</strong> Supreme Court with 11 judges and an attorney general</li>
+                            <li><strong>States:</strong> Required to separate executive, legislative, and judicial functions</li>
+                        </ul>
+                        <p>Congress, not the courts, was the final interpreter of the constitution - a major difference from the U.S. system!</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Texas Under Mexican Rule:</strong>
+                    <p>Texas was not its own state initially. It was combined with Coahuila to form the state of "Coahuila y Tejas" because Texas didn't have enough population to be a separate state under Mexican law.</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of Coahuila and Texas (1827)</div>
+                    <p>The state constitution for Coahuila y Tejas, which took over two years to draft. It established local governance while Texas remained part of the larger Mexican federal system.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🏛️ Click to discover: Unique Features of the 1827 Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Notable Provisions:</strong></p>
+                        <ul>
+                            <li><strong>Representation:</strong> Texas only received 2 of 12 legislative seats despite its large territory</li>
+                            <li><strong>Slavery:</strong> Forbidden after promulgation; no imports after 6 months</li>
+                            <li><strong>Capital:</strong> Located in Saltillo, hundreds of miles from most Texas settlements</li>
+                            <li><strong>Language:</strong> Laws published only in Spanish, which few Anglo-Texans could read</li>
+                            <li><strong>Rights:</strong> Guaranteed liberty, security, property, and equality to citizens</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 35)">
+                    <div class="card-prompt">⚖️ Click to learn: Sources of Tension Under Mexican Rule</div>
+                    <div class="card-content">
+                        <p><strong>Why Anglo-Texans Were Dissatisfied:</strong></p>
+                        <ul>
+                            <li><strong>Religious Requirements:</strong> Had to be Catholic (or convert)</li>
+                            <li><strong>Language Barriers:</strong> All legal proceedings in Spanish</li>
+                            <li><strong>Distance from Government:</strong> Capital in Saltillo was far from Texas</li>
+                            <li><strong>Under-representation:</strong> Only 2 of 12 seats despite growing population</li>
+                            <li><strong>No Trial by Jury:</strong> Promise never implemented</li>
+                            <li><strong>Slavery Restrictions:</strong> Conflicted with many settlers' economic plans</li>
+                        </ul>
+                        <p>These tensions led to the Convention of 1833, which proposed separate statehood for Texas!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What was the official religion under the Mexican Constitution of 1824?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Protestant Christianity</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">Roman Catholicism</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">No official religion</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Multiple religions allowed</div>
+                    <div class="feedback" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">How many legislative seats did Texas have in the Coahuila y Tejas legislature?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">2 out of 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">6 out of 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">4 out of 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">8 out of 12</div>
+                    <div class="feedback" id="feedback-q2-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What was a major source of tension for Anglo-Texan settlers?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">Too much representation in government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">The capital was too close</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-3', 30)">Laws were only published in Spanish</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">Taxes were too low</div>
+                    <div class="feedback" id="feedback-q2-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(2)">✅ Complete Section 2</button>
+            </div>
+        </div>
+
+        <!-- Section 3: Independence & Early Statehood -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⭐</span>
+                    <h2>Section 3: Independence & Early Statehood (1836-1845)</h2>
+                </div>
+
+                <p>The Texas Revolution brought independence and the need for a new constitution. This period saw Texas transform from a Mexican state to an independent republic and finally to a U.S. state.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of the Republic of Texas (1836)</div>
+                    <p>The first Anglo-American constitution to govern Texas, drafted in just 15 days at Washington-on-the-Brazos while Mexican cavalry threatened. It established Texas as an independent nation.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🌟 Click to explore: Features of the Republic's Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Key Elements (borrowed from U.S. Constitution):</strong></p>
+                        <ul>
+                            <li><strong>Brevity:</strong> Less than 6,500 words (remarkably short)</li>
+                            <li><strong>Three Branches:</strong> Separation of powers with checks and balances</li>
+                            <li><strong>Bicameral Legislature:</strong> Senate and House of Representatives</li>
+                            <li><strong>Strong Executive:</strong> President with powers similar to U.S. President</li>
+                            <li><strong>Bill of Rights:</strong> Protected individual freedoms</li>
+                            <li><strong>Slavery:</strong> Allowed and protected</li>
+                        </ul>
+                        <p><strong>From Spanish-Mexican Law:</strong> Community property, homestead protections, and debtor relief!</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Land Rights - Critical Issue:</strong>
+                    <p>The 1836 Constitution heavily emphasized land rights because land was the main attraction for immigrants. It guaranteed:</p>
+                    <ul>
+                        <li>Head of family: "one league and one labor of land" (4,605 acres)</li>
+                        <li>Single men over 17: "third part of one league" (1,476 acres)</li>
+                        <li>Protection of orphans' land rights</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">📅 Click to discover: The Brief Life of the Republic</div>
+                    <div class="card-content">
+                        <p><strong>Texas as an Independent Nation (1836-1845):</strong></p>
+                        <ul>
+                            <li>Lasted nearly 10 years</li>
+                            <li>Had its own president, Congress, and military</li>
+                            <li>Established diplomatic relations with other nations</li>
+                            <li>Faced constant threats from Mexico</li>
+                            <li>Struggled with debt and defense costs</li>
+                        </ul>
+                        <p>Fun Fact: Texas is the only U.S. state that was once an independent nation!</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of 1845</div>
+                    <p>Created when Texas joined the United States. Almost twice as long as the Republic's constitution, it established Texas as a U.S. state while preserving many unique Texas traditions.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 35)">
+                    <div class="card-prompt">🏛️ Click to learn: Innovations in the 1845 Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Notable Features:</strong></p>
+                        <ul>
+                            <li><strong>Homestead Protection:</strong> First state to protect family homes from forced sale (200 acres rural, $2,000 urban)</li>
+                            <li><strong>Women's Property Rights:</strong> Recognized separate ownership by married women - very progressive!</li>
+                            <li><strong>Community Property:</strong> Continued Spanish tradition of shared marital property</li>
+                            <li><strong>Education:</strong> Set aside 10% of tax revenue for public schools</li>
+                            <li><strong>Debt Limit:</strong> Limited state debt to $100,000 (except for war)</li>
+                        </ul>
+                        <p>Daniel Webster called it the best of all state constitutions!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Where was the Constitution of the Republic of Texas drafted?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">San Antonio</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">Washington-on-the-Brazos</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Houston</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Austin</div>
+                    <div class="feedback" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What made the 1845 Constitution innovative for women's rights?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Women could vote</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Women could hold office</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 35)">Married women could own separate property</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Women could serve on juries</div>
+                    <div class="feedback" id="feedback-q3-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">How long did the Republic of Texas last?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">5 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-3', 30)">Nearly 10 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">15 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">20 years</div>
+                    <div class="feedback" id="feedback-q3-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(3)">✅ Complete Section 3</button>
+            </div>
+        </div>
+
+        <!-- Section 4: Civil War & Reconstruction -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚔️</span>
+                    <h2>Section 4: Civil War & Reconstruction (1861-1869)</h2>
+                </div>
+
+                <p>The Civil War and Reconstruction era brought dramatic constitutional changes to Texas, with three different constitutions in just eight years reflecting the turbulent politics of the time.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of 1861 (Confederate Constitution)</div>
+                    <p>After Texas seceded from the Union, the Secession Convention amended the 1845 Constitution to align Texas with the Confederate States of America.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 30)">
+                    <div class="card-prompt">🏴 Click to explore: Changes in the Confederate Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Key Modifications:</strong></p>
+                        <ul>
+                            <li>Changed "United States" to "Confederate States" throughout</li>
+                            <li>Eliminated provisions for slave emancipation</li>
+                            <li>Made freeing slaves illegal</li>
+                            <li>Required loyalty oaths to the Confederacy</li>
+                            <li>Made amendments easier to pass</li>
+                        </ul>
+                        <p><strong>What it DIDN'T do:</strong> Did not legalize the African slave trade or take extreme states' rights positions - it was surprisingly conservative!</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of 1866 (Presidential Reconstruction)</div>
+                    <p>Created to comply with President Andrew Johnson's lenient Reconstruction requirements and rejoin the Union.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">📋 Click to discover: Features of the 1866 Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Major Changes:</strong></p>
+                        <ul>
+                            <li><strong>Governor:</strong> Term increased to 4 years, salary to $4,000, given item veto power</li>
+                            <li><strong>Legislature:</strong> Required to be white men with 5-year Texas residency</li>
+                            <li><strong>Supreme Court:</strong> Increased from 3 to 5 judges</li>
+                            <li><strong>Education:</strong> Created separate schools for black children</li>
+                            <li><strong>Amendment Process:</strong> Required 3/4 legislative majority and governor's approval</li>
+                        </ul>
+                        <p>Rejected by Congress as too lenient on former Confederates!</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of 1869 (Radical Reconstruction)</div>
+                    <p>Created under military supervision to comply with Congressional Reconstruction. The most controversial of all Texas constitutions.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">⚖️ Click to learn: The Radical Constitution of 1869</div>
+                    <div class="card-content">
+                        <p><strong>Dramatic Changes:</strong></p>
+                        <ul>
+                            <li><strong>Centralized Power:</strong> Governor could appoint judges and many officials</li>
+                            <li><strong>Voting Rights:</strong> Extended to African Americans</li>
+                            <li><strong>Education:</strong> Compulsory school attendance, state superintendent</li>
+                            <li><strong>Elections:</strong> 4-day elections at county seats only</li>
+                            <li><strong>Police:</strong> State police force under governor's control</li>
+                            <li><strong>Legislature:</strong> Annual sessions (not biennial)</li>
+                        </ul>
+                        <p>Many Texans saw this as oppressive federal control, leading to demands for a new constitution once Reconstruction ended.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>The Reconstruction Controversy:</strong>
+                    <p>The 1869 Constitution remains controversial. Critics saw it as:</p>
+                    <ul>
+                        <li>Too centralized and powerful</li>
+                        <li>Imposed by outsiders</li>
+                        <li>Too expensive (higher taxes)</li>
+                    </ul>
+                    <p>Supporters argued it:</p>
+                    <ul>
+                        <li>Established public education</li>
+                        <li>Protected civil rights</li>
+                        <li>Modernized state government</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What major change did the 1861 Constitution make regarding slavery?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">It gradually abolished slavery</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">It made freeing slaves illegal</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">It limited slavery to certain counties</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">It made no changes to slavery laws</div>
+                    <div class="feedback" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Which constitution gave the governor the most power?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">1836</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">1845</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">1866</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">1869</div>
+                    <div class="feedback" id="feedback-q4-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What was a positive legacy of the 1869 Constitution?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-3', 30)">Established public education system</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">Reduced taxes significantly</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">Eliminated state government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">Returned to Mexican rule</div>
+                    <div class="feedback" id="feedback-q4-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(4)">✅ Complete Section 4</button>
+            </div>
+        </div>
+
+        <!-- Section 5: Current Constitution of 1876 -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>Section 5: The Current Constitution of 1876</h2>
+                </div>
+
+                <p>When Democrats regained control of Texas in 1873, they immediately began working on a new constitution to replace the hated 1869 document. The result is the constitution that still governs Texas today - though heavily amended!</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Constitution of 1876</div>
+                    <p>Texas' current constitution, designed to restrict government power and return control to the people. It is the second-longest state constitution in America (after Alabama) with 17 articles and over 500 amendments.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Key Principles of the 1876 Constitution</div>
+                    <div class="card-content">
+                        <p><strong>Restricting Government Power:</strong></p>
+                        <ul>
+                            <li><strong>Legislative Sessions:</strong> Changed from annual to biennial (every 2 years)</li>
+                            <li><strong>Plural Executive:</strong> Divided executive power among multiple elected officials</li>
+                            <li><strong>Balanced Budget:</strong> Required - state cannot spend more than it collects</li>
+                            <li><strong>Elected Judges:</strong> Shifted from appointed to elected by the people</li>
+                            <li><strong>Amendment Process:</strong> People vote on all constitutional changes</li>
+                            <li><strong>Low Salaries:</strong> Keep government officials from getting too comfortable</li>
+                        </ul>
+                        <p>The framers' motto: "That government is best which governs least!"</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Structure of the Current Constitution:</strong>
+                    <ul>
+                        <li><strong>Preamble:</strong> Brief introduction</li>
+                        <li><strong>17 Articles:</strong> Covering everything from the Bill of Rights to railroads</li>
+                        <li><strong>500+ Amendments:</strong> Added since 1876 (as of 2024)</li>
+                    </ul>
+                    <p>Why so many amendments? Texas has no "necessary and proper" clause like the U.S. Constitution, so every little change requires an amendment!</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">📚 Click to discover: The 17 Articles Explained</div>
+                    <div class="card-content">
+                        <p><strong>Key Articles:</strong></p>
+                        <ul>
+                            <li><strong>Article 1:</strong> Bill of Rights - Similar to U.S. Constitution</li>
+                            <li><strong>Article 2:</strong> Separation of Powers</li>
+                            <li><strong>Article 3:</strong> Legislative Department</li>
+                            <li><strong>Article 4:</strong> Executive Department (Plural Executive)</li>
+                            <li><strong>Article 5:</strong> Judicial Department</li>
+                            <li><strong>Article 6:</strong> Suffrage (Voting Rights)</li>
+                            <li><strong>Article 7:</strong> Education - "Efficient" free public schools</li>
+                            <li><strong>Article 8:</strong> Taxation and Revenue</li>
+                        </ul>
+                        <p>Fun Fact: Article 10 just regulates railroads - very specific for a constitution!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 35)">
+                    <div class="card-prompt">🎯 Click to learn: Unique Features of Texas Government Today</div>
+                    <div class="card-content">
+                        <p><strong>The Plural Executive (Very Different from Federal System):</strong></p>
+                        <ul>
+                            <li><strong>Governor:</strong> Chief Executive</li>
+                            <li><strong>Lieutenant Governor:</strong> Powerful position, presides over Senate</li>
+                            <li><strong>Attorney General:</strong> State's lawyer</li>
+                            <li><strong>Comptroller:</strong> Chief financial officer</li>
+                            <li><strong>Land Commissioner:</strong> Manages state lands</li>
+                            <li><strong>Agriculture Commissioner:</strong> Oversees agriculture</li>
+                        </ul>
+                        <p>All are elected separately - they don't have to be from the same party or even like each other!</p>
+                        
+                        <p><strong>Other Unique Features:</strong></p>
+                        <ul>
+                            <li>Part-time legislature (meets 140 days every 2 years)</li>
+                            <li>No state income tax (prohibited by amendment)</li>
+                            <li>Strong homestead protections</li>
+                            <li>Elected judges at all levels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Amendment Process</div>
+                    <p>Requires: (1) 2/3 vote in both House and Senate, (2) Majority vote by Texas voters in an election. This has happened over 500 times since 1876!</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">How often does the Texas Legislature meet in regular session?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Every year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 35)">Every two years (biennial)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Every three years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Continuously</div>
+                    <div class="feedback" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Why does the Texas Constitution have so many amendments?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Texans love to vote</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">It lacks a "necessary and proper" clause</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Federal law requires it</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">It's very short</div>
+                    <div class="feedback" id="feedback-q5-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What is the plural executive?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Multiple governors</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Two legislative chambers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-3', 30)">Multiple independently elected executive officials</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Multiple constitutions</div>
+                    <div class="feedback" id="feedback-q5-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(5)">✅ Complete Section 5</button>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            
+            <div class="report-header">
+                <h2>📊 Texas Constitution Learning Report</h2>
+                <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                    <div>Student: <strong id="reportStudentName"></strong></div>
+                    <div>Date: <strong id="reportDate"></strong></div>
+                    <div>Time: <strong id="reportTime"></strong></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                    <div>Total Points: <strong id="reportTotalPoints"></strong></div>
+                    <div>Percentage: <strong id="reportPercentage"></strong>%</div>
+                    <div>Completion: <strong id="reportCompletion"></strong>%</div>
+                </div>
+            </div>
+
+            <div class="grade-display" id="gradeDisplay">
+                <div class="letter-grade" id="letterGrade">-</div>
+                <div class="grade-percentage" id="gradePercentage">0%</div>
+            </div>
+
+            <h3>Section Performance</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Section</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Introduction & Constitutional Foundations</td>
+                        <td id="status1">❌</td>
+                        <td id="points1">0/190</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mexican Era Constitutions</td>
+                        <td id="status2">❌</td>
+                        <td id="points2">0/190</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Independence & Early Statehood</td>
+                        <td id="status3">❌</td>
+                        <td id="points3">0/195</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Civil War & Reconstruction</td>
+                        <td id="status4">❌</td>
+                        <td id="points4">0/190</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Current Constitution of 1876</td>
+                        <td id="status5">❌</td>
+                        <td id="points5">0/195</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Learning Metrics</h3>
+            <div class="report-grid">
+                <div class="metric-box">
+                    <div class="metric-value" id="metricPoints">0</div>
+                    <div class="metric-label">Total Points Earned</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricSections">0/5</div>
+                    <div class="metric-label">Sections Completed</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricQuiz">0%</div>
+                    <div class="metric-label">Quiz Accuracy</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricEngagement">0%</div>
+                    <div class="metric-label">Content Engagement</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <strong>🎯 Achievement Summary:</strong>
+                <ul>
+                    <li>Final Points: <span id="finalPoints">0</span></li>
+                    <li>Achievement Level: <span id="finalLevel">Explorer</span></li>
+                    <li>Sections Completed: <span id="sectionsCount">0</span> of 5</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Great work exploring the Texas Constitution!</strong> You've learned about Texas' unique journey through multiple constitutions and the principles that shape our state government today.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { max: 190, earned: 0 },
+                2: { max: 190, earned: 0 },
+                3: { max: 195, earned: 0 },
+                4: { max: 190, earned: 0 },
+                5: { max: 195, earned: 0 }
+            }
+        };
+
+        // Level Thresholds
+        const levels = {
+            0: 'Explorer',
+            200: 'Settler',
+            400: 'Citizen',
+            600: 'Patriot',
+            800: 'Constitutional Scholar',
+            1000: 'Texas Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            const content = element.querySelector('.card-content');
+            content.classList.add('show');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted in green.';
+                
+                // Find and highlight the correct answer
+                options.forEach(opt => {
+                    // Check the onclick attribute to find the correct answer
+                    const onclickStr = opt.getAttribute('onclick');
+                    if (onclickStr && onclickStr.includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Disable all options after answering
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.onclick = null;
+            });
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= threshold) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page
+                const cards = document.querySelectorAll('.section-card');
+                cards[sectionNum - 1].classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = 5;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update report data
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            
+            // Calculate percentage (total possible points including bonuses)
+            const maxPoints = 1210; // Base points plus completion bonuses (960 + 250)
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Update scores in header
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = Math.round((gameState.sectionsCompleted.length / 5) * 100);
+            
+            // Update main report scores
+            document.getElementById('finalPoints').textContent = gameState.totalPoints;
+            document.getElementById('finalLevel').textContent = gameState.currentLevel;
+            document.getElementById('sectionsCount').textContent = gameState.sectionsCompleted.length;
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            // Update section statuses
+            for (let i = 1; i <= 5; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Update metrics
+            document.getElementById('metricPoints').textContent = gameState.totalPoints;
+            document.getElementById('metricSections').textContent = `${gameState.sectionsCompleted.length}/5`;
+            
+            const quizPercentage = gameState.quizTotal > 0 
+                ? Math.round((gameState.quizCorrect / gameState.quizTotal) * 100)
+                : 0;
+            document.getElementById('metricQuiz').textContent = quizPercentage + '%';
+            
+            const totalCards = 15; // Total interactive cards in the module
+            const engagementPercentage = Math.round((gameState.cardsRevealed.length / totalCards) * 100);
+            document.getElementById('metricEngagement').textContent = engagementPercentage + '%';
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

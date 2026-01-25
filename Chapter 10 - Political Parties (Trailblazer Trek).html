@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Political Parties in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🐘🐴 TCC Texas Government Trailblazer Trek: Political Parties</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🐘🐴 Chapter 10: Political Parties in Texas ⭐</h2>
+                <p>Explore how political parties shape Texas democracy and elections!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Party Structure</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📊</span>
+                        <div>Party ID</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Elections</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through Texas political parties:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction to Political Parties</h3>
+                    <p>Understand what political parties are and why they matter in democracy.</p>
+                    <div class="points-indicator">🌟 145 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Party Structure & Organization</h3>
+                    <p>Learn about the party-in-electorate, party organization, and party-in-government.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>History of Parties in Texas</h3>
+                    <p>Explore how Texas shifted from Democratic dominance to Republican control.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Party Identification</h3>
+                    <p>Discover political ideologies and how Texans identify with parties.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Texas Party Organization</h3>
+                    <p>Understand permanent and temporary party organizations in Texas.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Third-Party Movements</h3>
+                    <p>Learn about La Raza Unida, Green Party, Libertarians, Tea Party, and Occupy.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>Candidate & Delegate Selection</h3>
+                    <p>Explore how Texas selects candidates and delegates for elections.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction to Political Parties -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Introduction to Political Parties</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Evaluate the role played by political parties in Texas</li>
+                        <li>Understand how parties solve collective action problems</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">At some point, most of us have found ourselves part of a group trying to solve a problem, like picking a restaurant or movie to attend or completing a big project at school or work. Members of the group probably had various opinions about what should be done. Some may have even refused to help make the decision or to follow it once it had been made. This kind of collective action problem is very common in societies, as groups and entire societies try to solve problems or distribute scarce resources.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Political Party</div>
+                    <div>Political parties are groups of people with similar interests who work together to create and implement policies. They do this by gaining control over the government by winning elections. Party platforms guide members of the Legislature in drafting legislation. Parties guide proposed laws through the Legislature and inform party members how they should vote on important issues.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What functions do political parties serve?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📋 Party functions revealed!</p>
+                        <p>Political parties perform several crucial functions: They <strong>nominate candidates</strong> to run for state government, Congress, and the presidency. They <strong>coordinate political campaigns</strong> and mobilize voters. Party platforms guide legislation, and parties inform members how to vote on important issues. While interest groups work indirectly to influence leaders, political parties try to <strong>directly influence public policy</strong> through members who seek to win and hold public office.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">In Federalist No. 10, written in the late eighteenth century, James Madison noted that the formation of self-interested groups, which he called factions, was inevitable in any society, as individuals started to work together to protect themselves from the government. Interest groups and political parties are two of the most easily identified forms of factions in the United States.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is a party platform?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📜 Platform politics explained!</p>
+                        <p>Parties accomplish their goals by identifying and aligning sets of issues that are important to voters in the hopes of gaining support during elections. Their positions on these critical issues are often presented in documents known as a <strong>party platform</strong>, which is adopted at each party's presidential nominating convention every four years. If successful, a party can create a large enough electoral coalition to gain control of the government. Once in power, the party is then able to deliver the policy preferences its voters and elites choose.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the primary way political parties gain the ability to implement their policies?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">By lobbying elected officials</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">By winning elections and gaining control of the government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">By organizing protests and demonstrations</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">By filing lawsuits in court</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Party Structure & Organization -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏗️</span>
+                    <h2>Party Structure and Organization</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the evolution of political parties in Texas</li>
+                        <li>Understand the three components of party structure</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">A key fact about the U.S. political party system is that it's all about the votes. If voters do not show up to vote for a party's candidates on Election Day, the party has no chance of gaining office and implementing its preferred policies. For much of their history, the two parties have been adapting to changes in the size, composition, and preferences of the U.S. electorate.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">👥 Party-in-the-Electorate</div>
+                    <div>The party-in-the-electorate are those members of the voting public who consider themselves to be part of a political party and/or who consistently prefer the candidates of one party over the other. These voters are often called <strong>party identifiers</strong>, since they usually represent themselves in public as being members of a party. Party identifiers make up the majority of the voting public – historically, over half of American adults call themselves "Republican" or "Democrat."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How do generations differ in party identification?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Generational trends revealed!</p>
+                        <p>Generation affects party identification significantly. <strong>Millennials</strong> (aged 21–37) are more likely to identify as or lean towards the Democratic Party and less likely to favor Republicans than are their Baby Boomer parents and grandparents (born between 1946 and 1964). Even among self-proclaimed independents, the overwhelming majority claim to lean in the direction of one party or the other, suggesting they behave as if they identified with a party during elections even if they preferred not to publicly pick a side.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Party Organization</div>
+                    <div>The party organization is the formal structure of the political party, and its active members are responsible for coordinating party behavior and supporting party candidates. It is a vital component of any successful party because it bears most of the responsibility for building and maintaining the party "brand." It also plays a key role in helping select, and elect, candidates for public office.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What do county-level party organizations do?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏘️ Local party work revealed!</p>
+                        <p>The county-level organization is the workhorse of the party system, especially around election time. It takes on many basic responsibilities: identifying and mobilizing potential voters and donors, identifying and training potential candidates for public office, and recruiting new members for the party. County organizations are also responsible for finding volunteers to serve on Election Day, either as officials operating the polls or as monitors ensuring elections are conducted honestly and fairly.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Party-in-Government</div>
+                    <div>The party-in-government consists of party identifiers who have been elected or appointed to hold public office. Republican meetings are called <strong>party conferences</strong> and Democrat meetings are called <strong>party caucuses</strong>. Members meet in closed sessions to discuss legislative agenda items and make decisions about committee assignments. They also elect party leaders and party whips.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What challenges does the party-in-government face?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ Governing challenges revealed!</p>
+                        <p>The U.S. government's separation of powers and federalism create problems for maintaining party unity. Each level and unit of government has different constituencies that office holders must satisfy. A legislator may serve a constituency that disagrees with the party executive on key matters of policy. For issues important enough to voters, like gun control or abortion rights, an office holder may feel their job will be in jeopardy if they too closely follow the party line. The Civil Rights Act of 1964, supported by Presidents Kennedy and Johnson (Democrats), saw many Republicans vote in favor while many southern Democrats opposed it.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "party-in-the-electorate"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Party members who hold elected office</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">Members of the voting public who identify with or consistently prefer one party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The formal organizational structure of a political party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Campaign volunteers and donors</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which level of party organization is considered the "workhorse" of the party system?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">The national committee</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">The state executive committee</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">The county-level organization</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">The precinct organization</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: History of Parties in Texas -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>History of Political Parties in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the history and trends of Texas' major political parties</li>
+                        <li>Understand how Texas shifted from Democratic to Republican dominance</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The 19th-century culture of Texas was heavily influenced by the plantation culture of the Old South, dependent on African-American slave labor, as well as the patron system once prevalent in northern Mexico and South Texas. In these societies, the government's primary role was seen as being the preservation of social order.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🔵 Historical Democratic Dominance</div>
+                    <div>From 1848 until Richard M. Nixon's victory in 1972, Texas voted for the Democrat candidate for president in every election except 1928, when anti-Catholic sentiment against Al Smith drove voters to Republican Herbert Hoover. A full century of Democratic Governors stretched between the departure of Republican Governor E.J. Davis (1874) and the election of Republican William P. Clements (1979).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Who was Norris Wright Cuney?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 👤 A Texas political pioneer!</p>
+                        <p><strong>Norris Wright Cuney</strong> (1846–1898) was one of the most influential black leaders in the South during the 19th century. In the post-Civil War era, he rose to leadership of the Republican Party in Texas. His mentor, George T. Ruby, was a black community organizer and director in the federal Freedmen's Bureau. Cuney was a mulatto whose wealthy, white planter father freed him before the Civil War and arranged for his education in Pennsylvania. He became active in Galveston politics, serving as an alderman and national Republican delegate. In 1889, he was appointed U.S. Collector of Customs in Galveston – the highest-ranking appointed position of any African American in the late 19th-century South.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">From 1902 through 1965, the Democrat-dominated legislature in Texas had virtually disenfranchised most blacks and many Latinos and poor whites through the imposition of the poll tax and white primaries. Republican support in Texas had been based almost exclusively in free black communities, particularly in Galveston, and in the "German counties" – the rural Texas Hill Country inhabited by German immigrants who had opposed slavery.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What was the Shivercrat movement?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🔄 Political realignment begins!</p>
+                        <p>Some analysts suggest that the rebirth of the Republican Party in Texas among white conservatives can be traced to 1952, when Democrat Governor <strong>Allan Shivers</strong> clashed with the Truman Administration over the federal claim on the Tidelands – offshore lands claimed by both Texas and the national government believed to contain oil. Shivers led a movement often known as the <strong>Shivercrat movement</strong>, which forecast a dramatic change in party alignments a quarter-century later. He worked to help Texas native General Dwight D. Eisenhower carry the state.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🔴 Republican Dominance Today</div>
+                    <p>As of June 2017, Democrats were the minority party in the state legislature, did not hold any statewide elected offices, and occupied only 11 of the state's 36 congressional seats. When one party controls the governor's office, the state House, and state Senate, that party controls a <strong>trifecta</strong>. Republicans gained the Texas trifecta in 2003 and have maintained it since, making Texas one of the most Republican states in the U.S. Despite overall Republican dominance, Austin, El Paso, Houston, Dallas, San Antonio, and the Rio Grande Valley remain primarily Democratic.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What does the future hold for Texas politics?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔮 Changing demographics!</p>
+                        <p>The Hispanic population has continued to increase. As of 2011, the Hispanic population accounted for 38.1% of the state's population (compared to 44.8% for non-Hispanic whites). The state's changing demographics may result in a change in its overall political alignment, as most Hispanic and Latino voters support the Democrat Party. Analysts with Gallup suggest that low turnout among Texas Hispanics is all that enables continued Republican dominance. In 2018, Democrat Beto O'Rourke lost his Senate bid to Ted Cruz by only about 200,000 votes – a significant gain for Democrats that challenged notions of Republican dominance.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ When did the century of Democratic governors in Texas end?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">1952 with Dwight Eisenhower</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">1972 with Richard Nixon</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">1979 with the election of William P. Clements</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">2003 when Republicans gained the trifecta</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a "trifecta" in state politics?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">When a party wins three consecutive elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">When one party controls the governor's office, state House, and state Senate</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">When a party holds all three U.S. Senate seats</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">When three parties compete equally in elections</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Party Identification -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🎭</span>
+                    <h2>Party Identification and Political Ideology</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand party identification and political ideologies</li>
+                        <li>Learn how party identification is measured and why it matters</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💡 Political Ideology</div>
+                    <div>A political ideology is a certain set of ethical ideals, principles, doctrines, myths or symbols of a social movement, institution, class or large group that explains how society should work and offers some political and cultural blueprint for a certain social order. Citizens in the U.S. generally classify themselves as adherent to positions along the political spectrum as either liberal, progressive, moderate, or conservative.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What do liberals believe?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔵 Liberal ideology explained!</p>
+                        <p><strong>Liberals</strong> advocate strong civil liberties and social progressivism according to which societal practices need to be changed whenever necessary for the greater good of society. They believe that government action is needed in order for people to be as free as possible. The government must thereby ensure the provision of positive rights, protect civil liberties and ensure equality. Liberals commonly reject both laissez-faire capitalism and socialism as means to distribute economic resources. A <strong>mixed economy</strong> – a capitalist free market economy with limited government regulation and intervention – is seen as the ideal.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What do conservatives believe?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔴 Conservative ideology explained!</p>
+                        <p>The word "conservative" comes from "conserve," hence describing those who generally wish to conserve the status quo, conserve morality, or conserve money. A majority of conservatives support tax-cuts and other laissez-faire (reduced governmental interference) policies, oppose same-sex marriage, oppose abortion, oppose stricter gun control laws on the grounds of the Second Amendment, and favor increased military spending. Conservatives tend to favor (racial) color-blindness and oppose affirmative action quotas. They also tend to favor state governments over the federal.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Party Identification</div>
+                    <div>Party identification refers to the political party with which an individual identifies. It is loyalty to a political party, typically determined by the party that an individual most commonly supports. Some researchers view it as "a form of social identity" or psychological attachment that develops early in life through family and social influences. Others consider it more flexible and based on continued assessment of the political, economic and social environment.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is partisan polarization?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Growing divide revealed!</p>
+                        <p>The past thirty years have brought a dramatic change in the relationship between the two parties as fewer conservative Democrats and liberal Republicans have been elected to office. As political moderates leave the political parties at all levels, the parties have grown farther apart ideologically – a result called <strong>partisan polarization</strong>. This is the degree to which Democrats have become more liberal and Republicans have become more conservative. In politics, partisan polarization may make it increasingly more difficult for politicians to compromise on critical policy issues.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "partisan polarization"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">When voters switch parties frequently</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">The degree to which Democrats have become more liberal and Republicans more conservative</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">When third parties become more popular</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">The process of registering with a political party</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Political scientists often refer to party identification as what?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">A social movement</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">A constitutional right</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">A "vote determinant"</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">A media phenomenon</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Texas Party Organization -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏗️</span>
+                    <h2>Texas Party Organization</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand permanent and temporary party organizations in Texas</li>
+                        <li>Learn about official political parties recognized in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Although many Texans claim that they are "registered Republicans" or "registered Democrats," Texas does not have a system of party registration. Registered voters may vote in either the Democrat or Republican primary. One of the most important functions of political parties is to select candidates to run for office under the party label, which is currently accomplished through primary elections.</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">📋 Official Political Parties in Texas</div>
+                    <p>As of September 2019, the state of Texas officially recognized four political parties:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Democratic Party of Texas</li>
+                        <li>Republican Party of Texas</li>
+                        <li>Libertarian Party of Texas</li>
+                        <li>Green Party of Texas</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;">In order to be recognized by the state, a political party must fulfill certain ballot access requirements. Texas does not allow candidates to use political party designations (alternative labels) on the ballot.</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Permanent Party Organization</div>
+                    <div>The permanent organization includes precinct chairs elected in the party primary who head precinct conventions and serve on the county executive committee. The county chair leads the county executive committee (composed of the chair and precinct chairs), which runs the county primary and plans county conventions. At the state level, a state executive committee includes a state chair and vice-chair selected every two years at state party conventions. This committee accepts candidate filings, helps raise funds, and establishes party policy.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the temporary party organization?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🗳️ Convention system explained!</p>
+                        <p>The <strong>temporary organization</strong> includes precinct conventions, where delegates are selected for the county convention and resolutions may be submitted that could become part of the party platform. Delegates chosen at precinct conventions go to county conventions (or district conventions in urban areas), which then elect delegates to the state convention. At state conventions held every other year: nominees are certified for statewide office, a party platform is adopted, and the chair, vice-chair, and state executive committee are elected. In presidential election years, state conventions also select delegates for national conventions and choose presidential electors.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happens at national conventions?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎪 The media spectacle!</p>
+                        <p>National conventions are typically held between June and September and last four to five days, with days devoted to platform discussion and nights reserved for speeches. Members of the candidate's family speak during the first few days, with the vice-presidential nominee speaking on the next-to-last night and the presidential candidate on the final night. While conventions used to feature high drama, modern conventions have become highly sanitized, orchestrated media events. Speakers often have their speeches prescreened to ensure they don't deviate from the party line. Between 1960 and 2004, viewership declined by half.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Does Texas have a system of party registration?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">No – registered voters may vote in either party's primary</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Yes – voters must register with a party to vote in primaries</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Only for presidential primaries</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Only in urban counties</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many political parties does Texas officially recognize?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Two (Democrats and Republicans)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Three</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">Four (Democrats, Republicans, Libertarians, Greens)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Five</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Third-Party Movements -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🌿</span>
+                    <h2>Third-Party Movements in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss third-party movements in Texas history</li>
+                        <li>Understand the Tea Party and Occupy movements</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">At various points in the past 170 years, elites and voters have sought to create alternatives to the existing party system. Political parties that are formed as alternatives to the Republican and Democratic parties are known as third parties, or minor parties. As with many other states, the two-party system in Texas has made it very difficult for third parties to get on the ballot.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">✊ La Raza Unida</div>
+                    <div>La Raza Unida, meaning "united race," was created in the early 1970s to combat growing inequality and dissatisfaction with the Democratic Party typically supported by Mexican-American voters. José Ángel Gutiérrez led the party at its inception in Zavala County. The party won races in Crystal City, Cotulla, and Carrizo Springs by taking advantage of nonpartisan elections. At one point, they won two city council majorities, two school board majorities, and two mayoralties. Although the party did poorly in the 1978 Texas elections, it signified the growing influence of Latinos in the state.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are the Green and Libertarian parties?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌿 Third parties explained!</p>
+                        <p>The <strong>Green Party of Texas</strong> was founded as the electoral arm for grassroots democracy, social justice, ecological wisdom, peace, and nonviolence. Ralph Nader's 1996 campaign spurred growth. They gained ballot access through 2026 after obtaining 2% of the vote for Railroad Commissioner in 2016.</p>
+                        <p>The <strong>Libertarian Party of Texas</strong> has emerged as a third-party alternative. Libertarians believe in limited government and are typically considered fiscal conservatives and social liberals. While unsuccessful at the polls, they can influence politics when major parties adopt their positions to win support in run-off elections.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the Tea Party movement?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🍵 Conservative movement revealed!</p>
+                        <p>Born from the Libertarian Party, the <strong>Tea Party movement</strong> was launched following a February 19, 2009 call by CNBC reporter Rick Santelli on the floor of the Chicago Mercantile Exchange. The movement allied with the Republican Party and has had great influence in Texas due to its antitax messaging. The Tea Party is hostile to government intervention, especially taxation and business regulation, viewing them as threats to capitalism and democracy. Some factions are active on social issues, opposing same-sex marriage and abortion rights. In 2012, 86% of Tea Party members voted Republican. Tea Party activist Grover Norquist exacted promises from many Republicans to oppose any bill that sought to raise taxes.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">✊ The Occupy Movement</div>
+                    <div>Created following government bailouts in 2008, the Occupy movement has held demonstrations in Austin and other major Texas cities, protesting the influence of big corporations and Wall Street on American politics. The movement aimed at limiting the influence of Wall Street and big corporations in American politics.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What was the primary purpose of La Raza Unida when it was founded?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">To support Republican candidates in Texas</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 25)">To combat inequality and provide an alternative to the Democratic Party for Mexican-American voters</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">To promote environmental issues</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">To reduce taxes for businesses</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What percentage of Tea Party members who voted in 2012 cast their votes for Republicans?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">50%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">65%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 25)">86%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">95%</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Candidate & Delegate Selection -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Candidate and Delegate Selection</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Compare and contrast primary and caucus candidate selection processes</li>
+                        <li>Understand the Texas Two-Step and current delegate allocation</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Presidential candidates in the United States are not directly nominated via primary elections; instead, presidential nominees are formally nominated at political party conventions. Presidential preference primary elections and caucuses are held in each state to determine how that state's delegation will vote during the nominating convention.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Texas Primary System</div>
+                    <div>In 2016, Texas' political parties conducted open presidential preference primaries – voters were not required to be a member of a party to participate in its primary. Texas law requires parties to conduct open primary elections for state and county offices, as well as congressional offices. During the nineteenth century, candidates were nominated at party conventions, but early in the 20th century, the state moved to the primary. Winners in primary contests are determined by majority vote, with a runoff between the top two if no candidate receives a majority.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What was the "Texas Two-Step"?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💃 A unique Texas system!</p>
+                        <p>The <strong>Texas Two-Step</strong> (named after the partner dance) was a process where Texans were required to first vote in the primary election in order to be eligible for participation in party caucuses where delegates were selected. The Texas Democratic Party abandoned this former caucus-based system in 2015 after the 2008 Democratic County Conventions produced great confusion. Both Clinton and Obama supporters had concerns about how these conventions were conducted, with the most common complaint being that delegates were not being apportioned based on Precinct Convention results.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How do the parties currently allocate delegates?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Delegate math explained!</p>
+                        <p><strong>Republicans:</strong> Have a winner-take-all provision, but the chances any candidate will get all delegates are very small. A candidate would need more than 50% statewide AND in each of the 36 congressional districts. Absent that, a pro-rata system allocates delegates according to votes received.</p>
+                        <p><strong>Democrats:</strong> No longer use caucuses. After primary votes are counted, delegates are awarded among candidates who received 15% or more, in proportion to votes received. A Democrat could only get all Texas delegates by winning 85% statewide AND 85% in each of Texas' 31 state Senate districts – making it even harder than for Republicans.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What was the "Texas Two-Step" in presidential elections?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">A dance performed at party conventions</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 25)">A system where voters had to participate in the primary to be eligible for caucuses</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">A requirement to vote in two consecutive elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The process of holding two runoff elections</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What threshold must Democratic candidates reach to receive any delegates in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">5% of the vote</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">10% of the vote</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 25)">15% of the vote</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">25% of the vote</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Occupy movement:</span> Movement aimed at limiting the influence of Wall Street and big corporations in American politics.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Partisan polarization:</span> The degree to which Republicans have become more conservative and Democrats have become more liberal.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Party-in-government:</span> Party identifiers who have been elected or appointed to hold public office.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Party organization:</span> The formal structure of a political party that facilitates coordination and support for candidates.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Party platform:</span> A statement of principles and purpose issued by a political party.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Political ideology:</span> A set of ethical ideals and principles that explains how society should work and offers a blueprint for social order.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Political party:</span> An organization that subscribes to a certain ideology and seeks political power through representation in government.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Shivercrat movement:</span> Movement led by Texas Governor Allan Shivers in the 1950s where conservative Democrats supported Republican Eisenhower for president.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Tea Party movement:</span> A fiscally-conservative movement within the Republican Party calling for lower taxes and reduced government spending.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Third parties (minor parties):</span> Political parties formed as alternatives to the Republican and Democratic parties.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Trifecta:</span> When one party controls the governor's office, state House, and state Senate.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Two-party system:</span> A system where two major parties dominate voting in nearly all elections at every level.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🐘🐴 TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 10: Political Parties in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction to Political Parties</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/145</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Party Structure & Organization</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>History of Parties in Texas</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Party Identification</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Texas Party Organization</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Third-Party Movements</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Candidate & Delegate Selection</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/150</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 10: Political Parties in Texas. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 145 },
+                2: { earned: 0, max: 165 },
+                3: { earned: 0, max: 165 },
+                4: { earned: 0, max: 160 },
+                5: { earned: 0, max: 155 },
+                6: { earned: 0, max: 160 },
+                7: { earned: 0, max: 150 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            175: 'Scholar',
+            350: 'Party Member',
+            525: 'Precinct Captain',
+            700: 'Party Strategist',
+            875: 'Political Expert',
+            1050: 'Texas Party Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🐘🐴 Your journey through Texas political parties begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

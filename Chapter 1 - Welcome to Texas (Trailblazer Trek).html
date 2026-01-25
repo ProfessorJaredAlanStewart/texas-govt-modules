@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Introduction to Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                position: relative;
+            }
+
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🤠 TCC Texas Government Trailblazer Trek: Introduction to Texas</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🌟 Chapter 1: Introduction to Texas 🤠</h2>
+                <p>Explore the rich and diverse history of Texas from Six Flags to Modern Times</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Texas History</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>⭐</span>
+                        <div>Lone Star Legacy</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Political Culture</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your Texas history adventure:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Six Flags Over Texas</h3>
+                    <p>Learn about the six nations that have had sovereignty over Texas territory.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Independence for Texas</h3>
+                    <p>Discover why American settlers sought independence from Mexico.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>The Mexican-American War</h3>
+                    <p>Explore the causes and outcomes of the war from 1846-1848.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Texas in the Civil War</h3>
+                    <p>Understand Texas' role in the American Civil War and its aftermath.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Reconstruction Era</h3>
+                    <p>Learn about Texas' path to rejoining the Union after the Civil War.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Governor E.J. Davis</h3>
+                    <p>Discover the controversial Reconstruction-era Republican governor.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Texas Oil Boom</h3>
+                    <p>Explore how oil transformed Texas into an economic powerhouse.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Texas Demographics</h3>
+                    <p>Learn about the diverse population that makes Texas unique.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+
+                <div class="section-card" id="card9" onclick="navigateToSection(9)">
+                    <div class="section-number">9</div>
+                    <h3>State Political Culture</h3>
+                    <p>Understand Elazar's theory of political culture and how it applies to Texas.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Six Flags Over Texas -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏳️</span>
+                    <h2>Six Flags Over Texas</h2>
+                </div>
+
+                <p class="content-text">Texas has a rich and diverse history. Understanding that history helps explain why contemporary Texas is the way it is. This chapter explores a tiny piece of that history.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏳️ Six Flags Over Texas</div>
+                    <div>"Six flags over Texas" is the slogan used to describe the six nations that have had sovereignty over some or all of the current territory of the U.S. state of Texas: Spain (1519–1685; 1690–1821), France (1685–1690), Mexico (1821–1836), the Republic of Texas (1836–1845), the Confederate States of America (1861–1865), and the United States of America (1845–1861; 1865–present).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What do the six flags represent about Texas identity?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 You've discovered an important insight!</p>
+                        <p>The six flags represent the complex and layered history of Texas. Each nation left its mark on Texas culture, law, and identity. From Spanish colonial rule to French exploration, Mexican governance, independence as a republic, Confederate involvement, and finally American statehood, Texas's unique character emerges from this multicultural heritage.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">The image of six flags flying over the Texas State History Museum in Austin serves as a powerful reminder of this heritage. Each flag represents a distinct era in Texas history, complete with its own laws, customs, and cultural contributions.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why is understanding Texas history important?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Great discovery!</p>
+                        <p>Understanding Texas history helps explain why contemporary Texas is the way it is. The state's legal traditions, cultural diversity, and political attitudes all trace back to these six periods of governance. For instance, Texas property law still reflects Spanish and Mexican influences, while its independent spirit connects to its decade as a republic.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which nation controlled Texas for the longest total period of time?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">France (1685–1690)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">Spain (1519–1685; 1690–1821)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Mexico (1821–1836)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">The Republic of Texas (1836–1845)</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Independence for Texas -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⭐</span>
+                    <h2>Independence for Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain why American settlers in Texas sought independence from Mexico</li>
+                        <li>Discuss early attempts to make Texas independent of Mexico</li>
+                        <li>Describe the relationship between Anglo-Americans and Tejanos in Texas before and after independence</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">As the incursions of the earlier filibusters into Texas demonstrated, American expansionists had desired this area of Spain's empire in America for many years. After the 1819 Adams-Onís treaty established the boundary between Mexico and the United States, more American expansionists began to move into the northern portion of Mexico's province of Coahuila y Texas. Following Mexico's independence from Spain in 1821, American settlers immigrated to Texas in even larger numbers, intent on taking the land from the new and vulnerable Mexican nation in order to create a new American slave state.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Empresario</div>
+                    <div>An empresario was someone who brought settlers to the region in exchange for generous grants of land. Spain and Mexico used this system to increase the non-Indian population in Texas and provide a buffer zone between hostile tribes and the rest of Mexico.</div>
+                </div>
+
+                <p class="content-text">To increase the non-Indian population in Texas and provide a buffer zone between its hostile tribes and the rest of Mexico, Spain began to recruit empresarios. Moses Austin, a once-prosperous entrepreneur reduced to poverty by the Panic of 1819, requested permission to settle three hundred English-speaking American residents in Texas. Spain agreed on the condition that the resettled people convert to Roman Catholicism.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did Stephen F. Austin continue his father's legacy?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Excellent exploration!</p>
+                        <p>On his deathbed in 1821, Moses Austin asked his son Stephen to carry out his plans, and Mexico, which had won independence from Spain the same year, allowed Stephen to take control of his father's grant. Like Spain, Mexico also wished to encourage settlement in the state of Coahuila y Texas and passed colonization laws to encourage immigration. Thousands of Americans, primarily from slave states, flocked to Texas and quickly came to outnumber the Tejanos, the Mexican residents of the region.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🇲🇽 Tejanos</div>
+                    <div>Tejanos were the Mexican residents of the Texas region. As American settlers flooded into Texas, they quickly came to outnumber the Tejano population, shifting the cultural and political dynamics of the region.</div>
+                </div>
+
+                <p class="content-text">Many Americans who migrated to Texas at the invitation of the Mexican government did not completely shed their identity or loyalty to the United States. They brought American traditions and expectations with them (including, for many, the right to own slaves). For instance, the majority of these new settlers were Protestant, and though they were not required to attend the Catholic mass, Mexico's prohibition on the public practice of other religions upset them and they routinely ignored it.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What were the main sources of conflict between settlers and Mexico?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Great discovery!</p>
+                        <p>Accustomed to representative democracy, jury trials, and the defendant's right to appear before a judge, the Anglo-American settlers in Texas disliked the Mexican legal system, which provided for an initial hearing by an alcalde—an administrator who often combined the duties of mayor, judge, and law enforcement officer. Their greatest source of discontent was Mexico's 1829 abolition of slavery. Most American settlers were from southern states, and many had brought slaves with them.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">The growing presence of American settlers in Texas, their reluctance to abide by Mexican law, and their desire for independence caused the Mexican government to grow wary. In 1830, it forbade future U.S. immigration and increased its military presence in Texas. Settlers continued to stream illegally across the long border; by 1835, after immigration resumed, there were twenty thousand Anglo-Americans in Texas.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happened at the Alamo?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏛️ Remember the Alamo!</p>
+                        <p>Mexico had no intention of losing its northern province. Santa Anna and his army of four thousand had besieged San Antonio in February 1836. Hopelessly outnumbered, its two hundred defenders, under Travis, fought fiercely from their refuge in an old mission known as the Alamo. After ten days, however, the mission was taken and all but a few of the defenders were dead, including Travis and James Bowie, the famed frontiersman. A few male survivors, possibly including Davy Crockett, were led outside the walls and executed.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Although hungry for revenge, the Texas forces under Sam Houston nevertheless withdrew across Texas, gathering recruits as they went. Coming upon Santa Anna's encampment on the banks of San Jacinto River on April 21, 1836, they waited as the Mexican troops settled for an afternoon nap. Assured by Houston that "Victory is certain!" and told to "Trust in God and fear not!" the seven hundred men descended on a sleeping force nearly twice their number with cries of "Remember the Alamo!" Within fifteen minutes the Battle of San Jacinto was over.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What was the settlers' greatest source of discontent with Mexican rule?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The requirement to convert to Catholicism</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The Mexican legal system using alcaldes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">Mexico's 1829 abolition of slavery</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Limited representation in the state legislature</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⭐ Lone Star Republic</div>
+                    <div>In September 1836, military hero Sam Houston was elected president of Texas. Because American politicians were reluctant to annex Texas, the territory organized itself as the independent Lone Star Republic. To protect itself from Mexican attempts to reclaim it, Texas sought and received recognition from France, Great Britain, Belgium, and the Netherlands.</div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Mexican-American War -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚔️</span>
+                    <h2>The Mexican-American War, 1846-1848</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify the causes of the Mexican-American War</li>
+                        <li>Describe the outcomes of the war in 1848, especially the Mexican Cession</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Tensions between the United States and Mexico rapidly deteriorated in the 1840s as American expansionists eagerly eyed Mexican land to the west, including the lush northern Mexican province of California. Indeed, in 1842, a U.S. naval fleet, incorrectly believing war had broken out, seized Monterey, California, a part of Mexico. Monterey was returned the next day, but the episode only added to the uneasiness with which Mexico viewed its northern neighbor.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🌎 Manifest Destiny</div>
+                    <div>In 1845, a New York newspaper editor, John O'Sullivan, introduced the concept of "manifest destiny" to describe the popular idea of the special role of the United States in overspreading the continent—the divine right and duty of white Americans to seize and settle the American West, thus spreading Protestant, democratic values.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did President Polk pursue expansion?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Political strategy uncovered!</p>
+                        <p>A fervent belief in expansion gripped the United States in the 1840s. In this climate of opinion, voters in 1844 elected James K. Polk, a slaveholder from Tennessee, because he vowed to annex Texas as a new slave state and take Oregon. President Polk—whose campaign slogan had been "Fifty-four forty or fight!"—asserted the United States' right to gain full control of Oregon Country. After diplomatic negotiations with Great Britain, the land was divided at 49° latitude.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Expansionistic fervor propelled the United States to war against Mexico in 1846. The United States had long argued that the Rio Grande was the border between Mexico and the United States, and at the end of the Texas war for independence Santa Anna had been pressured to agree. Mexico, however, refused to be bound by Santa Anna's promises and insisted the border lay farther north, at the Nueces River.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What sparked the actual conflict?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚔️ The first shots!</p>
+                        <p>In January 1846, the U.S. force that was ordered to the banks of the Rio Grande to build a fort on the "American" side encountered a Mexican cavalry unit on patrol. Shots rang out, and sixteen U.S. soldiers were killed or wounded. Angrily declaring that Mexico "has invaded our territory and shed American blood upon American soil," President Polk demanded the United States declare war on Mexico. On May 12, Congress obliged.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">U.S. military strategy had three main objectives: 1) Take control of northern Mexico, including New Mexico; 2) seize California; and 3) capture Mexico City. General Zachary Taylor and his Army of the Center were assigned to accomplish the first goal, and with superior weapons they soon captured the Mexican city of Monterrey. Taylor quickly became a hero in the eyes of the American people.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What did the Treaty of Guadalupe Hidalgo accomplish?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 Historic treaty revealed!</p>
+                        <p>The Treaty of Guadalupe Hidalgo, signed in February 1848, was a triumph for American expansionism under which Mexico ceded nearly half its land to the United States. The Mexican Cession included the current states of California, New Mexico, Arizona, Nevada, Utah, and portions of Colorado and Wyoming. Mexico also recognized the Rio Grande as the border with the United States. In exchange, the United States agreed to assume $3.35 million worth of Mexican debts and paid Mexico $15 million for its land.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What did the concept of "manifest destiny" describe?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The economic advantages of westward expansion</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">The divine right and duty of white Americans to spread across the continent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Mexico's claim to the disputed territory</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The boundary dispute between the Nueces and Rio Grande</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Texas in the Civil War -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚔️</span>
+                    <h2>Texas in the American Civil War</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand Texas' role in the American Civil War</li>
+                        <li>Understand the influence the American Civil War had on Texas</li>
+                        <li>Understand the continuing influence the American Civil War has on contemporary Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The U.S. state of Texas declared its secession from the United States of America on February 1, 1861, and joined the Confederate States on March 2, 1861, after it replaced its governor, Sam Houston, when he refused to take an oath of allegiance to the Confederacy. As with those of other States, the Declaration was not recognized by the United States government at Washington.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Ordinance of Secession</div>
+                    <div>In the late winter of 1860, Texan counties sent delegates to a special convention to debate the merits of secession. The convention adopted an "Ordinance of Secession" by a vote of 166 to 8, which was ratified by a popular referendum on February 23. This was one of the highest percentage votes for secession of any state other than South Carolina.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What reasons did Texas give for secession?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 Historical document revealed!</p>
+                        <p>Texas issued a declaration of causes spelling out the rationale for secession. The document cited solidarity with "sister slave-holding States," the U.S. government's inability to prevent Indian attacks and border raids, and accused northern politicians and abolitionists of committing outrages. The bulk of the document offered justifications for slavery, stating: "We hold as undeniable truths that the governments of the various States... were established exclusively by the white race, for themselves and their posterity."</p>
+                    </div>
+                </div>
+
+                <p class="content-text">At this time, African Americans comprised 30 percent of the state's population, and they were overwhelmingly enslaved. According to one Texan, Caleb Cutwell, keeping them enslaved was the primary goal: "Independence without slavery, would be valueless... The South without slavery would not be worth a mess of pottage."</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happened to Governor Sam Houston?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎭 A leader's defiance!</p>
+                        <p>Governor Sam Houston accepted secession but asserted that the Convention had no power to link the state with the new Southern Confederacy. Instead, he urged that Texas revert to its former status as an independent republic and stay neutral. Houston took his seat on March 16, the date state officials were scheduled to take an oath of allegiance to the Confederacy. He remained silent as his name was called out three times and, after failing to respond, the office of governor was declared vacant and Houston was deposed from office.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Over 70,000 Texans served in the Confederate army and Texas regiments fought in every major battle throughout the war. The state furnished the Confederacy with 45 regiments of cavalry, 23 regiments of infantry, 12 battalions of cavalry, 4 battalions of infantry, 5 regiments of heavy artillery, and 30 batteries of light artillery.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Was there opposition to secession within Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🕊️ Divided loyalties revealed!</p>
+                        <p>Despite the prevailing view of the vast majority of the state's politicians, there were a significant number of Texans who opposed secession—about 25% favored remaining in the Union. The largest concentration of anti-secession sentiment was among the German Texan population in the Texas Hill Country and some North Texas counties. Many Unionists were executed. In August 1862, Confederate soldiers attacked German Texans headed out of state in what became known as the Nueces massacre.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What happened to Governor Sam Houston when he refused to take the Confederate oath?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">He was arrested and imprisoned</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">He was allowed to continue serving</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">He was deposed from office after refusing to respond to his name</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">He fled to Mexico</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Reconstruction -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🔨</span>
+                    <h2>Reconstruction</h2>
+                </div>
+
+                <p class="content-text">During the American Civil War, Texas had joined the Confederate States. The Confederacy was defeated, and U.S. Army soldiers arrived in Texas on June 19, 1865 to take possession of the state, restore order, and enforce the emancipation of slaves. The date is now commemorated as the holiday Juneteenth. On June 25, troops raised the American flag in Austin, the state capital.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎉 Juneteenth</div>
+                    <div>Juneteenth commemorates June 19, 1865, when U.S. Army soldiers arrived in Texas to take possession of the state and enforce the emancipation of slaves. This date is now a federal holiday celebrating the end of slavery in the United States.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How was Texas governed during Reconstruction?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏛️ Reconstruction governance!</p>
+                        <p>U.S. President Andrew Johnson appointed Union General Andrew J. Hamilton, a prominent politician before the war, as the provisional governor on June 17. He granted amnesty to ex-Confederates if they promised to support the Union in the future, appointing some to office. Angry returning veterans seized state property and Texas went through a period of extensive violence and disorder.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">On March 30, 1870, the United States Congress readmitted Texas into the Union, although Texas did not meet all the formal requirements for readmission. Like other Southern states, by the late 1870s white Democrats regained control, often with a mix of intimidation and terrorism by paramilitary groups operating for the Democratic Party.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did voting rights change after Reconstruction?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🗳️ Voting rights revealed!</p>
+                        <p>Democrats passed a new constitution in 1876 that segregated schools and established a poll tax to support them, but it was not originally required for voting. In 1901 the Democratic-dominated legislature imposed a poll tax as a requirement for voting, and succeeded in disfranchising most blacks. The number of voters decreased from 100,000 in the 1890s to 5,000 by 1906.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does Juneteenth commemorate?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Texas's secession from the Union</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The end of the Civil War at Appomattox</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">The arrival of U.S. troops in Texas to enforce emancipation on June 19, 1865</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Texas's readmission to the Union</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Governor E.J. Davis -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>👤</span>
+                    <h2>Governor E.J. Davis</h2>
+                </div>
+
+                <p class="content-text">Edmund Jackson Davis (October 2, 1827 – February 24, 1883) was an American lawyer, soldier, and politician. He was a Southern Unionist and a general in the Union Army in the American Civil War. He also served for one term from 1870 to 1874 as the 14th Governor of Texas.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did Davis serve the Union during the Civil War?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚔️ Union service revealed!</p>
+                        <p>In early 1861, Edmund Davis supported Governor Sam Houston in their mutual stand against secession. Davis refused to take an oath of allegiance to the Confederate States of America and was removed from his judgeship. He fled from Texas and took refuge in Union-occupied New Orleans, Louisiana, then sailed to Washington, D.C., where President Abraham Lincoln issued him a colonel's commission with the authority to recruit the 1st Texas Cavalry Regiment (Union). On November 10, 1864, President Lincoln appointed Davis as a brigadier general of volunteers.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">In 1869, Davis was narrowly elected governor against Andrew Jackson Hamilton, a Unionist Democrat. As a Radical Republican during Reconstruction, his term in office was controversial. Davis' government was marked by a commitment to the civil rights of African Americans.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">👮 Texas State Police</div>
+                    <div>On July 22, 1870, the Texas State Police came into being to combat crime statewide in Texas. It worked against racially based crimes, and included black police officers, which caused protest from former slaveowners. Davis also created the "State Guard of Texas" and the "Reserve Militia," which were forerunners of the Texas National Guard.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happened when Davis lost his re-election bid?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏛️ A dramatic standoff!</p>
+                        <p>In 1873, Davis was defeated for reelection by Democrat Richard Coke in an election marked by irregularities. Davis contested the results and refused to leave his office on the ground floor of the Capitol. Democratic lawmakers and Governor-elect Coke reportedly had to climb ladders to the Capitol's second story where the legislature convened. When President Grant refused to send troops to rescue Davis, he reluctantly left. He locked the door to the governor's office and took the key, forcing Coke's supporters to break in with an axe!</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Davis was the last Republican governor of Texas until Republican Bill Clements defeated the Democrat John Luke Hill in 1978 and assumed the governorship the following January, 105 years after Davis vacated the office.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Why was the Texas State Police controversial during Davis's administration?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">It was understaffed and ineffective</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">It included black police officers and worked against racially based crimes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">It only operated in urban areas</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">It was disbanded after one year</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: The Texas Oil Boom -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🛢️</span>
+                    <h2>The Texas Oil Boom</h2>
+                </div>
+
+                <p class="content-text">The Texas oil boom, sometimes called the gusher age, was a period of dramatic change and economic growth in the U.S. state of Texas during the early 20th century that began with the discovery of a large petroleum reserve near Beaumont, Texas. The find was unprecedented in its size and ushered in an age of rapid regional development and industrialization that has few parallels in U.S. history.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🛢️ Spindletop</div>
+                    <div>The strike at Spindletop near Beaumont in 1901 gained national attention, spurring exploration and development that continued through the 1920s and beyond. Some historians even define the beginning of the world's Oil Age as the beginning of this era in Texas.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did oil transform Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Economic transformation revealed!</p>
+                        <p>This period had a transformative effect on Texas. At the turn of the century, the state was predominantly rural with no large cities. By the end of World War II, the state was heavily industrialized, and the populations of Texas cities had broken into the top 20 nationally. The city of Houston was among the greatest beneficiaries of the boom, and the Houston area became home to the largest concentration of refineries and petrochemical plants in the world.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Texas quickly became one of the leading oil-producing states in the U.S., along with Oklahoma and California; soon the nation overtook the Russian Empire as the top producer of petroleum. By 1940 Texas had come to dominate U.S. production.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Who were the "Big Four" oil barons of Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 👔 Texas oil titans!</p>
+                        <p>H. Roy Cullen, H. L. Hunt, Sid W. Richardson, and Clint Murchison were the four most influential businessmen during this era. These men became among the wealthiest and most politically powerful in the state and the nation. Their fortunes shaped not only Texas politics but also had far-reaching effects on national politics and industry.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What major discovery in 1901 sparked the Texas Oil Boom?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The East Texas oil field</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">Spindletop near Beaumont</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The Permian Basin</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The Houston oil reserves</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Texas Demographics -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>👥</span>
+                    <h2>Texas' Demographics</h2>
+                </div>
+
+                <p class="content-text">Texas is the second most populous U.S. state, with an estimated 2017 population of 28.449 million. In recent decades, it has experienced strong population growth. Texas has many major cities and metropolitan areas, along with many towns and rural areas. Much of the population is in the major cities of Houston, San Antonio, Dallas, Fort Worth, Austin, and El Paso.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What drove Texas's population growth?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📈 Population boom explained!</p>
+                        <p>The 2010 US Census recorded Texas as having a population of 25.1 million—an increase of 4.3 million since the year 2000, involving an increase in population in all three subcategories: natural increase (births minus deaths), net immigration, and net migration. Texas' population growth between 2000 and 2010 represents the highest population increase, by number of people, for any U.S. state during this time period. The state's relative insulation from the US housing bubble contributed to this growth.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🌎 Hispanic Texans</div>
+                    <div>As of 2010, 37% of Texas residents had Hispanic ancestry; these include recent immigrants from Mexico, Central America, and South America, as well as Tejanos, whose ancestors have lived in Texas as early as the 1700s. Texas has the second largest Hispanic population in the United States, behind California.</div>
+                </div>
+
+                <p class="content-text">As of the 2010 US Census, the racial distribution in Texas was as follows: 70.4% White American; 11.8% African American; 3.8% Asian American; 0.7% American Indian; 0.1% native Hawaiian or Pacific islander. Hispanics (of any race) were 37.6% of the population, while Non-Hispanic Whites composed 45.3%.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the "New Great Migration" affecting Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🚗 Migration patterns revealed!</p>
+                        <p>A strong labor market between 1995 and 2000 contributed to Texas being one of three states in the South receiving the highest numbers of black college graduates in a New Great Migration. African Americans are concentrated in northern, eastern and east central Texas as well as the Dallas, Houston and San Antonio metropolitan areas. In recent years, the Asian American population in Texas has also grown, especially in west Houston, Fort Bend County, and the suburbs of Dallas.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is Texas's rank among U.S. states by population?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">First</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">Second</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Third</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Fourth</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: State Political Culture -->
+        <div id="section9" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>State Political Culture</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Compare Daniel Elazar's three forms of political culture</li>
+                        <li>Describe how cultural differences between the states can shape attitudes about the role of government and citizen participation</li>
+                        <li>Discuss the main criticisms of Daniel Elazar's theory</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Theorists have long proposed that states are unique as a function of their differing political cultures, or their attitudes and beliefs about the functions and expectations of the government. In the book, American Federalism: A View from the States, Daniel Elazar first theorized in 1966 that the United States could be divided into three distinct political cultures: moralistic, individualistic, and traditionalistic.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📚 Political Culture</div>
+                    <div>Political culture refers to the attitudes and beliefs about the functions and expectations of the government. According to Elazar, these cultures spread with the migratory patterns of immigrants who settled in and spread out across the country from the east to the west coast.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is moralistic political culture?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎯 Moralistic culture explained!</p>
+                        <p>In Elazar's framework, states with a moralistic political culture see the government as a means to better society and promote the general welfare. They expect political officials to be honest, put the interests of the people above their own, and commit to improving the area they represent. Citizens have little patience for corruption and believe politicians should be motivated by a desire to benefit the community. This culture developed among the Puritans in upper New England and spread westward to the upper Great Lakes.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is individualistic political culture?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💼 Individualistic culture explained!</p>
+                        <p>States that align with Elazar's individualistic political culture see the government as a mechanism for addressing issues that matter to individual citizens and for pursuing individual goals. People interact with the government like a marketplace—expecting goods and services in exchange for compensation. This culture originated with settlers from non-Puritan England and Germany, settling in the mid-Atlantic region and spreading westward in a line from Ohio to Wyoming.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is traditionalistic political culture?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 Traditionalistic culture explained!</p>
+                        <p>A traditionalistic political culture sees the government as necessary to maintaining the existing social order and the status quo. Only elites belong in the political enterprise, and new public policies will be advanced only if they reinforce the beliefs and interests of those in power. Elazar associates this culture with the southern portion of the United States, where settlers tied their economic fortunes to the necessity of slavery on plantations.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🤠 Texas Political Culture</div>
+                    <div>Elazar's Theory claims that Texas is a mixture of traditional and individualistic political cultures. As a result, the voter turnout in Texas is lower than most other American states, with the argument that Texans view political participation as an economic perk versus the value of contributing to society.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ According to Elazar's theory, what type of political culture does Texas have?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">Purely moralistic</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">Purely individualistic</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-1', 30)">A mixture of traditional and individualistic</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">Purely traditionalistic</div>
+                    <div class="feedback-box" id="feedback-q9-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a major criticism of Elazar's theory?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">It focuses too much on economics</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-2', 30)">Immigration patterns have changed and the three cultures may no longer match current reality</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">It only applies to southern states</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">It was never empirically tested</div>
+                    <div class="feedback-box" id="feedback-q9-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(9)">✅ Complete Section 9</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🤠 TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>% Complete</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 1: Introduction to Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1. Six Flags Over Texas</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/120</td>
+                                </tr>
+                                <tr>
+                                    <td>2. Independence for Texas</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>3. The Mexican-American War</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>4. Texas in the Civil War</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>5. Reconstruction Era</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/120</td>
+                                </tr>
+                                <tr>
+                                    <td>6. Governor E.J. Davis</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/120</td>
+                                </tr>
+                                <tr>
+                                    <td>7. The Texas Oil Boom</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/120</td>
+                                </tr>
+                                <tr>
+                                    <td>8. Texas Demographics</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/120</td>
+                                </tr>
+                                <tr>
+                                    <td>9. State Political Culture</td>
+                                    <td id="status9">❌</td>
+                                    <td id="points9">0/180</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="margin-top: 2rem; color: var(--text-secondary); font-style: italic;">
+                            <strong>Note to Instructor:</strong> This report was generated by the TCC Trailblazer Trek interactive learning system. The student completed this module independently, engaging with interactive content, knowledge checks, and exploratory activities to demonstrate understanding of Chapter 1: Introduction to Texas.
+                        </p>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 120 },
+                2: { earned: 0, max: 180 },
+                3: { earned: 0, max: 180 },
+                4: { earned: 0, max: 180 },
+                5: { earned: 0, max: 120 },
+                6: { earned: 0, max: 120 },
+                7: { earned: 0, max: 120 },
+                8: { earned: 0, max: 120 },
+                9: { earned: 0, max: 180 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Texan',
+            600: 'Statesman',
+            800: 'History Expert',
+            1000: 'Lone Star Legend',
+            1200: 'Texas Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🤠 Your Texas adventure begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

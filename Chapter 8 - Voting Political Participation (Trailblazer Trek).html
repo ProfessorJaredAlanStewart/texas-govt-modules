@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Voting and Political Participation - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🗳️ TCC Texas Government Trailblazer Trek: Voting & Political Participation</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🗳️ Chapter 8: Voting and Political Participation in Texas ⭐</h2>
+                <p>Discover how Texans exercise their democratic rights and participate in shaping their government!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Elections</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📜</span>
+                        <div>Voting Rights</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Democracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through Texas voting and political participation:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Voting in a Changing Texas</h3>
+                    <p>Explore how demographic changes are transforming Texas politics through the lens of Fort Bend County.</p>
+                    <div class="points-indicator">🌟 140 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Voter Registration</h3>
+                    <p>Learn about voter registration requirements across the United States and in Texas.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Types of Elections in Texas</h3>
+                    <p>Discover the many types of elections in which registered Texans can participate.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>History of Voting Rights</h3>
+                    <p>Understand the barriers to voting that existed in Texas and how they were overcome.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Voter Decision Making</h3>
+                    <p>Learn how voters make their choices at the ballot box.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Voter Turnout in Texas</h3>
+                    <p>Examine the factors that affect who votes and why turnout matters.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>Increasing Voter Turnout</h3>
+                    <p>Explore reforms and strategies designed to get more citizens to the polls.</p>
+                    <div class="points-indicator">🌟 145 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Political Participation Beyond Voting</h3>
+                    <p>Discover other ways citizens participate in the political process.</p>
+                    <div class="points-indicator">🌟 140 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Voting in a Changing Texas -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Voting in a Changing Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify the voting rights and responsibilities of Texas' citizens</li>
+                        <li>Understand how demographic changes affect political participation</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Fort Bend County covers an area along the Brazos River southwest of Houston. For most of the 20th Century, it was a rural area known for ranching and cotton farming, and as the home of Imperial Sugar and several large state prisons. As Texas shifted from a predominantly Democratic to a predominantly Republican state in the 1970s, Fort Bend County's rural, conservative roots brought it enthusiastically along with the trend. In 1976, only 39 percent of Fort Bend voters selected Jimmy Carter for President in a race in which he carried Texas over President Gerald Ford.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How did Fort Bend County change politically?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Political shift revealed!</p>
+                        <p>In the 2000s, Republican majorities began to shrink. Mitt Romney won Fort Bend County with only 53 percent in 2012, and Hillary Clinton carried Fort Bend County in 2016, even as 52 percent of Texas voters chose Donald Trump. In the 2018 election, every countywide election was won by a Democrat, with challenger Beto O'Rourke outpolling incumbent Republican Senator Ted Cruz by more than 11 points, even as Cruz was reelected statewide.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">How did rural/suburban Fort Bend County become what appears to be at least a Democratic-leaning, if not solidly Democratic, county? The answer lies at least partly in demographics.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📊 Demographic Shift</div>
+                    <div>The population of Fort Bend grew almost 30 percent from 2010 to the 2018 election, and the 19 percent growth in Anglos was far outpaced by Asians (56%), Hispanics (33%) and African Americans (22%). The latest Census data shows Fort Bend as the most diverse county in Texas – meaning that it has the most closely equal percentages of the four major racial groups at 35% Anglo, 24% Hispanic, 20% African American and 21% Asian and other.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why does race predict political preferences?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🗳️ Electoral patterns uncovered!</p>
+                        <p>For better or worse, race is a strong predictor of political party preferences. As non-Anglo races become a larger percentage of the population and – more importantly – a larger percentage of the electorate throughout Texas, many predict that Texas' days as a reliably Republican state are numbered. This is why political scientists pay close attention to both demographics and voter turnout when making electoral predictions.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What makes Fort Bend County significant in Texas politics?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It has the largest population of any Texas county</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">It is the most diverse county in Texas with nearly equal percentages of major racial groups</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It has always been a Democratic stronghold</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">It is the state capital of Texas</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Voter Registration -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📝</span>
+                    <h2>Voter Registration in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the current requirements to vote in Texas and the registration process</li>
+                        <li>Understand how registration laws vary across states</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Before most voters are allowed to cast a ballot, they must register to vote in their state. This process may be as simple as checking a box on a driver's license application or as difficult as filling out a long form with complicated questions. Registration allows governments to determine which citizens are allowed to vote and, in some cases, from which list of candidates they may select a party nominee.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Who is Allowed to Vote?</div>
+                    <div>In order to be eligible to vote in the United States, a person must be a citizen, resident, and eighteen years old. But states often place additional requirements on the right to vote. The most common requirement is that voters must be mentally competent and not currently serving time in jail. Some states enforce more stringent or unusual requirements on citizens who have committed crimes.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How do state felon voting laws differ?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚖️ Variation in voting rights revealed!</p>
+                        <p>Florida and Kentucky permanently bar felons and ex-felons from voting unless they obtain a pardon from the governor, while Mississippi and Nevada allow former felons to apply to have their voting rights restored. On the other end of the spectrum, Vermont does not limit voting based on incarceration unless the crime was election fraud. Maine citizens serving in Maine prisons also may vote in elections. Wisconsin requires that voters "not wager on an election," and Vermont citizens must recite the "Voter's Oath" before they register.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">The National Commission on Voting Rights completed a study in September 2015 that found state registration laws can either raise or reduce voter turnout rates, especially among citizens who are young or whose income falls below the poverty line. States with simple voter registration had more registered citizens.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is same-day registration?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📅 Registration timing matters!</p>
+                        <p>States may require registration to take place as much as thirty days before voting, or they may allow same-day registration. Maine first implemented same-day registration in 1973. Fourteen states and the District of Columbia now allow voters to register the day of the election if they have proof of residency, such as a driver's license or utility bill. States that use same-day registration had a 4 percent higher voter turnout in the 2012 presidential election than states that did not.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📋 Texas Voter Qualifications</div>
+                    <p>To be eligible to register to vote in Texas, a person must be:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>A United States citizen</li>
+                        <li>A resident of the Texas county in which application for registration is made</li>
+                        <li>At least 18 years old on Election Day</li>
+                        <li>Not finally convicted of a felony (or must have fully completed sentence/probation or been pardoned)</li>
+                        <li>Not determined by a court to be totally mentally incapacitated or partially mentally incapacitated without the right to vote</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Registration in Texas is generally done by signing a postage-paid voter registration application and dropping it in the mail. In most counties, the Tax Assessor-Collector is also the county voter registrar. Applications are available at county facilities and at many libraries, post offices, and schools. You must be at least 17 years and 10 months of age on the date you apply, and the application must be received by the county or postmarked 30 days before any election in which you wish to vote.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How far in advance must a Texas voter registration application be postmarked before an election?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">10 days</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Same-day registration is allowed</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">30 days</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">60 days</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <p class="content-text">To vote in Texas, it is helpful, but not required, that you have your voter registration card with you. You are required to have one of seven forms of photo identification, like a driver's license or a passport, to vote. Citizens can also obtain an Election Identification Certificate free of charge at more than 225 Texas driver license offices throughout the state.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Texas fares poorly in voter registration rates. In 2016, where did Texas rank among all states and DC?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">10th highest</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">25th (middle)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">46th out of 51</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Last (51st)</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Types of Elections -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Types of Elections in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Distinguish between primary, general, and special elections</li>
+                        <li>Understand the various types of elections held in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Once you are registered, there are a number of different elections in which you can participate. Each type of election serves a different purpose in Texas democracy.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Primary Elections</div>
+                    <div>Primary elections are conducted jointly by major political parties and the state, generally in March of even-numbered years, and is the process by which parties choose their nominees for a general election. Party nominees must receive a majority of the votes cast in their race – otherwise, a runoff election between the top two finishers is held several weeks later.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the difference between open and closed primaries?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Primary systems explained!</p>
+                        <p>Many states have closed primaries, meaning that a voter must declare their membership in a political party as part of the voter registration process. Only "registered Republicans" can vote in Republican primary elections in states like California. Texas is an open primary state – meaning you simply register as a voter. A registered voter can participate in any party primary but can only participate in one party's primary in each election and cannot vote in a party's runoff election after voting in another party's primary in the same election.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ General Elections</div>
+                    <div>General elections are held in November, with the nominees of the major and minor parties, as well as independent candidates running for each position. Winning a general election does not require a majority, just a plurality – more votes than anybody else in the race. Rick Perry was reelected Governor of Texas in 2006 with just 39% of the vote in a four-way race against Democratic nominee Chris Bell and two well-known independent candidates, former Texas Comptroller Carole Strayhorn and writer/musician Kinky Friedman.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What about 17-year-olds who turn 18 before the general election?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎂 Voting age nuances revealed!</p>
+                        <p>What if you turn 18 in the middle of an election year? You can vote in the November election, but not in the March primary in which the candidates are chosen. That's like coming in in the middle of the movie! State Representative Donna Howard (D-Austin) has proposed a state constitutional amendment to allow 17-year-old Texans who will turn 18 in time for a November general election to also participate in that year's primary.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Registered voters in Texas can also participate in local elections to choose mayors and city council members, school board and special district board members – all of which must be elected with a majority. Constitutional Amendment Elections, generally in November following a session of the Texas Legislature, allow voters to consider changes to the state's constitution recommended by two-thirds of the Texas House and Senate.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are recall and rollback elections?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚖️ Special elections explained!</p>
+                        <p><strong>Recall elections</strong> allow voters who live in home rule cities to remove an official from office, and are held only when citizens gather a required number of signatures on petitions demanding the removal. In Groves, a city near Beaumont, more than 62 percent of voters chose to remove City Council Member Cross Coburn from office following the release of controversial photos.</p>
+                        <p><strong>Rollback elections</strong> can be triggered automatically or by petition and allow voters to choose whether to decrease a jurisdiction's property tax rate. In August 2018, voters in the Amarillo area voted nearly 2-to-1 to roll back the property tax rate for the Pampa Independent School District.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ In Texas primary elections, what happens if no candidate receives a majority of votes?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The candidate with the most votes automatically wins</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">A runoff election is held between the top two finishers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The party leadership selects the nominee</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The election is postponed to the next year</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which statement about Texas primaries is correct?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Texas has closed primaries requiring party registration</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Voters can participate in both party primaries in the same election</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">Texas has open primaries where any registered voter can choose which party's primary to vote in</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Only members of the majority party can vote in primaries</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: History of Voting Rights -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>History of Voting Rights in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Analyze modern and historical controversies around voting</li>
+                        <li>Understand how states can promote and impede voter participation</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Since its admission to statehood in 1845, Texas has participated in every U.S. presidential election except the election of 1864 during the American Civil War, when the state had seceded to join the Confederacy, and the election of 1868, when the state was undergoing Reconstruction.</p>
+
+                <p class="content-text">In its first century, Texas was a Democratic bastion, only voting for another party once – in 1928 when anti-Catholic sentiment against Al Smith drove voters to Republican Herbert Hoover. A gradual trend towards increasing social liberalism in the Democratic Party, however, has turned the state (apart from Hispanic South Texas, the Trans-Pecos, and several large cities) into a Republican stronghold. Since 1980 Texas has voted Republican in every election.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 The Civil War Amendments</div>
+                    <div>Texas shares with many other states – especially with former Confederate states – a history of the systematic disenfranchisement of blacks, Latinos, and poor whites. In response to post-Civil War voting restrictions, Congress passed the 13th Amendment (1865) abolishing slavery, the 14th Amendment (1868) guaranteeing "privileges and immunities" of citizens, and the 15th Amendment (1870) guaranteeing the right to vote regardless of race.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What were poll taxes and how did they suppress voting?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Financial barriers to voting exposed!</p>
+                        <p>Poll taxes added a direct out-of-pocket transaction cost to voting by charging money to vote. Texas adopted a poll tax in 1902. It required that otherwise eligible voters pay between $1.50 and $1.75 to register to vote – a lot of money at the time, and a big barrier to the working classes and poor. Poll taxes, which disproportionately affected African Americans and Mexican Americans, were finally abolished for national elections by the 24th Amendment to the U.S. Constitution, adopted in 1964. Two years later, the U.S. Supreme Court, in Harper v. Virginia Board of Elections, ruled that poll taxes in state elections were unconstitutional.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ The White Primary</div>
+                    <div>The white primary in Texas treated the Democratic Party as a private club whose membership could be restricted to citizens of Anglo heritage. It originated as a change in Democratic Party practice early in the twentieth century as a way to disenfranchise African Americans, and later in south Texas, Mexican Americans. In 1923 the white primary became state law. After numerous legal challenges, the U.S. Supreme Court finally and decisively prohibited the white primary in the 1944 case Smith v. Allwright.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What was the Voting Rights Act of 1965?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Landmark civil rights legislation!</p>
+                        <p>The ratification of the Twenty-Fourth Amendment in 1964 ended poll taxes, but the passage of the Voting Rights Act (VRA) in 1965 had a more profound effect. The act protected the rights of minority voters by prohibiting state laws that denied voting rights based on race. The VRA gave the attorney general of the United States authority to order federal examiners to areas with a history of discrimination. States found to violate provisions of the VRA were required to get any changes in their election laws approved by the U.S. attorney general or through the court system. However, in Shelby County v. Holder (2013), the Supreme Court, in a 5–4 decision, threw out the standards and process of the VRA, effectively gutting the landmark legislation.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What was the white primary in Texas designed to do?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Ensure fair elections by limiting corruption</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">Disenfranchise African Americans and Mexican Americans by treating the Democratic Party as a private club</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Create a separate primary for Anglo voters with different rules</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Promote integration of political parties</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which U.S. Supreme Court case ended the white primary in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Harper v. Virginia Board of Elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Shelby County v. Holder</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">Smith v. Allwright (1944)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Brown v. Board of Education</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Voter Decision Making -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🧠</span>
+                    <h2>Voter Decision Making</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand how voters make their decisions at the ballot box</li>
+                        <li>Identify the various factors that influence voting behavior</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">When citizens do vote, how do they make their decisions? The election environment is complex and most voters don't have time to research everything about the candidates and issues. Yet they will need to make a fully rational assessment of the choices for an elected office. To meet this goal, they tend to take shortcuts.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Party-Line Voting</div>
+                    <div>One popular shortcut is simply to vote using party affiliation. Many political scientists consider party-line voting to be rational behavior because citizens register for parties based upon either position preference or socialization. Similarly, candidates align with parties based upon their issue positions. A Democrat who votes for a Democrat is very likely selecting the candidate closest to his or her personal ideology.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is straight-ticket voting?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ✅ One-click voting explained!</p>
+                        <p>Straight-ticket voting means choosing every Republican or Democratic Party member on the ballot. In some states, such as Texas or Michigan, selecting one box at the top of the ballot gives a single party all the votes on the ballot. However, this causes problems in states that include non-partisan positions on the ballot. In Michigan, the top of the ballot includes partisan seats, but judicial seats are non-partisan. These offices would receive no vote from straight-ticket voters. In 2010, actors from the TV show "The West Wing" created an ad reminding straight-ticket voters in Michigan to also vote for non-partisan court seats.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">😴 Ballot Fatigue</div>
+                    <div>Ballot fatigue occurs when someone votes only for the top or important ballot positions, such as president or governor, and stops voting rather than continue to the bottom of a long ballot. In 2012, 70% of registered voters in Colorado cast a ballot for the presidential seat, yet only 54% voted yes or no on retaining Nathan B. Coats for the state supreme court. Straight-ticket voting has the advantage of reducing ballot fatigue.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are retrospective, prospective, and pocketbook voting?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Voting strategies revealed!</p>
+                        <p><strong>Retrospective voting</strong> occurs when the voter looks at the candidate's past actions and the past economic climate to make a decision. This may occur during economic downturns or after political scandals.</p>
+                        <p><strong>Pocketbook voting</strong> occurs when the voter looks at his or her personal finances and circumstances to decide how to vote.</p>
+                        <p><strong>Prospective voting</strong> occurs when the voter applies information about a candidate's past behavior to predict how the candidate will act in the future. Voters appear to rely on prospective and retrospective voting more often than on pocketbook voting.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Voters also make decisions based upon candidates' physical characteristics, such as attractiveness or facial features. They may vote based on gender or race because they assume the elected official will make policy decisions based on a demographic shared with the voters. In 2008, a sizable portion of the electorate wanted to vote for either Hillary Clinton or Barack Obama because they offered new demographics—either the first woman or the first black president. Demographics also hurt John McCain that year because many people believed that at 71 he was too old to be president.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the incumbency advantage?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏆 Power of incumbency revealed!</p>
+                        <p>In congressional and local elections, incumbents win reelection up to 90 percent of the time, a result called the <strong>incumbency advantage</strong>. What contributes to this advantage? First, incumbents have name recognition and voting records. The media is more likely to interview them. Incumbents also have won election before, which increases the odds that political action committees and interest groups will give them money. Incumbents have franking privileges, allowing them limited free mail to communicate with voters. They also have existing campaign organizations and more money in their war chests than most challengers.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "ballot fatigue"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">When voters are physically tired from standing in long lines</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">When voters only vote for top ballot positions and stop before reaching the bottom</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">When voters become exhausted from too many elections in one year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">When ballots are too long and confusing to read</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which type of voting involves looking at a candidate's past actions to predict future behavior?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Pocketbook voting</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Retrospective voting</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">Prospective voting</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Strategic voting</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Voter Turnout in Texas -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📊</span>
+                    <h2>Voter Turnout in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the factors that affect voter turnout in Texas</li>
+                        <li>Understand why voter turnout matters for democracy</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Houston doesn't charge a fee for single-family home trash pickup. While most cities charge a monthly fee, Houston uses general fund tax revenue to pay for trash service provided only to single-family homes. Apartment residents help pay for this service through taxes, although they don't receive it. They then pay again through their rent to have their own trash picked up by a private company. How can this be?</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why does voter turnout affect public policy?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏠 The homeowner advantage revealed!</p>
+                        <p>Before municipal elections in Houston, savvy candidates purchase walk lists from the Harris County Clerk's office – a list of street addresses at which at least one registered voter lives. In a typical 100-house neighborhood, around 50 houses will probably contain at least one registered voter. But how many registered voter households will that candidate find in a 100-unit apartment property? Probably fewer than ten. Homeowners, with more roots in the community, are far more likely to register and vote than renters. Most candidates skip apartment properties to concentrate on voter-rich single-family neighborhoods. This is why a policy taking money from non-voters to subsidize services for voters makes political sense.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Walk List</div>
+                    <div>A walk list is a list of street addresses at which at least one registered voter lives. Political candidates use walk lists to efficiently target their door-to-door campaigning efforts on households with registered voters.</div>
+                </div>
+
+                <p class="content-text">After years of elections in which Democrats nominated largely unknown, underfunded candidates for many statewide offices, Republican Senator Ted Cruz was opposed in 2018 by El Paso Congressman Beto O'Rourke, an energetic campaigner and prolific fundraiser who raised over $70 million to Senator Cruz' $33 million. Driven by the "Beto" campaign and controversy generated by President Donald Trump, Democrats registered significant numbers of new voters. Overall, voter turnout among the voter-eligible population increased from 28.3% in the 2014 midterm election to 46.3% - the sixth-highest turnout increase in the United States. Still, Texas turnout was below the national average – 44th out of 51 states.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What factors affect voter turnout?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📈 Turnout factors revealed!</p>
+                        <p><strong>Voter Eligibility:</strong> Citizens of other countries – whether legal or illegal – cannot vote. Children under 18 cannot vote. Texans younger than 18 make up more than a fourth of the state's population. The voting-eligible population (VEP) includes citizens eighteen and older who are eligible to vote.</p>
+                        <p><strong>Voter Beliefs:</strong> Many don't vote because they lack political efficacy – the feeling they have any influence over government. Some see little difference between parties or candidates.</p>
+                        <p><strong>Demographics:</strong> Older people vote more than younger people. Native Texans vote more than immigrants. Lower English proficiency correlates with low turnout. Texas, a state that skews young and Hispanic, has these factors working against high participation.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Political Efficacy</div>
+                    <div>Political efficacy is the feeling that one has influence over the direction of their government. Many non-voters lack political efficacy, feeling that their vote doesn't matter or that they have no real influence on government decisions.</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🪪 Voter ID Requirements in Texas</div>
+                    <p>In 2011, Texas passed a strict photo identification law for voters, allowing concealed-handgun permits as identification but not student identification. Proponents see ID requirements as preventing in-person voter impersonation and increasing public confidence. Opponents say there is little fraud of this kind, and the burden restricts the right to vote. A total of 35 states have laws requesting or requiring voters to show some form of identification at the polls. In Texas, photo ID is required, but voters without acceptable photo ID can present a supporting form of ID and execute a Reasonable Impediment Declaration.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "political efficacy"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 25)">The feeling that one has influence over the direction of their government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The efficiency of the political system in passing laws</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The effectiveness of political campaigns</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The ability of politicians to get things done</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ In the 2018 midterm elections, how did Texas voter turnout rank compared to other states?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">1st in the nation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">25th (middle of the pack)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 25)">44th out of 51 states and DC</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Last in the nation</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Increasing Voter Turnout -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📈</span>
+                    <h2>Increasing Voter Turnout</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify reforms designed to increase voter turnout</li>
+                        <li>Understand the challenges of maintaining accurate voter rolls</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">What are some ways that Texas could increase voter turnout? Some feel Texas could make voting more convenient. Some states allow instant registration in person or online, no-excuses absentee balloting and mail-in balloting. Texas does have absentee voting (where an individual does not need to be physically present at the poll to cast their ballot), and early voting (17 days before and 4 days until the regular election).</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🚗 Motor Voter (National Voter Registration Act)</div>
+                    <div>The National Voter Registration Act (1993), often referred to as Motor Voter, was enacted to expedite the registration process and make it as simple as possible for voters. The act required states to allow citizens to register to vote when they sign up for driver's licenses and Social Security benefits. On each government form, the citizen need only mark an additional box to also register to vote. While increasing registrations by 7 percent between 1992 and 2012, Motor Voter did not dramatically increase voter turnout. For two years following passage, voter turnout actually decreased slightly.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How has Oregon modernized voter registration?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🗳️ Automatic registration revealed!</p>
+                        <p>In 2015, Oregon made news when it took the concept of Motor Voter further. When citizens turn eighteen, the state now automatically registers most of them using driver's license and state identification information. When a citizen moves, the voter rolls are updated when the license is updated. While this policy has been controversial, with some arguing that private information may become public or that Oregon is moving toward mandatory voting, automatic registration is consistent with the state's efforts to increase registration and turnout.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Oregon's example offers a possible solution to a recurring problem for states—maintaining accurate voter registration rolls. During the 2000 election, in which George W. Bush won Florida's electoral votes by a slim majority, attention turned to the state's election procedures and voter registration rolls. Journalists found that many states, including Florida, had large numbers of phantom voters on their rolls – voters who had moved or died but remained on the states' voter registration rolls.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Help America Vote Act of 2002 (HAVA)</div>
+                    <div>HAVA was passed to reform voting across the states and reduce problems with inaccurate voter rolls. As part of the Act, states were required to update voting equipment, make voting more accessible to the disabled, and maintain computerized voter rolls that could be updated regularly. Twenty-nine states now participate in the Interstate Voter Registration Crosscheck Program, which allows states to check for duplicate registrations.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What other ideas have been proposed to increase turnout?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💡 Creative solutions revealed!</p>
+                        <p>Most major elections in Texas are held on Tuesday. Employers are required to provide two paid hours off for employees to vote, but some suggest making election day a national holiday or holding more elections on weekends could increase turnout. Better outreach to citizens with limited English proficiency has seen promising results.</p>
+                        <p>Australia has <strong>compulsory voting</strong> – like jury duty. Failure to vote can result in a ticket and small fine. Some have even suggested paying people to vote. Studies show that voters simply make better citizens – voting is associated with stronger social ties, better health outcomes, lower recidivism, and even better mental health. The government makes better decisions when more citizens participate.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does the National Voter Registration Act (Motor Voter) require?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">All citizens must vote or pay a fine</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 25)">States must allow citizens to register to vote when obtaining driver's licenses</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">All elections must be held on weekends</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">States must automatically register all citizens when they turn 18</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "compulsory voting"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Voting that requires a photo ID</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Voting that takes place on a mandatory day</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 25)">Laws that require eligible citizens to vote, with penalties for those who don't</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Voting that must be done in person at a polling place</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Political Participation Beyond Voting -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Political Participation Beyond Voting</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Summarize other forms of political participation</li>
+                        <li>Understand how citizens can influence government beyond the ballot box</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">While political scientists tend to focus on voting, there are other ways citizens participate in the policymaking process. These alternative forms of participation can be just as impactful as casting a ballot.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📢 Campaigning</div>
+                    <div>Citizens who want to do more than vote can involve themselves in political campaigns in a variety of ways from donating money to volunteering. Political campaigns are labor-intensive, and any candidate will tell you that volunteers are critical to a successful run for office. Campaign volunteers go door-to-door, distribute literature, post yard signs, make phone calls and help fold, stuff and stamp mailings.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Can ordinary people run for office?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏆 Ordinary citizens can win!</p>
+                        <p>While wealthy people with established careers have an advantage in elective politics, ordinary people win elections throughout Texas every year, serving in positions from school board to the state legislature and beyond. In 1990, 18-year-old high school senior John Payton was elected Justice of the Peace in Collin County, Texas. His mother drove him to neighborhoods after school so he could campaign door-to-door. Payton defeated incumbent Jim Murrell in the Republican Primary before graduating from Plano East Senior High, then went on to win the November general election. Though dismissed initially as a "fluke," Payton went on to serve nearly 30 years before stepping down in 2019.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">✊ Political Activism</div>
+                    <div>On May 3, 1980, 13-year-old Cari Lightner was killed by a drunk driver who had been released from jail two days before following his fourth DUI arrest. Cari's mother, Candace Lightner, and other parents of drunk driving accident victims formed Mothers Against Drunk Drivers (MADD), an interest group that has had a profound influence on the passage and enforcement of tougher laws against drunk driving. In Texas, political activists of every imaginable type have worked – alone or in groups – to influence public policy with varying degrees of success.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How can the legal system be used for political participation?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚖️ Courts as political tools revealed!</p>
+                        <p>Some individuals and interest groups find the legal system to be an effective means of political participation. In 1973, there was almost no chance of elected officials overturning laws prohibiting abortion. Instead of seeking a political solution, activists sought relief through the courts. In <strong>Roe v. Wade</strong>, abortion advocates were able to overturn a Texas law prohibiting abortion, obtaining a court ruling that a woman's right to an abortion is protected by an implied right of privacy in the Due Process clause of the Fourteenth Amendment. Supporters of environmental causes have found the court system similarly useful, stopping politically popular public works projects with lawsuits alleging violation of federal law, such as the Endangered Species Act.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What organization was founded by Candace Lightner after her daughter's death?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Students Against Destructive Decisions (SADD)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 25)">Mothers Against Drunk Drivers (MADD)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">The National Safety Council</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Rock the Vote</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ The landmark case Roe v. Wade originated from a challenge to a law in which state?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">California</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">New York</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 25)">Texas</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Georgia</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Ballot fatigue:</span> Occurs when someone votes only for the top or important ballot positions and stops voting rather than continue to the bottom of a long ballot.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Jim Crow Laws:</span> Laws requiring racial segregation, borrowed from a racially stereotyped black character in a common nineteenth-century song-and-dance act.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Compulsory voting:</span> Laws requiring eligible citizens to register and vote in elections, with penalties for those who fail to do so.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Grandfather clause:</span> Part of the Jim Crow system allowing voters to participate if their grandfather had been able to vote, effectively excluding blacks whose ancestors had been slaves.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Literacy test:</span> A test of a voter's ability to read, typically used in a discriminatory manner until suspended by the Voting Rights Acts of 1970 and 1975.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Political efficacy:</span> The feeling that one has influence over the direction of their government.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Poll taxes:</span> A tax levied as a condition of voting, outlawed by the 24th Amendment (1964) for federal elections and by the Supreme Court (1966) for state elections.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Walk list:</span> A list of street addresses at which at least one registered voter lives, used by candidates for door-to-door campaigning.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">White primary:</span> A primary election in which only white voters were eligible to participate, declared unconstitutional in Smith v. Allwright (1944).
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🗳️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 8: Voting and Political Participation in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Voting in a Changing Texas</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/140</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Voter Registration</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Types of Elections in Texas</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>History of Voting Rights</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Voter Decision Making</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Voter Turnout in Texas</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Increasing Voter Turnout</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/145</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Political Participation Beyond Voting</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/140</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 8: Voting and Political Participation in Texas. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 140 },
+                2: { earned: 0, max: 155 },
+                3: { earned: 0, max: 155 },
+                4: { earned: 0, max: 160 },
+                5: { earned: 0, max: 160 },
+                6: { earned: 0, max: 155 },
+                7: { earned: 0, max: 145 },
+                8: { earned: 0, max: 140 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Citizen',
+            600: 'Advocate',
+            800: 'Civic Leader',
+            1000: 'Democracy Champion',
+            1200: 'Texas Voting Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🗳️ Your journey through Texas voting and political participation begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

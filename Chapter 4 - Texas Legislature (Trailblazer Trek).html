@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: The Texas Legislature - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .qualification-box {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .qualification-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        .qualification-box ul {
+            margin-left: 1.5rem;
+        }
+
+        .qualification-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .process-step {
+            background: var(--bg-section);
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .process-step strong {
+            color: var(--primary-blue);
+        }
+
+        .glossary-term {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term strong {
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                position: relative;
+            }
+
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🏛️ TCC Texas Government Trailblazer Trek: The Texas Legislature</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🏛️ Chapter 4: The Texas Legislature 🤠</h2>
+                <p>Explore the lawmaking branch of Texas government and how bills become laws</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>👥</span>
+                        <div>181 Members</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📜</span>
+                        <div>Lawmaking</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Representation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your Texas legislative journey:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction to the Texas Legislature</h3>
+                    <p>Learn about the lawmaking branch of Texas government and its constitutional foundation.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Structure and Function</h3>
+                    <p>Explore the bicameral system with the Senate and House of Representatives.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Legislative Sessions</h3>
+                    <p>Understand regular and special sessions of the Texas Legislature.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Redistricting</h3>
+                    <p>Learn how legislative districts are drawn and the controversies involved.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Qualifications for Service</h3>
+                    <p>Discover the requirements to become a Texas legislator.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Demographic Composition</h3>
+                    <p>Examine the makeup of the Texas Legislature by party, gender, and age.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Legislative Process</h3>
+                    <p>Follow a bill's journey from introduction to becoming law.</p>
+                    <div class="points-indicator">🌟 200 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Compensation and Immunities</h3>
+                    <p>Learn about legislator pay, benefits, and constitutional protections.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card9" onclick="navigateToSection(9)">
+                    <div class="section-number">9</div>
+                    <h3>Key Terms and Glossary</h3>
+                    <p>Master the essential vocabulary of Texas legislative process.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction to the Texas Legislature -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Introduction to the Texas Legislature</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Outline the function, structure, and responsibilities of the Texas legislature</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">This chapter examines the Texas State Legislature—the lawmaking branch of Texas government. The Texas State Capitol, located in downtown Austin, Texas, houses the offices and chambers of the Texas Legislature.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Texas State Capitol</div>
+                    <div>The Texas State Capitol is the capitol building and seat of government of the American state of Texas. Located in downtown Austin, the structure houses the offices and chambers of the Texas Legislature.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the Texas Legislature?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 You've discovered an important insight!</p>
+                        <p>The Texas Legislature is the lawmaking branch of Texas government, responsible for creating the laws that govern the state. It is described in Article 3 of the Texas Constitution and serves as the constitutional successor of the Congress of the Republic of Texas after Texas's 1845 entrance into the Union. The Legislature held its first regular session from February 16 to May 13, 1846.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are the legislature's main duties?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Main duties revealed!</p>
+                        <p>The duties of the legislature include consideration of proposed laws and resolutions, consideration of proposed constitutional amendments for submission to the voters, and appropriation of all funds for the operation of state government. All bills for raising revenue considered by the legislature must originate in the House of Representatives. The House alone can bring impeachment charges against a statewide officer, which charges must be tried by the Senate.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Where must all bills for raising revenue originate?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">The Texas Senate</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">The House of Representatives</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">The Governor's Office</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Either chamber equally</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which chamber has the sole power to bring impeachment charges?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 30)">The House of Representatives</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">The Texas Senate</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">The Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">The Texas Supreme Court</div>
+                    <div class="feedback-box" id="feedback-q1-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Structure and Function -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏗️</span>
+                    <h2>Structure and Function of the Texas Legislature</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the function and structure of the Texas legislature</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The structure of any institution or organization matters a great deal. The structure can determine how well an institution fulfills its duties and responsibilities. Article 3 of the Texas Constitution describes the legislative department (branch) of Texas.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Bicameral Legislature</div>
+                    <div>Texas Legislature utilizes a bicameral (two branches or chambers) system with the Texas Senate being the upper house, and the Texas House of Representatives the lower house. Every other state has a bicameral legislature except for Nebraska. One of the benefits of a bicameral legislature is that it forces either chamber to compromise on legislation before passing it onto the governor.</div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Texas Senate (Upper House)</h4>
+                        <div class="stat-box">
+                            <div class="stat-number">31</div>
+                            <div class="stat-label">Senators</div>
+                        </div>
+                        <p>Each district has an ideal 2010 census population of 811,147</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Texas House (Lower House)</h4>
+                        <div class="stat-box">
+                            <div class="stat-number">150</div>
+                            <div class="stat-label">Representatives</div>
+                        </div>
+                        <p>Each district has an ideal 2010 census population of 167,637</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are single-member districts?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 District system explained!</p>
+                        <p>Texas uses single-member districts, meaning each member of the Texas Legislature represents one legislative district. This is also true of congressional seats. Every ten years, after the U.S. census, the state legislative districts and congressional districts are redrawn to maintain proportional representation. This is also called reapportionment when it is done at the national level because all 435 seats have to be approximately equal in size. This causes some states to lose or gain seats every ten years based on their changing population.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Who leads each chamber?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Leadership structure revealed!</p>
+                        <p>Although members are elected on partisan ballots, both houses of the Legislature are officially organized on a nonpartisan basis, with members of both parties serving in leadership positions such as committee chairmanships. The Lieutenant Governor (currently Dan Patrick), elected statewide separately from the governor, presides over the Senate, while the Speaker of the House (currently Dade Phelan from the Beaumont area) is elected from that body by its members. Both have wide latitude in choosing committee membership in their respective houses and have a large impact on lawmaking in the state.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many total members serve in the Texas Legislature?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">150 members</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">100 members</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">181 members</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">200 members</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which state is the only one with a unicameral (one-chamber) legislature?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Texas</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">Nebraska</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">California</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">New York</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Legislative Sessions -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📅</span>
+                    <h2>Legislative Sessions</h2>
+                </div>
+
+                <p class="content-text">Understanding when and how the Texas Legislature meets is crucial to understanding how laws are made in Texas.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📅 Biennial Sessions</div>
+                    <div>The Texas Legislature uses biennial sessions which means they meet once every odd-numbered years, for 140 days. The Texas Legislature meets in regular session on the second Tuesday in January of each odd-numbered year. The Texas Constitution limits the regular session to 140 calendar days.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are special sessions?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Special sessions explained!</p>
+                        <p>Only the governor may call the legislature into special sessions, unlike other states where the legislature may call itself into session. The governor may call as many sessions as he or she desires. For example, Governor Rick Perry called three consecutive sessions to address the 2003 Texas congressional redistricting. The Texas Constitution limits the duration of each special session to 30 days; lawmakers may consider only those issues designated by the governor in his "call," or proclamation convening the special session (though other issues may be added by the Governor during a session).</p>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Regular Session</h4>
+                        <div class="stat-box">
+                            <div class="stat-number">140</div>
+                            <div class="stat-label">Days Maximum</div>
+                        </div>
+                        <p>Meets every odd-numbered year starting the second Tuesday in January</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Special Session</h4>
+                        <div class="stat-box">
+                            <div class="stat-number">30</div>
+                            <div class="stat-label">Days Maximum</div>
+                        </div>
+                        <p>Called only by the Governor; limited to issues designated by the Governor</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why do the Framers prefer slower legislation?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Legislative philosophy revealed!</p>
+                        <p>Much like the Framers of the U.S. Constitution, the men who wrote the Texas Constitution recognized the benefit of slowing down the legislative process. Moreover, there are a total of 181 members of the Texas Legislature: 31 Senators, and 150 members of the House. The different sizes of each chamber also play a role in how well they function. The bicameral structure forces compromise between chambers before legislation can proceed.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How often does the Texas Legislature meet in regular session?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Every year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">Every odd-numbered year (biennially)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Every four years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Continuously throughout the year</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Who has the sole power to call special sessions in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">The Lieutenant Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">The Speaker of the House</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">The Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">The Legislature itself</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Redistricting -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗺️</span>
+                    <h2>Redistricting</h2>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗺️ What is Redistricting?</div>
+                    <div>Redistricting is the process by which new congressional and state legislative district boundaries are drawn. Each of Texas' 36 United States Representatives, 31 state senators, and 150 state legislators are elected from political divisions called districts. District lines are redrawn every 10 years following completion of the United States census.</div>
+                </div>
+
+                <p class="content-text">The federal government stipulates that districts must have nearly equal populations and must not discriminate on the basis of race or ethnicity based on the U.S. Supreme Court case of Reynolds v. Sims (1964).</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Why does Texas have to redistrict?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Constitutional requirement revealed!</p>
+                        <p>The federal constitution calls for reapportionment of congressional seats according to population from a decennial census (Section 2, Article I). Reapportionment is the division of a set number of districts among established units of government. For example, the 435 congressional seats are reapportioned among the 50 states after each decennial census according to the method of equal proportions. The Texas Constitution requires the legislature to redistrict Texas house and senate seats during its first regular session following publication of each United States decennial census (Section 28, Article III).</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the Legislative Redistricting Board?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Backup system explained!</p>
+                        <p>If Texas senate or house districts are not enacted during the first regular session following the publication of the decennial census, the Texas Constitution requires that the Legislative Redistricting Board (LRB), a five-member body of state officials including the lieutenant governor and speaker, meet and adopt its own plan. The LRB has jurisdiction only in the months immediately following that regular session. If congressional or State Board of Education districts are not enacted during the regular session, the governor may call a special session to consider the matter.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚠️ Gerrymandering Controversy</div>
+                    <div>There are conflicting opinions regarding the correlation between partisan gerrymandering and electoral competitiveness. In 2012, Jennifer Clark, a political science professor at the University of Houston, said, "The redistricting process has important consequences for voters. In some states, incumbent legislators work together to protect their own seats, which produces less competition in the political system. Voters may feel as though they do not have a meaningful alternative to the incumbent legislator."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are majority-minority districts?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Voting Rights Act explained!</p>
+                        <p>Section 2 of the Voting Rights Act of 1965 mandates that electoral district lines cannot be drawn in such a manner as to "improperly dilute minorities' voting power." States may create majority-minority districts—districts in which minority groups compose a majority of the district's total population—to comply with Section 2. As of 2015, Texas was home to 18 congressional majority-minority districts. Proponents argue these districts prevent "cracking" (dividing a constituency between several districts to prevent it from achieving a majority in any one district). Critics contend they can result in "packing" (placing a voting group within a single district, minimizing its influence in other districts).</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How often are legislative districts redrawn?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">Every 10 years after the U.S. census</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Every 5 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Every 2 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Only when population increases</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which Supreme Court case established that districts must have nearly equal populations?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Brown v. Board of Education</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">Reynolds v. Sims (1964)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Marbury v. Madison</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Shelby County v. Holder</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Qualifications for Service -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📋</span>
+                    <h2>Qualifications for Service in the Texas Legislature</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the qualifications for service in the Texas State Legislature</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The following are the legal requirements in order for someone to meet the qualifications to become a member of the Texas Legislature.</p>
+
+                <div class="comparison-grid">
+                    <div class="qualification-box">
+                        <h4>🏛️ Texas Representative (House)</h4>
+                        <ul>
+                            <li>U.S. Citizen</li>
+                            <li>2 years as a resident of Texas</li>
+                            <li>12 months as a resident of their District</li>
+                            <li>At least 21 years old</li>
+                            <li>2-year terms with unlimited terms, no term limit</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-box">
+                        <h4>🏛️ Texas Senator</h4>
+                        <ul>
+                            <li>U.S. Citizen</li>
+                            <li>5 years as a resident of Texas</li>
+                            <li>12 months as a resident of their District</li>
+                            <li>At least 26 years old</li>
+                            <li>4-year terms with unlimited terms, no term limit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How do Senate elections work at the beginning of a new decade?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Senate election cycles revealed!</p>
+                        <p>Each senator serves a four-year term and one-half of the Senate membership is elected every two years in even-numbered years, with the exception that all the Senate seats are up for election for the first legislature following the decennial census in order to reflect the newly redrawn districts. After the initial election, the Senate is divided by lot into two classes, with one class having a re-election after two years and the other having a re-election after four years. This process protects the Senate's membership and the Senate as an institution serving as the more elite legislative chamber during normal election cycles.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why are there different requirements for each chamber?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Design philosophy revealed!</p>
+                        <p>The Senate is designed to be the more "elite" or deliberative body, which is why senators must be older (26 vs. 21) and have longer residency in Texas (5 years vs. 2 years). Senators also serve longer terms (4 years vs. 2 years), allowing them to take a longer-term view on policy matters. The House, with its shorter terms, is designed to be more responsive to the immediate will of the people.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the minimum age requirement to serve in the Texas House of Representatives?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">18 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">21 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">25 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">30 years old</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How long is a Texas Senator's term?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">2 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">4 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">6 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">8 years</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Demographic Composition -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>👥</span>
+                    <h2>Demographic Composition of the Texas State Legislature</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the demographic composition of the Texas House of Representatives and the Texas Senate</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👥 "Pale, Male, and Stale"</div>
+                    <div>It's often been said the Texas State Legislature is "pale, male, and stale." This may not be quite as accurate as in the past, but the Texas State Legislature is predominantly white, male, and middle-aged, making it far less diverse than Texas as a whole.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the partisan makeup?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Party composition revealed!</p>
+                        <p>The Republican Party controls both the Texas State House of Representatives and the Texas State Senate. As of the 87th Legislative Session (January 2021):</p>
+                        <p><strong>Texas State House:</strong> 83 Republicans and 67 Democrats</p>
+                        <p><strong>Texas State Senate:</strong> 18 Republicans and 13 Democrats</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the gender makeup?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Gender composition revealed!</p>
+                        <p>The Texas State Legislature is predominantly male. Although their overall count is growing, women remain incredibly outnumbered in the 87th Texas Legislature—just 48 of 181 seats in the House and Senate are currently held by women:</p>
+                        <p>• Approximately 25% of the Texas State House of Representatives is female (112 males, 38 females)</p>
+                        <p>• Approximately 32% of the Texas State Senate is female (21 males, 10 females)</p>
+                        <p>• Taken together, only 27% of the total membership of the Texas State Legislature is female (48 of 181 total members)</p>
+                        <p>Notably, with the addition of Democrats Julie Johnson, Jessica González, and Erin Zwiener to the 86th Legislature in 2019, the number of legislators who identify as members of the LGBT community increased from two to five.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the age distribution?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Age demographics revealed!</p>
+                        <p>The age distribution of Texas legislators shows the legislature skews older:</p>
+                        <p>• Under 30: 0 members</p>
+                        <p>• 30-39: 16 members (all House)</p>
+                        <p>• 40-49: 44 members (43 House, 1 Senate)</p>
+                        <p>• 50-59: 59 members (44 House, 15 Senate)</p>
+                        <p>• 60-69: 36 members (29 House, 7 Senate)</p>
+                        <p>• 70 and over: 25 members (17 House, 8 Senate)</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which party controls both chambers of the Texas Legislature?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">Republican Party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Democratic Party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Neither—it's evenly split</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Libertarian Party</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Approximately what percentage of the Texas Legislature is female?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">50%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">40%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 30)">27%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">15%</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: The Legislative Process -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>The Legislative Process: How a Bill Becomes a Law</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Analyze the Texas legislative process (aka How a Bill Becomes a Law)</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The legislature meets every odd-numbered year to write new laws and to find solutions to the problems facing the state. This meeting time, which begins on the second Tuesday in January and lasts 140 days, is called the regular session.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do legislators make decisions?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Decision-making factors revealed!</p>
+                        <p>The people we elect to be lawmakers determine the rules we have to live by. So, it is good for us to understand what influences the decisions of lawmakers. We would like to believe that whatever they promised on the campaign trail will be what they deliver on in office. That is often not the case. We know that public opinion polls sometimes reflect how lawmakers will decide to vote on issues. We also know that interest groups play a role in how decisions are made. One of the biggest factors is probably political ideology—is the politician a conservative or a liberal? Partisanship might be a factor—is the politician a Republican or a Democrat?</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Introducing a Bill</div>
+                    <div>A representative or senator gets an idea for a bill by listening to the people he or she represents and then working to solve their problem. A bill may also grow out of the recommendations of an interim committee study conducted when the legislature is not in session. The idea is researched to determine what state law needs to be changed or created to best solve that problem. A bill is then drafted by the legislator, often with the help of an interest group and with legal assistance from the Texas Legislative Council.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happens in committees?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Committee process explained!</p>
+                        <p>After a bill has been introduced, a short description of the bill, called a caption, is read aloud while the chamber is in session (first reading), and the presiding officer assigns the bill to a committee. The chair of each committee decides when the committee will meet and which bills will be considered. Public testimony is almost always solicited on bills, allowing citizens the opportunity to present arguments on different sides of an issue. A House committee must post notice at least five calendar days before a hearing during a regular session. After considering a bill, a committee may choose to take no action or may issue a report on the bill.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the "blocker bill" system?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Senate procedure revealed!</p>
+                        <p>At the beginning of each legislative session, a "blocker bill" is placed on the regular order of business. This bill will never be brought to the floor for action. Consequently, unless the sponsor of the bill has talked to the president of the Senate, indicating intent to suspend the rules and bring a bill to the floor, the bill will not be considered. Thus, the president of the Senate maintains a so-called "intent calendar," which determines the order of business in the Senate. In 2021, the Senate Rules required a vote of 18 members to suspend the rules so that a bill on the intent calendar could be considered on the floor.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">When a bill comes up for consideration by the full House or Senate, it receives its second reading. The bill is read, again by caption only, and then debated by the full membership of the chamber. Any member may offer an amendment, but it must be approved by a majority of the members present and voting to be adopted.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-4', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happens after both chambers pass a bill?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📋 Conference committees explained!</p>
+                        <p>The Texas Constitution requires a bill to pass both chambers in identical form. If a bill is returned to the originating chamber with amendments, the originating chamber can either agree to the amendments or request a conference committee to work out differences. Conference committees are composed of five members from each house appointed by the presiding officers. Once the conference committee reaches agreement, a conference committee report is prepared and must be approved by at least three of the five conferees from each house. Conference committee reports must be approved or rejected without amendment.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">✍️ Governor's Action</div>
+                    <div>Upon receiving a bill, the governor has 10 days in which to sign the bill, veto it, or allow it to become law without a signature. A two-thirds majority in each house is required to override the veto. If a bill is sent to the governor within 10 days of final adjournment, the governor has until 20 days after final adjournment to act. At this point, the governor's veto is absolute since the legislature has adjourned.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-5', 35)">
+                    <div class="card-prompt">🔍 Click to explore: When do laws take effect?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📅 Effective dates explained!</p>
+                        <p>Any bill passed by the Legislature takes effect 90 days after its passage unless two-thirds of each house votes to give the bill either immediate effect or earlier effect. The Legislature may provide for an effective date that is after the 90th day. Under current legislative practice, most bills are given an effective date of September 1 in odd-numbered years (September 1 is the start of the state's fiscal year).</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many days does the governor have to act on a bill during a regular session?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">10 days</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">30 days</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">5 days</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">60 days</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What majority is required to override a governor's veto?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Simple majority</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">Two-thirds majority in each house</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Three-fourths majority</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Unanimous vote</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Compensation and Immunities -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💰</span>
+                    <h2>Compensation, Privileges, and Immunities</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the basic compensation, privileges, and immunities of Texas legislators</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💰 Legislator Salary</div>
+                    <div>State legislators in Texas make $600 per month or $7,200 per year, plus a per diem set by the Ethics Commission in Rule 50.1. The per diem in the 2021-2022 biennium was $221 for every day the Legislature is in session (regular or special). This adds up to a total of $38,140 in a year with a regular session ($7,200 salary plus $30,940 per diem), and a two-year term paying a total of $45,340 ($14,400 salary plus $30,940 per diem).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What retirement benefits do legislators receive?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Retirement benefits revealed!</p>
+                        <p>Legislators receive a pension after eight years of service, starting at age 60. A legislator's pension is based not on a legislator's salary of $600 a month, but on the current salary of a Texas state district court judge—a base salary of $140,000 per year. This means legislators receive a much more generous pension than their low official salary would suggest.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is speech and debate immunity?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Constitutional protection revealed!</p>
+                        <p>The Texas Constitution (Article III, Section 21) grants Texas state legislators a fundamental protection of free speech and debate. This immunity protects legislators from punitive executive or judicial action. The intent is to allow lawmakers to work independently and unimpeded by the threat of intervention from the other branches of government in the discharge of their legislative duties.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What arrest immunities do legislators have?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚖️ Arrest protections explained!</p>
+                        <p>Texas state legislators are also protected from arrest traveling to and from and during legislative sessions. Exceptions include treason, felony, or breach of the peace. This protection ensures legislators can attend sessions without fear of arrest for minor offenses that might be used to prevent them from voting.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the annual salary of a Texas state legislator?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">$7,200 per year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">$50,000 per year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">$100,000 per year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">$140,000 per year</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ After how many years of service can legislators receive a pension?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">4 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 30)">8 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">12 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">20 years</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: Glossary -->
+        <div id="section9" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📚</span>
+                    <h2>Key Terms and Glossary</h2>
+                </div>
+
+                <p class="content-text">Master these essential terms to understand the Texas legislative process.</p>
+
+                <div class="glossary-term">
+                    <strong>Biennial Sessions:</strong> In Texas, legislative sessions meet once every odd-numbered years, for 140 days.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Bill:</strong> A proposed law that has been sponsored by a member of the legislature and submitted to the clerk of the House or Senate.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Cracking:</strong> Occurs when a constituency is divided between several districts in order to prevent it from achieving a majority in any one district.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Gerrymandering:</strong> The process in which voting districts are redrawn in a way to favor one party during elections.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Legislative Budget:</strong> The state budget that is prepared and submitted by the Legislative Budget Board (LBB) and that is fully considered by the House and Senate.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Packing:</strong> Occurs when a constituency or voting group is placed within a single district, thereby minimizing its influence in other districts.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Redistricting:</strong> The process of redrawing election districts and redistributing legislative representatives in the Texas House, Texas Senate, and U.S. House. Redistricting typically occurs every 10 years to reflect shifts in population or in response to legal challenges in existing districts.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Single-Member District:</strong> A district in which one official is elected rather than multiple officials.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Special Session:</strong> A legislative session called by the governor that addresses an agenda set by him or her; lasts no longer than 30 days.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Voting Rights Act of 1965:</strong> Mandates that electoral district lines cannot be drawn in such a manner as to "improperly dilute minorities' voting power."
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why are these terms important?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Glossary mastery!</p>
+                        <p>Understanding these terms is essential for comprehending how the Texas Legislature functions. Terms like "gerrymandering," "cracking," and "packing" describe the controversies surrounding redistricting. Terms like "biennial sessions" and "special session" explain when and how the legislature meets. Being familiar with this vocabulary will help you follow news about the Texas Legislature and understand your rights as a citizen.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is gerrymandering?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">The process of counting votes in an election</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-1', 30)">The process of redrawing districts to favor one party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">A type of legislative session</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">A constitutional amendment process</div>
+                    <div class="feedback-box" id="feedback-q9-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "packing" in the context of redistricting?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">Dividing a group across multiple districts</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-2', 30)">Placing a voting group within a single district to minimize its influence elsewhere</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">Adding more legislators to a committee</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">Increasing the size of legislative districts</div>
+                    <div class="feedback-box" id="feedback-q9-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(9)">✅ Complete Section 9</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🏛️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 4: The Texas Legislature</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction to the Texas Legislature</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Structure and Function</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Legislative Sessions</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Redistricting</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Qualifications for Service</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Demographic Composition</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>The Legislative Process</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/200</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Compensation and Immunities</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Key Terms and Glossary</td>
+                                    <td id="status9">❌</td>
+                                    <td id="points9">0/120</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="color: var(--text-secondary); margin-top: 2rem;">
+                            <strong>Instructor Note:</strong> This report documents the student's completion of Chapter 4: The Texas Legislature 
+                            in the TCC Trailblazer Trek interactive learning module. Students explored the structure, function, and 
+                            processes of the Texas Legislature, including how bills become laws and the qualifications for service.
+                        </p>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 150 },
+                2: { earned: 0, max: 180 },
+                3: { earned: 0, max: 150 },
+                4: { earned: 0, max: 180 },
+                5: { earned: 0, max: 150 },
+                6: { earned: 0, max: 150 },
+                7: { earned: 0, max: 200 },
+                8: { earned: 0, max: 150 },
+                9: { earned: 0, max: 120 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Legislative Learner',
+            600: 'Policy Analyst',
+            800: 'Capitol Expert',
+            1000: 'Legislative Master',
+            1200: 'Texas Lawmaker Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🏛️ Your Texas legislative journey begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: The Texas Court System - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 3000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .court-card {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .court-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .court-card .jurisdiction {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step {
+            background: var(--bg-section);
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .process-step strong {
+            color: var(--primary-blue);
+        }
+
+        .glossary-term {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term strong {
+            color: var(--primary-blue);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .law-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .law-table th,
+        .law-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .law-table th {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .law-table tr:hover {
+            background: var(--highlight-blue);
+        }
+
+        .hierarchy-box {
+            background: linear-gradient(135deg, var(--highlight-blue), var(--highlight-green));
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .hierarchy-level {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem auto;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hierarchy-arrow {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                position: relative;
+            }
+
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>⚖️ TCC Texas Government Trailblazer Trek: The Texas Court System</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>⚖️ Chapter 6: The Texas Court System 🤠</h2>
+                <p>Explore Texas' unique bifurcated judicial system with two highest courts</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Bifurcated System</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>⚖️</span>
+                        <div>Justice</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📜</span>
+                        <div>Due Process</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your Texas judicial journey:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction: The Texas Court System</h3>
+                    <p>Learn how court decisions shape Texas law through a real case study.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Sources and Hierarchy of Law</h3>
+                    <p>Discover the types and sources of law in Texas.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Structure of the Court System</h3>
+                    <p>Explore Texas' hierarchical court structure and types of jurisdiction.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Trial Courts in Texas</h3>
+                    <p>Learn about Municipal, JP, County, and District Courts.</p>
+                    <div class="points-indicator">🌟 200 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Appellate Courts</h3>
+                    <p>Understand the Courts of Appeals, Supreme Court, and Court of Criminal Appeals.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Texas' Civil Justice Process</h3>
+                    <p>Follow a civil case from complaint to appeal.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>Texas' Criminal Justice Process</h3>
+                    <p>Learn the steps from arrest to post-trial.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Judicial Selection in Texas</h3>
+                    <p>Explore how Texas selects its judges and the debate over partisan elections.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card9" onclick="navigateToSection(9)">
+                    <div class="section-number">9</div>
+                    <h3>Key Terms and Glossary</h3>
+                    <p>Master the essential vocabulary of the Texas judicial system.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚖️</span>
+                    <h2>Introduction: The Texas Court System</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the structure and function of the judicial branch of the Texas government</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">How much does a bar or restaurant have to do to protect customers from harm, especially harm resulting in part from their own actions? A real Texas case helps illustrate how our court system works.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: The Del Lago Resort Case</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Real case study revealed!</p>
+                        <p>In 2007, the Del Lago Resort, an upscale golf resort north of Houston, booked a wedding reception alongside the second night of a three-day college fraternity reunion. Members of both groups ended up in the resort's bar, where a brawl ensued "involving twenty to forty 'very intoxicated' customers." After they "waded into the scrum," one of the fraternity members, Bradley Smith, was seriously injured.</p>
+                        <p>Smith sued Del Lago in a Texas state district court, claiming the resort should have done more to protect him from harm. After nine days of conflicting testimony, jurors found Smith 49 percent liable for his own injuries, but found Del Lago 51 percent at fault and awarded nearly $1.5 million to Smith.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: The Appeals Process</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Appeals process revealed!</p>
+                        <p>The Tenth Court of Appeals in Waco reviewed the case and upheld the verdict, ruling that a "reasonable person who knew or should have known of the one-and-a-half hours of ongoing 'heated' verbal altercations and shoving matches between intoxicated bar patrons would reasonably foresee the potential for assaultive conduct to occur and take action to make the condition of the premises reasonably safe."</p>
+                        <p>On further appeal, the nine-member Texas Supreme Court upheld the Court of Appeals decision, issuing a 6-3 opinion. Chief Justice Nathan Hecht was one of three justices who wrote a dissenting opinion. In Texas, you can't recover at all if you're more at fault than the party you're suing. 49 percent is the greatest amount of fault you can have and still collect money.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Precedent</div>
+                    <div>Court decisions like this one determine what happens to the parties in that specific case, but they can also set precedents that will be followed by other courts for years to come. After the Del Lago decision, bars and restaurants throughout Texas took a hard look at their policies and procedures to try to prevent such altercations from occurring, and to make sure they could protect themselves from liability in the event of a similar disturbance.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ In the Del Lago case, what percentage of fault did the jury assign to the plaintiff (Smith)?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">49 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">51 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">100 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">0 percent</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ In Texas, what is the maximum percentage of fault a plaintiff can have and still recover damages?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">50 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 30)">49 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">25 percent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">0 percent</div>
+                    <div class="feedback-box" id="feedback-q1-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Sources and Hierarchy of Law -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📚</span>
+                    <h2>Sources and Hierarchy of Law in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify the sources and hierarchy of law in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">It's often said that we are a "nation of laws," but it is also true that we are a state of laws. Within codified law, there are two forms of law that the courts are concerned about within any legal system: civil law and criminal law.</p>
+
+                <table class="law-table">
+                    <thead>
+                        <tr>
+                            <th>Law Type</th>
+                            <th>Definition</th>
+                            <th>Burden of Proof</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Civil</strong></td>
+                            <td>Concerns private rights, relief or remedy</td>
+                            <td>Preponderance of the evidence</td>
+                            <td>Divorce, lawsuit</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Criminal</strong></td>
+                            <td>Violates a specific penal law</td>
+                            <td>Beyond a reasonable doubt</td>
+                            <td>Traffic violation, felony charge</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the sources of law in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Sources of law revealed!</p>
+                        <p>Sources of law in Texas include:</p>
+                        <p><strong>Constitutional Law:</strong> The body of law which defines the role, powers, and structure of different entities within a state. Includes the National Constitution and Texas Constitution.</p>
+                        <p><strong>Statutory Law:</strong> Laws passed by a legislature, including National Laws (Congress) and Texas State Statutes (Texas Legislature).</p>
+                        <p><strong>Administrative Regulations:</strong> Laws that govern the activities of administrative agencies, including National regulations and the Texas State administrative code.</p>
+                        <p><strong>Court Precedents:</strong> Principles established in previous legal cases that guide future decisions (stare decisis - "Let the decision stand").</p>
+                        <p><strong>Local Codes and Ordinances:</strong> Laws for political divisions smaller than a state, such as city or county ordinances.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Stare Decisis</div>
+                    <div>The principle by which judges are bound to precedents is known as stare decisis (a Latin phrase with the literal meaning of "Let the decision stand"). Common-law legal systems place great value on deciding cases according to consistent principled rules, so that similar facts will yield similar and predictable outcomes.</div>
+                </div>
+
+                <div class="hierarchy-box">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">📊 Hierarchy of Law in Texas</h4>
+                    <div class="hierarchy-level"><strong>1. Constitutional Law</strong> (Highest)</div>
+                    <div class="hierarchy-arrow">⬇️</div>
+                    <div class="hierarchy-level"><strong>2. Statutory Law</strong></div>
+                    <div class="hierarchy-arrow">⬇️</div>
+                    <div class="hierarchy-level"><strong>3. Administrative Regulations</strong></div>
+                    <div class="hierarchy-arrow">⬇️</div>
+                    <div class="hierarchy-level"><strong>4. Local Codes and Ordinances</strong> (Lowest)</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the burden of proof in a criminal case?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Preponderance of the evidence</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">Beyond a reasonable doubt</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Clear and convincing evidence</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Probable cause</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which type of law has the highest authority in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">Constitutional Law</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Statutory Law</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Administrative Regulations</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Local Ordinances</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Structure of the Court System -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>The Structure of the Texas Court System</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe how state courts are structured in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Even before Texas became its own Republic, Texas had a system of courts. As citizens of Mexico, Texans were given access to state and local courts created by the Mexican constitutions of 1824 and 1827. Appeals, however, were handled only in Saltillo, over 600 miles from the northern parts of the state.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Texas Has More Courts Than Any Other State</div>
+                    <div>The Republic of Texas and, later, the State of Texas established a judiciary with local access to both trial and appeals courts. Texas has more courts than any other state, creating more access to courts, but also additional costs. About 90 percent of all cases in the U.S. court system are heard at the state level. State courts handle most crimes (robbery, rape, murder), civil matters (personal injury, malpractice, divorce, family, juvenile, probate, and contract disputes).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Types of Jurisdiction</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Jurisdiction types revealed!</p>
+                        <p>Every court system has jurisdiction over certain cases. There are three types:</p>
+                        <p><strong>Original Jurisdiction:</strong> The court that gets to hear the case first. For example, Municipal courts typically have original jurisdiction over traffic offenses that occur within city limits.</p>
+                        <p><strong>Appellate Jurisdiction:</strong> The power for a higher court to review a lower court's decision. For example, the Texas Court of Appeals has appellate jurisdiction over the District Courts.</p>
+                        <p><strong>Exclusive Jurisdiction:</strong> Only that court can hear a specific case. For example, only the Texas Court of Criminal Appeals can hear appeals for death penalty sentences.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: The Bifurcated System</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Bifurcated system explained!</p>
+                        <p>The structure of the Texas court system is set up as a <strong>bifurcated system</strong>, meaning there are two highest courts of appeals for criminal and civil cases:</p>
+                        <p><strong>Texas Supreme Court:</strong> Handles all civil case appeals</p>
+                        <p><strong>Texas Court of Criminal Appeals:</strong> Handles all criminal case appeals</p>
+                        <p>Each of Texas' two highest courts has nine members, elected statewide in partisan elections. Unlike courts of appeals, the Texas Supreme Court and Court of Criminal Appeals hear all cases en banc (all nine judges together).</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does "bifurcated" mean in the context of Texas courts?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Courts are divided by county</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">There are two separate highest courts for criminal and civil cases</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Judges serve two terms</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Courts meet twice a year</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which court has exclusive jurisdiction over death penalty appeals in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Texas Supreme Court</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">Texas Court of Criminal Appeals</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">District Courts</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Courts of Appeals</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Trial Courts in Texas -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Trial Courts in Texas</h2>
+                </div>
+
+                <p class="content-text">The Texas court system is hierarchical, meaning cases start in local trial courts, then work their way up to appeals courts. In our legal system, criminal cases are those where a defendant is accused of violating the law. All other cases are civil.</p>
+
+                <div class="court-card">
+                    <h4>🏙️ Municipal Courts</h4>
+                    <p class="jurisdiction">City courts with judges often appointed by mayors and city councils</p>
+                    <p>Municipal courts are city courts—the only judges in Texas who are not elected by the citizens. They have exclusive jurisdiction over cases involving the violation of city ordinances (like building something without getting a building permit) but handle mostly parking and traffic tickets.</p>
+                </div>
+
+                <div class="court-card">
+                    <h4>⚖️ Justice of the Peace Courts</h4>
+                    <p class="jurisdiction">822 JPs across Texas, elected in partisan elections</p>
+                    <p>Texas has 822 justices of the peace (JPs), selected by voters in partisan elections. JPs are the true jacks-of-all-trades in the Texas judicial system. They handle traffic tickets and other low-level criminal offenses, civil cases involving amounts up to $20,000, debt collection cases, commercial and residential evictions, truancy—even inquests (declaring people dead) in all but the largest urban counties. <strong>Justices of the Peace do not have to be attorneys, and a majority of Texas JPs are not lawyers.</strong></p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Constitutional County Courts</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 County court functions revealed!</p>
+                        <p>The Texas Constitution assigns certain judicial powers to county commissioners' courts, which are also the governing bodies of Texas counties. As a constitutional county court, they hold hearings on beer and wine license applications, assignment of the mentally ill to hospitals, juvenile work permits, and temporary guardianship.</p>
+                    </div>
+                </div>
+
+                <div class="court-card">
+                    <h4>📋 County Courts at Law</h4>
+                    <p class="jurisdiction">Judges elected to 4-year terms in partisan elections</p>
+                    <p>Harris County has 16 county criminal courts-at-law, along with 4 county civil courts-at-law. County criminal courts-at-law can handle cases involving up to a year in county jail, and where the fine would exceed $500. Civil courts-at-law handle disputes involving between $20,000 and $100,000, as well as civil appeals from justice of the peace courts.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Probate Courts</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 Probate courts explained!</p>
+                        <p>Probate courts handle wills and estates for deceased persons in Texas' largest counties. Judges are elected to 4-year terms by county voters in partisan elections. In smaller counties, these matters are handled by the local district or county court.</p>
+                    </div>
+                </div>
+
+                <div class="court-card">
+                    <h4>🏛️ State District Courts</h4>
+                    <p class="jurisdiction">472 district courts across Texas, judges serve 4-year terms</p>
+                    <p>State District Courts are the starting point for serious criminal and civil cases in Texas. Civil cases involving more than $200 and criminal cases for which the penalty can involve the state prison system or the death penalty begin with a trial in state district court. District courts also have exclusive jurisdiction over divorce and land title cases. District courts in rural Texas can be all-purpose courts—hearing all types of criminal and civil cases. District courts in urban areas often specialize (criminal, civil, juvenile, family cases).</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Do Justices of the Peace in Texas have to be attorneys?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">No, and a majority of JPs are not lawyers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Yes, all judges must be attorneys</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Only in urban counties</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Only if they handle criminal cases</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many state district courts does Texas have?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">254</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">472</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">822</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">14</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Appellate Courts -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Appellate Courts in Texas</h2>
+                </div>
+
+                <p class="content-text">An appeal is not a "do-over." The job of an appeals court is to review the way the trial was conducted. An appeals court can affirm or reverse the lower court decision or can remand the case back to the lower court for further proceedings.</p>
+
+                <div class="court-card">
+                    <h4>⚖️ Courts of Appeals (14 Courts)</h4>
+                    <p class="jurisdiction">9 judges each, elected to 6-year staggered terms</p>
+                    <p>Texas has 14 courts of appeal, each serving a specific set of counties. Each court has nine members elected in partisan elections. The terms are staggered so that three of the nine positions on each court are placed before the area's voters every two years. For efficiency, nearly all cases are heard by three-judge panels—allowing the court to triple the number of cases they can consider at any one time. Occasionally, a party may petition to have the case heard en banc—meaning by all nine judges.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Texas Supreme Court</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Highest civil court revealed!</p>
+                        <p>The <strong>Texas Supreme Court</strong> is the highest civil court in Texas. It consists of nine justices elected statewide in partisan elections and has final state appellate authority over civil cases. All civil cases appealed from any of the 14 courts of appeals go to the Texas Supreme Court. Unlike courts of appeals, the Texas Supreme Court hears all cases en banc (all nine justices together).</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Texas Court of Criminal Appeals</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Highest criminal court revealed!</p>
+                        <p>The <strong>Texas Court of Criminal Appeals</strong> is the highest criminal court in Texas. It also consists of nine judges elected statewide in partisan elections. All criminal cases appealed from any of the 14 courts of appeals go to the Texas Court of Criminal Appeals. This court has exclusive jurisdiction over death penalty appeals. Like the Supreme Court, it hears all cases en banc.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📍 En Banc</div>
+                    <div>"En banc" is a legal term meaning that all judges on a court hear a case together, rather than a smaller panel. While the 14 courts of appeals typically use three-judge panels for efficiency, the Texas Supreme Court and Texas Court of Criminal Appeals always hear cases en banc with all nine members.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many courts of appeals does Texas have?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">9</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">14</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">2</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">50</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which court handles final appeals for civil cases in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">Texas Supreme Court</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Texas Court of Criminal Appeals</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">U.S. Supreme Court</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">District Courts</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Civil Justice Process -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📋</span>
+                    <h2>Texas' Civil Justice Process</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the judicial procedures associated with civil lawsuits and criminal cases</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Unlike the criminal justice system, which has an intentional bias in favor of the accused, the civil justice system is meant to be like a balanced scale, with neither side having any special advantage.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Civil Cases</div>
+                    <div>A civil case results from a disagreement or dispute between two or more individuals or organizations. The party bringing the civil suit is the <strong>plaintiff</strong>. The party being sued is the <strong>defendant</strong>. Civil suits often involve disagreements about money or property, but also include divorce, child custody, contracts, protective orders, and evictions.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Steps in a Civil Lawsuit</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Civil process revealed!</p>
+                        <div class="process-step"><strong>1. Complaint:</strong> In an initial petition to a civil court, the plaintiff must describe the facts of the situation and what relief is being sought from the court.</div>
+                        <div class="process-step"><strong>2. Summons:</strong> The defendant must be officially served by the court with notice of the lawsuit and given the necessary information about how to respond.</div>
+                        <div class="process-step"><strong>3. Discovery:</strong> Both sides are given a period during which they are required to share information and evidence with each other.</div>
+                        <div class="process-step"><strong>4. Settlement:</strong> Most civil lawsuits are resolved through settlement—a formal agreement in which the plaintiff agrees to forego continuing to trial in exchange for money or other consideration. Parties may use a mediator.</div>
+                        <div class="process-step"><strong>5. Trial:</strong> If no settlement is agreed upon, a trial is held. A party can prevail by "a preponderance of the evidence." Juries decide who wins and often the specific financial amount of damages.</div>
+                        <div class="process-step"><strong>6. Appeal:</strong> The losing party is entitled to appeal. An appeals court can affirm, reverse, or remand the case back to the lower court.</div>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the most common method for resolving civil lawsuits?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Jury trial</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">Settlement</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Appeal</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Dismissal</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the burden of proof in a civil trial?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 30)">Preponderance of the evidence</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Beyond a reasonable doubt</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Clear and convincing evidence</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Probable cause</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Criminal Justice Process -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚖️</span>
+                    <h2>Texas' Criminal Justice Process</h2>
+                </div>
+
+                <p class="content-text">There are several procedural steps in the Texas criminal justice process that occur after a person is arrested and prior to the determination of innocence or guilt. In Texas, as in most other states, this process can take months or even years.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Due Process</div>
+                    <div>The Texas court systems have two conflicting goals: they must protect the people and the accused. Therefore, the state of Texas must ensure that every person is treated equally in legal matters—this is known as <strong>due process</strong>.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Step 1 - Arrest</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🚔 Arrest process revealed!</p>
+                        <p><strong>Miranda Rights:</strong> Derived from the landmark U.S. Supreme Court case Miranda vs. Arizona (1966), a person must be made aware of their 5th Amendment rights against self-incrimination prior to being questioned.</p>
+                        <p><strong>Arraignment:</strong> Once an arrest is made, the defendant is arraigned and bond is set. Arraignment is when a defendant is formally charged and made aware of their rights.</p>
+                        <p><strong>Bail:</strong> Money provided by the defendant to ensure his or her appearance in court. If the defendant can't pay, they may be released on personal recognizance—the defendant's promise to appear.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Step 2 - Indictment</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 Grand jury process revealed!</p>
+                        <p>If the charge is a felony, then an indictment must occur for the process to continue. A <strong>grand jury</strong> determines whether there is sufficient evidence to hold the accused for trial. <strong>9 out of 12</strong> grand jury members must agree that the process can move forward.</p>
+                        <p><strong>"True Bill":</strong> Finding probable cause that the accused committed a crime—the case proceeds to trial.</p>
+                        <p><strong>"No Bill":</strong> They did not find probable cause—charges are dropped.</p>
+                        <p>A grand jury indictment is NOT a conviction; the accused is held for criminal trial only if the grand jury voted a "true bill."</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Steps 3-5: Plea Bargaining, Trial, and Post-Trial</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Final steps revealed!</p>
+                        <p><strong>3. Plea Bargaining:</strong> An agreement where the defendant agrees to plead guilty or nolo contendere in return for concessions from the prosecutor. Due to overcrowded dockets, plea bargaining is the most common method for resolving criminal cases in Texas.</p>
+                        <p><strong>4. Trial:</strong> The defendant may choose trial by jury (guaranteed by Texas Constitution Article 1, Section 15) or waive that right and choose trial by judge. Texas uses an adversary system. For both felonies and misdemeanors, criminal jury decisions must be <strong>unanimous</strong>, and the standard is "beyond a reasonable doubt."</p>
+                        <p><strong>5. Post-Trial:</strong> If found guilty, the defendant receives punishment or rehabilitation: prison time, probation, parole, house arrest, or fines. The judge may allow probation (community supervision) rather than incarceration.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many grand jury members must agree to return a "true bill"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">All 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">9 out of 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">6 out of 12</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">Simple majority</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the most common method for resolving criminal cases in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Jury trial</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">Plea bargaining</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Dismissal</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Appeal</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Judicial Selection -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Judicial Selection in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Outline the process of judicial selection in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Each state has its own process for selecting its judges. Methods of judicial selection vary substantially across the United States.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Methods of Judicial Selection</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Selection methods revealed!</p>
+                        <p><strong>Partisan elections:</strong> Judges are elected by the people with party affiliation listed on the ballot. <em>(Texas uses this method)</em></p>
+                        <p><strong>Nonpartisan elections:</strong> Judges are elected without party labels on the ballot.</p>
+                        <p><strong>Legislative elections:</strong> Judges are selected by the state legislature.</p>
+                        <p><strong>Gubernatorial appointment:</strong> Judges are appointed by the governor, sometimes with legislative approval.</p>
+                        <p><strong>Assisted appointment (Missouri Plan):</strong> A nominating commission reviews candidates and submits names to the governor, who appoints from the list. The judge must then be confirmed by voters in a retention election.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Texas Uses Partisan Elections</div>
+                    <div>Texas elects their judges (except at some municipal levels) in partisan elections. This means candidates are listed on the ballot with their political party affiliation (Republican or Democrat).</div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>✅ Arguments FOR Partisan Elections</h4>
+                        <p>"[Y]ou cannot take the politics out of decisions about who is going to hold what office, but you can take the people out of the politics. This democracy business can be a little messy at times... but you can trust [voters] to get it right most of the time."</p>
+                        <p>—Professor Michael E. DeBow</p>
+                        <p style="margin-top: 1rem;">Proponents argue this method is the most democratic, allowing people a direct voice in selecting judges and holding them accountable through the threat of being voted out.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>❌ Arguments AGAINST Partisan Elections</h4>
+                        <p>"I never felt so much like a hooker down by the bus station… as I did in a judicial race. Everyone interested in contributing has very specific interests. They mean to be buying a vote."</p>
+                        <p>—Ohio Supreme Court Justice Paul Pfeifer</p>
+                        <p style="margin-top: 1rem;">Critics argue campaign fundraising gives special interests power to manipulate the judiciary, creating a polarized bench where judges feel pressured to please campaign supporters.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: The Shepherd Study on Campaign Contributions</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📊 Research findings revealed!</p>
+                        <p>A 2013 study by Joanna Shepherd of Emory University analyzed data from 2,345 business-related state supreme court opinions and over 175,000 contribution records. Key findings:</p>
+                        <p>• A significant relationship exists between business group contributions and how justices vote in business matters.</p>
+                        <p>• The more campaign contributions from business interests justices receive, the more likely they are to vote for business litigants.</p>
+                        <p>• A justice who receives half of his or her contributions from business groups would be expected to vote in favor of business interests almost two-thirds of the time.</p>
+                        <p>• The relationship between money and voting exists in partisan and nonpartisan systems; there is no statistically significant relationship in retention election systems.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How does Texas select most of its judges?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">Partisan elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Gubernatorial appointment</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Missouri Plan</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Legislative election</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ According to the Shepherd Study, in which type of judicial selection system was there NO statistically significant relationship between campaign money and voting?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Partisan elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Nonpartisan elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 30)">Retention election systems</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">All systems showed a relationship</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: Glossary -->
+        <div id="section9" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📚</span>
+                    <h2>Key Terms and Glossary</h2>
+                </div>
+
+                <p class="content-text">Master these essential terms to understand the Texas court system.</p>
+
+                <div class="glossary-term">
+                    <strong>Arraignment:</strong> When a defendant is formally charged and made aware of their rights.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Capital Case:</strong> A criminal case in which the death penalty is a possible punishment.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Civil Law:</strong> A branch of law that deals with disputes, usually between private individuals over relationships, obligations, and responsibility.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Complaint:</strong> The presentation of a grievance by the plaintiff in a civil case.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Courts of Appeal:</strong> The 14 intermediate-level appellate courts that hear appeals from district and county courts to determine whether the decisions of these lower courts followed legal principles and court procedures.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Criminal Law:</strong> The branch of law that regulates the conduct of individuals, defines crimes, and specifies punishments for criminal acts.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Defendant:</strong> An individual, company, or institution sued or accused in a court of law.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>District Courts:</strong> The major trial courts in Texas, which usually have general jurisdiction over a broad range of civil and criminal cases.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Due Process:</strong> In the Texas criminal justice system, the state must ensure that every person is treated equally in legal matters.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Felony:</strong> A serious criminal offense, punishable by a prison sentence or a fine; a capital felony is punishable by death or a life sentence.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Hierarchical:</strong> In the Texas court system, cases start in local trial courts, then work their way up to appeals courts.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Misdemeanor:</strong> A minor criminal offense usually punishable by a small fine or short jail sentence.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Plaintiff:</strong> The party who initiates a lawsuit before a court in order to seek a legal remedy.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Plea Bargaining:</strong> Occurs when the defendant and the prosecutor negotiate a deal to avoid having to go to trial.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Precedent:</strong> A principle or rule established in a previous legal case that is either binding on or persuasive for a court when deciding subsequent cases with similar issues or facts.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Texas Supreme Court:</strong> The highest civil court in Texas; consists of nine justices and has final state appellate authority over civil cases.
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Special Note on Juvenile Courts</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 👨‍⚖️ Juvenile court information!</p>
+                        <p>In Texas, juvenile courts preside in the District Courts. A juvenile is defined as young as <strong>10 years old</strong>, and a juvenile can be convicted as an adult as young as <strong>14 years old</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the difference between a felony and a misdemeanor?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-1', 30)">A felony is more serious and can result in prison; a misdemeanor is minor with small fines or jail</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">They are the same thing</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">A misdemeanor is more serious than a felony</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">Felonies are civil cases; misdemeanors are criminal</div>
+                    <div class="feedback-box" id="feedback-q9-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ At what age can a juvenile be tried as an adult in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">18 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">16 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-2', 30)">14 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">10 years old</div>
+                    <div class="feedback-box" id="feedback-q9-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(9)">✅ Complete Section 9</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>⚖️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 6: The Texas Court System</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction: The Texas Court System</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sources and Hierarchy of Law</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Structure of the Court System</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Trial Courts in Texas</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/200</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Appellate Courts</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Texas' Civil Justice Process</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Texas' Criminal Justice Process</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Judicial Selection in Texas</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Key Terms and Glossary</td>
+                                    <td id="status9">❌</td>
+                                    <td id="points9">0/120</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="color: var(--text-secondary); margin-top: 2rem;">
+                            <strong>Instructor Note:</strong> This report documents the student's completion of Chapter 6: The Texas Court System 
+                            in the TCC Trailblazer Trek interactive learning module. Students explored Texas' bifurcated court system,
+                            the civil and criminal justice processes, types of jurisdiction, and the debate over judicial selection methods.
+                        </p>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 150 },
+                2: { earned: 0, max: 180 },
+                3: { earned: 0, max: 180 },
+                4: { earned: 0, max: 200 },
+                5: { earned: 0, max: 180 },
+                6: { earned: 0, max: 150 },
+                7: { earned: 0, max: 180 },
+                8: { earned: 0, max: 180 },
+                9: { earned: 0, max: 120 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Legal Learner',
+            600: 'Court Observer',
+            800: 'Judicial Analyst',
+            1000: 'Justice Expert',
+            1200: 'Texas Legal Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! ⚖️ Your Texas judicial journey begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

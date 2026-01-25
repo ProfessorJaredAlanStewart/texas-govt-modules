@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: The Texas Plural Executive - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .official-card {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .official-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .official-card .role {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .powers-list {
+            background: var(--bg-section);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .powers-list h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .powers-list ul {
+            margin-left: 1.5rem;
+        }
+
+        .powers-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-term {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term strong {
+            color: var(--primary-blue);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                position: relative;
+            }
+
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🏛️ TCC Texas Government Trailblazer Trek: The Plural Executive</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🏛️ Chapter 5: Texas' Governor & Plural Executive 🤠</h2>
+                <p>Explore Texas' unique executive branch where power is divided among many elected officials</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>👔</span>
+                        <div>Governor</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>👥</span>
+                        <div>Plural Executive</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>⚖️</span>
+                        <div>Limited Power</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your Texas executive branch journey:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction: The Executive Branch</h3>
+                    <p>Discover how Texas' "weak governor" system works and why it was created.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Background and History</h3>
+                    <p>Learn about the history of Texas governors from 1845 to today.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Qualifications and Roles</h3>
+                    <p>Explore the constitutional requirements and duties of the governor.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Governor's Powers</h3>
+                    <p>Understand veto power, clemency, appointments, and budgetary authority.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Legislature and Executive Interplay</h3>
+                    <p>See how the legislative and executive branches interact in Texas.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Informal Powers</h3>
+                    <p>Discover the soft power and political influence governors can wield.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Plural Executive</h3>
+                    <p>Meet all the elected officials who share executive power in Texas.</p>
+                    <div class="points-indicator">🌟 200 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Key Terms and Glossary</h3>
+                    <p>Master the essential vocabulary of Texas executive government.</p>
+                    <div class="points-indicator">🌟 120 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Introduction: Texas' Governor and Executive Branch</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the structure and function of the executive branch of the Texas government</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">In its 2019 session, the Texas Legislature failed to pass a "Sunset" bill that would have continued the existence of the Texas State Board of Plumbing Examiners. The bill had stalled amid controversy over whether or not to phase out this small agency and combine its functions into the larger Texas Department of Licensing and Regulation.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happened with the plumbing board?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Real-world example revealed!</p>
+                        <p>Without passage of S.B. 621, Texas faced an interesting problem. With no law requiring plumbers to be licensed and no agency to license them, anybody with a pipe wrench could now go into the plumbing business, performing jobs from replacing a kitchen faucet to complex medical gas piping in a hospital with no license and no training. Shortly after the session, legislators realized what they had done. Some legislators, plumbers, city plumbing inspectors and others began calling for a special legislative session to fix the problem.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How did Governor Abbott solve this problem?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Executive power in action!</p>
+                        <p>Instead of calling a special session, Texas Governor Greg Abbott simply issued an executive order extending the existence of the state board through the next regular legislative session. "A qualified workforce of licensed plumbers throughout the state, including from areas not directly affected by Hurricane Harvey, will be essential as those funds are being invested in crucial infrastructure, medical facilities, living facilities, and other construction projects," he said in his order. By extending the board through the next legislative session or until "disaster needs subside," the governor was able to tap into sweeping powers given to his office to deal with natural disasters.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ The Plural Executive</div>
+                    <div>The executive branch consists of the Governor, Lieutenant Governor, Comptroller of Public Accounts, Land Commissioner, Attorney General, Agriculture Commissioner, the three-member Texas Railroad Commission, the State Board of Education, and the Secretary of State. Texas has a plural executive branch system which limits the power of the Governor. Except for the Secretary of State, all executive officers are elected independently making them directly answerable to the public, not the Governor.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a "plural executive" system?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A system where the governor has absolute power</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">A system where executive power is distributed among multiple independently elected officials</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A system where the legislature controls the executive branch</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A system with multiple governors</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which executive officer is NOT elected but appointed by the governor?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Lieutenant Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Attorney General</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 30)">Secretary of State</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Comptroller</div>
+                    <div class="feedback-box" id="feedback-q1-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Background and History -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>Background and History</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the background of Texas' executive branch and Governor</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Partly because of many elected officials, the governor's powers are quite limited in comparison to other state governors or the U.S. President. In popular lore and belief the lieutenant governor, who heads the Senate and appoints its committees, has more power than the governor.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What powers does the governor have?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Governor's powers revealed!</p>
+                        <p>The governor commands the state militia and can veto bills passed by the Legislature and call special sessions of the Legislature (this power is exclusive to the governor and can be exercised as often as desired). The governor also appoints members of various executive boards and fills judicial vacancies between elections. All members of the executive branch are elected statewide except for the Secretary of State (appointed) and the State Board of Education (each of its 15 members are elected from single-member districts).</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Constitutional History</div>
+                    <div>The state's first constitution in 1845 established the office of governor, to serve for two years, but no more than four years out of every six. The 1866 constitution increased terms to 4 years. The Reconstruction constitution of 1869 removed the limit on terms—Texas remains one of 14 states with no gubernatorial term limit. The present constitution of 1876 shortened terms back to two years, but a 1972 amendment increased it again to four years.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Who were the notable governors?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Texas governors through history!</p>
+                        <p>The first governor of Texas was J. Pinkney Henderson, who took over executive leadership from the final president of the Republic of Texas, Anson Jones, in 1846. Every governor from Richard Coke (1874–1876) to Dolph Briscoe (1973-1979) was a Democrat. Since George W. Bush's election to the governor's office in 1994, all four Texas governors have been Republicans. Texas was the first southern state to elect a female governor. Miriam Ferguson served two terms following the impeachment of her husband, James Ferguson, in 1917—the only Texas governor ever impeached. The second female governor, Ann Richards, served in the 1990s.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How are governors elected?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🗳️ Election process explained!</p>
+                        <p>Texas elects governors in the midterm elections, that is, even years that are not presidential election years. For Texas, 2022, 2026, 2030 and 2034 are all gubernatorial election years. Legally, the gubernatorial inauguration is always set for the "first Tuesday after the organization of the Legislature, or as soon thereafter as practicable." If two candidates tie for the most votes or if an election is contested, a joint session of the legislature shall cast ballots to resolve the issue. The Texas governor currently receives a $150,000 annual salary, as well as living accommodations at the Texas Governor's Mansion.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How long is the current term for Texas governor?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">2 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">4 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">6 years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">8 years</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Who was the only Texas governor ever impeached?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Ann Richards</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">James Ferguson</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Rick Perry</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">George W. Bush</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Qualifications and Roles -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📋</span>
+                    <h2>The Qualifications and Roles of the Texas Governor</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Define the qualifications, roles, responsibilities, powers, and procedures associated with the office of the governor of Texas</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Constitutional Qualifications (Article IV, Section 4)</div>
+                    <div>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Must be at least 30 years old</li>
+                            <li>Resident of Texas for at least 5 years immediately before the election</li>
+                            <li>Must be a U.S. citizen</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the governor's general roles?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Governor's roles revealed!</p>
+                        <p>The governor makes policy recommendations that lawmakers in both the state House and Senate chambers may sponsor and introduce as bills. The governor also appoints the Secretary of State, as well as members of boards and commissions who oversee the heads of state agencies and departments. As the state's chief budget officer, governors submit an executive budget to the legislature as a plan for revenue and expenditure for the next biennium.</p>
+                    </div>
+                </div>
+
+                <div class="powers-list">
+                    <h4>🏛️ Constitutional and Statutory Duties of the Governor</h4>
+                    <ul>
+                        <li>Signing or vetoing bills passed by the Legislature</li>
+                        <li>Serving as commander-in-chief of the state's military forces</li>
+                        <li>Convening special sessions of the Legislature for specific purposes</li>
+                        <li>Delivering a report on the condition of the state to the Legislature at the beginning of each regular session</li>
+                        <li>Estimating of the amounts of money required to be raised by taxation</li>
+                        <li>Accounting for all public monies received and paid out by the Governor and recommending a budget for the next two years</li>
+                        <li>Granting reprieves and commutations of punishment and pardons upon the recommendation of the Board of Pardons and Paroles</li>
+                        <li>Declaring special elections to fill vacancies in certain elected offices</li>
+                        <li>Appointing qualified Texans to state offices that carry out the laws and direct the policies of state government</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do appointments work?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Appointment power explained!</p>
+                        <p>During a four-year term, the Governor will make about 3,000 appointments. Most appointments are: state officials and members of state boards, commissions and councils that carry out the laws and direct the policies of state government activities; members of task forces that advise the Governor or executive agencies on specific issues and policies; or state elected and judicial offices when vacancies occur by resignation or death of the office holder. The majority of these appointments are volunteer positions, representative of our citizen government.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the minimum age to be Texas governor?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">25 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">30 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">35 years old</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">21 years old</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Approximately how many appointments does a governor make in a four-year term?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">500</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">1,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">3,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">10,000</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Governor's Powers -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚡</span>
+                    <h2>Governor's Powers: Veto, Clemency, and Budget</h2>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">✍️ Veto Power</div>
+                    <div>The governor has the power to either approve or veto bills passed by the Texas Legislature. The Governor has line-item veto power, enabling the governor to veto individual components (or lines) of a bill. The Governor of Texas' line-item veto power applies only to spending measures, only to a bill that "contains several items of appropriation."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How much time does the governor have to act on bills?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Timing rules revealed!</p>
+                        <p>The governor must sign or veto legislation within 10 days of transmittal (excluding Sunday), or it becomes law without his or her signature. There is no "pocket veto" for the Governor of Texas. For legislation transmitted with less than 10 days left in the session, the governor has 20 days after adjournment to act, or the legislation becomes law without being signed. This latter provision allows a Governor to veto legislation after the Legislature has adjourned, with no opportunity for the Legislature to override a veto. In practice, a Governor's vetoes are rarely challenged.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is clemency power?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Clemency explained!</p>
+                        <p>The governor has the authority to grant clemency upon the written recommendation of a majority of the Board of Pardons and Paroles. Clemency includes full pardons after conviction or successful completion of a term of deferred adjudication community supervision, conditional pardons, pardons based on innocence, commutations of sentence, and reprieves. In capital cases, clemency includes commutation of sentence to life in prison and a reprieve for execution. The governor may also grant a one-time reprieve of execution, not to exceed 30 days, without a Board recommendation.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How limited is the governor's budget power?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Budget power revealed!</p>
+                        <p>The Governor has relatively limited budgetary powers. The Governor is required to submit an executive budget, but the Legislature typically ignores the Governor's budget, preferring to take the lead itself on budgetary matters. A Governor may attempt to influence the budgetary process through the power of persuasion, but this power is limited. In the end, a Governor's primary budget power is the power to veto or threaten to veto legislation.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What majority is required to override a governor's veto in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Simple majority</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">Two-thirds of members present in both chambers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Three-fourths majority</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Unanimous vote</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the governor's line-item veto power limited to?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Any type of legislation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">Spending measures/appropriations bills only</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Criminal justice bills only</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Tax bills only</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Legislature and Executive Interplay -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🔄</span>
+                    <h2>The Interplay Between the Legislature and Executive</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Compare and contrast the powers of the legislative and executive branches of government</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The executive and legislative branches of government play an interesting tug-of-war with public policy in Texas in a slightly different way than in the federal government.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How does the budget process work?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Budget process revealed!</p>
+                        <p>The Texas Legislature has much more initial control over the budget process than the governor. The Legislative Budget Board (LBB), in which the governor plays no part, is an entirely legislative agency, and prepares the state's draft budget under the direction of legislative leaders. This legislature-driven budget, however, starts from a number generated by a different member of the executive branch—the Comptroller of Public Accounts. The Comptroller's BRE (biennial revenue estimate) is the initial estimate of what the state's total revenue will be over the two-year budget cycle.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📊 Comptroller Certification</div>
+                    <div>Without certification by the Comptroller, the state budget cannot take effect, and legislators would be required to start over. At the end of the session, however, the governor's office experiences a power surge seen in no other state. A governor can veto most bills after the legislature has finally adjourned, removing the threat of an override. The governor also has "line-item veto" authority, allowing him to veto individual spending items from the state budget without vetoing the entire bill.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What about agency rulemaking?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Rulemaking power explained!</p>
+                        <p>While the legislature has the sole power to make law in Texas, executive branch agencies have significant latitude to interpret state statutes through agency rulemaking. Legislators, aware and somewhat wary of this, require a special statement attached to the official analysis of every bill considered on the floor of the House or Senate disclosing whether the bill delegates any rulemaking authority to any state official or agency.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What power does the Attorney General have?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚖️ AG Opinions explained!</p>
+                        <p>The Texas Attorney General also brings some interpretive power to the equation. With the power to issue a formal Attorney General's Opinion, this official can sometimes make public policy decisions separately from the legislature, and without the judicial branch. An Attorney General's Opinion in Texas has the force of law until a court rules otherwise, or the legislature changes the law on which the opinion is based.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Who prepares the state's draft budget in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">The Legislative Budget Board (LBB)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The Comptroller</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The Lieutenant Governor</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Informal Powers -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🤝</span>
+                    <h2>The Informal Powers of the Executive Branch</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss the informal powers of the executive branch</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">A Governor's powers are not limited to their constitutional and statutory authority. In addition to the formal powers of the governor and other executive branch officials, a smart governor can accomplish a lot using informal powers.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How did Governor Bush use informal power?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Personal relationships matter!</p>
+                        <p>Governor George W. Bush was legendary for his ability to forge genuine friendships with other state officials—notably House Speaker Pete Laney and Lieutenant Governor Bob Bullock. The three had breakfast at the Governor's Mansion weekly during legislative sessions. When he announced his candidacy for the Republican nomination for President in 1999, Speaker Laney, a Democrat, introduced him. Friendly late night meetings over a beer or two helped Governor Bush and some of his staunchest political opponents find common ground on a variety of policy issues.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How can governors influence elections?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌟 Political influence revealed!</p>
+                        <p>The Texas Governor has the highest-profile role of any state official and can use that to his advantage. An endorsement from a governor can mean a lot in a race for the state house or senate, and a grateful legislator should be eager to return the favor. Conversely, Governor Greg Abbott actively worked against the reelection of two legislators from his own party in 2018—helping to defeat one.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What leverage does the veto create?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⚡ Post-session veto power!</p>
+                        <p>The governor's appointment power to appoint members to boards, commissions, councils, and committees can provide the governor with significant informal power over policy in many key areas. The executive branch of the Texas government is made up of over 400 state boards, commissions, and agencies. Finally, the governor's unilateral post-session veto power creates a lot of informal leverage during the legislative session. A legislative bill author asked by the governor to support a change to his bill—even a drastic one—has little alternative, knowing the bill can be vetoed with no opportunity for an override vote.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many state boards, commissions, and agencies make up the Texas executive branch?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">100</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">200</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">Over 400</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">50</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: The Plural Executive -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>👥</span>
+                    <h2>The Plural Executive</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain Texas' plural executive and discuss the various offices and powers</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Texas fragmented the Governor's power at the end of Reconstruction and dispersed executive power by creating a plural executive. Article 4 of the Texas Constitution describes the executive department (branch) of Texas. Texas utilizes a plural executive which means the power of the Governor is limited and distributed amongst other government officials.</p>
+
+                <div class="official-card">
+                    <h4>👔 Lieutenant Governor</h4>
+                    <p class="role">Currently: Dan Patrick</p>
+                    <p>Technically a member of the executive branch, but with duties that are mostly legislative. Serves as the state senate's presiding officer—not in a ceremonial role, but as the state senate's day-to-day leader. First in line of succession for Governor, member of the Legislative Redistricting Board and Chair of the Legislative Budget Board. Elected statewide for a four-year term.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What does the Attorney General do?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ Attorney General revealed!</p>
+                        <p>The Texas Attorney General (currently Ken Paxton) serves as the official lawyer for the State of Texas representing the state on civil matters and is responsible for interpreting the application of statutory law in the absence of an applicable court ruling. His office has additional duties relating to child support enforcement and consumer protection. Elected to a four-year term statewide.</p>
+                    </div>
+                </div>
+
+                <div class="official-card">
+                    <h4>🏞️ Commissioner of the General Land Office</h4>
+                    <p class="role">Currently: Dawn Buckingham</p>
+                    <p>The state's real estate asset manager. Texas, as a condition of admission to the United States in 1845, maintained state ownership of vast amounts of public land. The leasing of public land for everything from oil exploration to grazing has been an important source of funding for state universities and public schools. The land commissioner is also responsible for Texas' 367 miles of Gulf Coast beach and has played an increasingly central role in managing disaster relief funds since Hurricane Harvey in 2017.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What does the Comptroller do?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Comptroller's power revealed!</p>
+                        <p>The Comptroller of Public Accounts (currently Kelly Hancock) is the state's independently-elected chief financial officer. Even if passed by the legislature and signed by the governor, the state's biennial budget cannot take effect unless "certified" by the Comptroller—his official finding that the budgeted amount will not exceed the amount of revenue he believes the state will collect during the budget period. The Comptroller is also the state's tax collector and banker.</p>
+                    </div>
+                </div>
+
+                <div class="official-card">
+                    <h4>🌾 Texas Agriculture Commissioner</h4>
+                    <p class="role">Currently: Sid Miller</p>
+                    <p>Elected to both promote and regulate Texas agriculture, which some perceive as a potential conflict. Administers the Texas Agriculture Department, the duties of which include weights and measures—including gasoline. Inspectors check every gas pump in Texas periodically to make sure consumers are receiving the amount they purchase.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What does the Railroad Commission do?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🛢️ Railroad Commission history!</p>
+                        <p>The Texas Railroad Commission consists of three commissioners, all elected statewide, who serve staggered six-year terms. The current commissioners are Wayne Christian, Christi Craddick, and James Wright. Originally created to regulate intrastate rail commerce, that task was largely assumed by the federal government. During the Great Depression, the Commission was given the responsibility of regulating the Texas oil industry. By setting an "allowable" for every oil well in Texas—the maximum amount that could be legally extracted—the Texas Railroad Commission basically set the global price of oil for many years. The Organization of Petroleum Exporting Countries (OPEC) used the Texas Railroad Commission as their model for creating a worldwide oil cartel in 1960.</p>
+                    </div>
+                </div>
+
+                <div class="official-card">
+                    <h4>📚 Texas State Board of Education</h4>
+                    <p class="role">15 members elected from single-member districts</p>
+                    <p>The largest elected body in the state's executive branch. Charged with setting curriculum standards, reviewing textbooks, establishing graduation requirements, overseeing the Texas Permanent School Fund, and approving new charter schools. Works with the Texas Education Agency, which is administered by a Commissioner of Education appointed by the governor.</p>
+                </div>
+
+                <div class="official-card">
+                    <h4>📜 Texas Secretary of State</h4>
+                    <p class="role">Appointed by the Governor</p>
+                    <p>Not elected but appointed by the governor and confirmed by the state senate. Has a variety of duties, including administration of elections within Texas, publishing the Texas Register (which notifies the public of proposed and final state agency rules), and advising the governor on border matters. Also presides over the Texas House of Representatives at the beginning of each legislative session.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Who is the day-to-day presiding officer of the Texas Senate?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">The Lieutenant Governor</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The Attorney General</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">The Secretary of State</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which organization used the Texas Railroad Commission as a model?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">The Federal Reserve</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">OPEC (Organization of Petroleum Exporting Countries)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">The United Nations</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">The EPA</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Glossary -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📚</span>
+                    <h2>Key Terms and Glossary</h2>
+                </div>
+
+                <p class="content-text">Master these essential terms to understand the Texas executive branch.</p>
+
+                <div class="glossary-term">
+                    <strong>Appointment:</strong> The power of the chief executive, whether the president of the United States or the governor of the state, to appoint persons to office.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Attorney General:</strong> An elected state official that serves as the state's chief civil lawyer.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Bureaucracy:</strong> The complex structure of offices, tasks, rules, and principles of organization that is employed by all large-scale institutions to coordinate the work of their personnel.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Comptroller:</strong> An elected state official who directs the collection of taxes and other revenues, and estimates revenues for the budgeting process.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Executive Budget:</strong> The state budget prepared and submitted by the governor to the legislature, which indicates the governor's spending priorities.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Land Commissioner:</strong> An elected state official that acts as the manager of the most publicly-owned lands.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Lieutenant Governor:</strong> The second-highest elected official in the state and president of the state senate.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Line-Item Veto Power:</strong> Enables the governor to veto individual components (or lines) of an appropriations bill.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Plural Executive:</strong> A group of officers or major officials that functions in making current decisions or in giving routine orders typically the responsibility of an individual executive officer. In Texas, the power of the Governor is limited and distributed amongst other government officials.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Secretary of State:</strong> The state official, appointed by the governor, whose primary responsibility is administering elections.
+                </div>
+
+                <div class="glossary-term">
+                    <strong>Veto:</strong> The governor's power to turn down legislation; can be overridden by a two-thirds vote of both the House and Senate.
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why is the glossary important?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎉 Glossary mastery!</p>
+                        <p>Understanding these terms is essential for comprehending how Texas' unique plural executive system works. Unlike the federal government where executive power is concentrated in the president, Texas deliberately fragments power among many elected officials. This system was created after Reconstruction to prevent any single person from accumulating too much power—a direct reaction to Governor E.J. Davis's administration.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the line-item veto?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">The power to veto entire bills</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">The power to veto individual components of an appropriations bill</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">The power to delay legislation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">The power to add amendments to bills</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the primary responsibility of the Secretary of State?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Collecting taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Managing public lands</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 30)">Administering elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Prosecuting criminals</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🏛️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 5: Texas' Governor & Plural Executive</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction: The Executive Branch</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Background and History</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Qualifications and Roles</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Governor's Powers</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Legislature and Executive Interplay</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Informal Powers</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>The Plural Executive</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/200</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Key Terms and Glossary</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/120</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p style="color: var(--text-secondary); margin-top: 2rem;">
+                            <strong>Instructor Note:</strong> This report documents the student's completion of Chapter 5: Texas' Governor & Plural Executive 
+                            in the TCC Trailblazer Trek interactive learning module. Students explored Texas' unique plural executive system,
+                            the powers and limitations of the governor, and the various elected officials who share executive authority.
+                        </p>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 150 },
+                2: { earned: 0, max: 180 },
+                3: { earned: 0, max: 180 },
+                4: { earned: 0, max: 180 },
+                5: { earned: 0, max: 150 },
+                6: { earned: 0, max: 150 },
+                7: { earned: 0, max: 200 },
+                8: { earned: 0, max: 120 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Executive Learner',
+            600: 'Policy Analyst',
+            800: 'Government Expert',
+            1000: 'Executive Master',
+            1200: 'Texas Executive Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🏛️ Your Texas executive branch journey begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

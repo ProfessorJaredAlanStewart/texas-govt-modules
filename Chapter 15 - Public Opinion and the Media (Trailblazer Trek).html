@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 15: Public Opinion and the Media in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #7E57C2, #26A69A);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7E57C2, #26A69A);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 3000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, #7E57C2, #26A69A);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>📰 TCC Texas Government Trailblazer Trek: Public Opinion & Media</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>📰 Chapter 15: Public Opinion and the Media ⭐</h2>
+                <p>Discover how public opinion is formed, measured, and shaped by media in Texas!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>📊</span>
+                        <div>Polling</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📺</span>
+                        <div>Media</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Elections</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through public opinion and media:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>What Is Public Opinion?</h3>
+                    <p>Learn about beliefs, attitudes, ideology, and political socialization.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Public Opinion & Elections</h3>
+                    <p>Explore how polls affect campaigns, elections, and government.</p>
+                    <div class="points-indicator">🌟 170 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Measuring Public Opinion</h3>
+                    <p>Understand polling methods, sampling, and survey design.</p>
+                    <div class="points-indicator">🌟 175 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4)">4</div>
+                    <h3>Problems in Polling</h3>
+                    <p>Discover push polls, the Bradley effect, and polling challenges.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>The Media Landscape</h3>
+                    <p>Explore media types, conglomerates, and the fourth estate.</p>
+                    <div class="points-indicator">🌟 170 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Media Effects & Bias</h3>
+                    <p>Learn about framing, priming, and coverage effects on society.</p>
+                    <div class="points-indicator">🌟 175 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: What Is Public Opinion? -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📊</span>
+                    <h2>What Is Public Opinion?</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain why public opinion is important</li>
+                        <li>Understand the beliefs and ideologies that shape public opinion</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The collection of public opinion through polling and interviews is a part of political culture. Politicians want to know what the public thinks. Campaign managers want to know how citizens will vote. Media members seek to write stories about what the public wants. Every day, polls take the pulse of the people and report the results.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Public Opinion</div>
+                    <div>Public opinion is a collection of popular views about something, perhaps a person, a local or national event, or a new idea. Individual opinions are collected together to be analyzed and interpreted for politicians and the media. The analysis examines how the public feels or thinks, so politicians can use the information to make decisions about their legislative votes, campaign messages, or propaganda.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Where do people's opinions come from?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🧠 The building blocks of opinion!</p>
+                        <p>Most citizens base their political opinions on their <strong>beliefs</strong> and <strong>attitudes</strong>, both of which begin to form in childhood through political socialization.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Beliefs</strong> are closely held ideas that support our values and expectations about life and politics. For example, the idea that we are all entitled to equality, liberty, freedom, and privacy.</li>
+                            <li><strong>Attitudes</strong> represent the preferences we form based on our life experiences and values. A person who has suffered racism may have a skeptical attitude toward authority figures.</li>
+                            <li><strong>Ideology</strong> can be influenced by events. A student might leave college with a liberal ideology but become more conservative with age.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎓 Political Socialization</div>
+                    <div>Political socialization is the process by which we are trained to understand and join a country's political world. It starts when we are very young—watching a parent vote, hearing presidents speak on television, or seeing adults honor the American flag. In school, we recite the Pledge of Allegiance and learn about the Founding Fathers, the Constitution, the two major political parties, the three branches of government, and the economic system.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How does socialization affect political views?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🗳️ From childhood to voting booth!</p>
+                        <p>By the time we complete school, we have usually acquired the information necessary to form political views and be contributing members of the political system. A young man may realize he prefers the Democratic Party because it supports his views on social programs and education, whereas a young woman may decide she wants to vote Republican because its platform echoes her beliefs about economic growth and family values.</p>
+                        <p style="margin-top: 0.5rem;">The beliefs we acquire early in life are unlikely to change dramatically as we grow older. Our underlying beliefs and attitudes are unlikely to change very much, unless we experience events that profoundly affect us. For example, family members of 9/11 victims became more Republican and more political following the terrorist attacks. Similarly, young adults who attended political protest rallies in the 1960s and 1970s were more likely to participate in politics than their peers who had not protested.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📈 Increasing Polarization</div>
+                    <p>Today, polling agencies have noticed that citizens' beliefs have become far more <strong>polarized</strong>, or widely opposed, over the last decade. According to some scholars, these shifts led partisanship to become more polarized than in previous decades, as more citizens began thinking of themselves as conservative or liberal rather than moderate.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is political socialization?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A type of government propaganda</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">The process by which we are trained to understand and join a country's political world</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A method of conducting opinion polls</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A social media campaign strategy</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which of the following best describes "beliefs"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 25)">Closely held ideas that support our values and expectations about life and politics</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Preferences formed based on life experiences</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Political party membership</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">Results of public opinion polls</div>
+                    <div class="feedback-box" id="feedback-q1-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Public Opinion & Elections -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Public Opinion and Elections</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand how public opinion polls affect elections</li>
+                        <li>Explain the relationship between polls and government action</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Elections are the events on which opinion polls have the greatest measured effect. Public opinion polls do more than show how we feel on issues or project who might win an election. The media use public opinion polls to decide which candidates are ahead of the others and therefore of interest to voters and worthy of interview.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏇 Horserace Coverage</div>
+                    <div>Horserace coverage is when the media calls out every candidate's move throughout the presidential campaign, just like an announcer at the racetrack. It can be neutral, positive, or negative, depending upon what polls or facts are covered. During the 2012 presidential election, Pew Research found that both Mitt Romney and President Obama received more negative than positive horserace coverage. Horserace coverage is often criticized for its lack of depth—stories skip over candidates' issue positions, voting histories, and other facts that would help voters make informed decisions. Yet it often makes up a third or more of news stories about the election.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the bandwagon effect?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎪 Media momentum!</p>
+                        <p>The <strong>bandwagon effect</strong> occurs when the media pays more attention to candidates who poll well during the fall and the first few primaries.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Example:</strong> Bill Clinton was nicknamed the "Comeback Kid" in 1992, after he placed second in the New Hampshire primary despite accusations of adultery with Gennifer Flowers. The media's attention on Clinton gave him the momentum to make it through the rest of the primary season, ultimately winning the Democratic nomination and the presidency.</p>
+                        <p style="margin-top: 0.5rem;">Public opinion polls also affect how much money candidates receive in campaign donations. Donors assume polls are accurate enough to determine who the top candidates will be, and they give money to those who do well. Candidates who poll at the bottom will have a hard time collecting donations.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How do polls affect government?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ Polls and policymaking!</p>
+                        <p>The relationship between public opinion polls and government action is murkier than that between polls and elections. Do politicians use public opinion polls to guide their decisions? The short answer is <strong>"sometimes."</strong></p>
+                        <p style="margin-top: 0.5rem;">The public is not perfectly informed about politics, so politicians realize public opinion may not always be the right choice. Yet studies have found that voters behave rationally despite having limited information. They appear to be informed just enough, using preferences like their political ideology and party membership, to make decisions and hold politicians accountable during an election year.</p>
+                        <p style="margin-top: 0.5rem;">According to James Stimson's prominent study, the public's <strong>mood</strong>, or collective opinion, can become more or less liberal from decade to decade. If public mood changes, politicians may change positions to match. The more savvy politicians look carefully to recognize when shifts occur.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Exit Polls</div>
+                    <p>Exit polls, taken the day of the election, are the last election polls conducted by the media. Announced results of these surveys can deter voters from going to the polls if they believe the election has already been decided.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "horserace coverage"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Coverage of political scandals</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">Media coverage that tracks every candidate's move like an announcer at a racetrack</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Exit polling on Election Day</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Coverage of campaign finance</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "bandwagon effect"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">When voters change their minds at the last minute</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">When candidates drop out of a race</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">When media pays more attention to candidates who poll well, creating momentum</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">When candidates refuse to participate in debates</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Measuring Public Opinion -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📈</span>
+                    <h2>Measuring Public Opinion</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify common ways to measure and quantify public opinion</li>
+                        <li>Understand the importance of scientific polling methods</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Public opinion polls tell us what proportion of a population has a specific viewpoint. They do not explain why respondents believe as they do or how to change their minds. Political polling is a science. From design to implementation, polls are complex and require careful planning and care.</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">⚠️ Historic Polling Failures</div>
+                    <p>In 1936, <em>Literary Digest</em> sent opinion cards to people who had a subscription, a phone, or a car registration. Only some recipients sent back their cards. The result? Alf Landon was predicted to win 55.4% of the popular vote; in the end, he received only 38%. Franklin D. Roosevelt won another term. In 1948, Thomas Dewey lost the presidential election to Harry Truman, despite polls showing Dewey far ahead—pollsters did not poll up to Election Day, missing a late shift in voter opinion.</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎲 Random Sample</div>
+                    <div>A random sample consists of a limited number of people from the overall population, selected in such a way that each has an equal chance of being chosen. In the early years of polling, telephone numbers were arbitrarily selected from various areas to avoid regional bias. The increasing use of cell phones makes this process difficult because cell phone numbers are portable and move with the owner.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What makes a representative sample?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 👥 Mirroring the population!</p>
+                        <p>A <strong>representative sample</strong> consists of a group whose demographic distribution is similar to that of the overall population. For example, nearly 51% of the U.S. population is female. To match this demographic distribution, any poll intended to measure what most Americans think should survey a sample containing slightly more women than men.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Sample sizes vary by organization:</strong></p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Gallup: often interviews only 500 respondents</li>
+                            <li>Rasmussen Reports and Pew Research: 1,000 to 1,500 respondents</li>
+                            <li>American National Election Studies: over 2,500 respondents</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">A larger sample makes a poll more accurate, but once the poll has enough respondents to be representative, increases in accuracy become minor and are not cost-effective.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📊 Margin of Error</div>
+                    <div>The margin of error is a number that states how far the poll results may be from the actual opinion of the total population. The lower the margin of error, the more predictive the poll. For example, if a poll claims Hillary Clinton is likely to win 30% of the vote with a margin of error of +/-6, she may receive as little as 24% (30 - 6) or as much as 36% (30 + 6).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How has technology changed polling?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📱 Modern polling methods!</p>
+                        <p>Most polling now occurs over the phone or Internet. Methods include:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Random-digit-dialing (RDD):</strong> A computer randomly generates phone numbers with desired area codes</li>
+                            <li><strong>CATI (Computer-assisted telephone interviewing):</strong> Calls random numbers until reaching a live person, then connects to a trained interviewer</li>
+                            <li><strong>Robo-polls:</strong> Entirely computerized with a prerecorded electronic voice. Proponents argue respondents are more honest without an interviewer, but the Telephone Consumer Protection Act (1991) made automated calls to cell phones illegal</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>Challenge:</strong> The millennial generation (aged 18–33) is more likely to text than answer unknown calls, making them harder to interview. Polling companies now reach out via email and social media.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the margin of error?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The number of people who refused to participate</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">A number stating how far poll results may be from the actual opinion of the total population</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The percentage of incorrect answers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">The cost of conducting the poll</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a "representative sample"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">A sample of only political representatives</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">The largest possible sample size</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">A group whose demographic distribution is similar to that of the overall population</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">A sample taken only from registered voters</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Problems in Polling -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚠️</span>
+                    <h2>Problems in Polling</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify common problems that affect polling accuracy</li>
+                        <li>Understand push polls and the Bradley effect</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">For a number of reasons, polls may not produce accurate results. Two important factors a polling company faces are timing and human nature. Unless you conduct an exit poll on Election Day, there is always the possibility poll results will be wrong—a citizen might change his or her mind, lie, or choose not to vote at all.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎯 Framing in Questions</div>
+                    <div>Questions need to be free of <strong>framing</strong>—they should not be worded to lead respondents to a particular answer. For example: "Given the high rate of mass shootings in the U.S., do you approve of the job President Trump is doing?" sets up a frame for the respondent to believe the President is performing poorly before answering. The phrase "estate tax" did not rally voters, but the phrase "death tax" sparked debate about whether taxing estates imposed a double tax on income.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are push polls?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📞 Deceptive polling!</p>
+                        <p><strong>Push polls</strong> consist of political campaign information presented as polls. A respondent is called and asked questions about their candidate selections. If the respondent's answers are for the "wrong" candidate, the next questions provide negative information about that candidate to change the voter's mind.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Texas Example:</strong> In 2014, a fracking ban was placed on the ballot in Denton, Texas. During the campaign, voters received calls that polled them on the proposed ban. If the respondent planned to vote for the ban, questions shifted to provide negative information. One question asked, "If you knew... two Texas railroad commissioners have raised concerns about Russia's involvement in the anti-fracking efforts in the U.S.?" The question played upon voter fears to convince them to vote against the ban.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎭 The Bradley Effect</div>
+                    <div>The <strong>Bradley effect</strong> is a theory based on observed discrepancies between voter opinion polls and election outcomes where a white candidate and non-white candidate run against each other. The theory proposes that some voters who intend to vote for the white candidate would tell pollsters they are undecided or likely to vote for the non-white candidate. Named after Los Angeles Mayor Tom Bradley, who was far ahead in polls for the 1982 California governor's race but lost on Election Day. Voters succumbed to <strong>social desirability bias</strong>—they were afraid to admit they wouldn't vote for a black man.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happened with California's Proposition 19?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌿 A modern Bradley effect!</p>
+                        <p>In 2010, Proposition 19, which would have legalized and taxed marijuana in California, met with a new version of the Bradley effect. Nate Silver, a political blogger, noticed that polls were inconsistent—sometimes showing the proposition would pass, other times showing it would fail.</p>
+                        <p style="margin-top: 0.5rem;">Silver compared the polls and how they were administered. He proposed that <strong>voters speaking with a live interviewer gave the socially acceptable answer</strong> that they would vote against Proposition 19, while <strong>voters interviewed by a computer felt free to be honest</strong>. The measure was ultimately defeated on Election Day.</p>
+                        <p style="margin-top: 0.5rem;">Interviewer demographics may also affect answers—African Americans, for example, may give different responses to interviewers who are white than to interviewers who are black.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Polling in Texas: UT/Texas Tribune Poll</div>
+                    <p>Beginning in 2008, the Texas Politics Project at the University of Texas, under the direction of James Henson and Joshua Blank, has conducted three to four statewide public opinion polls each year to assess opinions of registered voters on elections, public policy, and attitudes towards politics. In 2009, UT partnered with the Texas Tribune to make data freely available to students, researchers, and the general public.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a "push poll"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">A poll conducted by pushing buttons on a phone</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">Political campaign information presented as a poll to influence voters</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">A poll that pushes for high response rates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">An exit poll taken at voting locations</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does the "Bradley effect" describe?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">A candidate's sudden rise in polls</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">The effect of television ads on voting</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">Discrepancies between polls and outcomes when voters misrepresent their voting intentions due to social desirability bias</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">The momentum gained from winning early primaries</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: The Media Landscape -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📺</span>
+                    <h2>The Media Landscape</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain what the media are and how they are organized</li>
+                        <li>Understand media consolidation and conglomerates</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Ours is an exploding media system. What started as print journalism was supplemented by radio, then network television, then cable television. Now, with the Internet, blogs, and social media—a set of applications that allow users to immediately communicate with one another—citizens have a wide variety of sources for instant news.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📰 Mass Media</div>
+                    <div>The term <strong>media</strong> defines different communication formats from television media (broadcast airwaves) to print media (printed documents). The collection of all forms of media that communicate information to the general public is called <strong>mass media</strong>, including television, print, radio, and Internet. <strong>Public relations</strong> differs from media—it is biased communication intended to improve the image of companies, organizations, or candidates.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How are networks and affiliates structured?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📡 Broadcasting explained!</p>
+                        <p><strong>National networks</strong> like CBS or NBC purchase rights to programs and distribute them to local stations. Most local stations are <strong>affiliated</strong> with a national network corporation and broadcast national network programming. Affiliates give priority to network news and other programming, diverging only for local or national emergencies.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Network vs. Local News:</strong></p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li><strong>Network news:</strong> National focus on politics, international events, the economy</li>
+                            <li><strong>Local news:</strong> Regional business, crime, sports, and weather</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>Cable networks</strong> (CNN, MSNBC, FOX News) operate directly without local affiliates, specializing in different types of programming. C-SPAN now has three channels covering Congress, the president, and the courts.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏢 Media Conglomerates</div>
+                    <div>Most media are controlled by a limited number of <strong>conglomerates</strong>—corporations made up of multiple companies, organizations, and media networks. In the 1980s, more than fifty companies owned the majority of television and radio stations. Now, only <strong>six conglomerates</strong> control most broadcast media in the United States: CBS Corporation, Comcast, Time Warner, 21st Century Fox, Viacom, and The Walt Disney Company.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the "fourth estate"?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ Media as watchdog!</p>
+                        <p>The media are <strong>watchdogs</strong> of society and public officials. Some refer to the media as the <strong>fourth estate</strong>, with the branches of government being the first three estates and the media equally participating as the fourth. This role helps maintain democracy and keeps the government accountable for its actions.</p>
+                        <p style="margin-top: 0.5rem;">The media also engages in <strong>agenda setting</strong>—choosing which issues or topics deserve public discussion. For example, in the early 1980s, famine in Ethiopia drew worldwide attention only after western media covered it. In 1991, a private citizen's camcorder footage of four police officers beating Rodney King in Los Angeles, after appearing on local TV and then national news, began a national discussion on police brutality and ignited riots.</p>
+                        <p style="margin-top: 0.5rem;">Today, social media and smartphones have begun to appropriate the agenda-setting power of traditional media, allowing witnesses to instantly upload images and accounts of events.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">👥 Media Demographics</div>
+                    <p>Millennials (aged 18–33) are more likely to get news from social media (YouTube, Twitter, Facebook), while baby boomers (aged 50–68) are most likely to get news from television, either national broadcasts or local news.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many conglomerates control most broadcast media in the United States today?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Over fifty</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Twenty</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">Six</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Three</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "agenda setting"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">The media's ability to choose which issues or topics get attention</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Government control over media content</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">A political candidate's campaign schedule</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">The process of writing news articles</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Media Effects & Bias -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🎭</span>
+                    <h2>Media Effects and Bias</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand media effects theories and framing</li>
+                        <li>Analyze coverage effects on campaigns and society</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Concerns about the effects of media on consumers and the existence of media bias go back to the 1920s. Reporter Walter Lippmann noted that citizens have limited personal experience with government and posited that the media, through their stories, place ideas in citizens' minds.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">💉 Media Effects Theories</div>
+                    <div><strong>Hypodermic theory:</strong> Information is "shot" into the receiver's mind and readily accepted. <strong>Minimal effects theory:</strong> (1930s-40s) Media have little effect on citizens because information is filtered through conversation with friends. <strong>Cultivation theory:</strong> (1970s) Media develop a person's view of the world by presenting a perceived reality. What we see on a regular basis becomes our reality.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is framing and priming?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🖼️ Shaping perception!</p>
+                        <p><strong>Framing</strong> is the creation of a narrative, or context, for a news story that affects how the reader processes it:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Episodic framing:</strong> Focuses on isolated details or specifics rather than looking broadly at a whole issue. May create more sympathy.</li>
+                            <li><strong>Thematic framing:</strong> Takes a broad look at an issue over time. May leave the reader emotionally disconnected.</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>Priming:</strong> When media coverage predisposes the viewer to a particular perspective. If a newspaper focuses on unemployment, struggling industries, and jobs moving overseas, the reader will have a negative opinion about the economy and may be primed to disapprove of the president's job performance.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Covert content</strong> is political information presented as unbiased. <strong>Overt content</strong> openly states its ideological viewpoint (like Rush Limbaugh or Mother Jones).</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How does media affect coverage of race and gender?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 👥 Coverage disparities!</p>
+                        <p><strong>Race:</strong> Studies found local news shows overrepresented blacks as perpetrators and whites as victims of crime. Network news misrepresents victims of poverty by showing more images of blacks than whites. Viewers are left believing African Americans are the majority of the unemployed and poor.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Gender:</strong> Most journalists in the early 1900s were male, and women's issues weren't part of the newsroom discussion. In 1976, Barbara Walters became the first female co-anchor on a network news show but was met with hostility from her co-anchor. Studies found female candidates receive more coverage than before, but it's often negative. The historically negative coverage of female candidates has had a concrete effect: Women are less likely than men to run for office, partly due to concerns about exposing their families to criticism.</p>
+                        <p style="margin-top: 0.5rem;">In 2008, Sarah Palin's nomination as McCain's running mate illustrated this concern—coverage questioned whether she should run given her young children, including one with developmental disabilities.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📉 Shrinking Sound Bites</div>
+                    <p>In 1968, the average sound bite from Richard Nixon was 42.3 seconds. A recent study found sound bites had decreased to only <strong>eight seconds</strong> in the 2004 election. The clips chosen to air were attacks on opponents 40% of the time. Only 30% contained information about the candidate's issues. Campaign coverage now focuses on the spectacle rather than providing information—sometimes dubbed <strong>"pack journalism"</strong> because journalists follow one another rather than digging for their own stories.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the difference between episodic and thematic framing?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 25)">Episodic focuses on isolated details; thematic looks broadly at an issue over time</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Episodic is used in television; thematic is used in print</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">Episodic is biased; thematic is neutral</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">There is no difference between them</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "priming" in media?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Preparing a news story for publication</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 25)">When media coverage predisposes viewers to a particular perspective on a subject</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">The first story covered in a newscast</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Training journalists to cover news</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Agenda setting:</span> The media's ability to choose which issues or topics get attention.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Attitudes:</span> The preferences we form based on our life experiences and values.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Bandwagon effect:</span> Occurs when the media pays more attention to candidates who poll well during the fall and first few primaries.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Beliefs:</span> Closely held ideas that support our values and expectations about life and politics.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Bradley effect:</span> Theory about discrepancies between polls and election outcomes when voters misrepresent their intentions due to social desirability bias.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Cultivation theory:</span> Hypothesizes that media develops a person's view of the world by presenting a perceived reality.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Episodic framing:</span> Occurs when a story focuses on isolated details or specifics rather than looking broadly at an issue.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Mass media:</span> The collection of all forms of media that communicate information to the general public.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Pack journalism:</span> When journalists follow one another rather than digging for their own stories.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Political socialization:</span> The process by which we are trained to understand and join a country's political world.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Public opinion:</span> A collection of popular views about something—a person, event, or idea.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Social media:</span> Applications or web platforms that allow users to immediately communicate with one another.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Thematic framing:</span> Takes a broad look at an issue and how it has changed over time.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>📰 TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 15: Public Opinion and the Media in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>What Is Public Opinion?</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Public Opinion & Elections</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/170</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Measuring Public Opinion</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/175</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Problems in Polling</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>The Media Landscape</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/170</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Media Effects & Bias</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/175</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 15: Public Opinion and the Media in Texas. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 165 },
+                2: { earned: 0, max: 170 },
+                3: { earned: 0, max: 175 },
+                4: { earned: 0, max: 165 },
+                5: { earned: 0, max: 170 },
+                6: { earned: 0, max: 175 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            170: 'Scholar',
+            340: 'Poll Watcher',
+            510: 'Media Analyst',
+            680: 'Opinion Expert',
+            850: 'Media Master',
+            1000: 'Texas Media Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 📰 Your journey through public opinion and media begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13: The Criminal Justice System in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        #pointsPopup {
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 2000;
+            animation: popupAnimation 2s forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes popupAnimation {
+            0% { opacity: 0; transform: translateY(-20px) scale(0.8); }
+            20% { opacity: 1; transform: translateY(0) scale(1.1); }
+            30% { transform: scale(1); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .section-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .points-indicator {
+            margin-top: 1rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .report-card {
+            background: linear-gradient(135deg, var(--highlight-yellow), #FFE082);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .report-card h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Section Page Styles */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header span {
+            font-size: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .content-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: linear-gradient(135deg, var(--bg-section), #B2DFDB);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .interactive-card:hover {
+            border-color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        .interactive-card.revealed {
+            background: var(--highlight-green);
+            cursor: default;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--primary-green);
+        }
+
+        .interactive-card.revealed .card-content {
+            display: block;
+        }
+
+        .interactive-card.revealed .card-prompt {
+            color: var(--success);
+        }
+
+        .knowledge-check {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .kc-option {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover {
+            background: var(--highlight-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #FFEBEE;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            display: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #FFEBEE;
+            color: var(--error);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .quote-source {
+            font-style: normal;
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .info-list {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .info-list ul {
+            margin-left: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--highlight-green), #C8E6C9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 2px solid var(--success);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 2px solid var(--error);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table th {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .data-table tr:hover {
+            background: var(--highlight-blue);
+        }
+
+        /* Report Page Styles */
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-header-bar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .report-title {
+            text-align: center;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .section-breakdown {
+            margin: 2rem 0;
+        }
+
+        .section-breakdown h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .breakdown-table th,
+        .breakdown-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breakdown-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .instructor-note {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .instructor-note h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .print-button {
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .header {
+                position: static;
+            }
+            .container {
+                margin-top: 0;
+            }
+            .report-container {
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+                margin-top: 100px;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-icons {
+                gap: 1.5rem;
+            }
+            
+            .name-input {
+                width: 100%;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>⚖️ TCC Texas Government Trailblazer Trek: Criminal Justice System</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>⚖️ Chapter 13: The Criminal Justice System in Texas 🔒</h2>
+                <p>Explore the structure, procedures, and ongoing reforms of Texas criminal justice!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>👨‍⚖️</span>
+                        <div>Courts &amp; Trials</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🔐</span>
+                        <div>Rights &amp; Liberties</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Reform &amp; Justice</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🤠 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through the Texas criminal justice system:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Enter your name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">Start Your Adventure! 🚀</button>
+            </div>
+
+            <div class="progress-bar">
+                <h3>📊 Your Progress</h3>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction: Theory Meets Practice</h3>
+                    <p>Learn how criminal trials proceed from charges through jury deliberation and sentencing.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Classifying Criminal Offenses</h3>
+                    <p>Understand how Texas categorizes crimes from capital felonies to Class C misdemeanors.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Crime and Criminal Defense</h3>
+                    <p>Explore the right to counsel and how Texas provides lawyers for those who cannot afford them.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Rights of Crime Victims</h3>
+                    <p>Discover Texas's constitutional protections for crime victims and the balance with defendants' rights.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Bail Reform and System Integrity</h3>
+                    <p>Examine challenges facing Texas criminal justice including bail reform and wrongful convictions.</p>
+                    <div class="points-indicator">🌟 170 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Civil Liberties: The Fifth Amendment</h3>
+                    <p>Understand protections against self-incrimination, double jeopardy, and due process.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Sixth and Eighth Amendments</h3>
+                    <p>Learn about trial rights, assistance of counsel, and protections against cruel punishment.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>The Texas Prison System</h3>
+                    <p>Explore the structure of TDCJ, the largest prison system in the United States.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card9" onclick="navigateToSection(9)">
+                    <div class="section-number">9</div>
+                    <h3>Key Terms and Glossary</h3>
+                    <p>Master the essential vocabulary of Texas criminal justice.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="report-card" onclick="generateReport()">
+                    <h3>📋 Generate Completion Report</h3>
+                    <p>View your final score, grade, and detailed performance breakdown</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Introduction -->
+        <div id="section1" class="page">
+            <div class="section-header">
+                <span>👨‍⚖️</span>
+                <h2>Introduction: Theory Meets Practice</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Chapter Learning Objective</h3>
+                <p>By the end of this chapter, you will be able to <strong>explain the purpose, structure, and behavior of the criminal justice system in Texas</strong>.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Criminal Justice</div>
+                    <div>The delivery of justice to those who have committed crimes. In Texas, the criminal justice system is a series of government agencies and institutions whose goals are to identify and catch unlawful individuals to inflict a form of punishment on them.</div>
+                </div>
+
+                <h3>How Criminal Trials Proceed</h3>
+                <p>Typically a person charged with a serious crime will have a brief hearing before a judge to be informed of the charges against him or her, to be made aware of the right to counsel, and to enter a plea. Other hearings may be held to decide on the admissibility of evidence seized or otherwise obtained by prosecutors.</p>
+
+                <p>If the two sides cannot agree on a plea bargain during this period, the next stage is the selection of a jury. A pool of potential jurors is summoned to the court and screened for impartiality, with the goal of seating twelve (in most states) and one or two alternates. All hear the evidence in the trial; unless an alternate must serve, the original twelve decide whether the evidence overwhelmingly points toward guilt or innocence beyond a reasonable doubt.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happens during the trial itself?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning courtroom procedure!</p>
+                        <p>In the trial itself, the lawyers for the prosecution and defense make opening arguments, followed by testimony by witnesses for the prosecution (and any cross-examination), and then testimony by witnesses for the defense, including the defendant if he or she chooses. Additional prosecution witnesses may be called to rebut testimony by the defense. Finally, both sides make closing arguments. The judge then issues instructions to the jury, including an admonition not to discuss the case with anyone outside the jury room.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How do jury deliberations work?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding the jury process!</p>
+                        <p>The jurors pick a foreman or forewoman to coordinate their deliberations. They may ask to review evidence or to hear transcripts of testimony. They deliberate in secret and their decision must be unanimous; if they are unable to agree on a verdict after extensive deliberation, a <strong>mistrial</strong> may be declared, which in effect requires the prosecution to try the case all over again. A defendant found not guilty of all charges will be immediately released unless other charges are pending.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>⚡ Sentencing</h4>
+                    <p>If the defendant is found guilty of one or more offenses, the judge will choose an appropriate sentence based on the law and the circumstances. In the federal system, this sentence will typically be based on guidelines that assign point values to various offenses and facts in the case. If the prosecution is pursuing the death penalty, the jury will decide whether the defendant should be subject to capital punishment or life imprisonment.</p>
+                </div>
+
+                <p>The reality of court procedure is much less dramatic and exciting than what is typically portrayed in television shows and movies. Nonetheless, most Americans will participate in the legal system at least once in their lives as a witness, juror, or defendant.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What happens if a jury cannot reach a unanimous verdict?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        The defendant is automatically found guilty
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        The defendant is automatically found not guilty
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">
+                        A mistrial may be declared, requiring a new trial
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        The judge decides the verdict instead
+                    </div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(1)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(2)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Classifying Criminal Offenses -->
+        <div id="section2" class="page">
+            <div class="section-header">
+                <span>📋</span>
+                <h2>Classifying Criminal Offenses in Texas</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Learning Objective</h3>
+                <p>By the end of this section, you will be able to <strong>understand how Texas classifies criminal offenses</strong>.</p>
+
+                <h3>Categories of Crime</h3>
+                <p>The vast majority of crimes are prosecuted at the state level. In every state, crimes are put into distinct categories. The categories are usually "felony" and "misdemeanor." Decisions on crime classification are made by state legislators; the determination focuses on the seriousness of the crime.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🔴 Felony</div>
+                    <div>A major crime in Texas. Felonies are classified into five categories based on severity: Capital Felony, First-degree, Second-degree, Third-degree, and State Jail Felony.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🟡 Misdemeanor</div>
+                    <div>A minor crime in Texas. Misdemeanors are classified into three categories: Class A (most serious), Class B, and Class C (least serious).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the most serious felonies in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding crime classifications!</p>
+                        <p><strong>Capital Felonies</strong> are the most serious crimes in Texas, punishable by life without parole or the death penalty. Examples include: murder of a law enforcement official, prison guard, or firefighter on duty; murder committed with other types of felonies; murder for hire; mass murder; and murder of someone under the age of 10. <strong>First-degree felonies</strong> include murder and theft of property worth over $200,000, punishable by 5-99 years in prison and up to $10,000 fine.</p>
+                    </div>
+                </div>
+
+                <h3>Classifications of Criminal Offenses in Texas</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Offense</th>
+                            <th>Punishment</th>
+                            <th>Court</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Capital Felony</strong><br><em>Murder of law enforcement, mass murder</em></td>
+                            <td>Life without parole or death penalty</td>
+                            <td>District</td>
+                        </tr>
+                        <tr>
+                            <td><strong>First-degree Felony</strong><br><em>Murder; theft over $200,000</em></td>
+                            <td>5-99 years; up to $10,000 fine</td>
+                            <td>District</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Second-degree Felony</strong><br><em>Manslaughter; theft $100,000-200,000</em></td>
+                            <td>2-20 years; up to $10,000 fine</td>
+                            <td>District</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Third-degree Felony</strong><br><em>Online impersonation; theft $20,000-100,000</em></td>
+                            <td>2-10 years; up to $10,000 fine</td>
+                            <td>District</td>
+                        </tr>
+                        <tr>
+                            <td><strong>State Jail Felony</strong><br><em>Possession 4oz-1lb marijuana; theft $15,000-20,000</em></td>
+                            <td>180 days-2 years; up to $10,000 fine</td>
+                            <td>District</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Class A Misdemeanor</strong><br><em>Resisting arrest; theft $500-1,500</em></td>
+                            <td>Up to 1 year jail; up to $4,000 fine</td>
+                            <td>County</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Class B Misdemeanor</strong><br><em>Terroristic threat; theft $20-500</em></td>
+                            <td>Up to 180 days jail; up to $2,000 fine</td>
+                            <td>County</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Class C Misdemeanor</strong><br><em>Theft under $20; underage alcohol possession</em></td>
+                            <td>Maximum $500 fine only</td>
+                            <td>JP/Municipal</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What court handles which crimes?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning the court structure!</p>
+                        <p>In Texas, the court of original jurisdiction depends on the severity of the crime. <strong>District Courts</strong> handle all felony cases—from capital felonies down to state jail felonies. <strong>County Courts</strong> handle Class A and Class B misdemeanors. <strong>Justice of the Peace Courts</strong> and <strong>Municipal Courts</strong> handle Class C misdemeanors, which carry only fines (no jail time). This division ensures that more serious cases receive more judicial resources and attention.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the maximum punishment for a Class A Misdemeanor in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        Death penalty or life in prison
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">
+                        Up to 1 year in jail and/or up to $4,000 fine
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        Maximum $500 fine only
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        2-20 years in prison
+                    </div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which court has original jurisdiction over felony cases in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        Justice of the Peace Court
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        Municipal Court
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        County Court
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">
+                        District Court
+                    </div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(2)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(3)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Crime and Criminal Defense -->
+        <div id="section3" class="page">
+            <div class="section-header">
+                <span>👨‍💼</span>
+                <h2>Crime and Criminal Defense</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Learning Objective</h3>
+                <p>By the end of this section, you will be able to <strong>explain the right to counsel in Texas</strong>.</p>
+
+                <h3>The Right to Counsel</h3>
+                <p>People accused of a crime can represent themselves or may retain a criminal defense lawyer to represent them. Since the famous Supreme Court case <strong>Gideon v. Wainwright</strong> (1963), persons too poor to hire a lawyer have the constitutional right to have an attorney appointed to represent them in serious cases.</p>
+
+                <p>How exactly that counsel is provided, however, was left to states to decide, and in Texas, this "how" gets further relegated to the state's 254 counties — meaning that each county decides how to appoint, and pay, lawyers for the poor. Last fiscal year, there were roughly <strong>474,000 indigent cases</strong> in Texas.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How does Texas provide lawyers for the poor?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding indigent defense!</p>
+                        <p>There are 19 public defender's offices, which 39 counties rely on in some capacity, but the majority of counties contract with private lawyers, who are generally paid a modest flat fee per case. This is the most common way states fulfill their Gideon v. Wainwright obligations. More than 150 counties also participate in a public defender program for death penalty cases. In 2017, the average court-appointed lawyer in Texas made only <strong>$247 per misdemeanor case</strong> and <strong>$598 per felony</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ The "Plea Mill" Problem</h4>
+                    <p>Because court-appointed fees are often so low, lawyers are forced to take on a multitude of cases just to make a living. Some overburdened lawyers contribute to so-called "plea mills," in which critics say they encourage defendants to plead guilty because they are either too swamped to investigate claims or incentivized not to. In Travis County, for instance, court-appointed lawyers are paid $600 for a felony case whether they secure a plea deal or get the charge dismissed.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: Why is judicial oversight of defense problematic?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're examining conflicts of interest!</p>
+                        <p>In Texas, indigent defense is largely overseen by judges. Contrary to the American Bar Association's principles of public defense, which call for defense lawyers to be independent of the judiciary, judges in most Texas counties decide which lawyers get cases, how much they are paid, and whether their motions have merit. Given that judges are elected based, in part, on the efficiency of their courts, this is an inherent conflict of interest. As one lawyer noted: "Whatever the judge wants to do, it's probably not acquit your client. The judge wants to move the docket. The judge wants to get reelected."</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 Fair Defense Act (2001)</div>
+                    <div>Texas legislation that aimed to overhaul and standardize how the state's poor received counsel. Since its passage, total spending on indigent defense has increased from $91 million in 2001 to roughly $273 million in 2018. However, Texas still ranks among states that spend the least per capita on indigent defense.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which Supreme Court case established the right to counsel for those who cannot afford a lawyer?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        Miranda v. Arizona
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">
+                        Gideon v. Wainwright
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        Kelo v. City of New London
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        Batson v. Kentucky
+                    </div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many public defender's offices exist in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        254 (one for each county)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">
+                        19 public defender's offices
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        1 statewide office
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        100 regional offices
+                    </div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(3)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(4)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Rights of Crime Victims -->
+        <div id="section4" class="page">
+            <div class="section-header">
+                <span>🛡️</span>
+                <h2>Rights of Crime Victims</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Texas: A Law and Order State</h3>
+                <p>Texas has long been known as a law and order state. The United States Constitution has a Bill of Rights that guarantees certain rights for those accused of crimes. While the Texas Constitution has a Bill of Rights with an extensive list of rights for the accused, it is one of the only states that follows that list with a specific list of rights for crime victims.</p>
+
+                <div class="highlight-box">
+                    <h4>📜 Texas Constitution, Article 1, Section 30: Rights of Crime Victims</h4>
+                    <p><strong>(a) A crime victim has the following rights:</strong></p>
+                    <ul>
+                        <li>(1) the right to be treated with fairness and with respect for the victim's dignity and privacy throughout the criminal justice process; and</li>
+                        <li>(2) the right to be reasonably protected from the accused throughout the criminal justice process.</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What rights can victims request?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning about victim protections!</p>
+                        <p><strong>On the request of a crime victim, the crime victim has the following rights:</strong></p>
+                        <ul>
+                            <li>(1) the right to notification of court proceedings;</li>
+                            <li>(2) the right to be present at all public court proceedings related to the offense, unless the victim is to testify and the court determines that the victim's testimony would be materially affected if the victim hears other testimony;</li>
+                            <li>(3) the right to confer with a representative of the prosecutor's office;</li>
+                            <li>(4) the right to restitution; and</li>
+                            <li>(5) the right to information about the conviction, sentence, imprisonment, and release of the accused.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How are victim rights enforced?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding the legal framework!</p>
+                        <p>The state, through its prosecuting attorney, has the right to enforce the rights of crime victims. The legislature may enact laws to provide that a judge, attorney for the state, peace officer, or law enforcement agency is not liable for a failure or inability to provide a right enumerated in this section. Importantly, the failure or inability of any person to provide a right or service enumerated in this section may not be used by a defendant as a ground for appeal or post-conviction writ of habeas corpus. A victim or guardian or legal representative of a victim has standing to enforce these rights but does not have standing to participate as a party in a criminal proceeding or to contest the disposition of any charge.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What makes Texas unusual regarding crime victim rights?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Texas has no constitutional protections for crime victims
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">
+                        Texas is one of the only states with a specific constitutional list of crime victim rights
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Texas allows victims to determine criminal sentences
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Texas requires victims to participate in all trials
+                    </div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(4)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(5)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Bail Reform and System Integrity -->
+        <div id="section5" class="page">
+            <div class="section-header">
+                <span>🔄</span>
+                <h2>Bail Reform and System Integrity</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>How Fair is the Texas Criminal Justice System?</h3>
+                <p>Texas has a reputation for long sentences, tough prisons (most, until recently, without air conditioning) and tough-on-crime judges. However, serious questions have been raised about the fairness of the system.</p>
+
+                <div class="quote-box">
+                    <p>"Twenty years ago, not quite one-third of the state's jail population was awaiting trial. Now the number is three-fourths. Liberty is precious to Americans, and any deprivation must be scrutinized... Many who are arrested cannot afford a bail bond and remain in jail awaiting a hearing. Though presumed innocent, they lose their jobs and families, and are more likely to re-offend. And if all this weren't bad enough, taxpayers must shoulder the cost—a staggering $1 billion per year."</p>
+                    <div class="quote-source">— Chief Justice Nathan Hecht, State of the Judiciary Address (February 2017)</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What happened in the Harris County bail case?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're examining bail reform!</p>
+                        <p>Chief Justice Hecht cited a case from The Dallas Morning News: A middle-aged woman arrested for shoplifting $105 worth of clothing for her grandchildren sat in jail almost two months because bail was set at $150,000—far more than all her worldly goods. Was she a threat to society? No. A flight risk? No. Cost to taxpayers? $3,300. In 2017, Federal District Judge Lee Rosenthal ruled Harris County's bail system unconstitutional. A proposed 2019 settlement would essentially end Harris County's practice of requiring bail for all but the most violent offenders.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💰 Bail</div>
+                    <div>A payment of money allowing the accused to be freed pending trial. If you "make bail" in a case and do not show up for your trial, you will forfeit the money you paid. People believed likely to flee or who represent a risk to the community may be denied bail entirely.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What about wrongful convictions?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning about exonerations!</p>
+                        <p>Texas has long led the nation in the number of people it <strong>exonerates</strong>, or clears of convictions, based on evidence of innocence. Since 2010, more than 200 people have been exonerated in Texas—that's more than twice as many as any other state during the same period. Concerns about wrongful convictions are often related to methods police and prosecutors use, including issues with crime labs, DNA technology, and procedures. Dallas County established the first Conviction Integrity Unit (CIU) in America in 2007, and in 2015, Harris County's CIU was responsible for 42 of the 58 conviction integrity unit exonerations nationwide.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>📊 Recent Reform Efforts</h4>
+                    <ul>
+                        <li><strong>Community Supervision:</strong> Increased emphasis on rehabilitation programs, drug treatment, and electronic monitoring</li>
+                        <li><strong>Cost Savings:</strong> Probation costs estimated at 10% of prison costs; parole supervision costs $4/day vs. $50/day for incarceration</li>
+                        <li><strong>Criminal Justice Reform Caucus:</strong> Bipartisan group created in the Texas House after the 86th legislature failed to pass major reforms</li>
+                        <li><strong>Life Without Parole:</strong> Since 2005, Texas juries can sentence defendants to life without parole for capital murder, reducing death sentences</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What percentage of Texas jail inmates are awaiting trial (not yet convicted)?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        One-quarter (25%)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        One-third (33%)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        One-half (50%)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">
+                        Three-fourths (75%)
+                    </div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which Texas county established the first Conviction Integrity Unit in America?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">
+                        Dallas County (2007)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        Harris County (2007)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        Travis County (2010)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        Bexar County (2005)
+                    </div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(5)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(6)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Civil Liberties - Fifth Amendment -->
+        <div id="section6" class="page">
+            <div class="section-header">
+                <span>🔐</span>
+                <h2>Civil Liberties: The Fifth Amendment</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Understanding Civil Liberties</h3>
+                <p>Civil liberties are guarantees and freedoms that government commits not to abridge, either by legislation or judicial interpretation, without due process. In addition to protecting personal freedoms, the Bill of Rights protects those suspected or accused of crimes from various forms of unfair or unjust treatment.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 The Fifth Amendment (Full Text)</div>
+                    <div>"No person shall be held to answer for a capital, or otherwise infamous crime, unless on a presentment or indictment of a Grand Jury, except in cases arising in the land or naval forces, or in the Militia, when in actual service in time of War or public danger; nor shall any person be subject for the same offence to be twice put in jeopardy of life or limb; nor shall be compelled in any criminal case to be a witness against himself, nor be deprived of life, liberty, or property, without due process of law; nor shall private property be taken for public use, without just compensation."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is double jeopardy?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding constitutional protections!</p>
+                        <p>The Fifth Amendment protects individuals against <strong>double jeopardy</strong>, a process that subjects a suspect to prosecution twice for the same criminal act. No one who has been acquitted (found not guilty) of a crime can be prosecuted again for that crime. However, the prohibition only applies at the same level of government—the federal government can try you for violating federal law, even if a state court finds you not guilty of the same action. For example, several Los Angeles police officers accused of beating Rodney King were acquitted in state court but some were later convicted in federal court of violating his civil rights.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What does "taking the Fifth" mean?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning about self-incrimination!</p>
+                        <p>Perhaps the most famous provision of the Fifth Amendment is its protection against <strong>self-incrimination</strong>, or the right to remain silent—often called "taking the Fifth." People have the right not to give evidence in court or to law enforcement that might constitute an admission of guilt. In a criminal trial, if someone does not testify in their own defense, the prosecution cannot use that failure as evidence of guilt. This provision became embedded in public consciousness after the Supreme Court's 1966 ruling in <strong>Miranda v. Arizona</strong>, which required suspects to be informed of their rights before interrogation.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏗️ Eminent Domain (Takings Clause)</div>
+                    <div>The final provision of the Fifth Amendment states that "private property [cannot] be taken for public use, without just compensation." This protects economic liberty—the right to obtain, use, and trade property. In the controversial 2005 case <strong>Kelo v. City of New London</strong>, the Supreme Court allowed municipalities to take homes for a pharmaceutical company's corporate campus, leading to public backlash and legal changes in many states.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which Supreme Court case required that suspects be informed of their rights before interrogation?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        Gideon v. Wainwright (1963)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">
+                        Miranda v. Arizona (1966)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        Kelo v. City of New London (2005)
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        Batson v. Kentucky (1986)
+                    </div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is double jeopardy?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        Being held without bail for an extended period
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        Being forced to testify against yourself
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 30)">
+                        Being prosecuted twice for the same criminal act at the same level of government
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        Having property taken without compensation
+                    </div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(6)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(7)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Sixth and Eighth Amendments -->
+        <div id="section7" class="page">
+            <div class="section-header">
+                <span>⚖️</span>
+                <h2>The Sixth and Eighth Amendments</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>The Sixth Amendment: Trial Rights</h3>
+                <div class="definition-box">
+                    <div class="definition-term">📜 The Sixth Amendment</div>
+                    <div>"In all criminal prosecutions, the accused shall enjoy the right to a speedy and public trial, by an impartial jury of the State and district wherein the crime shall have been committed, which district shall have been previously ascertained by law, and to be informed of the nature and cause of the accusation; to be confronted with the witnesses against him; to have compulsory process for obtaining witnesses in his favor, and to have the Assistance of Counsel for his defence."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is a plea bargain?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding plea agreements!</p>
+                        <p>Most people accused of crimes decline their right to a jury trial. This choice is typically the result of a <strong>plea bargain</strong>, an agreement between the defendant and the prosecutor in which the defendant pleads guilty to the charge(s) in question, or perhaps to less serious charges, in exchange for more lenient punishment. The evidence against the accused may be so overwhelming that conviction is certain, so avoiding a more serious penalty makes sense. Someone accused of being part of a larger criminal organization might agree to testify against others in exchange for lighter punishment.</p>
+                    </div>
+                </div>
+
+                <h3>The Eighth Amendment: Punishment</h3>
+                <div class="definition-box">
+                    <div class="definition-term">📜 The Eighth Amendment</div>
+                    <div>"Excessive bail shall not be required, nor excessive fines imposed, nor cruel and unusual punishments inflicted."</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How has the death penalty changed in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're examining capital punishment!</p>
+                        <p>In recent years, the Supreme Court has substantially narrowed the death penalty: defendants with mental disabilities may not be executed; defendants under 18 when they committed the offense may not be executed; and the death penalty has been rejected for crimes that did not result in death. The reexamination of past cases through DNA evidence has revealed dozens of wrongful executions. For example, Claude Jones was executed for murder based on 1990-era DNA testing of a single hair; better technology later found it was the victim's hair. Since 2005, Texas juries can sentence defendants to life without parole for capital murder, and the death penalty has been imposed less frequently.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>📋 Summary: Rights of the Accused</h4>
+                    <ul>
+                        <li><strong>Fifth Amendment:</strong> Grand jury indictment, protection against double jeopardy, right to remain silent, due process, just compensation for takings</li>
+                        <li><strong>Sixth Amendment:</strong> Speedy and public trial, impartial jury, right to be informed of charges, right to confront witnesses, right to counsel</li>
+                        <li><strong>Eighth Amendment:</strong> No excessive bail, no excessive fines, no cruel and unusual punishment</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a plea bargain?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">
+                        An agreement to plead guilty in exchange for more lenient punishment
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        A request to have charges dismissed
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        A motion to reduce bail
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        A jury's final verdict
+                    </div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Since when have Texas juries been able to sentence defendants to life without parole for capital murder?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        1990
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        2000
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">
+                        2005
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        2015
+                    </div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(7)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(8)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 8: The Texas Prison System -->
+        <div id="section8" class="page">
+            <div class="section-header">
+                <span>🏛️</span>
+                <h2>The Texas Prison System</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Learning Objective</h3>
+                <p>By the end of this section, you will be able to <strong>explain how the Texas jail and prison system is structured</strong>.</p>
+
+                <p>Texas has the <strong>largest number of incarcerated adults of the fifty states</strong>. Understanding this massive system is essential to understanding Texas criminal justice.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Texas Department of Criminal Justice (TDCJ)</div>
+                    <div>The agency that provides confinement, supervision, rehabilitation, and reintegration of the state's convicted felons. TDCJ is responsible for managing offenders in state prisons, state jails, and private correctional facilities, funding and certain oversight of community supervision, and supervision of offenders released on parole or mandatory supervision. TDCJ operates the <strong>largest prison system in the United States</strong>.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: The History of Texas Prisons</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning prison history!</p>
+                        <p>Before a central state penitentiary was established in Texas, local jails housed convicted felons. In 1848, the Texas Legislature passed "An Act to Establish a State Penitentiary," which created an oversight board to manage the treatment of convicts and administration of the penitentiaries. Land was acquired in Huntsville and Rusk for later facilities. The <strong>Huntsville Unit</strong>, nicknamed "Walls Unit," is the oldest Texas state prison, opened in 1849. It houses the execution chamber for the State of Texas—the most active execution chamber in the United States, with 563 executions (as of September 2019) since the death penalty was reinstated in Texas in 1982.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How is TDCJ governed?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding prison governance!</p>
+                        <p>TDCJ is run by a nine-member <strong>Texas Board of Criminal Justice (TBCJ)</strong> that is appointed by the governor. Board members serve staggered six-year terms. The executive director, hired by the board, is responsible for developing the rules and regulations that govern the state's entire prison system. The department has its headquarters in the BOT Complex in Huntsville and offices at the Price Daniel Sr. Building in downtown Austin.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🔄 Private Prisons in Texas</h4>
+                    <p>Texas was the first state to use <strong>private prisons</strong>. Proponents argued that they would increase the quality of care by improving rehabilitation and reducing recidivism rates. Opponents of privatizing incarceration argue that profit incentives may put financial gain above the public interest of safety and rehabilitation.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many members serve on the Texas Board of Criminal Justice?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        5 members
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">
+                        9 members
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        15 members
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        254 members (one per county)
+                    </div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(8)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(9)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 9: Key Terms and Glossary -->
+        <div id="section9" class="page">
+            <div class="section-header">
+                <span>📖</span>
+                <h2>Key Terms and Glossary</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Glossary: The Criminal Justice System in Texas</h3>
+                <p>Master these essential terms to complete your understanding of Texas criminal justice.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">👨‍💼 Assigned Counsel</div>
+                    <div>Private lawyers appointed by judges to provide legal representation for indigent defendants in serious criminal cases; the lawyer's fee is determined by and paid by the county.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🔐 Civil Liberties vs. Civil Rights</div>
+                    <div><strong>Civil liberties</strong> are limitations on the power of government, designed to ensure personal freedoms. <strong>Civil rights</strong> are guarantees of equal treatment by government authorities.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Criminal Law vs. Civil Law</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're distinguishing types of law!</p>
+                        <p><strong>Criminal law</strong> is the division of law concerned with actions dangerous or harmful to society as a whole, in which prosecution is pursued by the state (not by an individual). The purpose of criminal law is to (1) provide the specific definition of what constitutes a crime and (2) prescribe punishments for committing such a crime. <strong>Civil laws</strong> are rules and regulations which govern transactions and grievances between individual citizens, like contracts and personal injuries.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Due Process Clause</div>
+                    <div>Provisions of the Fifth and Fourteenth Amendments that limit government power to deny people "life, liberty, or property" on an unfair basis; a guarantee that people will be treated fairly and impartially by government officials.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card9-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: Grand Jury vs. Trial Jury</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're mastering legal vocabulary!</p>
+                        <p>A <strong>grand jury</strong> determines whether sufficient evidence is available to justify a trial; grand juries do not rule on the accused's guilt or innocence—they only issue <strong>indictments</strong> (official charges). A <strong>trial jury</strong> (or petit jury) hears the evidence at trial and determines guilt or innocence beyond a reasonable doubt. The <strong>Miranda warning</strong> is a statement by law enforcement officers informing a person arrested or subject to interrogation of their rights.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>📋 Additional Key Terms</h4>
+                    <ul>
+                        <li><strong>Exonerate:</strong> To clear of conviction based on evidence of innocence</li>
+                        <li><strong>Public Defender:</strong> A salaried lawyer funded by government or grants who represents indigents in some Texas counties</li>
+                        <li><strong>Probation:</strong> A suspension of the jail or prison sentence</li>
+                        <li><strong>Selective Incorporation:</strong> The gradual process of making Bill of Rights guarantees apply to state governments</li>
+                        <li><strong>Constitutional Law:</strong> The body of law defining the role, powers, and structure of government entities and basic rights of citizens</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does a grand jury do?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">
+                        Determines guilt or innocence at trial
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-1', 30)">
+                        Determines whether sufficient evidence exists to justify a trial
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">
+                        Sets the sentence for convicted criminals
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-1', 0)">
+                        Approves plea bargains
+                    </div>
+                    <div class="feedback-box" id="feedback-q9-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does it mean to "exonerate" someone?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">
+                        To convict them of a crime
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">
+                        To sentence them to prison
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q9-2', 30)">
+                        To clear them of conviction based on evidence of innocence
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q9-2', 0)">
+                        To release them on parole
+                    </div>
+                    <div class="feedback-box" id="feedback-q9-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(9)">Complete Section ✓</button>
+                <button class="nav-button" onclick="generateReport()">View Report 📋</button>
+            </div>
+        </div>
+
+        <!-- REPORT PAGE -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>⚖️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 13: The Criminal Justice System in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info-grid">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Achievement Level</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">--</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">--</div>
+                            </div>
+                        </div>
+
+                        <div class="section-breakdown">
+                            <h3>📊 Section Performance</h3>
+                            <table class="breakdown-table">
+                                <thead>
+                                    <tr>
+                                        <th>Section</th>
+                                        <th>Status</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1. Introduction: Theory Meets Practice</td>
+                                        <td id="status1">❌</td>
+                                        <td id="points1">0/160</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. Classifying Criminal Offenses</td>
+                                        <td id="status2">❌</td>
+                                        <td id="points2">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. Crime and Criminal Defense</td>
+                                        <td id="status3">❌</td>
+                                        <td id="points3">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. Rights of Crime Victims</td>
+                                        <td id="status4">❌</td>
+                                        <td id="points4">0/150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. Bail Reform and System Integrity</td>
+                                        <td id="status5">❌</td>
+                                        <td id="points5">0/170</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6. Civil Liberties: Fifth Amendment</td>
+                                        <td id="status6">❌</td>
+                                        <td id="points6">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7. Sixth and Eighth Amendments</td>
+                                        <td id="status7">❌</td>
+                                        <td id="points7">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8. The Texas Prison System</td>
+                                        <td id="status8">❌</td>
+                                        <td id="points8">0/150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9. Key Terms and Glossary</td>
+                                        <td id="status9">❌</td>
+                                        <td id="points9">0/150</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="instructor-note">
+                            <h4>📝 Note for Instructors</h4>
+                            <p>This report was generated by the TCC Trailblazer Trek learning system. The student completed interactive reading activities, reveal cards, and knowledge check questions covering Texas criminal justice including court procedures, crime classifications, rights of the accused and victims, bail reform, constitutional protections, and the prison system. Screenshot this report or print it for your records.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 160 },
+                2: { earned: 0, max: 165 },
+                3: { earned: 0, max: 165 },
+                4: { earned: 0, max: 150 },
+                5: { earned: 0, max: 170 },
+                6: { earned: 0, max: 165 },
+                7: { earned: 0, max: 165 },
+                8: { earned: 0, max: 150 },
+                9: { earned: 0, max: 150 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Advocate',
+            600: 'Legal Eagle',
+            800: 'Justice Expert',
+            1000: 'Reform Champion',
+            1200: 'Constitutional Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! ⚖️ Your journey through the Texas criminal justice system begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

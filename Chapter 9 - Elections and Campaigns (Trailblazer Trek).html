@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9: Elections and Campaigns - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🗳️ TCC Texas Government Trailblazer Trek: Elections & Campaigns</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🗳️ Chapter 9: Elections and Campaigns in Texas ⭐</h2>
+                <p>Master the electoral process from primary elections to the Electoral College!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🗳️</span>
+                        <div>Elections</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📢</span>
+                        <div>Campaigns</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>💰</span>
+                        <div>Finance</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through Texas elections and campaigns:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction to Elections</h3>
+                    <p>Understand the importance of elections and campaigns in Texas democracy.</p>
+                    <div class="points-indicator">🌟 140 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Types of Elections</h3>
+                    <p>Learn about primary, runoff, general, and special elections in Texas.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Primary Systems</h3>
+                    <p>Compare open, closed, and semi-open primary election systems.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Becoming a Candidate</h3>
+                    <p>Explore what it takes to run for office and become a party nominee.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Campaigning Strategies</h3>
+                    <p>Discover how campaigns operate from primaries through conventions.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Campaign Techniques</h3>
+                    <p>Learn about television, internet, and debate strategies in modern campaigns.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Electoral College</h3>
+                    <p>Understand how presidents are elected through the Electoral College system.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Campaign Finance</h3>
+                    <p>Explore fundraising, PACs, and campaign finance regulations.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction to Elections -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>Introduction to Elections and Campaigns</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Analyze the state and local election process in Texas</li>
+                        <li>Understand the difference between elections and campaigns</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Elections offer American voters the opportunity to participate in their government with little investment of time or personal effort. Yet voters should make decisions carefully. The electoral system allows them the chance to pick party nominees as well as office-holders, although not every citizen will participate in every step.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Election</div>
+                    <div>An election is the process by which we select our government officials and determine matters of policy. Elections are very important because the outcomes of government actions are almost always the result of the people who hold elected office, and elections determine which policies we will have to live by.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📢 Campaign</div>
+                    <div>Campaigns are the efforts of candidates to secure positions in the government or the efforts to get policy matters adopted. Campaigns are important because they ultimately determine who gets elected whether that person is the best person for the job or not.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why do elections matter?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ Democracy in action!</p>
+                        <p>Elections are the cornerstone of representative democracy. They provide citizens with the power to choose their leaders and hold them accountable. Without elections, there would be no peaceful transfer of power, no mechanism for citizens to express their preferences, and no way to ensure that government reflects the will of the people. As you can imagine, Texas has had some interesting elections and campaigns in the past and will continue to have them in the future.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Who oversees elections in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📋 Election administration revealed!</p>
+                        <p>The Texas Secretary of State serves as Chief Election Officer for Texas, assisting county election officials and ensuring the uniform application and interpretation of election laws throughout Texas. This office is responsible for making sure that elections run smoothly across all 254 Texas counties and that election laws are applied consistently statewide.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the primary difference between an election and a campaign?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Elections are for federal offices; campaigns are for state offices</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">An election is the selection process; a campaign is the effort to win that election</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Elections happen every two years; campaigns happen every four years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Elections are run by the federal government; campaigns are run by states</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Types of Elections -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📋</span>
+                    <h2>Types of Elections in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Differentiate between primary, general, runoff, and special elections</li>
+                        <li>Understand when each type of election is held</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Texas uses four types of elections: Primary Elections, Runoff Elections, General Elections, and Special Elections. Each serves a different purpose in the democratic process.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Primary Elections</div>
+                    <div>Primary elections are the first elections held in an electoral cycle. A primary election is used either to narrow the field of candidates for a given elective office or to determine the nominees for political parties in advance of a general election. In Texas, primary elections are held on the second Tuesday in March on even-numbered years. Winning the primary requires an absolute majority, meaning the party's nominees must have more votes than all opponents combined.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happens if no candidate wins a majority in the primary?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔄 Runoff elections explained!</p>
+                        <p>A <strong>runoff election</strong> is held when no candidate gets 50 percent plus one vote in the primary election. Primary elections often have multiple candidates vying to represent a party in the general election, and it's not uncommon that a single candidate fails to win a majority. In such a case, there is a runoff election between the top two vote-getters. This ensures that the party's nominee has strong support from party voters.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ General Elections</div>
+                    <div>A general election is an election in which voters cast ballots to select public officials at any level, including city, county, congressional district, or state. The candidate obtaining the most votes (even if not necessarily a majority of votes) wins. Texas holds its general elections on "the Tuesday next after the first Monday in the month of November" – set by national law in 1845. The earliest possible date is November 2, and the latest is November 8 on even-numbered years.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: When does Texas elect its Governor and other state officials?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📅 Midterm elections revealed!</p>
+                        <p>Texas holds its statewide elections (Governor, Lieutenant Governor, and so on) in "nonpresidential" or "midterm" years—the general elections when we are not electing a President. Major state officials, such as the attorney general, governor, lieutenant governor, and comptroller of public accounts, are elected in these nonpresidential election years. This means Texas governors are elected in years like 2022 and 2026, not 2024 or 2028.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚡ Special Elections</div>
+                    <div>Special elections are used to ratify or reject Texas constitutional amendments, fill elected offices that have become vacant between general elections, or provide approval to borrow money. In most cases, special elections occur after the incumbent dies or resigns, but they also occur when the incumbent becomes ineligible to continue in office. Special elections are called by the Texas Legislature.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ When are Texas primary elections typically held?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The first Tuesday in January</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">The second Tuesday in March on even-numbered years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The first Monday in November</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The last Tuesday in February</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is required to win a Texas primary election?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">A plurality (more votes than any other candidate)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Two-thirds of the votes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">An absolute majority (more than 50%)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Approval from party leadership</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Primary Systems -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🔄</span>
+                    <h2>Primary Election Systems</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Compare and contrast open and closed primary systems</li>
+                        <li>Understand how Texas' primary system works</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">States are responsible for running elections. Each state may opt to use a variety of primary election systems. Among the fifty states, there are several different types of primary elections.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🔒 Closed Primary</div>
+                    <div>People may vote in a party's primary only if they are registered members of that party prior to election day. Independents cannot participate. Eleven states – Delaware, Florida, Kansas, Kentucky, Maine, Maryland, District of Columbia, Nebraska, New Mexico, New York, Pennsylvania, and Wyoming – have closed primaries.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🔓 Open Primary</div>
+                    <div>An open primary is a primary election in which any registered voter can participate in the contest, regardless of party affiliation. A registered voter may vote in any party primary regardless of his or her own party affiliation. Eleven states – Alabama, Arkansas, Georgia, Hawaii, Michigan, Minnesota, Missouri, Montana, North Dakota, Vermont, and Wisconsin – have open primaries.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is "raiding" in open primary states?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎭 Strategic voting revealed!</p>
+                        <p><strong>Raiding</strong> consists of voters of one party crossing over and voting in the primary of another party, effectively allowing a party to help choose its opposition's candidate. The theory is that opposing party members vote for the weakest candidate of the opposite party in order to give their own party the advantage in the general election. This is one criticism of open primary systems.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are blanket and jungle primaries?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌴 Alternative systems explained!</p>
+                        <p>A <strong>blanket primary</strong> is a primary in which the ballot is not restricted to candidates from one party. In a <strong>nonpartisan blanket primary</strong> (nicknamed the "jungle primary"), the ballot is not restricted to candidates from one party, and the top two candidates advance to the general election regardless of party affiliation. Louisiana has famously operated under this system. California has used a nonpartisan blanket primary since 2012, and Washington state since 2008. This can result in two candidates from the same party running against each other in the general election!</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🤠 Texas' Primary System</div>
+                    <p>Texas' primaries are difficult to classify – they are somewhere between open and semi-open. Voters in Texas don't register under a party label and may choose to vote in either party's primary (but not both). Voters who cast ballots in one of the major party primary elections may only vote in the runoff election for the same party in which they cast their primary ballot. Voters who did not cast a ballot in primary elections are free to choose either party's runoff ballot, but may only vote in one party's runoff election.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "raiding" in the context of primary elections?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Stealing campaign signs from opponents</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">Voters crossing over to vote in the other party's primary to select a weaker opponent</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Taking donations from multiple candidates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Switching parties after winning a primary</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How is Texas' primary system best described?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Strictly closed – voters must register with a party</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">A blanket/jungle primary system</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">Between open and semi-open – no party registration required</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Completely open with no restrictions</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Becoming a Candidate -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏃</span>
+                    <h2>Becoming a Candidate and Nominee</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the key elements of deciding to run for office</li>
+                        <li>Understand the process of becoming a political party's nominee</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Running for office in Texas can be as easy as collecting one hundred signatures on a city election form or paying a registration fee of several thousand dollars to run for governor of a state. However, a potential candidate still needs to meet state-specific requirements covering length of residency, voting status, and age.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What factors do potential candidates consider?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🤔 The decision to run revealed!</p>
+                        <p>Potential candidates must consider competitors, family obligations, and the likelihood of drawing financial backing. Their spouse, children, work history, health, financial history, and business dealings also become part of the media's focus, along with many other personal details about the past. Candidates for office are slightly more diverse than the representatives serving in legislative and executive bodies, but the realities of elections drive many eligible and desirable candidates away from running.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👩‍👧 Women in Politics</div>
+                    <div>For women, studies have shown that family obligations rather than desire or ambition account for their choice to run for local or state office first. Women are more likely than men to wait until their children are older before entering politics, and women say they struggle to balance campaigning and their workload with parenthood. Because higher office is often attained only after service in lower office, there are repercussions to women waiting so long.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is frontloading in presidential primaries?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📅 Primary scheduling strategies!</p>
+                        <p><strong>Frontloading</strong> occurs when states schedule the majority of primaries and caucuses at the beginning of the primary season. States have been frontloading since the 1976 presidential election. In 2008, California, New York, and several other states disregarded national party guidelines and scheduled their primaries in early February. In response, Florida and Michigan moved their primaries to January. Political parties can punish states by reducing their delegate counts – in 2008, both parties reduced delegates from Michigan and Florida as punishment for holding early primaries.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the top-two primary method?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏆 Alternative nomination systems!</p>
+                        <p>A <strong>top-two primary</strong>, sometimes called a jungle primary, pits all candidates against each other, regardless of party affiliation. The two candidates with the most votes become the final candidates for the general election. This means two candidates from the same party could run against each other in the general election! In 2016, thirty-four candidates filed to run to replace Senator Barbara Boxer (D-CA). In the end, two Democratic women of color emerged to compete head-to-head, with Kamala Harris eventually winning the seat.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "frontloading" in presidential primaries?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">When candidates spend most of their money early in the campaign</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">When states schedule most primaries at the beginning of the primary season</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">When front-runner candidates receive extra media coverage</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">When delegates are allocated before voting begins</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which states have special permission to hold early presidential primaries/caucuses?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">California, Texas, and Florida</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">New York, Pennsylvania, and Ohio</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">Iowa, New Hampshire, and South Carolina</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Nevada, Michigan, and Georgia</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Campaigning Strategies -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📢</span>
+                    <h2>Campaigning Strategies</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the key elements and phases of political campaigns</li>
+                        <li>Understand how primary and general election campaigns differ</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Although candidates have the same goal for primary and general elections, which is to win, these elections are very different from each other and require a very different set of strategies. Primary elections are more difficult for the voter because there are more candidates vying to become their party's nominee, and party identification is not a useful cue because each party has many candidates rather than just one.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why is name recognition so important?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 👤 The power of recognition!</p>
+                        <p>Name recognition is extremely important. Voters are unlikely to cast a vote for an unknown. Some candidates, like Hillary Clinton and Jeb Bush, have held or are related to someone who held national office, but most candidates will be governors, senators, or local politicians who are less well-known nationally. In 2016, both eventual nominees had massive name recognition – Clinton from being First Lady, Senator, and Secretary of State; Trump from being a real estate tycoon and reality TV star. While well-known candidates have longer records that can be attacked, they also have an easier time raising campaign funds.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📺 Getting Out the Vote</div>
+                    <div>Campaign managers know that to win an election, they must do two things: reach voters with their candidate's information and get voters to show up at the polls. To accomplish these goals, candidates and their campaigns will often try to target those most likely to vote. Unfortunately, these voters change from election to election and sometimes from year to year.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happens during convention season?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎪 Party conventions explained!</p>
+                        <p>Once it is clear who the parties' nominees will be, campaigns enter a quiet period to raise funds. Party conventions are typically held between June and September. Conventions normally last four to five days, with days devoted to platform discussion and nights reserved for speeches. Members of the candidate's family speak during the first few days, with the vice-presidential nominee speaking on the next-to-last night and the presidential candidate on the final night. The party with the incumbent president holds the later convention.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Party Platform</div>
+                    <div>Delegates bring state-level concerns and issues to the national convention for discussion. Issues important to the party and party delegates are called <strong>planks</strong>, and they make up the party <strong>platform</strong>. Just as wood planks make a platform, issues important to the party and party delegates make up the party platform. Candidates will try to keep to the platform when campaigning.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the "convention bump"?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📈 Post-convention effects!</p>
+                        <p>Conventions are covered by most news networks and cable programs, helping the party nominee get positive attention while surrounded by loyal delegates, family members, friends, and colleagues. For presidential candidates, this positivity often leads to a <strong>bump in popularity</strong> – a small increase in favorability. If a candidate does not get the bump, the campaign manager has to evaluate whether the candidate is connecting well with voters. In 2004, John Kerry spent the Democratic convention talking about Iraq and domestic spending, yet Gallup recorded no convention bump afterward.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is a party "platform"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The stage where candidates give speeches</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The financial support structure for campaigns</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">The set of issues important to the party and its delegates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">The voting system used at conventions</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which party typically holds its national convention later in presidential election years?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">The party that lost the previous election</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">The party with the incumbent president</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">The party with more registered voters</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">It alternates each election cycle</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Campaign Techniques -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📺</span>
+                    <h2>Campaign Techniques and Media</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand how television and internet have transformed campaigning</li>
+                        <li>Analyze the role of debates in modern elections</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Campaigns have always been expensive and have sometimes been negative and nasty. The 1828 "Coffin Handbill" that John Quincy Adams ran listed the names and circumstances of executions Andrew Jackson had ordered. This was in addition to gossip and verbal attacks against Jackson's wife, who had accidentally committed bigamy.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How did television change campaigning?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📺 The TV revolution!</p>
+                        <p>Once television became a fixture in homes, campaign advertising moved to the airwaves. Television allowed candidates to connect with voters through video, appealing directly and emotionally. While Adlai Stevenson and Dwight D. Eisenhower were the first to use television in their 1952 and 1956 campaigns, John Kennedy's campaign was the first to use images to show voters that the candidate was the choice for everyone. In reaction to negative ads, the Bipartisan Campaign Reform Act of 2002 required candidates to include a recorded statement within the ad stating they approved the message.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎭 Soft News / Infotainment</div>
+                    <div>Candidates frequently use interviews on late night television to get messages out. Soft news, or infotainment, is a type of news that combines entertainment and information. Shows like The Daily Show and Last Week Tonight make news humorous while helping viewers become more educated. In 2008, Huckabee, Obama, and McCain visited programs to target informed voters in the under-45 age bracket, showing their funny sides while discussing policy preferences.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How has the internet transformed campaigns?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💻 Digital campaigning!</p>
+                        <p>The Internet has given candidates a new platform and a new way to target voters. In the 2000 election, campaigns created websites to distribute information and used search engine results to target voters with ads. In 2004, Democratic candidate Howard Dean used the Internet to reach potential donors – his campaign posted footage of the candidate eating a turkey sandwich, which brought over $200,000 in donations and showed his commitment to being a down-to-earth candidate. Candidates also use social media like Facebook, Twitter, and YouTube to interact with supporters and reach younger voters.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Why are debates so important?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🎤 The power of debates!</p>
+                        <p>In 1960, the first televised presidential debate showed that answering questions well is not the only way to impress voters. Senator Kennedy and Vice President Nixon prepared differently – Kennedy worked on delivery, accent, tone, facial displays, and body movements. Nixon was ill and appeared sweaty and gaunt, choosing not to wear makeup. Interestingly, while people who watched the debate thought Kennedy won, those listening on radio saw it as more of a draw. This demonstrated that visual presentation matters as much as content in televised debates.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "soft news" or "infotainment"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">News that avoids controversial topics</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 25)">News that combines entertainment and information</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">News presented in print rather than broadcast</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">News that is biased toward one party</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What lesson did the 1960 Kennedy-Nixon debate teach about television?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Policy details matter most to viewers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Radio audiences are more perceptive than TV audiences</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 25)">Visual appearance and presentation are as important as content</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Debates have little impact on election outcomes</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: The Electoral College -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗳️</span>
+                    <h2>The Electoral College</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand how the Electoral College works</li>
+                        <li>Analyze Texas' role in presidential elections</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Once the voters have cast ballots in November and all the election season madness comes to a close, races for governors and local representatives may be over, but the constitutional process of electing a president has only begun.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Electoral College</div>
+                    <div>The Electoral College is the constitutionally created group of individuals, chosen by the states, with the responsibility of formally selecting the next U.S. president. The number of Electoral College votes granted to each state equals the total number of representatives and senators that state has in Congress. For the 2016 and 2020 presidential elections, there are a total of 538 electors, and a majority of 270 electoral votes is required to win the presidency.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Why is Texas so important in presidential elections?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⭐ The Lone Star's electoral power!</p>
+                        <p>Texas carries the second largest share of electors after California. Currently, Texas has 38 electoral votes and has seen the number of electors increase steadily for decades. Texas is considered a "red state" in that it tends to vote for the Republican candidate. In terms of the role of Texas in presidential elections, the state adds considerable weight to any candidate who can secure the state's electors. The electors travel to their state capitol and cast their votes in mid-December, often by signing a certificate recording their vote.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏆 Winner-Take-All System</div>
+                    <div>In forty-eight states and the District of Columbia, the candidate who wins the most votes in November receives all the state's electoral votes, and only the electors from that party will vote. This is called the winner-take-all system. Only Nebraska and Maine use a different method, the district system, where electoral votes can be divided based on congressional district results.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are faithless electors?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎭 Electoral surprises!</p>
+                        <p>Occasionally there are examples of <strong>faithless electors</strong> – electors who vote differently from their state's voters. In 2000, one DC elector cast a blank ballot to contest the District's unequal representation. In the 2016 election, there were seven faithless electors: four in Washington, two in Texas, and one in Hawaii. The Republican and Democratic parties choose faithful party members who have worked hard for their candidates, which decreases the chance they will vote differently from the state's voters. Electors cannot be elected officials nor can they work for the federal government.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Midterm Elections & The Coattail Effect</div>
+                    <p>During a presidential election year, members of Congress often experience the <strong>coattail effect</strong>, which gives members of a popular presidential candidate's party an increase in popularity and raises their odds of retaining office. During a midterm election year, however, the president's party often is blamed for the president's actions or inaction. Representatives and senators from the sitting president's party are more likely to lose their seats during a midterm election year. The 2010 election returned control of the House to Republicans after two years of a Democratic presidency.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many electoral votes does Texas currently have?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">29</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">55</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 25)">38</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">40</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "coattail effect"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">When candidates copy each other's campaign strategies</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 25)">When a popular presidential candidate helps same-party candidates win their elections</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">When presidents endorse congressional candidates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">When voters always vote for the incumbent</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Campaign Finance -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💰</span>
+                    <h2>Campaign Finance Laws</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the relevant fundraising and campaign finance laws</li>
+                        <li>Understand the role of PACs and Super PACs in elections</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Political campaigns are efforts of the candidates to win support of the voters. The goal of the campaign is to attain sufficient support to win the primary election in March and the general election in November. Campaigns involve attempts to reach potential voters through print and electronic media, mail, door-to-door campaigning, speeches, and telephone solicitation. The cost is enormous, and money is critical for candidate success in Texas.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">💵 EMILY's List Principle</div>
+                    <div>The more money a candidate raises, the more he or she will continue to raise. EMILY's List, a political action group, was founded on this principle; its name is an acronym for "Early Money Is Like Yeast" (it makes the dough rise). This group helps progressive women candidates gain early campaign contributions, which in turn helps them get further donations. Many potential candidates decline to run if their opponent has a lot of money in a campaign war chest.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the history of campaign finance regulation?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📜 A century of reform!</p>
+                        <p>The history of campaign finance monitoring has its roots in a federal law written in 1867, which prohibited government employees from asking Naval Yard employees for donations. After Theodore Roosevelt witnessed excessive campaign spending, the Tillman Act (1907) prohibited corporations from contributing to federal candidates. In 1971, the Federal Election Campaign Act (FECA) outlined how candidates would report contributions and expenditures. A 1974 amendment created the Federal Election Commission (FEC), which operates independently and enforces election laws.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Political Action Committees (PACs)</div>
+                    <div>PACs are organizations created to raise and spend money to influence politics and contribute to candidates' campaigns. In the 2014 congressional elections, PACs raised over $1.7 billion to help candidates and political parties. The FECA created rules governing the way organizations and companies could contribute to federal campaigns, which allowed for the creation of PACs.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are Super PACs?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💰 Unlimited spending unleashed!</p>
+                        <p>In 2010, the Supreme Court's ruling on Citizens United v. Federal Election Commission led to the removal of spending limits on corporations funding independent political broadcasts. This allowed corporations to place unlimited money into <strong>Super PACs</strong>, or Independent Expenditure-Only Committees. These organizations cannot contribute directly to a candidate, nor can they strategize with a candidate's campaign. However, they can raise and spend as much money as they please to support or attack a candidate. In 2012, "Restore Our Future" raised $153 million supporting conservative candidates, while "Priorities USA Action" raised $79 million supporting liberal candidates.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Current Contribution Limits</div>
+                    <p>Several limits on campaign contributions remain in place: Individuals may contribute up to $2,700 per candidate per election (adjusted for inflation). Individuals may also give $5,000 to political action committees and $33,400 to a national party committee. PACs that contribute to more than one candidate are permitted to contribute $5,000 per candidate per election. These limits are intended to create a more equal playing field so that candidates must raise funds from a broad pool of contributors.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does EMILY's List stand for?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Elected Members In Legislative Yearbooks</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 25)">Early Money Is Like Yeast</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Every Member In Legislature Yearns (for Votes)</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Empowering Members In Local Youth Services</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What did Citizens United v. FEC allow?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Direct corporate contributions to candidates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Foreign donations to U.S. campaigns</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 25)">Unlimited corporate spending on independent political broadcasts through Super PACs</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">Removal of all campaign finance limits</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Blanket primary:</span> A primary in which the ballot is not restricted to candidates from one party.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Campaign:</span> The efforts of candidates to secure positions in government or to get policy matters adopted.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Closed primary:</span> A primary election in which only registered members of a particular political party can vote.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Coattail effect:</span> The result when a popular presidential candidate helps candidates from his or her party win their own elections.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Delegates:</span> Party members chosen to represent a particular candidate at the party's state- or national-level nominating convention.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Electoral College:</span> The constitutionally created group of individuals, chosen by the states, with the responsibility of formally selecting the next U.S. president.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">General election:</span> The election in which voters cast ballots to select public officials.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Gerrymandering:</span> The drawing of district lines to guarantee a desired electoral outcome.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Incumbency advantage:</span> The advantage held by officeholders that allows them to often win reelection.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Midterm elections:</span> Congressional elections that occur in even-numbered years between presidential election years.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Open primary:</span> A primary election in which any registered voter can participate regardless of party affiliation.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Platform:</span> The set of issues important to the political party and the party delegates.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Political Action Committees (PACs):</span> Organizations created to raise money for political campaigns and spend money to influence policy and politics.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Raiding:</span> Occurs when voters of one party cross over and vote in the primary of another party.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Runoff primary:</span> A second primary election held between the top two candidates if no one received a majority in the first primary.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Special elections:</span> Elections not held on a regularly scheduled basis, called to ratify amendments, fill vacancies, or approve borrowing.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Straight-ticket voting:</span> The practice of voting only for candidates from the same party.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Super PACs:</span> Independent Expenditure-Only Committees that can fundraise and spend without limits to support or attack candidates but cannot contribute directly to campaigns.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Winner-take-all system:</span> All electoral votes for a state are given to the candidate who wins the most votes in that state.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🗳️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 9: Elections and Campaigns in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction to Elections</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/140</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Types of Elections</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Primary Systems</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Becoming a Candidate</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Campaigning Strategies</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Campaign Techniques</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>The Electoral College</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Campaign Finance</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/150</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 9: Elections and Campaigns in Texas. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 140 },
+                2: { earned: 0, max: 155 },
+                3: { earned: 0, max: 155 },
+                4: { earned: 0, max: 160 },
+                5: { earned: 0, max: 165 },
+                6: { earned: 0, max: 155 },
+                7: { earned: 0, max: 160 },
+                8: { earned: 0, max: 150 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Citizen',
+            600: 'Campaign Volunteer',
+            800: 'Political Strategist',
+            1000: 'Election Expert',
+            1200: 'Democracy Champion'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🗳️ Your journey through Texas elections and campaigns begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

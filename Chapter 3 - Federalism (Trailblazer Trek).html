@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Federalism - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin: 1.5rem auto;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .start-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        input[type="text"] {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-blue);
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            margin-top: 1rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .section-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .report-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .report-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .definition-box {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .feedback {
+            display: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        .complete-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 2rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .complete-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .metric-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .grade-display {
+            background: var(--success);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-box {
+            background: var(--highlight-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        .comparison-table td:first-child {
+            background: var(--highlight-blue);
+            font-weight: bold;
+        }
+
+        .figure-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .era-box {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .era-title {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚖️ Chapter 3: Federalism - Trailblazer Trek</h1>
+        <div class="score-display">
+            Score: <span id="totalPoints">0</span> | Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <div id="pointsPopup"></div>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>⚖️ Federalism: Division of Powers</h2>
+                <p>Understanding the Balance Between Federal and State Authority</p>
+                <div class="hero-emoji">🏛️</div>
+            </div>
+
+            <div class="start-section">
+                <h3>🎯 Welcome, Future Federalism Expert!</h3>
+                <p>In this interactive journey, you'll explore how power is divided between the federal government and the states in the United States. Discover the constitutional foundations of federalism, learn about the distribution of governmental powers, and trace the evolution of federal-state relationships from the founding era to today. Understanding federalism is crucial for grasping how American government actually works!</p>
+                
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="Enter your name">
+                    <button class="btn-primary" onclick="startAdventure()">Start Your Federalism Journey!</button>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>📊 Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar">0%</div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 2rem; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e0e0e0; color: var(--primary-blue); font-size: 1.5rem;">📚 Chapter Sections</h3>
+            <div class="sections-grid">
+                <div class="section-card" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Federalism Defined and Contrasted</h3>
+                    <p>Learn what federalism is, how it differs from other systems, and identify its key characteristics.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Federalism and the Constitution</h3>
+                    <p>Explore the constitutional provisions that establish and regulate federal-state relationships.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Distribution of Finances</h3>
+                    <p>Understand how federal, state, and local governments raise and spend public money.</p>
+                    <div class="points-indicator">🏆 190 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Evolution of Federalism: National Power vs States</h3>
+                    <p>Trace key Supreme Court cases and conflicts that shaped federal-state power dynamics.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+
+                <div class="section-card" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>From Dual to New Federalism</h3>
+                    <p>Examine how federalism evolved through different eras from the 1870s to today.</p>
+                    <div class="points-indicator">🏆 195 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Final Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Federalism Defined and Contrasted -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Section 1: Federalism Defined and Contrasted</h2>
+                </div>
+
+                <p>Modern democracies divide governmental power in two general ways. The first shares power among three branches of government—the legislature, executive, and judiciary. The second, federalism, apportions power between two levels of government: national and subnational. Let's explore how federalism works!</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Federalism</div>
+                    <p>An institutional arrangement that creates two relatively autonomous levels of government, each possessing the capacity to act directly on behalf of the people with the authority granted to it by the national constitution.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 35)">
+                    <div class="card-prompt">🔍 Click to discover: Five Key Characteristics of Federal Systems</div>
+                    <div class="card-content">
+                        <p><strong>All federal systems share these structural characteristics:</strong></p>
+                        <ol>
+                            <li><strong>Two Levels of Government:</strong> Both elected by the people, each assigned different functions</li>
+                            <li><strong>Written Constitution:</strong> Cannot be changed without substantial consent of subnational governments</li>
+                            <li><strong>Formal Allocation of Powers:</strong> Legislative, judicial, and executive authority formally divided to ensure autonomy</li>
+                            <li><strong>National Courts Resolve Disputes:</strong> Federal courts adjudicate conflicts between levels of government</li>
+                            <li><strong>Regional Representation:</strong> Subnational governments represented in the upper house (like the U.S. Senate)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>In the United States:</strong>
+                    <ul>
+                        <li>"Federal government" = National level government</li>
+                        <li>"States" = Subnational level governments</li>
+                        <li>Each level can act directly on behalf of the people</li>
+                        <li>Both levels must cooperate to achieve objectives</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🤔 Click to compare: Federal vs Unitary vs Confederation Systems</div>
+                    <div class="card-content">
+                        <table class="comparison-table">
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Federal System</th>
+                                <th>Unitary System</th>
+                                <th>Confederation</th>
+                            </tr>
+                            <tr>
+                                <td>Power Distribution</td>
+                                <td>Shared between national and state</td>
+                                <td>Concentrated at national level</td>
+                                <td>Concentrated at state level</td>
+                            </tr>
+                            <tr>
+                                <td>Sovereignty</td>
+                                <td>Dual sovereignty</td>
+                                <td>National sovereignty</td>
+                                <td>State sovereignty</td>
+                            </tr>
+                            <tr>
+                                <td>Examples</td>
+                                <td>USA, Germany, Mexico</td>
+                                <td>UK, France, Japan</td>
+                                <td>USA under Articles of Confederation</td>
+                            </tr>
+                            <tr>
+                                <td>Main Advantage</td>
+                                <td>Balances unity with diversity</td>
+                                <td>Efficiency and uniformity</td>
+                                <td>Maximum local autonomy</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-3', 35)">
+                    <div class="card-prompt">📊 Click to explore: Division of Responsibilities in U.S. Federalism</div>
+                    <div class="card-content">
+                        <p><strong>Federal Government Handles:</strong></p>
+                        <ul>
+                            <li>National defense and foreign policy</li>
+                            <li>Interstate and foreign commerce</li>
+                            <li>Currency and monetary policy</li>
+                            <li>Immigration and naturalization</li>
+                            <li>Postal services</li>
+                        </ul>
+                        <p><strong>State Governments Handle:</strong></p>
+                        <ul>
+                            <li>Education</li>
+                            <li>Public health and safety</li>
+                            <li>Local government creation</li>
+                            <li>Intrastate commerce</li>
+                            <li>Professional licensing</li>
+                        </ul>
+                        <p><strong>Key Point:</strong> Success often depends on cooperation between levels!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What is the defining characteristic of a federal system?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">All power is held by the national government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">Two autonomous levels of government each acting on behalf of the people</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">States have complete independence</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">There is no written constitution</div>
+                    <div class="feedback" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">How many amendments have been added to the U.S. Constitution since its adoption?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">10</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">17</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 30)">27</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">50</div>
+                    <div class="feedback" id="feedback-q1-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What was the main problem with the Articles of Confederation?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">Too much federal power</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-3', 35)">National government was too weak to address challenges</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">No state representation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-3', 0)">Too many amendments</div>
+                    <div class="feedback" id="feedback-q1-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(1)">✅ Complete Section 1</button>
+            </div>
+        </div>
+
+        <!-- Section 2: Federalism and the Constitution -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📜</span>
+                    <h2>Section 2: Federalism and the Constitution</h2>
+                </div>
+
+                <p>The Constitution contains several provisions that direct the functioning of U.S. federalism. Some delineate the scope of national and state power, while others restrict it. Let's explore these crucial constitutional foundations!</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">Enumerated Powers</div>
+                    <p>Powers specifically granted to Congress in Article I, Section 8 of the Constitution. These define the jurisdictional boundaries within which the federal government has authority.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">📋 Click to explore: Key Enumerated Powers of Congress</div>
+                    <div class="card-content">
+                        <p><strong>To Provide for General Welfare:</strong></p>
+                        <ul>
+                            <li>Tax and borrow money</li>
+                            <li>Regulate interstate and foreign commerce</li>
+                            <li>Coin money and regulate its value</li>
+                            <li>Establish post offices and postal roads</li>
+                            <li>Protect property rights (patents and copyrights)</li>
+                        </ul>
+                        <p><strong>To Provide for Common Defense:</strong></p>
+                        <ul>
+                            <li>Raise and support armies</li>
+                            <li>Provide and maintain a navy</li>
+                            <li>Declare war</li>
+                            <li>Call forth the militia</li>
+                        </ul>
+                        <p><strong>The Elastic Clause:</strong> "To make all Laws which shall be necessary and proper" for carrying out these powers!</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Reserved Powers (10th Amendment)</div>
+                    <p>"The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people."</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔄 Click to discover: Concurrent Powers</div>
+                    <div class="card-content">
+                        <p><strong>Powers shared by both federal and state governments:</strong></p>
+                        <ul>
+                            <li>Taxing</li>
+                            <li>Borrowing money</li>
+                            <li>Making and enforcing laws</li>
+                            <li>Establishing court systems</li>
+                            <li>Providing for public welfare</li>
+                        </ul>
+                        <p><strong>Important Note:</strong> Since the 1940s, the federal government has also engaged in areas traditionally reserved to states, such as education, health, and welfare, creating overlapping responsibilities.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Constitutional Restrictions on Government Power:</strong>
+                    <p><strong>Federal Government Cannot:</strong></p>
+                    <ul>
+                        <li>Suspend writ of habeas corpus (except in extreme cases)</li>
+                        <li>Pass bills of attainder (declaring guilt without trial)</li>
+                        <li>Enact ex post facto laws (retroactive criminalization)</li>
+                        <li>Violate Bill of Rights protections</li>
+                    </ul>
+                    <p><strong>State Governments Cannot:</strong></p>
+                    <ul>
+                        <li>Enter treaties with foreign countries</li>
+                        <li>Coin money</li>
+                        <li>Tax imports and exports</li>
+                        <li>Violate due process or equal protection (14th Amendment)</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 35)">
+                    <div class="card-prompt">⚖️ Click to learn: The Supremacy Clause and Its Impact</div>
+                    <div class="card-content">
+                        <p><strong>Article VI - The Supremacy Clause:</strong></p>
+                        <p>"This Constitution, and the Laws of the United States...shall be the supreme Law of the Land"</p>
+                        <p><strong>What This Means:</strong></p>
+                        <ul>
+                            <li>Federal law prevails when it conflicts with state law</li>
+                            <li>BUT only if federal law is within constitutional authority</li>
+                            <li>All government officials must uphold the Constitution</li>
+                        </ul>
+                        <p><strong>Modern Example:</strong> Marijuana legalization - Despite federal prohibition, many states have legalized medical or recreational marijuana, creating ongoing tension about enforcement priorities.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-4', 30)">
+                    <div class="card-prompt">🤝 Click to explore: State-to-State Relations</div>
+                    <div class="card-content">
+                        <p><strong>Full Faith and Credit Clause (Article IV, Section 1):</strong></p>
+                        <ul>
+                            <li>States must accept court decisions and public acts of other states</li>
+                            <li>Driver's licenses, adoption certificates valid across states</li>
+                            <li>Led to marriage equality debates and eventual recognition</li>
+                        </ul>
+                        <p><strong>Privileges and Immunities Clause:</strong></p>
+                        <ul>
+                            <li>States cannot discriminate against out-of-state citizens</li>
+                            <li>Guarantees access to courts, property rights, travel</li>
+                            <li>BUT: Can charge different tuition, require residency for voting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Where are Congress's enumerated powers found in the Constitution?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 35)">Article I, Section 8</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Article II, Section 1</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The Bill of Rights</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">The 14th Amendment</div>
+                    <div class="feedback" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What does the 10th Amendment establish?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Federal supremacy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">Reserved powers for states</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Presidential authority</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Judicial review</div>
+                    <div class="feedback" id="feedback-q2-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Which clause allows Congress to expand its authority beyond enumerated powers?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">Commerce clause only</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">Supremacy clause</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-3', 30)">Necessary and proper (elastic) clause</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-3', 0)">Full faith and credit clause</div>
+                    <div class="feedback" id="feedback-q2-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(2)">✅ Complete Section 2</button>
+            </div>
+        </div>
+
+        <!-- Section 3: Distribution of Finances -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💰</span>
+                    <h2>Section 3: Distribution of Finances</h2>
+                </div>
+
+                <p>Federal, state, and local governments depend on different sources of revenue to finance their operations. Understanding how money flows through our federal system is crucial for understanding how government works!</p>
+
+                <div class="info-box">
+                    <strong>Total Government Revenue (2014):</strong>
+                    <ul>
+                        <li><strong>Federal Government:</strong> $3.2 trillion</li>
+                        <li><strong>State Governments:</strong> $1.7 trillion</li>
+                        <li><strong>Local Governments:</strong> $1.2 trillion</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">📊 Click to explore: Federal Revenue Sources</div>
+                    <div class="card-content">
+                        <p><strong>Where Federal Money Comes From (2013):</strong></p>
+                        <ul>
+                            <li><strong>47% - Individual Income Taxes:</strong> Progressive tax on personal earnings</li>
+                            <li><strong>34% - Payroll Taxes:</strong> Social Security and Medicare taxes</li>
+                            <li><strong>10% - Corporate Income Taxes:</strong> Tax on business profits</li>
+                            <li><strong>9% - Other:</strong> Customs duties, estate taxes, fees</li>
+                        </ul>
+                        <p><strong>Key Development:</strong> The 16th Amendment (1913) authorized income taxes without apportionment by population, dramatically increasing federal revenue capacity!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🏛️ Click to discover: State Revenue Sources</div>
+                    <div class="card-content">
+                        <p><strong>Where State Money Comes From:</strong></p>
+                        <ul>
+                            <li><strong>50% - Taxes:</strong>
+                                <ul>
+                                    <li>Sales tax (47% of tax revenue)</li>
+                                    <li>Individual income tax (35% of tax revenue)</li>
+                                </ul>
+                            </li>
+                            <li><strong>30% - Federal Grants:</strong> Transfers from federal government</li>
+                            <li><strong>11% - Service Charges:</strong> Tuition, hospital fees, etc.</li>
+                            <li><strong>9% - Other:</strong> Licenses, fees, investments</li>
+                        </ul>
+                        <p><strong>Note:</strong> Seven states have NO income tax: Alaska, Florida, Nevada, South Dakota, Texas, Washington, and Wyoming!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 30)">
+                    <div class="card-prompt">🏢 Click to learn: Local Government Finances</div>
+                    <div class="card-content">
+                        <p><strong>Local Revenue Sources:</strong></p>
+                        <ul>
+                            <li><strong>Property Tax:</strong> 74% of local tax revenue - levy on real estate</li>
+                            <li><strong>Grants:</strong> 37% of total revenue (87% from states, 13% federal)</li>
+                            <li><strong>Service Charges:</strong> Water, sewage, trash, parking, etc.</li>
+                        </ul>
+                        <p><strong>Important:</strong> During economic downturns like the 2007-2009 Great Recession, federal grants increase to help state and local governments maintain services when their revenues decline.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">Intergovernmental Grants</div>
+                    <p>Transfers of federal money to state and local governments that don't have to be repaid. Designed to support recipient governments and encourage them to pursue federal policy objectives.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-4', 35)">
+                    <div class="card-prompt">💵 Click to see: How Governments Spend Money</div>
+                    <div class="card-content">
+                        <p><strong>Federal Spending (2014):</strong></p>
+                        <ul>
+                            <li>24% - Social Security</li>
+                            <li>24% - Medicare, Medicaid, health programs</li>
+                            <li>18% - Defense</li>
+                            <li>11% - Safety net programs</li>
+                            <li>7% - Interest on debt</li>
+                        </ul>
+                        <p><strong>State & Local Spending Focus:</strong></p>
+                        <ul>
+                            <li>Education (largest category)</li>
+                            <li>Public welfare and health</li>
+                            <li>Transportation and highways</li>
+                            <li>Police and fire protection</li>
+                            <li>Corrections and judicial services</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What is the largest source of federal government revenue?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">Individual income taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Corporate taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Sales taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Property taxes</div>
+                    <div class="feedback" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What percentage of state revenue comes from federal grants?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">10%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">20%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">30%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">50%</div>
+                    <div class="feedback" id="feedback-q3-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What is the primary source of tax revenue for local governments?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">Income tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">Sales tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-3', 30)">Property tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-3', 0)">Payroll tax</div>
+                    <div class="feedback" id="feedback-q3-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(3)">✅ Complete Section 3</button>
+            </div>
+        </div>
+
+        <!-- Section 4: Evolution of Federalism - National Power vs States -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚖️</span>
+                    <h2>Section 4: Evolution of Federalism - National Power vs States</h2>
+                </div>
+
+                <p>The balance between national and state power has been contested throughout American history. Key Supreme Court decisions and political conflicts have shaped the federal system we know today.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">National Supremacy</div>
+                    <p>The principle that legitimate national laws trump conflicting state laws. Established in McCulloch v. Maryland (1819), this doctrine ensures federal law prevails when acting within constitutional authority.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">⚡ Click to explore: McCulloch v. Maryland (1819) - The Foundation Case</div>
+                    <div class="card-content">
+                        <p><strong>The Issue:</strong> Could Congress create a national bank? Could Maryland tax it?</p>
+                        <p><strong>Chief Justice Marshall's Ruling:</strong></p>
+                        <ul>
+                            <li><strong>Yes to the Bank:</strong> Under the "necessary and proper" clause, Congress can establish "all means which are appropriate" to fulfill constitutional responsibilities</li>
+                            <li><strong>No to the Tax:</strong> "The power to tax is the power to destroy" - states cannot interfere with legitimate federal operations</li>
+                        </ul>
+                        <p><strong>Impact:</strong></p>
+                        <ul>
+                            <li>Established doctrine of <strong>implied powers</strong></li>
+                            <li>Affirmed <strong>national supremacy</strong></li>
+                            <li>Vastly expanded federal authority</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 30)">
+                    <div class="card-prompt">🚢 Click to learn: Gibbons v. Ogden (1824) - Commerce Power</div>
+                    <div class="card-content">
+                        <p><strong>The Steamboat Case:</strong></p>
+                        <ul>
+                            <li>New York gave exclusive steamboat license to Ogden</li>
+                            <li>Gibbons operated under federal coastal license</li>
+                            <li>Conflict: Who controls interstate commerce?</li>
+                        </ul>
+                        <p><strong>Marshall's Ruling:</strong></p>
+                        <ul>
+                            <li>Commerce = "commercial intercourse" broadly defined</li>
+                            <li>Federal law trumps state monopolies</li>
+                            <li>Congress can regulate navigation between states</li>
+                        </ul>
+                        <p><strong>Result:</strong> Strengthened federal control over economic activity crossing state lines!</p>
+                    </div>
+                </div>
+
+                <div class="era-box">
+                    <div class="era-title">The Nullification Crisis (1830s)</div>
+                    <p><strong>Background:</strong> South Carolina declared federal tariffs null and void</p>
+                    <p><strong>Key Players:</strong> President Andrew Jackson vs. Vice President John Calhoun</p>
+                    <p><strong>Resolution:</strong> Force Bill authorized military action; Compromise Tariff avoided conflict</p>
+                    <p><strong>Significance:</strong> Federal authority upheld, but tensions remained</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">⚔️ Click to discover: The Civil War's Constitutional Impact</div>
+                    <div class="card-content">
+                        <p><strong>Before the War:</strong></p>
+                        <ul>
+                            <li>Dred Scott v. Sandford (1857) - Federal government couldn't ban slavery in territories</li>
+                            <li>States claimed right to secede</li>
+                        </ul>
+                        <p><strong>The War's Constitutional Legacy:</strong></p>
+                        <ul>
+                            <li>Ended the right of secession permanently</li>
+                            <li>Established federal supremacy definitively</li>
+                            <li>14th Amendment - Applied Bill of Rights to states</li>
+                            <li>15th Amendment - Federal protection of voting rights</li>
+                        </ul>
+                        <p><strong>Result:</strong> Fundamental shift of power toward national government!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-4', 30)">
+                    <div class="card-prompt">📜 Click to explore: Key Principles Established</div>
+                    <div class="card-content">
+                        <p><strong>By 1870, these principles were established:</strong></p>
+                        <ol>
+                            <li><strong>Implied Powers:</strong> Federal government can do more than explicitly stated</li>
+                            <li><strong>Broad Commerce Power:</strong> Interstate commerce interpreted expansively</li>
+                            <li><strong>National Supremacy:</strong> Federal law prevails over state law</li>
+                            <li><strong>No Secession:</strong> States cannot leave the Union</li>
+                            <li><strong>Federal Rights Protection:</strong> National government protects individual rights against states</li>
+                        </ol>
+                        <p>These principles form the foundation of modern American federalism!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What doctrine did McCulloch v. Maryland establish?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">States' rights</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 35)">Implied powers and national supremacy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Judicial review</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Executive privilege</div>
+                    <div class="feedback" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What did the Civil War definitively settle about federalism?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">States can nullify federal law</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">The federal government has limited powers</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">States cannot secede from the Union</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">State law supersedes federal law</div>
+                    <div class="feedback" id="feedback-q4-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">According to Chief Justice Marshall, why couldn't Maryland tax the national bank?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">Banks are exempt from all taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-3', 30)">The power to tax is the power to destroy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">Maryland didn't have taxing power</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">The Constitution prohibits all state taxes</div>
+                    <div class="feedback" id="feedback-q4-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(4)">✅ Complete Section 4</button>
+            </div>
+        </div>
+
+        <!-- Section 5: From Dual to New Federalism -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🔄</span>
+                    <h2>Section 5: From Dual to New Federalism</h2>
+                </div>
+
+                <p>American federalism has evolved through distinct phases, each reflecting different ideas about the proper relationship between federal and state governments. Let's trace this evolution from the 1870s to today!</p>
+
+                <div class="era-box">
+                    <div class="era-title">Dual Federalism (1870s-1930s) - "Layer Cake"</div>
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Federal and state governments operate in separate spheres</li>
+                        <li>Like layers of a cake - clearly defined, don't mix</li>
+                        <li>Limited federal regulation of business</li>
+                        <li>Courts blocked expansion of government power</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🎂 Click to explore: Dual Federalism in Action</div>
+                    <div class="card-content">
+                        <p><strong>Key Court Cases Limiting Government:</strong></p>
+                        <ul>
+                            <li><strong>U.S. v. E.C. Knight (1895):</strong> Federal government can't regulate manufacturing (only commerce)</li>
+                            <li><strong>Lochner v. New York (1905):</strong> States can't limit work hours - violates "liberty of contract"</li>
+                        </ul>
+                        <p><strong>Philosophy:</strong> Government should not interfere with business and individual economic freedom</p>
+                        <p><strong>Result:</strong> Both federal and state governments restricted from economic regulation</p>
+                        <p><strong>Problems:</strong> Unable to address industrial capitalism's problems - monopolies, unsafe working conditions, child labor</p>
+                    </div>
+                </div>
+
+                <div class="era-box">
+                    <div class="era-title">Cooperative Federalism (1930s-1970s) - "Marble Cake"</div>
+                    <p><strong>Triggered by:</strong> The Great Depression</p>
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Federal and state governments work together</li>
+                        <li>Like marble cake - powers blend and swirl together</li>
+                        <li>Joint funding and administration of programs</li>
+                        <li>Massive expansion of federal role</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🤝 Click to discover: The New Deal Revolution</div>
+                    <div class="card-content">
+                        <p><strong>FDR's New Deal Programs:</strong></p>
+                        <ul>
+                            <li>Social Security (1935) - Federal-state partnership</li>
+                            <li>Unemployment insurance - Federal standards, state administration</li>
+                            <li>Agricultural subsidies</li>
+                            <li>Labor protections</li>
+                        </ul>
+                        <p><strong>Supreme Court Switch (1937):</strong></p>
+                        <ul>
+                            <li>NLRB v. Jones & Laughlin Steel - Upheld federal labor regulation</li>
+                            <li>Expanded interpretation of commerce clause</li>
+                            <li>Allowed federal regulation of manufacturing</li>
+                        </ul>
+                        <p><strong>Impact:</strong> Fundamentally changed American expectations of government!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 35)">
+                    <div class="card-prompt">🌟 Click to explore: The Great Society Era</div>
+                    <div class="card-content">
+                        <p><strong>LBJ's Great Society (1960s) - Further Expansion:</strong></p>
+                        <ul>
+                            <li><strong>Healthcare:</strong> Medicare (elderly), Medicaid (poor)</li>
+                            <li><strong>Education:</strong> Elementary & Secondary Education Act, Head Start</li>
+                            <li><strong>Civil Rights:</strong> Civil Rights Act (1964), Voting Rights Act (1965)</li>
+                            <li><strong>Environment:</strong> Clean Air Act, water quality standards</li>
+                            <li><strong>Urban Development:</strong> Public housing, urban renewal</li>
+                        </ul>
+                        <p><strong>Key Feature:</strong> Most programs jointly administered and funded by federal and state governments</p>
+                        <p><strong>Legacy:</strong> Created the modern welfare state and environmental regulations we know today</p>
+                    </div>
+                </div>
+
+                <div class="era-box">
+                    <div class="era-title">New Federalism (1970s-Present) - "Devolution"</div>
+                    <p><strong>Key Presidents:</strong> Nixon, Reagan</p>
+                    <p><strong>Philosophy:</strong> Return power to states</p>
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Block grants with fewer restrictions</li>
+                        <li>State flexibility in implementation</li>
+                        <li>Reduced federal regulations</li>
+                        <li>BUT: Post-9/11 saw recentralization (Homeland Security, TSA)</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-4', 30)">
+                    <div class="card-prompt">🔄 Click to compare: Advantages of Different Approaches</div>
+                    <div class="card-content">
+                        <p><strong>Cooperative Federalism Advantages:</strong></p>
+                        <ul>
+                            <li>Ensures uniformity in basic services across states</li>
+                            <li>Solves collective action problems</li>
+                            <li>Helps poorer states provide services</li>
+                            <li>Addresses national problems effectively</li>
+                        </ul>
+                        <p><strong>New Federalism Advantages:</strong></p>
+                        <ul>
+                            <li>States can tailor policies to local needs</li>
+                            <li>Encourages innovation - "laboratories of democracy"</li>
+                            <li>More efficient - closer to the people</li>
+                            <li>Respects diversity across states</li>
+                        </ul>
+                        <p><strong>Current Reality:</strong> We have elements of both - a complex mix!</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What metaphor best describes cooperative federalism?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Layer cake</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 35)">Marble cake</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Fruit salad</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Melting pot</div>
+                    <div class="feedback" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">What triggered the shift from dual to cooperative federalism?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">World War I</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">The Great Depression</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">The Civil War</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">9/11 attacks</div>
+                    <div class="feedback" id="feedback-q5-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">Which president is most associated with "New Federalism"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Franklin Roosevelt</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Lyndon Johnson</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-3', 30)">Ronald Reagan</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-3', 0)">Barack Obama</div>
+                    <div class="feedback" id="feedback-q5-3"></div>
+                </div>
+
+                <button class="complete-button" onclick="completeSection(5)">✅ Complete Section 5</button>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            
+            <div class="report-header">
+                <h2>📊 Federalism Learning Report</h2>
+                <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                    <div>Student: <strong id="reportStudentName"></strong></div>
+                    <div>Date: <strong id="reportDate"></strong></div>
+                    <div>Time: <strong id="reportTime"></strong></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                    <div>Total Points: <strong id="reportTotalPoints"></strong></div>
+                    <div>Percentage: <strong id="reportPercentage"></strong>%</div>
+                    <div>Completion: <strong id="reportCompletion"></strong>%</div>
+                </div>
+            </div>
+
+            <div class="grade-display" id="gradeDisplay">
+                <div class="letter-grade" id="letterGrade">-</div>
+                <div class="grade-percentage" id="gradePercentage">0%</div>
+            </div>
+
+            <h3>Section Performance</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Section</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Federalism Defined and Contrasted</td>
+                        <td id="status1">❌</td>
+                        <td id="points1">0/195</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Federalism and the Constitution</td>
+                        <td id="status2">❌</td>
+                        <td id="points2">0/195</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Distribution of Finances</td>
+                        <td id="status3">❌</td>
+                        <td id="points3">0/190</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Evolution: National Power vs States</td>
+                        <td id="status4">❌</td>
+                        <td id="points4">0/195</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>From Dual to New Federalism</td>
+                        <td id="status5">❌</td>
+                        <td id="points5">0/195</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Learning Metrics</h3>
+            <div class="report-grid">
+                <div class="metric-box">
+                    <div class="metric-value" id="metricPoints">0</div>
+                    <div class="metric-label">Total Points Earned</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricSections">0/5</div>
+                    <div class="metric-label">Sections Completed</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricQuiz">0%</div>
+                    <div class="metric-label">Quiz Accuracy</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="metricEngagement">0%</div>
+                    <div class="metric-label">Content Engagement</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <strong>🎯 Achievement Summary:</strong>
+                <ul>
+                    <li>Final Points: <span id="finalPoints">0</span></li>
+                    <li>Achievement Level: <span id="finalLevel">Explorer</span></li>
+                    <li>Sections Completed: <span id="sectionsCount">0</span> of 5</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Excellent work!</strong> You've explored the complex system of federalism that divides power between national and state governments in the United States.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { max: 195, earned: 0 },
+                2: { max: 195, earned: 0 },
+                3: { max: 190, earned: 0 },
+                4: { max: 195, earned: 0 },
+                5: { max: 195, earned: 0 }
+            }
+        };
+
+        // Level Thresholds
+        const levels = {
+            0: 'Explorer',
+            200: 'Federalism Student',
+            400: 'States Rights Advocate',
+            600: 'Constitutional Scholar',
+            800: 'Supreme Court Clerk',
+            1000: 'Federalism Expert'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            const content = element.querySelector('.card-content');
+            content.classList.add('show');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted in green.';
+                
+                // Find and highlight the correct answer
+                options.forEach(opt => {
+                    // Check the onclick attribute to find the correct answer
+                    const onclickStr = opt.getAttribute('onclick');
+                    if (onclickStr && onclickStr.includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Disable all options after answering
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.onclick = null;
+            });
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= threshold) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page
+                const cards = document.querySelectorAll('.section-card');
+                cards[sectionNum - 1].classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = 5;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update report data
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            
+            // Calculate percentage (total possible points including bonuses)
+            const maxPoints = 1220; // Base points plus completion bonuses (970 + 250)
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Update scores in header
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = Math.round((gameState.sectionsCompleted.length / 5) * 100);
+            
+            // Update main report scores
+            document.getElementById('finalPoints').textContent = gameState.totalPoints;
+            document.getElementById('finalLevel').textContent = gameState.currentLevel;
+            document.getElementById('sectionsCount').textContent = gameState.sectionsCompleted.length;
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            // Update section statuses
+            for (let i = 1; i <= 5; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Update metrics
+            document.getElementById('metricPoints').textContent = gameState.totalPoints;
+            document.getElementById('metricSections').textContent = `${gameState.sectionsCompleted.length}/5`;
+            
+            const quizPercentage = gameState.quizTotal > 0 
+                ? Math.round((gameState.quizCorrect / gameState.quizTotal) * 100)
+                : 0;
+            document.getElementById('metricQuiz').textContent = quizPercentage + '%';
+            
+            const totalCards = 17; // Total interactive cards in the module
+            const engagementPercentage = Math.round((gameState.cardsRevealed.length / totalCards) * 100);
+            document.getElementById('metricEngagement').textContent = engagementPercentage + '%';
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

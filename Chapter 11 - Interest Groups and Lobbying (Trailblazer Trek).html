@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11: Interest Groups and Lobbying in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        #pointsPopup {
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 2000;
+            animation: popupAnimation 2s forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes popupAnimation {
+            0% { opacity: 0; transform: translateY(-20px) scale(0.8); }
+            20% { opacity: 1; transform: translateY(0) scale(1.1); }
+            30% { transform: scale(1); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .section-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .points-indicator {
+            margin-top: 1rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .report-card {
+            background: linear-gradient(135deg, var(--highlight-yellow), #FFE082);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .report-card h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Section Page Styles */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header span {
+            font-size: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .content-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: linear-gradient(135deg, var(--bg-section), #B2DFDB);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .interactive-card:hover {
+            border-color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        .interactive-card.revealed {
+            background: var(--highlight-green);
+            cursor: default;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--primary-green);
+        }
+
+        .interactive-card.revealed .card-content {
+            display: block;
+        }
+
+        .interactive-card.revealed .card-prompt {
+            color: var(--success);
+        }
+
+        .knowledge-check {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .kc-option {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover {
+            background: var(--highlight-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #FFEBEE;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            display: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #FFEBEE;
+            color: var(--error);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .quote-source {
+            font-style: normal;
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .info-list {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .info-list ul {
+            margin-left: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--highlight-green), #C8E6C9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 2px solid var(--success);
+        }
+
+        /* Report Page Styles */
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-header-bar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .report-title {
+            text-align: center;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .section-breakdown {
+            margin: 2rem 0;
+        }
+
+        .section-breakdown h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .breakdown-table th,
+        .breakdown-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breakdown-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .instructor-note {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .instructor-note h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .print-button {
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .header {
+                position: static;
+            }
+            .container {
+                margin-top: 0;
+            }
+            .report-container {
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+                margin-top: 100px;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-icons {
+                gap: 1.5rem;
+            }
+            
+            .name-input {
+                width: 100%;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🏛️ TCC Texas Government Trailblazer Trek: Interest Groups & Lobbying</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>📢 Chapter 11: Interest Groups and Lobbying in Texas 🤝</h2>
+                <p>Explore how citizens band together to influence Texas government and public policy!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🗣️</span>
+                        <div>Voice &amp; Advocacy</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>💼</span>
+                        <div>Professional Lobbyists</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>⚖️</span>
+                        <div>Ethics &amp; Transparency</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🤠 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey into the world of Texas interest groups and lobbying:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Enter your name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">Start Your Adventure! 🚀</button>
+            </div>
+
+            <div class="progress-bar">
+                <h3>📊 Your Progress</h3>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction: Lobbyists and Democracy</h3>
+                    <p>Discover why lobbyists are important for democratic participation and how interest groups give citizens a voice.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>What Are Interest Groups?</h3>
+                    <p>Learn the constitutional foundation for interest groups and how James Madison addressed "factions" in government.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>Why We Form Interest Groups</h3>
+                    <p>Explore the three major benefits—material, solidary, and purposive—that motivate people to join interest groups.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Types of Interest Groups in Texas</h3>
+                    <p>Discover the diverse landscape of Texas interest groups from trade associations to cause groups.</p>
+                    <div class="points-indicator">🌟 185 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Electioneering: Influencing Elections</h3>
+                    <p>Learn how interest groups use Political Action Committees and the "friendly incumbent rule" to shape elections.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Lobbying: Advocating for Interests</h3>
+                    <p>Explore grassroots and grasstops lobbying techniques and how lobbyists provide crucial information to legislators.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>The Texas Ethics Commission</h3>
+                    <p>Understand how Texas regulates interest groups through transparency, registration, and disclosure requirements.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Key Terms and Concepts</h3>
+                    <p>Master the essential vocabulary of interest groups and lobbying in Texas politics.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="report-card" onclick="generateReport()">
+                    <h3>📋 Generate Completion Report</h3>
+                    <p>View your final score, grade, and detailed performance breakdown</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Introduction -->
+        <div id="section1" class="page">
+            <div class="section-header">
+                <span>📢</span>
+                <h2>Introduction: Lobbyists and Democracy</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Chapter Learning Objective</h3>
+                <p>By the end of this chapter, you will be able to <strong>evaluate the role played by interest groups in Texas</strong>. Interest groups are fundamental to democratic participation, giving citizens organized ways to make their voices heard in the political process.</p>
+
+                <div class="quote-box">
+                    <p>"Say you're passionate about finding a cure for Parkinson's disease. You can try to be a lone voice in the wilderness, but chances are there's a lobbying organization that can bolster your argument with research and facts, and the ability to get that info to people who make the decisions.</p>
+                    <p>Critics like to slam lobbyists as stand-ins for special interests. That's the funny thing about special interests. They're easily dismissed as 'special,' until they're yours. Lobbyists represent all points of view on issues confronting the country: environment, labor, the elderly, veterans, but also privacy advocates, pet owners, and even online poker players. That's the great thing about America.</p>
+                    <p>Everyone has a voice, and lobbyists are an effective way to get those voices heard."</p>
+                    <div class="quote-source">— Brian Pallasch, former president of the American League of Lobbyists in Washington, D.C. (2008)</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Why are lobbyists often misunderstood?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're exploring democratic advocacy!</p>
+                        <p>Lobbyists are frequently criticized as representatives of "special interests," but as Brian Pallasch points out, every interest seems "special" only until it becomes your own. Whether you care about environmental protection, veterans' rights, privacy, or even niche hobbies like online poker, there are likely lobbyists working to represent those interests. The negative perception of lobbying often ignores that it's a fundamental way citizens participate in democracy through organized collective action.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How do lobbyists strengthen individual voices?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding the power of collective advocacy!</p>
+                        <p>As a single citizen, your voice on a complex policy issue may go unheard. But lobbying organizations can bolster your arguments with professional research and facts, and have established relationships with decision-makers. They know how to present information effectively and when to deliver it. This organized approach transforms individual concerns into coordinated efforts that policymakers must take seriously. Whether the cause is curing diseases, protecting rights, or advancing professional interests, lobbyists amplify what might otherwise be "a lone voice in the wilderness."</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ According to Brian Pallasch, what is the "funny thing about special interests"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        They only benefit wealthy corporations and not ordinary citizens
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        They are illegal in most states including Texas
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">
+                        They're easily dismissed as "special" until they're yours
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">
+                        They have no real impact on government decisions
+                    </div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(1)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(2)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: What Are Interest Groups? -->
+        <div id="section2" class="page">
+            <div class="section-header">
+                <span>📜</span>
+                <h2>What Are Interest Groups?</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Constitutional Foundation</h3>
+                <p>The First Amendment to the U.S. Constitution guarantees the freedom of speech, which we usually think of as the right of an individual to openly express a point of view – even a controversial one. But the amendment goes on to guarantee "…the right of the people peaceably to assemble, and to petition the government for a redress of grievances."</p>
+
+                <p>The right to assemble and express a collective opinion is really a constitutional right to form interest groups, and to lobby on public policy issues. If the Texas chapter of the Sierra Club organizes a group to lobby state legislators on climate change issues, they're exercising their constitutional right to express a collective opinion. If the Texas Association of Realtors organizes a group to lobby the legislature to repeal a real estate tax they consider unfair, what are they doing? They're peaceably assembling, and they're petitioning their state government for a redress of grievances. If the Texas Barber Association lobbies against a sales tax on haircuts, they're doing the same thing.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📚 Interest Group</div>
+                    <div>Any formal association of individuals or organizations that attempt to influence government decision-making and/or the making of public policy. Often, this influence is exercised by a lobbyist or a lobbying firm.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What did James Madison say about "factions"?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're connecting founding principles to modern politics!</p>
+                        <p>While the term "interest group" isn't mentioned in the Constitution, the framers were aware that individuals would band together to use government in their favor. In Federalist No. 10, James Madison warned of the dangers of "factions" – minorities who would organize around issues they felt strongly about, possibly to the detriment of the majority. But Madison believed limiting these factions was worse than facing the evils they might produce, because such limitations would violate individual freedoms. Instead, the natural way to control factions was to let them flourish and compete against each other.</p>
+                    </div>
+                </div>
+
+                <h3>Interest Groups vs. Political Parties</h3>
+                <p>Madison's definition of factions can apply to both interest groups and political parties. But unlike political parties, interest groups do not function primarily to elect candidates under a certain party label or to directly control the operation of the government. Political parties in the United States are generally much broader coalitions that represent a significant proportion of citizens.</p>
+
+                <p>In the American two-party system, the Democratic and Republican Parties spread relatively wide nets to try to encompass large segments of the population. In contrast, while interest groups may support or oppose political candidates, their goals are usually more issue-specific and narrowly focused on areas like taxes, the environment, and gun rights or gun control, or their membership is limited to specific professions.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How diverse are interest groups in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're exploring the landscape of organized interests!</p>
+                        <p>Interest groups may represent interests ranging from well-known organizations, such as the Sierra Club, IBM, or the American Lung Association, to obscure ones, such as the Texas-based Romance Writers of America. The sheer number of interests in the United States suggests that many have, indeed, flourished just as Madison predicted. They compete with similar groups for membership, and with opponents for access to decision-makers. Some people suggest there may be too many interests in the United States. Others argue that some have gained a disproportionate amount of influence over public policy, whereas many others are underrepresented.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📚 Lobbyist</div>
+                    <div>Someone who represents the interest organization before government, is usually compensated for doing so, and is required to register with the government in which he or she lobbies, whether state or federal. The lobbyist's primary goal is usually to influence policy.</div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which constitutional right provides the foundation for interest groups?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        The right to bear arms
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">
+                        The right to peaceably assemble and petition for redress of grievances
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        The right against unreasonable searches and seizures
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">
+                        The right to a speedy and public trial
+                    </div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How do interest groups differ from political parties?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        Interest groups are larger and more influential than political parties
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        Political parties focus on specific issues while interest groups are broad coalitions
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">
+                        Interest groups focus on specific issues while political parties are broader coalitions
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">
+                        There is no meaningful difference between them
+                    </div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(2)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(3)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Why We Form Interest Groups -->
+        <div id="section3" class="page">
+            <div class="section-header">
+                <span>🤝</span>
+                <h2>Why We Form Interest Groups</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Three Major Reasons for Interest Group Formation</h3>
+                <p>Political scientists point to three major reasons people form interest groups. Understanding these motivations helps explain why some groups are more successful at attracting and retaining members than others.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">💰 Material Benefits</div>
+                    <div>Tangible rewards that members receive for joining an interest group, such as discounts on insurance, products, and services. It's fair to say Americans probably join the nation's largest interest group – AARP (American Association of Retired Persons) – not to stand up for the rights of retired people, but in order to get discounts on insurance, as well as other products and services. For most of its history, the National Rifle Association was more about safety classes and insurance discounts than political advocacy.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are solidary benefits?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're discovering the social side of interest groups!</p>
+                        <p><strong>Solidary benefits</strong> come from the social interaction and sense of belonging that group membership provides. There's something very special about getting together with other people who do what you do for a living. Whether you're a police officer, an apartment manager, or a dentist, colleagues can learn from each other, discuss best practices, and share stories only another person in their business can truly appreciate. These connections create professional networks and friendships that keep members engaged long after they've received any material benefits.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What drives members of cause-based groups?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding purposive motivation!</p>
+                        <p><strong>Purposive benefits</strong> represent the satisfaction of working together with others toward a common cause. Members of groups like the Sierra Club or Mothers Against Drunk Drivers (MADD) are motivated primarily by the satisfaction of working with other like-minded people to support a specific cause. Unlike material or solidary benefits, purposive benefits are about the mission itself—the feeling that you're making a difference on an issue you care deeply about, whether that's environmental protection, traffic safety, or any other cause.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🎯 The Three Types of Benefits</h4>
+                    <ul>
+                        <li><strong>Material Benefits:</strong> Tangible rewards like discounts, services, and insurance (AARP, NRA)</li>
+                        <li><strong>Solidary Benefits:</strong> Social interaction, networking, and professional community</li>
+                        <li><strong>Purposive Benefits:</strong> Satisfaction from working toward a shared cause (Sierra Club, MADD)</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Why do most Americans join AARP (American Association of Retired Persons)?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        To participate in political protests and rallies
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">
+                        To receive discounts on insurance, products, and services
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        To meet other retired people at social events
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">
+                        To fulfill a government requirement for retirement benefits
+                    </div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which type of benefit primarily motivates members of Mothers Against Drunk Drivers (MADD)?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        Material benefits like insurance discounts
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        Solidary benefits from professional networking
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">
+                        Purposive benefits from working toward a shared cause
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">
+                        Financial benefits from government grants
+                    </div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(3)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(4)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Types of Interest Groups in Texas -->
+        <div id="section4" class="page">
+            <div class="section-header">
+                <span>🏢</span>
+                <h2>Types of Interest Groups in Texas</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>The Texas Interest Group Landscape</h3>
+                <p>As of 2019, the Texas Ethics Commission listed 1,834 registered lobbyists, many of whom represent multiple clients – some interest groups, some individual companies. The diversity of interest groups in Texas reflects the state's complex economy and diverse population.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏭 Trade Associations</div>
+                    <div>Groups of companies involved in the same business. The Texas Association of Realtors, the Texas Bankers Association, and the Texas Automobile Dealers Association are three prominent examples. These associations represent the collective interests of businesses in their industry.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👔 Professional Associations</div>
+                    <div>Like trade associations, but with individual – rather than company – members. The Texas Nurses Association and the Texas Society of Professional Engineers are two major Texas professional associations. The Texas Nurses Association advocates for safe nursing practices through education and licensure in the Texas Nursing Practice Act.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What role does organized labor play in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're examining the labor landscape!</p>
+                        <p><strong>Organized labor</strong> is another major interest group type. While union members account for less than 5 percent of wage and salary workers in Texas, unions still play a prominent role in the political process. The most prominent umbrella group for labor in Texas is the AFL-CIO, but with increasing competition from SEIU Texas, which specializes in government and service workers. Despite lower membership numbers compared to other states, unions actively lobby on workplace safety, wages, and worker rights.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: How has agriculture's influence changed in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're tracing the evolution of Texas politics!</p>
+                        <p>Historically, <strong>agriculture groups</strong> have played a more prominent role in Texas government than any other type of interest group. As Texas politics become more urban, however, groups like the Texas Farm Bureau and the Texas and Southwestern Cattle Raisers Association, while still important, don't dominate policy in Texas as much as they did in the 20th Century. This shift reflects Texas's transformation from a primarily rural, agricultural state to one with major metropolitan areas driving economic and political decisions.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>📋 More Types of Texas Interest Groups</h4>
+                    <ul>
+                        <li><strong>Racial, ethnic, and minority groups:</strong> From the Texas NAACP and LULAC to Equality Texas, these groups advocate on behalf of specific groups based on racial heritage, sexual orientation, or other minority status.</li>
+                        <li><strong>Religious groups:</strong> Groups such as the Baptist Christian Life Commission have historically held considerable influence on abortion, gambling, and alcohol issues, but are involved increasingly on social justice issues like predatory lending and human trafficking.</li>
+                        <li><strong>Groups of local governments:</strong> The Texas Municipal League and the Texas Association of Counties have been increasingly active during legislative sessions on property tax and local control issues.</li>
+                        <li><strong>Cause groups:</strong> From NARAL to Texas Right to Life on abortion, MADD on drinking and driving, and Bike Texas for bicyclists, these groups lobby for their members' views on specific policy issues.</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the key difference between trade associations and professional associations?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Trade associations are older than professional associations
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">
+                        Trade associations have company members while professional associations have individual members
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Trade associations focus on politics while professional associations focus on education
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">
+                        Professional associations are regulated while trade associations are not
+                    </div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What percentage of Texas wage and salary workers are union members?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">
+                        About 25 percent
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">
+                        About 15 percent
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">
+                        Less than 5 percent
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">
+                        About 50 percent
+                    </div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Why have agriculture groups become less dominant in Texas politics?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-3', 30)">
+                        Texas politics have become more urban
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">
+                        Agriculture has been banned in Texas
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">
+                        The Texas Ethics Commission restricted their activities
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-3', 0)">
+                        They merged with trade associations
+                    </div>
+                    <div class="feedback-box" id="feedback-q4-3"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(4)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(5)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Electioneering -->
+        <div id="section5" class="page">
+            <div class="section-header">
+                <span>🗳️</span>
+                <h2>Electioneering: Influencing Elections</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>How Interest Groups Influence Texas Government</h3>
+                <p>Texas interest groups use a wide variety of techniques to attempt to influence public policy, but most fall into two primary areas: <strong>electioneering</strong> and <strong>lobbying</strong>.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ Electioneering</div>
+                    <div>What groups do to influence who the policymakers will be. While federal law has strict limits on the amount of money that can be raised and contributed in federal races, Texas law permits groups to form political action committees that can receive and donate unlimited amounts of money to state and local election campaigns (Note: Home rule cities in Texas can limit contributions to candidates for city positions by ordinance).</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💼 Political Action Committee (PAC)</div>
+                    <div>A 527 organization that pools campaign contributions from members and donates those funds to campaigns for or against candidates, ballot initiatives, or legislation. In Texas, PACs can receive and donate unlimited amounts to state and local campaigns.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How much do Texas PACs spend?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're examining campaign finance in Texas!</p>
+                        <p>Texas PACs are significant political players. The Texas Association of Realtors PAC raised nearly 2 million dollars during the 2018 election cycle, donating $1.2 million to candidates. Texans for Lawsuit Reform, a group that advocates for civil justice reform, donated $1.3 million, spread over 100 different candidates. These substantial contributions give interest groups significant influence in Texas elections and help ensure that elected officials are aware of and responsive to their concerns.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What is the "friendly incumbent rule"?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning strategic political tactics!</p>
+                        <p>PACs in Texas have different approaches to political involvement. Many interest groups follow – officially or unofficially – the <strong>friendly incumbent rule</strong>. They avoid backing challengers to incumbent legislators – even when those challengers might be more in line with their group's interests. Why? Because challengers rarely win, and many groups fear retaliation from a spurned incumbent legislator more than they value the chance – often a long shot – to replace that incumbent with a more supportive candidate.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>⚡ Key Insight: After the Election</h4>
+                    <p>Whatever an interest group chooses to do in an election, the election is eventually over, and a winner is sworn into office whether the group supported or opposed them. That's when electioneering gives way to lobbying. Even groups that opposed a winning candidate must find ways to work with them once they're in office.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "friendly incumbent rule"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        A law requiring PACs to support all incumbent legislators equally
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">
+                        An informal practice of avoiding support for challengers to incumbent legislators
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        A Texas Ethics Commission regulation limiting campaign contributions
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">
+                        A constitutional requirement that incumbents receive matching funds
+                    </div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How much did Texans for Lawsuit Reform donate during the 2018 election cycle?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        $500,000 to 50 candidates
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">
+                        $1.3 million spread over 100 different candidates
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        $2 million to the governor's race only
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">
+                        $100,000 to one candidate
+                    </div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(5)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(6)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Lobbying -->
+        <div id="section6" class="page">
+            <div class="section-header">
+                <span>🎯</span>
+                <h2>Lobbying: Advocating for Interests</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>The Art of Lobbying</h3>
+                <p>Lobbying is simply the process of advocating for your group's interests. Some groups hire professional lobbyists to represent them in Austin. Others rely solely on volunteers. Effective lobbying requires understanding the legislative process, building relationships with decision-makers, and presenting information in compelling ways.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📣 Grassroots Lobbying</div>
+                    <div>An approach that involves getting large numbers of constituents to contact their legislators on behalf of a particular issue. When done well, grassroots lobbying is incredibly effective with legislators, who are strongly motivated to please voters who live in their districts.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is "grasstops" lobbying?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're discovering sophisticated lobbying strategies!</p>
+                        <p>Less well known but also effective is <strong>"grasstops" lobbying</strong>, which involves generating smaller numbers of contacts from people of special importance to legislators – possibly including their largest campaign contributors, local party officials, mayors, or school superintendents. Even small numbers of highly influential people can sometimes make a significant impression. While grassroots lobbying relies on volume, grasstops lobbying relies on the weight and credibility of the messengers.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: Why do legislators rely on lobbyists?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding the information function of lobbying!</p>
+                        <p>Legislators frankly rely on interest groups for information. The 2019 legislature considered 10,877 individual bills and resolutions. Part-time legislators cannot possibly know how each of those proposed changes in state law might impact various industries and interests unless representatives of those groups tell them. This information-sharing role is crucial to effective lawmaking, as lobbyists provide expertise that would otherwise be unavailable to legislators making complex policy decisions.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>⚖️ Law and Lobbying Intertwined</h4>
+                    <p>Like lawmakers, many lobbyists are lawyers, and the persons they are trying to influence have the duty of writing laws. This connection can be seen in cases like Texas lawyer Kevin Glasheen, who had been seeking compensation for his unfairly imprisoned client. The client had trouble paying legal expenses totaling $1,024,166.67. Glasheen then lobbied the Texas state legislature to pass a bill that increased the payout to exonerated prisoners from $50,000 per year to $80,000 per year. It succeeded, making it possible for his newly freed client to pay the lawyer's fees. (Note: The lawyer was later sued for his billing practices in wrongful conviction cases.)</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What makes grassroots lobbying effective?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        It involves paying legislators directly for their votes
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        It relies on a small number of wealthy donors
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">
+                        Legislators are motivated to please voters who live in their districts
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">
+                        It bypasses the legislative process entirely
+                    </div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many bills and resolutions did the 2019 Texas legislature consider?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        About 500
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        About 2,500
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 30)">
+                        10,877
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">
+                        About 25,000
+                    </div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(6)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(7)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Texas Ethics Commission -->
+        <div id="section7" class="page">
+            <div class="section-header">
+                <span>⚖️</span>
+                <h2>The Texas Ethics Commission</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Regulation Through Transparency</h3>
+                <p>Texas doesn't place as many limits on what interest groups can do as some other states, but Texas places a high value on <strong>transparency</strong>. An interest group in Texas can give an unlimited amount of money to a political campaign but must disclose their contributions to the Texas Ethics Commission, which makes that information available to the public on its recently redesigned, highly-searchable website.</p>
+
+                <p>The Texas Ethics Commission has eight commissioners, appointed by the governor, lieutenant governor, and speaker of the house.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📝 PAC Registration Requirements</div>
+                    <div>Political action committees (PACs) are formed by designating an official treasurer, who must then file contribution and expenditure reports twice a year, with additional reports due prior to any election in which the PAC is involved.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Who must register as a lobbyist in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're learning the rules of the lobbying game!</p>
+                        <p>The Texas Ethics Commission defines lobbying as "making direct communications with members of the legislative or executive branch of Texas state government to influence legislation or administrative action." Registration is required for any lobbyist who receives more than $1,000 per calendar quarter for lobbying, or who spends "more than $500 in a calendar quarter to benefit a state officer or employee (or his or her immediate family) when the expenditures are made to communicate to influence legislation or administrative action."</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to discover: What are the penalties for ethics violations?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding accountability mechanisms!</p>
+                        <p>Registration is $750 per year, with a reduced fee for lobbyists representing non-profit groups. Registered lobbyists file monthly activity reports listing their clients and specific expenditures. Gifts to officials are limited to $500 per year, and any gift with a value of more than $50 must be reported. Fines of up to $10,000 and criminal punishments as high as a <strong>second-degree felony</strong> may be pursued against violators.</p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <h4>🏛️ Local Government Lobbying: City of Houston Example</h4>
+                    <p>Some local governments in Texas can place additional restrictions on interest groups. The City of Houston requires everyone who lobbies their city government to register – defining lobbying as either spending or being paid at least $200 in a calendar quarter or $800 in a calendar year "to influence municipal legislation or administrative action."</p>
+                    <ul>
+                        <li>Registration costs $291.87 per year</li>
+                        <li>Registration is due within five working days of the lobbyist's first communication with a city official</li>
+                        <li>Lobbyists file quarterly reports detailing spending on communications with city officials</li>
+                        <li>As of October 2019, there were 130 people registered as lobbyists with the City of Houston</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is Texas's primary approach to regulating interest groups?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        Banning all corporate contributions
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        Limiting PAC contributions to $1,000 per candidate
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">
+                        Transparency through disclosure requirements
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">
+                        Requiring all lobbyists to be licensed attorneys
+                    </div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How much is the annual registration fee for a lobbyist in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        $100
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        $250
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">
+                        $750
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">
+                        $2,000
+                    </div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(7)">Complete Section ✓</button>
+                <button class="nav-button" onclick="navigateToSection(8)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 8: Key Terms and Concepts -->
+        <div id="section8" class="page">
+            <div class="section-header">
+                <span>📖</span>
+                <h2>Key Terms and Concepts</h2>
+            </div>
+
+            <div class="content-block">
+                <h3>Glossary: Interest Groups and Lobbying in Texas</h3>
+                <p>Master these essential terms to complete your understanding of interest groups and lobbying in Texas politics.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🌑 Dark Money</div>
+                    <div>In the politics of the United States, dark money refers to political spending by nonprofit organizations—for example, 501(c)(4) (social welfare), 501(c)(5) (unions), and 501(c)(6) (trade association) groups—that are not required to disclose their donors.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the "free rider problem"?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You're understanding collective action challenges!</p>
+                        <p>The <strong>free rider problem</strong> is the incentive to benefit from others' work without making a contribution, which leads individuals in a collective action situation to refuse to work together. For interest groups, this means some people may enjoy the benefits an organization fights for (like safer workplaces or cleaner air) without paying dues or participating. This challenge makes it harder for groups to organize and maintain membership, which is why many groups offer material benefits like discounts to attract members.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🤝 Friendly Incumbent Rule</div>
+                    <div>Regarding interest groups, the informal practice of avoiding support for challengers to incumbent legislators – even when those challengers might be more in line with the group's interests.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 35)">
+                    <div class="card-prompt">🔍 Click to review: Key lobbying definitions</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> You've mastered the vocabulary!</p>
+                        <p><strong>Lobbying</strong> is an attempt to influence policy by persuading a government policy-making official. <strong>Grassroots lobbying</strong> is an approach that asks the general public to contact legislators and government officials concerning issues at hand, as opposed to conveying the message to legislators directly. These techniques remain fundamental to how interest groups operate in Texas and throughout the United States.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🎯 Summary: The Interest Group Ecosystem</h4>
+                    <p>Interest groups are a fundamental part of American democracy, protected by the First Amendment. In Texas, they operate within a system that emphasizes transparency over strict limits. From trade associations and professional groups to cause-based organizations and local government coalitions, these groups give citizens organized voices in the political process. Through electioneering and lobbying, they work to influence both who makes policy and what policies get made.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is "dark money" in politics?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        Cash contributions that are counted twice
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">
+                        Political spending by nonprofits not required to disclose their donors
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        Illegal bribes given to government officials
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">
+                        Campaign funds raised during nighttime events
+                    </div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "free rider problem" in the context of interest groups?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">
+                        Lobbyists accepting free transportation from interest groups
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">
+                        Legislators receiving free campaign contributions
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 30)">
+                        The incentive to benefit from others' work without contributing
+                    </div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">
+                        PACs that give free advertising to candidates
+                    </div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="complete-section-btn" onclick="completeSection(8)">Complete Section ✓</button>
+                <button class="nav-button" onclick="generateReport()">View Report 📋</button>
+            </div>
+        </div>
+
+        <!-- REPORT PAGE -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🏛️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 11: Interest Groups and Lobbying in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info-grid">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Achievement Level</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">--</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">--</div>
+                            </div>
+                        </div>
+
+                        <div class="section-breakdown">
+                            <h3>📊 Section Performance</h3>
+                            <table class="breakdown-table">
+                                <thead>
+                                    <tr>
+                                        <th>Section</th>
+                                        <th>Status</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1. Introduction: Lobbyists and Democracy</td>
+                                        <td id="status1">❌</td>
+                                        <td id="points1">0/150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. What Are Interest Groups?</td>
+                                        <td id="status2">❌</td>
+                                        <td id="points2">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. Why We Form Interest Groups</td>
+                                        <td id="status3">❌</td>
+                                        <td id="points3">0/150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. Types of Interest Groups in Texas</td>
+                                        <td id="status4">❌</td>
+                                        <td id="points4">0/185</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. Electioneering: Influencing Elections</td>
+                                        <td id="status5">❌</td>
+                                        <td id="points5">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6. Lobbying: Advocating for Interests</td>
+                                        <td id="status6">❌</td>
+                                        <td id="points6">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7. The Texas Ethics Commission</td>
+                                        <td id="status7">❌</td>
+                                        <td id="points7">0/165</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8. Key Terms and Concepts</td>
+                                        <td id="status8">❌</td>
+                                        <td id="points8">0/155</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="instructor-note">
+                            <h4>📝 Note for Instructors</h4>
+                            <p>This report was generated by the TCC Trailblazer Trek learning system. The student completed interactive reading activities, reveal cards, and knowledge check questions. Points reflect engagement with all module components. Screenshot this report or print it for your records.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 150 },
+                2: { earned: 0, max: 165 },
+                3: { earned: 0, max: 150 },
+                4: { earned: 0, max: 185 },
+                5: { earned: 0, max: 165 },
+                6: { earned: 0, max: 165 },
+                7: { earned: 0, max: 165 },
+                8: { earned: 0, max: 155 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Advocate',
+            600: 'Strategist',
+            800: 'Policy Expert',
+            1000: 'Lobbying Legend',
+            1200: 'Capitol Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 📢 Your journey into Texas interest groups and lobbying begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

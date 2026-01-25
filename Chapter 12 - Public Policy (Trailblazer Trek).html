@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 12: Public Policy in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>📋 TCC Texas Government Trailblazer Trek: Public Policy</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>📋 Chapter 12: Public Policy in Texas ⭐</h2>
+                <p>Explore how Texas government addresses society's most pressing challenges!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Policy Process</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📊</span>
+                        <div>Key Issues</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>💡</span>
+                        <div>Solutions</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through Texas public policy:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>What is Public Policy?</h3>
+                    <p>Understand the definition of public policy and how it affects Texans.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Types of Goods & Policy</h3>
+                    <p>Learn about private, public, common, and toll goods and policy categories.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>The Policy-Making Process</h3>
+                    <p>Explore the five stages of making public policy in Texas.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Civil Liberties & Rights</h3>
+                    <p>Examine policies on gun rights, affirmative action, and civil rights.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Education Policy</h3>
+                    <p>Discover K-12 funding, higher education, and school choice in Texas.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>Energy & Environment</h3>
+                    <p>Learn about fracking, environmental policy, and Texas energy resources.</p>
+                    <div class="points-indicator">🌟 155 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>Healthcare & Social Welfare</h3>
+                    <p>Explore Medicaid, Medicare, the ACA, and Texas social safety net programs.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Influencing Policy</h3>
+                    <p>Understand how policy advocates and analysts shape Texas policy decisions.</p>
+                    <div class="points-indicator">🌟 150 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Public Policy? -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📋</span>
+                    <h2>What is Public Policy?</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss important public policy issues in Texas</li>
+                        <li>Understand the underlying controversies in making public policy</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Public policy is the broad strategy government uses to do its job, the relatively stable set of purposive governmental behaviors that address matters of concern to some part of society. Most policy outcomes are the result of considerable debate, compromise, and refinement that happen over years and are finalized only after input from multiple institutions within government.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Public Policy</div>
+                    <div>Public policy is the relatively stable set of purposive governmental actions that address matters of concern to some part of society. It is a guide to legislative action that is more or less fixed for long periods of time, not just short-term fixes or single legislative acts. Simply put, public policy is anything the government does to achieve a particular outcome.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How is public policy formed?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ The policy development process!</p>
+                        <p>Policy doesn't happen by accident, and it is rarely formed simply as the result of campaign promises of a single elected official. Most policy outcomes result from considerable debate, compromise, and refinement over years with input from multiple institutions. For example, health care reform (the ACA) was developed after years of analysis, reflection on existing policy, and trial implementation at the state level. What may seem sudden was actually the product of decades of work by both parties, including proposals from Mitt Romney when he was governor of Massachusetts.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">Public policy decisions impact our lives in many ways. As a result, we should understand how policies are formed, budgeted, implemented, and evaluated. We should also know who the policymakers are and be able to measure the effectiveness of policies that have been made.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are the key characteristics of public policy?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ✅ Defining features revealed!</p>
+                        <p>Public policy has several important characteristics:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Stability:</strong> It is relatively stable and fixed for long periods</li>
+                            <li><strong>Broad concern:</strong> It deals with issues affecting large segments of society, not just individuals</li>
+                            <li><strong>Beyond action:</strong> It includes government behaviors AND the outcomes those actions create</li>
+                            <li><strong>Inaction counts:</strong> Policy can be made when government refuses to act, maintaining the status quo</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">For example, much of the debate over gun control centers on Congress's unwillingness to act, even when public opinion supports changes. The 2004 expiration of the Federal Assault Weapons Ban resulted from lawmakers' inaction.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which of the following best describes public policy?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">A single legislative act passed in response to a crisis</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">A relatively stable set of purposive governmental actions addressing matters of concern to society</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Campaign promises made by elected officials</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Private sector solutions to public problems</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Types of Goods & Policy -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📦</span>
+                    <h2>Types of Goods and Policy Categories</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand different types of goods: private, public, common, and toll</li>
+                        <li>Identify distributive, regulatory, and redistributive policies</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Economists use the term "goods" to describe the range of commodities, services, and systems that help us satisfy our wants or needs. Understanding different types of goods helps explain why government involvement is necessary in some areas.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏠 Private Goods</div>
+                    <div>Private goods can be owned by a particular person or group and are excluded from use by others, typically by means of a price. They are finite and can run out if overused. Your home or apartment is a private good because you pay rent or mortgage payments for the right to live there. The excludable and finite nature of private goods makes them tradable in the marketplace.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are public goods and why do they need government?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🌍 Public goods explained!</p>
+                        <p><strong>Public goods</strong> (sometimes called collective goods) are not excludable and are essentially infinite. Examples include air, national security, and geographic regions like forests. The problem is that since no one owns them, no one has a financial interest in protecting their long-term value. Without government regulation, a factory owner can freely pollute the air or water since they have no responsibility for pollution once it moves elsewhere. This is why government involvement is necessary to protect these shared resources.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎣 Common Goods & The Tragedy of the Commons</div>
+                    <div>Common goods (like fisheries, forests, and water) are not excludable but may be finite. Without regulation, someone can hunt all migratory birds or deplete a fishery, eliminating future breeding stocks. The situation in which individuals exhaust a common resource by acting in their own immediate self-interest is called the <strong>tragedy of the commons</strong>.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are the three types of public policy?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📊 Policy categories revealed!</p>
+                        <p>Theodore Lowi categorized policy based on costs and benefits:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Distributive Policy:</strong> Collects from many, benefits few (e.g., highways, railroads, agricultural subsidies, Pell grants)</li>
+                            <li><strong>Regulatory Policy:</strong> Concentrated costs, diffuse benefits (e.g., environmental protection, public health and safety)</li>
+                            <li><strong>Redistributive Policy:</strong> Transfers resources from one group to another, like "Robin Hood" (e.g., Medicaid, TANF, SNAP, Head Start)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🚂 Texas & The Transcontinental Railroad</div>
+                    <p>The Transcontinental Railroad illustrates distributive policy. In the 1860s, the U.S. government chartered the Central Pacific and Union Pacific Railroads, providing resources and land grants to facilitate construction. Publicly owned land was distributed to private citizens who could use it for their own gain, while simultaneously providing a national transportation network. Texas continues to have more railroad mileage than any other state and the largest number of railroad employees.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the "tragedy of the commons"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">When private property is taken by the government</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">When individuals exhaust a common resource by acting in their own self-interest</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">When the government fails to provide public goods</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">When toll goods become too expensive</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which type of policy collects broadly but concentrates benefits on relatively few?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">Distributive policy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Regulatory policy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Redistributive policy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Private policy</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The Policy-Making Process -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🔄</span>
+                    <h2>The Policy-Making Process</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the five stages in making public policy in Texas</li>
+                        <li>Understand the cyclical nature of policymaking</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Policymaking is a cyclical process. It begins with recognition of a significant public problem and an organized call to government action. The process is a cycle because the evaluation stage should feed back into the earlier stages, informing future decisions about the policy.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">1️⃣ Problem Definition</div>
+                    <div>The first stage focuses public attention on a public problem or issue. Problem identification specifies the issues that merit discussion and necessitates considering alternative solutions. For example, officials may agree that childhood obesity is a problem, but solutions might range from school physical education programs to removing soda machines from schools. Our ideology—liberal, conservative, libertarian—plays a critical role in defining what is "good" policy.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is agenda setting?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📋 Stage 2 explained!</p>
+                        <p><strong>Agenda Setting</strong> is the second stage. Not all issues make it onto the governmental agenda because there is only so much attention government can pay. One important task for a policy advocate is to frame their issue in a compelling way. For example, health care reform was made salient by framing it in terms of health care access and the percentage of people without insurance. In recent years, the Texas official policy agenda has included educational finance, property tax reform, medical malpractice reform, welfare reform, and corrections policy reform.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">3️⃣ Policy Adoption</div>
+                    <div>Once a proposed policy has been added to the agenda, the elected branches of government consider one specific solution and decide whether to pass it. Policy can be made through legislation signed by the governor or when a state agency changes a rule or regulation. This stage is the most visible and usually garners the most press coverage.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Implementation and Evaluation</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔄 Stages 4 & 5 revealed!</p>
+                        <p><strong>Implementation (Stage 4):</strong> Government agencies begin making the policy work. They establish procedures, write guidance documents, and issue grants-in-aid. Identifying the appropriate agency is crucial. Budgetary policy plays a major role and could determine a policy's success or failure.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Evaluation (Stage 5):</strong> All policies must be evaluated for effectiveness. Evaluation asks, "How well did this policy do what we designed it to do?" A 2011 study found that abstinence-only education actually increased teen pregnancy rates—the opposite of its intended goal! Evaluation may reveal needs for revisions, implementation changes, or new policies entirely.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What are the five stages of the policy-making process in order?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Adoption, Definition, Implementation, Agenda, Evaluation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Agenda, Definition, Evaluation, Adoption, Implementation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">Problem Definition, Agenda Setting, Policy Adoption, Implementation, Evaluation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Evaluation, Definition, Agenda, Implementation, Adoption</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Why is policymaking described as a "cycle"?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Because it repeats every election year</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">Because evaluation feeds back into earlier stages, informing future policy decisions</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Because the same policies are always proposed</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Because it requires multiple legislative sessions</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Civil Liberties & Rights -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚖️</span>
+                    <h2>Civil Liberties and Civil Rights Policy</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand affirmative action policies in Texas</li>
+                        <li>Examine gun rights and gun control debates</li>
+                        <li>Explore civil rights issues in Texas</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📚 Affirmative Action</div>
+                    <div>Affirmative action refers to policies adopted by governments and institutions to take proactive measures to increase the proportion of historically disadvantaged minority groups. These have taken forms including quotas (banned by the Supreme Court in 1978's Regents v. Bakke), extra outreach efforts, and student financial aid for minorities. As of March 2015, 109 of 577 public four-year universities considered race in admissions, though this practice has been banned in eight states.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are gun rights in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔫 Second Amendment in Texas!</p>
+                        <p>The Second Amendment reads: "A well regulated Militia being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed." In Texas, this right belongs to "every citizen" by the Texas Constitution. Estimates of Texas gun ownership range from 35% to 43% of the population—above the national average.</p>
+                        <p style="margin-top: 0.5rem;">Eight new gun laws went into effect September 1, 2019, including allowing guns in places of worship (unless banned with proper signage), during disasters, and in rented property. <strong>Campus carry</strong> laws became effective August 1, 2016 for 4-year universities and August 1, 2017 for community colleges, pertaining to concealed carry only.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happened with the "bathroom bill"?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🚻 Civil rights debate!</p>
+                        <p>Several bills were filed in the 2017 Texas Legislature regarding transgender bathroom access. Senator Lois Kolkhorst sponsored SB6, championed by Lt. Governor Dan Patrick. The Texas Senate passed SB6 (regular session) and SB3 (Special Session) by 21-10 largely along party lines. SB6 would have limited bathroom access based on the sex listed on one's birth certificate. However, in August 2017, the Texas Legislature adjourned without the House voting on any "transgender bathroom bill." This illustrates how policy can be made (or not made) through legislative inaction.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ When did campus carry laws become effective for Texas 4-year universities?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">August 1, 2015</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">August 1, 2016</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">August 1, 2017</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">August 1, 2019</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What Supreme Court case banned racial quotas in university admissions?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Brown v. Board of Education</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">Regents of the University of California v. Bakke</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Citizens United v. FEC</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Roe v. Wade</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Education Policy -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🎓</span>
+                    <h2>Education Policy in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand K-12 public education funding in Texas</li>
+                        <li>Explore higher education and school choice options</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">One of the most important functions of state government is providing and funding public education. Texas has a very large and complex public school system, with an equally complex school finance system. Three issues have played a major role in shaping education: desegregation, funding equity, and finding the formula for educational excellence.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📚 K-12 Public Education</div>
+                    <div>The Texas public school system (prekindergarten through grade 12) operates within districts governed by locally elected school boards and superintendents. In 2018, $52.3 billion in state and local money went to 5.4 million students in 1,019 traditional school districts and 171 charter districts.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How is school funding calculated?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💰 The basic allotment!</p>
+                        <p>The state of Texas guarantees every school district a certain amount of funding for each student, called the <strong>basic allotment</strong>. State lawmakers determine the base number per student, which was <strong>$5,140 in 2018</strong>. Many educators argue that the state should regularly increase that base number to match inflation to provide schools with needed funding; however, the basic allotment per student has not changed substantially since 2010.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🏫 Texas Higher Education</div>
+                    <p>Texas' higher education system is composed of 268 colleges and universities: 107 public institutions, 73 nonprofit private schools, and 88 for-profit private institutions. At public four-year colleges, 27.6% graduated within four years, while 51.7% graduated within six years. Hispanic students comprised approximately 34.0% of the total postsecondary student population. Texas was one of five states where teaching/research assistants alone outnumbered full-time faculty.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is school choice?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏫 Educational alternatives!</p>
+                        <p><strong>School choice programs</strong> provide alternatives to parents who don't want to send children to assigned public schools. Options include:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Open enrollment policies</li>
+                            <li>Magnet schools</li>
+                            <li>Charter schools (723 in Texas in 2015-16, enrolling about 282,900 students)</li>
+                            <li>Vouchers, tax credits, and Education Savings Accounts (ESAs)</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">As of 2016, Texas provided no financial assistance for parents sending children to private schools. Charter schools in Texas cannot charge tuition or impose special entrance requirements; students are admitted through a lottery if demand exceeds spaces.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What was the basic allotment per student in Texas in 2018?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">$4,500</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">$5,140</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">$6,200</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">$7,000</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many students attended Texas public schools in 2018?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">3.2 million</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">4.1 million</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">5.4 million</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">6.8 million</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Energy & Environment -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚡</span>
+                    <h2>Energy and Environmental Policy</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand energy policy and fracking in Texas</li>
+                        <li>Explore environmental protection regulations</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Energy policy involves governmental actions affecting the production, distribution, and consumption of energy. These policies include legislation, regulation, taxes, incentives for energy production or use, and standards for energy efficiency. A variety of factors affect feasibility, including available natural resources, geography, and consumer needs.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🛢️ Hydraulic Fracturing (Fracking)</div>
+                    <div>Hydraulic fracturing, also known as fracking, is a method of oil and natural gas extraction that involves injecting fluid into subterranean rock formations at high pressure. The Oil and Gas Division within the Texas Railroad Commission is responsible for regulating fracking in Texas. The fluid (frac fluid) contains 98-99.5% water and sand; only 0.5-2% is chemical additives used to stop microorganism growth, prevent corrosion, and reduce pressure.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What are Texas' energy resources?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ⛽ Texas oil and gas!</p>
+                        <p>Texas overlies portions of major oil and gas formations:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Anadarko Basin</li>
+                            <li>Palo Duro Basin</li>
+                            <li>Permian Basin</li>
+                            <li>Barnett Shale</li>
+                            <li>Eagle Ford Shale</li>
+                            <li>Haynesville-Bossier Shale</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">As of February 2017, Texas had <strong>279,615 active oil and gas wells</strong>. According to the Texas Railroad Commission, fracking began in Texas in the 1950s. Texas regulations require operators to disclose chemicals used in fracking on FracFocus.org, though trade secrets may be withheld.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What federal laws regulate fracking?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏛️ Federal environmental oversight!</p>
+                        <p>While states have primary regulatory authority, oil and gas operators must meet federal requirements:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Clean Air Act:</strong> Regulates air pollutants during production</li>
+                            <li><strong>Clean Water Act:</strong> Regulates pollution discharges into surface waters; requires permits for produced water discharge</li>
+                            <li><strong>CERCLA (Superfund):</strong> Requires reporting hazardous substance releases; allows EPA to investigate and require restoration of affected areas</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">Environmental policy aims to conserve natural resources by balancing environmental protection with economic growth, property rights, public health, and energy production.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which agency regulates fracking in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The Texas Environmental Quality Commission</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The EPA</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 25)">The Oil and Gas Division within the Texas Railroad Commission</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">The Texas Department of Energy</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Approximately how many active oil and gas wells did Texas have as of February 2017?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">150,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">200,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 25)">279,615</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">350,000</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Healthcare & Social Welfare -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏥</span>
+                    <h2>Healthcare and Social Welfare Policy</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand Medicare, Medicaid, and the ACA in Texas</li>
+                        <li>Explore the social safety net and welfare programs</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Healthcare policy affects not only the cost citizens pay for care, but also their access to care and the quality of care received. A top concern for policymakers is the rising cost of healthcare, which has placed an increasing strain on consumers' disposable income and state budgets.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏥 Medicare</div>
+                    <div>Medicare is an entitlement program funded through payroll taxes. Its purpose is to ensure senior citizens and retirees have access to low-cost health care. It provides three major forms of coverage: guaranteed insurance for hospitalization, fee-based supplemental coverage for doctor visits, and a prescription drug benefit. Medicare faces the problem that health care costs are rising significantly faster than inflation.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How does Medicaid work in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💊 Medicaid explained!</p>
+                        <p><strong>Medicaid</strong> is a formula-based health insurance program—beneficiaries must demonstrate they fall within a particular income category. It's jointly funded by federal and state governments, with eligibility, benefits, and administration managed by states within federal guidelines. Texas' Medicaid program provides medical insurance to low-income people and individuals with disabilities.</p>
+                        <p style="margin-top: 0.5rem;">Related programs include <strong>CHIP</strong> (Children's Health Insurance Program) covering low-income children above the poverty line, and <strong>TexCare</strong> offering additional children's health insurance through Medicaid and SKIP (State Kids Insurance Program).</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">🛡️ The Social Safety Net</div>
+                    <p>During the Great Depression, the U.S. created programs constituting a "social safety net" for millions who lost jobs, homes, and savings. The Texas Department of Public Welfare was established in 1939 during the New Deal. As of December 2016, roughly 14% of Texas residents (approximately 4 million people) received Social Security benefits. About 87% of Texans aged 65+ received benefits. Benefits totaled roughly $4.85 billion for December 2016, averaging $1,206 per recipient per month.</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the Affordable Care Act?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📋 The ACA in Texas!</p>
+                        <p>The <strong>Affordable Care Act (ACA)</strong>, also known as Obamacare, was signed into law in 2010 by President Barack Obama. It facilitates purchase of health insurance through exchanges, tax credits, and subsidies. A 2012 Supreme Court ruling made Medicaid expansion voluntary for states. The law requires insurers to cover standard benefits and prohibits coverage denials based on preexisting conditions.</p>
+                        <p style="margin-top: 0.5rem;">Texas led other states in efforts to combat what some called federal government takeover of healthcare. Even before the ACA, more than 50% of all healthcare expenditures in the U.S. already came from federal programs like Medicare and Medicaid.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What percentage of Texas residents received Social Security benefits as of December 2016?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">8%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 25)">Roughly 14%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">20%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">25%</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the key difference between Medicare and Medicaid?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Medicare is for children; Medicaid is for seniors</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 25)">Medicare is for seniors/retirees; Medicaid is for low-income individuals</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">Medicare is state-funded; Medicaid is federally funded</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">There is no difference; they are the same program</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Influencing Policy -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💡</span>
+                    <h2>Influencing Policy Decisions</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand the role of policy advocates and policy analysts</li>
+                        <li>Learn how citizens can influence policy decisions</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Two important but overlapping groups defend their preferred policy changes: policy advocates and policy analysts. Understanding how these groups operate helps citizens engage more effectively in the policy process.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📢 Policy Advocates</div>
+                    <div>Policy advocates actively work to propose or maintain public policy. They hold a <strong>normative position</strong>—a conviction about what should or ought to be done. They begin with an objective and try to shape proposals that accomplish that goal. Facts, evidence, and analysis are tools for convincing policymakers of their proposals' benefits. The most effective advocates are usually hired professionals who form lobbying groups or think tanks.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How does AARP advocate for seniors?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 👴 Lobbying in action!</p>
+                        <p><strong>AARP</strong> (formerly American Association of Retired Persons) is a lobbying group that frequently takes on advocacy roles. Its primary job is to convince government to provide more resources and services to senior citizens, including lower health care costs and safety of Social Security payments.</p>
+                        <p style="margin-top: 0.5rem;">In 2002, AARP surprised many by supporting the Republican prescription drug plan over the Democratic proposal. While Democrats argued their position was better for individuals, AARP reasoned the Republican plan had a better chance of passing. AARP created a new benefit it hoped could later be expanded, rather than fighting for an extreme position that might leave seniors with nothing.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📊 Policy Analysts</div>
+                    <div>Policy analysts try to identify all possible choices available to a decision maker and gauge their impacts if implemented. Rather than encouraging implementation of specific options, they ensure decision makers are fully informed about implications of their decisions. Because advocates have incentives to understate costs and overstate benefits, policy analysis tends to be highly politicized.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: How can YOU influence policy?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> ✊ Get connected!</p>
+                        <p>What is your passion? Is there an aspect of society you think should be changed? Become a public policy advocate for it! Ways to participate:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Contact your elected representatives</li>
+                            <li>Join advocacy organizations related to your interests</li>
+                            <li>Participate in public hearings and town halls</li>
+                            <li>Vote in every election—local, state, and federal</li>
+                            <li>Use government petition platforms like "We the People"</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">Think tanks like the Texas Public Policy Foundation, Cato Institute, and Brookings Institution provide policy analysis from various perspectives.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the main difference between policy advocates and policy analysts?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 25)">Advocates push for specific outcomes; analysts identify options and assess impacts</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Advocates work for government; analysts work for private companies</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">Advocates focus on state policy; analysts focus on federal policy</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">There is no difference between them</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Distributive policy:</span> A policy that collects payments broadly but concentrates direct benefits on relatively few.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Entitlement:</span> A program that guarantees benefits to members of a specific group or segment of the population.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Libertarians:</span> People who believe government almost always operates less efficiently than the private sector and that its actions should be kept to a minimum.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Medicaid:</span> A federal and state program financing medical services for low-income citizens.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Medicare:</span> An entitlement health insurance program for older people and retirees.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Policy advocates:</span> People who actively work to propose or maintain public policy.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Policy analysts:</span> People who identify all possible choices available to a decision-maker and assess potential impact of each.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Public policy:</span> The broad strategy government uses to do its job; the relatively stable set of purposive governmental behaviors that address matters of concern to society.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Redistributive policy:</span> A policy in which costs are borne by a relatively small number of groups, but benefits are enjoyed by a different group.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Regulatory policy:</span> A policy that regulates companies and organizations in a way that protects the public.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Safety net:</span> A way to provide for members of society experiencing economic hardship.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Social Security:</span> A social welfare policy for people who no longer receive income from employment.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>📋 TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 12: Public Policy in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>What is Public Policy?</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/150</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Types of Goods & Policy</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>The Policy-Making Process</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Civil Liberties & Rights</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Education Policy</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Energy & Environment</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/155</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Healthcare & Social Welfare</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/160</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Influencing Policy</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/150</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 12: Public Policy in Texas. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 150 },
+                2: { earned: 0, max: 165 },
+                3: { earned: 0, max: 160 },
+                4: { earned: 0, max: 165 },
+                5: { earned: 0, max: 155 },
+                6: { earned: 0, max: 155 },
+                7: { earned: 0, max: 160 },
+                8: { earned: 0, max: 150 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            175: 'Scholar',
+            350: 'Policy Analyst',
+            525: 'Policy Advocate',
+            700: 'Legislative Aide',
+            875: 'Policy Expert',
+            1050: 'Texas Policy Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 📋 Your journey through Texas public policy begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

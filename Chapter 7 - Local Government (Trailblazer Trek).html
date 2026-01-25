@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Local Government in Texas - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .figure-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .figure-caption {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .highlight-box {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--warning);
+        }
+
+        .quote-box {
+            background: var(--bg-light);
+            border-left: 5px solid var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+
+        .glossary-term {
+            background: var(--highlight-blue);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .glossary-term strong {
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>🏛️ TCC Texas Government Trailblazer Trek: Local Government</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>🏛️ Chapter 7: Local Government in Texas ⭐</h2>
+                <p>Explore the structure and function of Texas' 254 counties, 1,214 cities, and thousands of special districts!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>🏙️</span>
+                        <div>Cities & Counties</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>⚖️</span>
+                        <div>Local Powers</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🏫</span>
+                        <div>Special Districts</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin exploring local government in Texas:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction to Local Government</h3>
+                    <p>Discover why understanding local government is essential in Texas and explore the changing political dynamics.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Local, State, and National Relations</h3>
+                    <p>Learn how local governments derive their power from the state and interact with federal programs.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>General Law and Home Rule Cities</h3>
+                    <p>Understand the two types of municipal government and their different powers and limitations.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>Municipal Governance Structure</h3>
+                    <p>Explore council-manager and strong-mayor forms of government and election systems.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>County Government Structure</h3>
+                    <p>Learn about Texas' 254 counties and the commissioners' court system.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card6" onclick="navigateToSection(6)">
+                    <div class="section-number">6</div>
+                    <h3>County Officials and Their Duties</h3>
+                    <p>Discover the roles of sheriffs, attorneys, clerks, and other county officials.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card7" onclick="navigateToSection(7)">
+                    <div class="section-number">7</div>
+                    <h3>Special Districts Overview</h3>
+                    <p>Explore the "invisible government" of Texas - over 3,350 special purpose districts.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+
+                <div class="section-card" id="card8" onclick="navigateToSection(8)">
+                    <div class="section-number">8</div>
+                    <h3>Types of Special Districts</h3>
+                    <p>Learn about school districts, MUDs, hospital districts, and TIRZs.</p>
+                    <div class="points-indicator">🌟 180 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction to Local Government -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏛️</span>
+                    <h2>Introduction to Local Government in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Describe the roles and responsibilities of local political systems in Texas</li>
+                        <li>Understand the changing political dynamics between state and local governments</li>
+                        <li>Recognize the scope and scale of local government in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Voters in Texas have leaned conservative throughout the state's history, albeit with a bit of a progressive streak. Even as the nature of the Republican and Democratic parties have changed, the basic ideology of Texas voters has been fairly reliable.</p>
+
+                <p class="content-text">One major change, though, has been the geographic distribution of liberals and conservatives. In recent elections, urban areas have grown increasingly liberal as rural areas have grown more conservative. This has created an interesting conflict with respect to the nature of local governments in Texas. Conservative lawmakers have historically supported the concept of local control, letting local governments – especially cities – conduct their business as they please, relying on local voters to keep regulatory overreach in check.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Local Control</div>
+                    <div>A governing philosophy that favors letting local governments conduct their business independently, with local voters keeping any regulatory overreach in check, rather than having the state legislature dictate local policy.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How have urban areas challenged conservative norms?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎉 Urban-rural divide revealed!</p>
+                        <p>More liberal urban voters have shown a higher level of comfort with government regulation and authority that conservative voters generally oppose. Austin, arguably the most liberal of Texas cities, has enacted ordinances banning grocery stores from offering plastic bags to customers, placing red-light cameras at intersections to automatically ticket drivers who fail to come to a complete stop before making a right turn - even requiring apartment properties to participate in voluntary federal low-income housing programs.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">The San Antonio City Council, meanwhile, refused to allow Chick-fil-A restaurants in the city's airport because of the company's financial support of organizations like the Salvation Army and the Fellowship of Christian Athletes, which city leaders felt were insufficiently supportive of gay and lesbian issues.</p>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.1:</strong> Chick-fil-A restaurant located at the Tech Ridge shopping center in Austin, Texas.</p>
+                    <p class="figure-caption">Image credit: Wild Bill, License: CC BY SA</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did the Texas Legislature respond in 2019?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚖️ State vs. Local showdown!</p>
+                        <p>In 2019, the Texas Legislature passed a number of bills to reign in local government policies it deemed out of control. Red-light cameras were banned statewide. A "Save Chick-fil-A bill" prohibiting cities from refusing to do business with companies that partner with religious groups was enacted. A bill prohibiting new partnerships between cities and abortion providers was also signed into law. As the demographics and politics of Texas change, how will future legislators expand or contract the powers of local governments?</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>📊 Texas Local Government by the Numbers</h4>
+                    <p>Understanding government in Texas is impossible without a study of local governments. Texas has:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>1</strong> state government (under 1 federal government)</li>
+                        <li><strong>254</strong> counties</li>
+                        <li><strong>1,214</strong> cities</li>
+                        <li><strong>1,079</strong> independent school districts</li>
+                        <li><strong>2,600+</strong> special purpose districts</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">These special purpose districts cover everything from rural fire prevention to mosquito control. The variety and scope of local government in Texas is truly remarkable, making it essential to understand how each level operates and interacts.</p>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What major shift has created conflict between the state and local governments in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Rural areas becoming more liberal</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 30)">Urban areas growing increasingly liberal while rural areas grow more conservative</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">The federal government increasing regulation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Declining voter participation in local elections</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many independent school districts exist in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">254</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">1,214</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-2', 30)">1,079</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-2', 0)">2,600</div>
+                    <div class="feedback-box" id="feedback-q1-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Local, State, and National Relations -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🤝</span>
+                    <h2>The Relationship Between Local, State, and National Government</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the relationship between the local government, state government, and national government</li>
+                        <li>Understand how different types of local government derive their power</li>
+                        <li>Recognize the role of preemption laws</li>
+                    </ul>
+                </div>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.2:</strong> County, state, and U.S. flags at Kaufman County Veterans' Memorial Park.</p>
+                    <p class="figure-caption">Image Credit: pxhere, License: CC0</p>
+                </div>
+
+                <p class="content-text">Whereas the federal government and state governments share power in countless ways, a local government must be granted power by the state. The way power is granted and limited is different for different types of local government.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📜 General-Law Government</div>
+                    <div>A form of local government created specifically by the state with specific powers granted under the Constitution and state statutes. General-law governments have virtually no flexibility beyond what the state explicitly permits. Texas counties operate as general-law forms of government.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How are counties different from cities?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🗺️ Geographic puzzle revealed!</p>
+                        <p>Counties are general-law forms of government, created specifically by the state. Geographically, counties are like puzzle pieces - every square inch of Texas is in one of the state's 254 counties. Counties are given specific powers by the state under the Constitution and state statutes and have virtually no flexibility. Cities, on the other hand, are created by their citizens, who apply for a charter to create one. Most of Texas does not lie within the city limits of any city.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">While small cities operate much like counties, with specific powers granted and limited by the state, larger "home rule" cities have tremendous flexibility. Cities like Austin have passed ordinances expanding the concept of a municipal government into social justice and environmental regulation areas that have prompted the state legislature to begin limiting the powers of home rule cities.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Preemption Laws</div>
+                    <div>State laws that limit the powers of local governments. These are controversial because conservatives who comprise the majority of both chambers of the state legislature historically favor the concept of local control, yet must balance this against progressive urban policies they oppose.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Why are preemption laws controversial?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎭 Political tension exposed!</p>
+                        <p>"Preemption" laws - state laws limiting the powers of local governments - are controversial. Conservatives comprise the majority of both chambers of the state legislature and historically favor the concept of local control. As voters in many urban areas trend more progressive, favoring social justice and environmental regulations beyond those favored by state lawmakers, the concept of local control begins to clash with the legislature's basic ideological standards.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do cities connect with the federal government?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏠 Federal-local connection revealed!</p>
+                        <p>Cities sometimes derive power and funding directly from the federal government. Most large Texas cities have been granted "substantial equivalency" by the U.S. Department of Housing and Urban Development, meaning the city's Fair Housing ordinance is basically the same as the national law. Those cities are empowered to an extent to enforce the Federal Fair Housing Act on the federal government's behalf.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How must local governments in Texas obtain their power?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Directly from the U.S. Constitution</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 30)">Power must be granted by the state</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">Through federal legislation</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">By popular vote of all Texas citizens</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does "substantial equivalency" from HUD allow Texas cities to do?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Set their own property tax rates</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Override state preemption laws</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 30)">Enforce the Federal Fair Housing Act on the federal government's behalf</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Create their own immigration policies</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: General Law and Home Rule Cities -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏙️</span>
+                    <h2>General Law and Home Rule Cities</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the structure and function of municipal government in Texas</li>
+                        <li>Distinguish between general law and home rule cities</li>
+                        <li>Understand limited annexation and extraterritorial jurisdiction</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">While every square inch of Texas is included in one of its 254 counties, not all of Texas falls inside the limits of a city. Cities are created by its citizens, who are granted a charter by the state of Texas in the same way a corporation operates under a state charter.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 General Law City</div>
+                    <div>A city with a population of less than 5,000 people that has only the powers specifically granted by the legislature. General law cities do not have broad annexation or regulatory powers.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Home Rule City</div>
+                    <div>A city with a population greater than 5,000 that may elect home rule status. Home rule cities operate under home-rule charters - the rules under which a city operates - and have considerable independent governing power. They can do virtually anything they want that isn't prohibited by the legislature.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is limited annexation?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🗺️ Annexation powers revealed!</p>
+                        <p>Larger cities (those exceeding 225,000) have a unique authority: that of "limited annexation", whereby an adjoining area may be annexed for purposes of imposing city ordinances related to safety and building codes. The residents can vote for mayor and council races but cannot vote in bond elections (and, consequently, the city cannot directly collect city sales tax from businesses or city property tax from owners).</p>
+                    </div>
+                </div>
+
+                <p class="content-text">The City of Houston has exploited a provision in the state law that allows it to share in sales tax revenues along with special districts (municipal utility districts, for instance) that cross an area "annexed for limited purposes." This has led to a spiderwebbing known as limited purpose or special purpose annexations that consist of mostly commercial properties facing major streets.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🌐 Extraterritorial Jurisdiction (ETJ)</div>
+                    <div>The area beyond a city's limits where it has some regulatory authority. For Houston, this extends five miles beyond its city limits. ETJ areas may be subject to limited purpose annexations, creating conflicts between city and county officials over the provision of services.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is the purpose of limited annexation?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📋 Planning process explained!</p>
+                        <p>The purpose of limited annexation is to allow the city to control development in an area that it eventually will fully annex; it is meant to do so within three years (though it can arrange "non-annexation agreements" with local property owners), and those agreements with municipal utility districts also cloud the picture. During each of the three years, the city is to develop land-use planning for the area (zoning, for example), identify needed capital improvements and ongoing projects, and identify the financing for such as well as to provide essential municipal services.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Are municipal elections partisan in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🗳️ Election rules revealed!</p>
+                        <p>Municipal elections in Texas are nonpartisan in the sense that candidates do not appear on the ballot on party lines, and do not run as party tickets. However, a candidate's party affiliation is usually known or can be discerned with minimal effort (as the candidate most likely has supported other candidates on partisan tickets). In some instances, an informal citizen's group will support a slate of candidates that it desires to see elected (often in opposition to an incumbent group with which it disagreed on an issue). However, each candidate must be voted on individually.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the population threshold for a city to be eligible for home rule status?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">1,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 30)">5,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">50,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">225,000</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What population must a city exceed to have "limited annexation" authority?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">5,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">50,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">100,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 30)">225,000</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Municipal Governance Structure -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏢</span>
+                    <h2>Municipal Governance Structure</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Compare council-manager and strong-mayor forms of government</li>
+                        <li>Understand at-large vs. single-member district elections</li>
+                        <li>Recognize how different Texas cities structure their governance</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Who runs city government? Cities in Texas can be organized in a variety of ways. The most common structure is the council-manager form of government.</p>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.3:</strong> Mayor Sylvester Turner presided over this Houston City Council meeting in 2019.</p>
+                    <p class="figure-caption">Image Credit: Andrew Teas, License: CC BY</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👔 Council-Manager Government</div>
+                    <div>A form of city government where citizens elect a city council and mayor, but the daily operations of city government are overseen by a professional city manager hired by the city council. Most major Texas cities, including San Antonio, Austin, Galveston, Dallas, and Fort Worth, use this structure.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: Why did San Antonio choose the council-manager system?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🔧 Practical governance revealed!</p>
+                        <p>Citizens in San Antonio decided long ago that the political skill set required to be elected mayor of the city was not necessarily the skill set required to manage the day-to-day operations of a municipal water and sewer system with more than 12,000 miles of pipe – enough to stretch from Texas to Australia. While the mayor of San Antonio presides over council meetings, the daily operations of city government are overseen by a professional city manager, who is hired by the city council for that purpose.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💼 Strong-Mayor Government</div>
+                    <div>A form of city government where the mayor not only presides over city council meetings but is also the city's chief executive officer. Houston uses this structure, with an especially strong version since Houston mayors also have unilateral control over the city council agenda.</div>
+                </div>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.4:</strong> Unlike most cities, Houston has an independently-elected chief financial officer - Chris Brown, speaking here to a Houston business group in 2018.</p>
+                    <p class="figure-caption">Image Credit: Andrew Teas, License: CC BY</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What makes Houston's system unique?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Checks and balances revealed!</p>
+                        <p>Houston's strong-mayor system is considered especially strong since Houston mayors also have unilateral control over the city council agenda. On the other hand, Houston has a unique counterbalance in the form of an independently-elected city controller, a chief financial officer who must concur in all city expenditures and bond issues, and who can conduct independent audits of city departments.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🗳️ At-Large Election</div>
+                    <div>An election in which officials are selected by voters of the entire geographical area, rather than from smaller districts within that area. Any qualified person who lives in the city can run for any position.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the criticisms of each election system?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🎯 Election system debate revealed!</p>
+                        <p>At-large systems are frequently criticized for making it difficult for members of racial minority groups to be elected. Single-member district systems are criticized for creating a "turf" mentality that places parts of town in competition with each other for parks and libraries, removing the political incentive for council members to consider the needs of the city as a whole. Houston has a mixed system, with five members elected at large, eleven from single-member districts.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Which major Texas city uses a strong-mayor form of government?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Austin</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">San Antonio</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 30)">Houston</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">Dallas</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many council members does Houston elect at-large?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">None - all are from districts</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 30)">Five</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">Eleven</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">All sixteen</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: County Government Structure -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🗺️</span>
+                    <h2>County Government Structure</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the structure and function of county government in Texas</li>
+                        <li>Understand the history of Texas counties</li>
+                        <li>Recognize the commissioners' court structure</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Texas has a total of 254 counties, by far the largest number of counties of any state. Under Spanish and, later, Mexican rule, Texas was divided into municipios, which, despite sharing a name origin with municipalities, were more like the counties of today – large districts containing one or more settlements and the surrounding rural land.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How did Texas counties evolve?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📜 County history revealed!</p>
+                        <p>When Texas became a Republic in 1836, the 23 municipios became counties, with a structure that changed only slightly before, during, and after the Civil War. By 1870, Texas had 129 counties, and the Constitution of 1876, still in place today, went into significant detail about their formation and operation. The last new county to be established was Loving County in 1931.</p>
+                    </div>
+                </div>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.5:</strong> Fort Bend County was created as part of the Republic of Texas in 1837. This 1898 map shows many of the original land grants.</p>
+                    <p class="figure-caption">Image Credit: Andrew Teas, License: CC BY</p>
+                </div>
+
+                <p class="content-text">The structure of county government in Texas is defined in the Constitution, so it's not surprising that the form closely follows the plural-executive model of state government.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ Commissioners' Court</div>
+                    <div>The main governing body of each Texas county, consisting of a county judge elected at-large and four county commissioners elected from each of four precincts. The commissioners' court has the authority to set the county tax rate and budget.</div>
+                </div>
+
+                <div class="figure-box">
+                    <p><strong>📸 Figure 7.6:</strong> This Harris County Commissioners Court meeting in 2018 was chaired by former Harris County Judge Ed Emmett.</p>
+                    <p class="figure-caption">Image Credit: Andrew Teas, License: CC BY</p>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What's unique about county officials' independence?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏛️ Independent officials explained!</p>
+                        <p>Many county functions are run by independently elected officials, who answer directly to the voters, rather than to commissioners' court. While county commissioners have authority over each official's budget, they have little to say about the day-to-day administration of county offices. In most counties, these independently-elected officials include the county sheriff, the county attorney, the district attorney, the county clerk, the district clerk, the county treasurer, and the county tax assessor-collector as well as a number of judges that varies widely with the population of the county.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the challenges Texas counties face?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⚠️ County vulnerabilities exposed!</p>
+                        <p>Texas counties are prone to inefficient operations and are vulnerable to corruption, for several reasons. First, most of them do not have a merit system but operate on a spoils system, so that many county employees obtain their positions through loyalty to a particular political party and commissioner rather than whether they actually have the skills and experience appropriate to their positions. Second, most counties have not centralized purchasing into a single procurement department which would be able to seek quantity discounts and carefully scrutinize bids and contract awards for unusual patterns. Third, in 90 percent of Texas counties, each commissioner is individually responsible for planning and executing their own road construction and maintenance program for their own precinct, which can result in poor coordination and duplicate construction machinery.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many counties does Texas have?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">129</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">200</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 30)">254</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">300</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ When was the last new county (Loving County) established in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">1876</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">1901</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 30)">1931</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">1950</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: County Officials and Their Duties -->
+        <div id="section6" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>👮</span>
+                    <h2>County Officials and Their Duties</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify the major elected county officials in Texas</li>
+                        <li>Understand the duties and responsibilities of each county official</li>
+                        <li>Recognize the unique challenges of Harris County</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👨‍⚖️ County Judge</div>
+                    <div>While a county judge, particularly in rural counties, does have a judicial function, a county judge in Texas is primarily the chair of the county commissioners' court. The county judge also plays an important role as head of the county's emergency management functions.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🛣️ County Commissioner</div>
+                    <div>A government official (four per county) on the county commissioners' court whose main duty is the construction and maintenance of roads and bridges. County commissioners in Texas are incredibly powerful, especially in large counties, having almost unilateral control over planning and construction within their precinct, which is one-fourth of the county (by population).</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the Sheriff's responsibilities?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🚔 Law enforcement role revealed!</p>
+                        <p>The sheriff is the county's chief law enforcement officer. The sheriff also manages the county jail and provides security for the county courts. This combination of responsibilities makes the sheriff one of the most visible and important county officials.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">⚖️ County Attorney</div>
+                    <div>The county's lawyer, providing legal advice and representing the county and its officials in all civil cases. The county attorney also pursues civil enforcement actions on behalf of the county. This can present an interesting dilemma, since county officials are all independently elected - sometimes a county official and the lawyer representing him may be political opponents.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">👨‍⚖️ District Attorney</div>
+                    <div>The public official who prosecutes the more serious criminal cases in the district court. The district attorney is the state's prosecutor, representing the government in criminal cases in that county's state district courts.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What do the clerks do?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📋 Recordkeeping duties revealed!</p>
+                        <p><strong>County Clerk:</strong> The county clerk is the county's custodian of records and documents, in charge of public records such as bonds, birth and death certificates, marriage licenses. The county clerk is also the chief election officer in most counties, administering elections and counting the votes.</p>
+                        <p><strong>District Clerk:</strong> The district clerk is the recordkeeper for all records pertaining to the state district courts in that county. The district clerk coordinates the jury selection process and manages court registry funds.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💰 County Treasurer</div>
+                    <div>The county's banker - receiving and depositing all county revenues, preparing the county payroll, and recording all county expenditures and receipts.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📝 County Tax Assessor-Collector</div>
+                    <div>The public official who maintains the county tax records and collects taxes owed to the county. Part of the title is somewhat misleading - all tax "assessment" is now done by appraisal districts. The "collector" part still applies, however. In addition to collecting all county property taxes, the county tax assessor-collector usually collects property taxes for other taxing jurisdictions within the county. This official also issues license plates and registration stickers, and handles voter registration.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card6-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What makes Harris County unique?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏙️ Big county challenges revealed!</p>
+                        <p>Unlike cities, which can receive sales tax revenue, counties are funded almost entirely with property taxes. Harris County's population is nearly 5 million people as of 2019, with more than 2 million in the unincorporated area. If the unincorporated part of Harris County were a city, it would be the fifth-largest city in the United States. Fourteen states have fewer residents than the unincorporated part of Harris County, which has no building code and limited land use regulation.</p>
+                        <p>Meanwhile, in West Texas, Loving County has the exact same governance structure to administer a county with an estimated population of 152 – from which voters must choose at least a dozen elected county officials.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <p>"The unique, ongoing challenge for Harris County government is to meet the needs of this rapidly growing unincorporated area without the funding sources provided to large cities in Texas." — Harris County Annual Budget Report</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Who is the chief law enforcement officer in a Texas county?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">County Judge</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">District Attorney</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-1', 30)">County Sheriff</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-1', 0)">County Commissioner</div>
+                    <div class="feedback-box" id="feedback-q6-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the primary revenue source for Texas counties?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Sales tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q6-2', 30)">Property taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Income tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q6-2', 0)">Federal grants</div>
+                    <div class="feedback-box" id="feedback-q6-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(6)">✅ Complete Section 6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Special Districts Overview -->
+        <div id="section7" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏫</span>
+                    <h2>Special Districts: The Invisible Government of Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the structure and function of special districts in Texas</li>
+                        <li>Understand why special districts are called the "invisible government"</li>
+                        <li>Recognize the scale and scope of special districts in Texas</li>
+                    </ul>
+                </div>
+
+                <div class="quote-box">
+                    <p>"In general, most citizens know comparatively little about the jurisdiction, structure, functions, and governance of special purpose districts, thus making them the <strong>invisible government</strong> of Texas."</p>
+                </div>
+
+                <p class="content-text">Texans seem to love special purpose districts. As of 2014, Texas has approximately 3,350 of them, and the number increases every year. There are far more special purpose districts in Texas than cities and counties combined, yet most Texans know almost nothing about their function, structure, or governance.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Special District (Special Purpose District)</div>
+                    <div>A unit of local government that performs a single service, such as education or sanitation, within a limited geographic area. Special purpose districts are governmental entities with specific geographic boundaries that are created to provide specific services such as drainage, water and sewer service, or firefighting.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How are special districts created and governed?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏗️ District formation revealed!</p>
+                        <p>Districts can be created by the Texas Legislature, by local governmental bodies, or sometimes by a state agency. Districts are controlled by a board of directors, sometimes elected by voters but sometimes appointed by the legislature or the governing body of a local city or county.</p>
+                        <p>If you are taking this class from a community college, your college is a special-purpose district – a community college district created by the state legislature and funded mostly by an ad valorem tax levied on property within the district boundaries.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>📊 Texas Local Governments Comparison</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Counties:</strong> 254</li>
+                        <li><strong>Cities:</strong> 1,214</li>
+                        <li><strong>Special Purpose Districts:</strong> 3,350+</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;">Special districts outnumber cities and counties combined!</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏫 School District</div>
+                    <div>A specific type of special district that provides public education in a designated area. Texas has 1,031 school districts, which manage 9,317 public schools serving over five million kindergarten through 12th-grade students. The number of school districts has declined in recent years as some rural districts have consolidated as student populations dwindle.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do school districts compare to cities in taxation?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 💰 Tax comparison revealed!</p>
+                        <p>School districts generally levy a higher property tax rate than any other jurisdiction. The Katy Independent School District has a property tax rate of $1.52 per $100 of property value, more than three times the $0.49 rate of the City of Katy. Despite the cost to taxpayers and overall importance of their mission, school district trustees often receive less attention from voters and the press than city council members.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card7-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How are school districts governed?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📋 Governance structure revealed!</p>
+                        <p>A school district is governed by a board of trustees, elected in a non-partisan election – generally in May of odd-numbered years. Elected school trustees are volunteers, receiving no salary for their services. They hire a superintendent to run the day-to-day operations of the school district. The board of trustees sets the district property tax rate, approves the salary schedule for teachers and staff, and approves contracts for the construction and maintenance of school facilities and equipment.</p>
+                        <p>School districts are also transportation and food-service providers – often massive ones. The Houston Independent School District serves more than 269,000 meals and transports approximately 36,000 students to and from school on a fleet of nearly 1,000 buses every school day.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ Approximately how many special purpose districts exist in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">254</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">1,031</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-1', 0)">1,500</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-1', 30)">3,350</div>
+                    <div class="feedback-box" id="feedback-q7-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ When are school board trustees typically elected in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">November of even-numbered years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q7-2', 30)">May of odd-numbered years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">March of even-numbered years</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q7-2', 0)">They are appointed, not elected</div>
+                    <div class="feedback-box" id="feedback-q7-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(7)">✅ Complete Section 7</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Types of Special Districts -->
+        <div id="section8" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>🏥</span>
+                    <h2>Types of Special Districts in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Understand the different types of special districts in Texas</li>
+                        <li>Explain how MUDs provide infrastructure for new developments</li>
+                        <li>Recognize how TIRZs work to redevelop troubled areas</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🎓 Community College District</div>
+                    <div>Texas has 50 community college districts, serving more than 700,000 students. Chosen by voters in non-partisan elections, community college district boards of trustees serve the same role as school district trustees for their colleges, setting the tax rate, salary schedules, and approving contracts for facilities, equipment and other needs. Community college boards hire a chancellor to run the district's day-to-day operations.</div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">💧 Municipal Utility District (MUD)</div>
+                    <div>A special district that offers services such as electricity, water, sewage, and sanitation outside the city limits. When developers create a new residential subdivision on previously rural land, MUDs create critical infrastructure for those new homes.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do MUDs work?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏗️ Infrastructure financing revealed!</p>
+                        <p>A MUD can be created by the legislature or by the Texas Commission on Environmental Quality with specific geographic boundaries. Once established, the residents of the district (sometimes a few development company employees moved into trailers specifically to be voters) vote to authorize the district to sell bonds – borrowing money from bondholders, who are paid back later with interest. The district uses the money raised from selling bonds to build a water and sewer system for the new subdivision. Homeowners then pay a property tax, as well as water and sewer rates for the water they use, to the district, which uses that money to repay the bonds.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏥 Hospital District</div>
+                    <div>Indigent health care in Texas is left largely to county governments, which are often ill-equipped to deal with this complex task. Some counties have formed hospital districts to collect a property tax and provide health services. Hospital districts are run by boards of trustees, with members appointed by county commissioners' courts.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What does Harris Health accomplish?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏥 Healthcare impact revealed!</p>
+                        <p>The Harris County Hospital District (now called simply Harris Health) collects a property tax of $0.17 per $100 of property valuation. With the $717 million that tax raised in 2018, Harris Health handled more than 161,000 emergency room visits and more than 1.7 million outpatient clinic visits.</p>
+                    </div>
+                </div>
+
+                <p class="content-text">In addition to the categories discussed, Texas has dozens of other types of special-purpose districts from rural fire prevention districts, which provide fire protection services, to mosquito control districts that test for evidence of mosquito-borne diseases and spray insecticide.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏙️ Tax Increment Reinvestment Zone (TIRZ)</div>
+                    <div>A TIRZ can be created by the legislature or by a local jurisdiction and is a tool to jumpstart the improvement and redevelopment of a troubled area. TIRZ board members are appointed by the governing body of the city that includes the TIRZ.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card8-3', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How do TIRZs work to revitalize areas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🌟 Redevelopment magic revealed!</p>
+                        <p>The taxable value of commercial property in a TIRZ is "frozen" at a certain point in time, with the city – sometimes in partnership with other taxing jurisdictions – continuing to collect taxes as if the value of property within the zone doesn't change. If redevelopment efforts are successful in improving the area and raising property values, the TIRZ keeps the increment between what the city collects and what the city would have collected had the property value increase been applied, with that money being used to finance further improvements in the area – new and improved streets, parks, better drainage, even additional police patrols.</p>
+                        <p>To a city, in theory at least, they would likely have never collected that increment anyway, since property values in blighted areas tend to be stagnant. When the TIRZ expires, however, the city realizes a windfall of additional tax revenue, as well as an area with better infrastructure and a healthier business and residential climate.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ How many community college districts exist in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-1', 30)">50</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">100</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">254</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-1', 0)">1,031</div>
+                    <div class="feedback-box" id="feedback-q8-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the purpose of a TIRZ?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">To provide water and sewer services to new subdivisions</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">To manage county hospitals</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-2', 30)">To jumpstart the improvement and redevelopment of troubled areas</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-2', 0)">To provide fire protection in rural areas</div>
+                    <div class="feedback-box" id="feedback-q8-2"></div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>📚 Chapter 7 Glossary Review</h4>
+                    <div class="glossary-term"><strong>At-large election:</strong> An election in which officials are selected by voters of the entire geographical area, rather than from smaller districts within that area.</div>
+                    <div class="glossary-term"><strong>County clerks:</strong> Public official who is the main record-keeper of the county.</div>
+                    <div class="glossary-term"><strong>County commissioner:</strong> Government official (four per county) on the county commissioners' court whose main duty is the construction and maintenance of roads and bridges.</div>
+                    <div class="glossary-term"><strong>County commissioners' court:</strong> The main governing body of each county; has the authority to set the county tax rate and budget.</div>
+                    <div class="glossary-term"><strong>County tax assessor-collector:</strong> Public official who maintains the county tax records and collects taxes owed to the county.</div>
+                    <div class="glossary-term"><strong>District attorney:</strong> Public official who prosecutes the more serious criminal cases in the district court.</div>
+                    <div class="glossary-term"><strong>Home-rule charters:</strong> The rules under which a city operates; local governments have considerable independent governing power under these charters.</div>
+                    <div class="glossary-term"><strong>Municipal utility district (MUD):</strong> A special district that offers services such as electricity, water, sewage, and sanitation outside the city limits.</div>
+                    <div class="glossary-term"><strong>School district:</strong> A specific type of special district that provides public education in a designated area.</div>
+                    <div class="glossary-term"><strong>Special district:</strong> A unit of local government that performs a single service, such as education or sanitation, within a limited geographic area.</div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(8)">✅ Complete Section 8</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>🏛️ TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 7: Local Government in Texas</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Achievement Level</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction to Local Government</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Local, State, and National Relations</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>General Law and Home Rule Cities</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Municipal Governance Structure</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>County Government Structure</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>County Officials and Their Duties</td>
+                                    <td id="status6">❌</td>
+                                    <td id="points6">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Special Districts Overview</td>
+                                    <td id="status7">❌</td>
+                                    <td id="points7">0/180</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Types of Special Districts</td>
+                                    <td id="status8">❌</td>
+                                    <td id="points8">0/180</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <p><strong>📝 Instructor Note:</strong> This report confirms completion of Chapter 7: Local Government in Texas in the TCC Texas Government Trailblazer Trek module. The grade shown reflects performance on interactive elements and knowledge checks.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 180 },
+                2: { earned: 0, max: 180 },
+                3: { earned: 0, max: 180 },
+                4: { earned: 0, max: 180 },
+                5: { earned: 0, max: 180 },
+                6: { earned: 0, max: 180 },
+                7: { earned: 0, max: 180 },
+                8: { earned: 0, max: 180 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            200: 'Scholar',
+            400: 'Civic Learner',
+            600: 'Government Analyst',
+            800: 'Local Expert',
+            1000: 'Policy Advocate',
+            1200: 'Texas Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 🏛️ Your exploration of Texas local government begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            // Determine which section this card belongs to
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                // Determine section
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                // Award completion bonus
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                // Update home page card
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            // Update student info
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            // Calculate percentage
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            // Calculate completion percentage
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            // Calculate letter grade
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            // Update section statuses
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            // Navigate to report
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>

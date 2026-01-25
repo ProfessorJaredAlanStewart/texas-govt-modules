@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14: Financing State Government - TCC Texas Government Trailblazer Trek</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #005A87;
+            --primary-green: #00695C;
+            --secondary-blue: #0277BD;
+            --secondary-green: #00897B;
+            --success: #1B5E20;
+            --error: #B71C1C;
+            --warning: #F57C00;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --bg-white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --bg-section: #E0F2F1;
+            --highlight-yellow: #FFD54F;
+            --highlight-blue: #E3F2FD;
+            --highlight-green: #E8F5E9;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .score-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4FC3F7, #4DB6AC);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-icon {
+            text-align: center;
+        }
+
+        .stat-icon span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-input {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        .start-button, .complete-section-btn, .report-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-button:hover, .complete-section-btn:hover, .report-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill-inner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card.completed {
+            background: var(--highlight-green);
+            border: 2px solid var(--success);
+        }
+
+        .section-card.completed::after {
+            content: '✅';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .points-indicator {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-blue);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .section-header span {
+            font-size: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .definition-box {
+            background: var(--highlight-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interactive-card {
+            background: var(--bg-section);
+            border: 2px dashed var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interactive-card:hover:not(.revealed) {
+            background: var(--highlight-blue);
+            transform: scale(1.02);
+        }
+
+        .interactive-card.revealed {
+            cursor: default;
+            background: var(--highlight-green);
+            border-style: solid;
+        }
+
+        .card-prompt {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .interactive-card.revealed .card-content {
+            max-height: 2000px;
+        }
+
+        .knowledge-check {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kc-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .kc-option {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .kc-option:hover:not(.disabled) {
+            background: var(--highlight-blue);
+            transform: translateX(5px);
+        }
+
+        .kc-option.correct {
+            background: var(--highlight-green);
+            border-color: var(--success);
+        }
+
+        .kc-option.incorrect {
+            background: #ffebee;
+            border-color: var(--error);
+        }
+
+        .kc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .feedback-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+        }
+
+        .feedback-box.correct {
+            background: var(--highlight-green);
+            color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            color: var(--error);
+        }
+
+        #pointsPopup {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            z-index: 2000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .report-header-bar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-scores {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        .report-content {
+            padding: 2rem;
+        }
+
+        .report-back-button {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .report-main {
+            text-align: center;
+        }
+
+        .report-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-grade-display {
+            background: var(--success);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .letter-grade {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .grade-percentage {
+            font-size: 1.5rem;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .report-info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-info-value {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .section-status-table th,
+        .section-status-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-status-table th {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .print-button {
+            background: var(--warning);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .print-button:hover {
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: var(--highlight-yellow);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-objectives h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .learning-objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--highlight-yellow);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-item {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+
+        .data-table th, .data-table td {
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-icons {
+                gap: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .name-input {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .report-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="header">
+        <h1>💰 TCC Texas Government Trailblazer Trek: Financing State Government</h1>
+        <div class="score-display">
+            ⭐ Score: <span id="totalPoints">0</span> | 🎯 Level: <span id="currentLevel">Explorer</span>
+        </div>
+    </div>
+
+    <!-- Points Popup -->
+    <div id="pointsPopup">+0 points!</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <h2>💰 Chapter 14: Financing State Government ⭐</h2>
+                <p>Explore how Texas raises revenue and spends taxpayer dollars!</p>
+                <div class="stat-icons">
+                    <div class="stat-icon">
+                        <span>💵</span>
+                        <div>Revenue</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>📊</span>
+                        <div>Budgeting</div>
+                    </div>
+                    <div class="stat-icon">
+                        <span>🏛️</span>
+                        <div>Spending</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="name-input-section">
+                <h3>🎓 Welcome, Trailblazer!</h3>
+                <p>Enter your name to begin your journey through Texas state financing:</p>
+                <input type="text" id="studentName" class="name-input" placeholder="Your Name">
+                <br>
+                <button class="start-button" onclick="startAdventure()">🚀 Start Your Adventure</button>
+            </div>
+
+            <div class="progress-bar">
+                <h4>📊 Your Progress</h4>
+                <div class="progress-fill">
+                    <div class="progress-fill-inner" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="section-card" id="card1" onclick="navigateToSection(1)">
+                    <div class="section-number">1</div>
+                    <h3>Introduction to State Financing</h3>
+                    <p>Understand the basics of how Texas funds its government operations.</p>
+                    <div class="points-indicator">🌟 145 points available</div>
+                </div>
+
+                <div class="section-card" id="card2" onclick="navigateToSection(2)">
+                    <div class="section-number">2</div>
+                    <h3>Texas Revenue Sources</h3>
+                    <p>Learn about sales tax, severance taxes, federal funding, and more.</p>
+                    <div class="points-indicator">🌟 175 points available</div>
+                </div>
+
+                <div class="section-card" id="card3" onclick="navigateToSection(3)">
+                    <div class="section-number">3</div>
+                    <h3>State Government Spending</h3>
+                    <p>Discover where Texas spends its money and budget priorities.</p>
+                    <div class="points-indicator">🌟 165 points available</div>
+                </div>
+
+                <div class="section-card" id="card4" onclick="navigateToSection(4)">
+                    <div class="section-number">4</div>
+                    <h3>The Texas Budgeting Process</h3>
+                    <p>Explore how the state budget is developed and approved.</p>
+                    <div class="points-indicator">🌟 170 points available</div>
+                </div>
+
+                <div class="section-card" id="card5" onclick="navigateToSection(5)">
+                    <div class="section-number">5</div>
+                    <h3>Issues in State Financing</h3>
+                    <p>Analyze ongoing challenges in Texas state finances.</p>
+                    <div class="points-indicator">🌟 160 points available</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+            </div>
+        </div>
+
+        <!-- Section 1: Introduction to State Financing -->
+        <div id="section1" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💰</span>
+                    <h2>Introduction to Financing State Government</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Analyze state financing issues in Texas</li>
+                        <li>Understand the role of property taxes in local government</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">In Texas, local governments, including school districts, cities, counties and special districts, are financed through ad valorem taxes, which multiply the appraised value of the property by a tax rate set by the governing body of the local government. As real estate values in Texas climbed after the oil bust of the 1980s, many homeowners became increasingly incensed at local government leaders proudly proclaiming that they hadn't raised taxes while presiding over huge increases in revenue provided by rising property tax appraisals.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏠 Ad Valorem Taxes</div>
+                    <div>Ad valorem taxes are taxes that multiply the appraised value of a property by a tax rate set by the governing body of the local government. This is the primary method used to finance local governments in Texas, including school districts, cities, counties, and special districts.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: Who is Dan Patrick and what did he do about property taxes?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 📻 Property tax reform!</p>
+                        <p>Conservative radio talk show host <strong>Dan Patrick</strong> was elected to the state senate in 2006, with outrage over property taxes his key issue. Senator Patrick helped pass a law creating a <strong>10 percent cap</strong> on single-family residential property tax appraisal increases that could be realized by taxing authorities in any given year, allowing homeowners to "ramp up" to large sudden appraisal increases over time.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card1-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What happened with the 2019 "tax swap" proposal?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔄 The failed tax swap!</p>
+                        <p>For the 2019 legislative session, Texas Republicans vowed to curb property tax increases while recognizing the need to increase the state's share of school funding. One alternative: a <strong>"tax swap"</strong> that would raise Texas' 6.25% state sales tax rate by a penny, using that money to provide additional state funding for public education and to offset required reductions in school property tax rates.</p>
+                        <p style="margin-top: 0.5rem;">Despite enthusiastic support from the "big three" – <strong>Governor Greg Abbott, Lieutenant Governor Dan Patrick, and House Speaker Dennis Bonnen</strong> – the proposal encountered stiff opposition from Republicans and Democrats across the political spectrum, and quietly disappeared from the legislature's agenda without a vote.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What type of tax is used to finance local governments in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Income tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-1', 25)">Ad valorem (property) tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Sales tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-1', 0)">Excise tax</div>
+                    <div class="feedback-box" id="feedback-q1-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(1)">✅ Complete Section 1</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Texas Revenue Sources -->
+        <div id="section2" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>💵</span>
+                    <h2>Texas Revenue Sources</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Identify the sources of state revenue in Texas</li>
+                        <li>Understand why Texas relies on sales taxes instead of income taxes</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Texas is one of only seven states that do not levy a state income tax. The other 43 states collect an income tax ranging from 2% in Tennessee to more than 13% in California. Accordingly, Texas has to find other ways to pay for government services.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Federal Funding - The Largest Revenue Source</div>
+                    <div>The largest single source of revenue for state government in Texas is <strong>federal funding</strong>, which is slightly more than a third of all state revenue at <strong>$75 billion</strong> for the most recent two-year budget cycle. To put that number into perspective, Texas individuals and businesses paid $280 billion in federal income and employment taxes in Fiscal Year 2018 alone. Federal funding goes to a variety of state government functions but is used mostly to pay for healthcare programs.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: How does the sales tax work in Texas?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🛒 Sales tax explained!</p>
+                        <p>The <strong>sales tax</strong> is the state's largest source of <em>tax</em> revenue. It is collected by local merchants and remitted to the state at <strong>6.25 percent</strong> of the sales price of taxable goods. Local taxing jurisdictions (cities, counties, special-purpose districts, and transit authorities) may also impose sales and use tax up to 2 percent for a total maximum combined rate of <strong>8.25 percent</strong>.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Exemptions include:</strong> groceries, property used in manufacturing, agricultural items, gas, electricity, and water. Still, sales taxes brought over <strong>$62 billion</strong> into the state treasury during the most recent two-year budget cycle.</p>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🛢️ Severance Taxes</div>
+                    <div>Texas levies an oil production tax at <strong>4.6%</strong> of market value and a natural gas production tax at <strong>7.5%</strong> of market value, minus certain deductions. These "severance taxes" combined to produce an estimated <strong>$4.9 billion</strong> during the most recent budget cycle. Severance taxes are taxes imposed on the removal of natural resources within a taxing jurisdiction.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are excise taxes?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> ⛽ Excise taxes revealed!</p>
+                        <p>An <strong>excise tax</strong> is a sales tax on a specific product or service. Texas excise taxes include:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Motor fuels:</strong> Gasoline and diesel at $0.20/gallon; LNG/CNG at $0.15/gallon equivalent – yielded <strong>$7.1 billion</strong></li>
+                            <li><strong>Tobacco:</strong> Cigarettes, cigars and tobacco – raised <strong>$2.9 billion</strong></li>
+                            <li><strong>Alcohol:</strong> Alcoholic beverages – yielded <strong>$2.6 billion</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card2-3', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What is the business margins tax?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏢 The franchise tax!</p>
+                        <p>A <strong>business margins tax</strong>, still officially called a "franchise tax," brought in an estimated <strong>$3.8 billion</strong>. It's a complex tax that can be calculated four different ways, with businesses using whichever formula results in the lowest tax:</p>
+                        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>70% of total revenue</li>
+                            <li>Total revenue minus costs of goods sold</li>
+                            <li>Total revenue minus total compensation and benefits</li>
+                            <li>Total revenue minus $1 million</li>
+                        </ol>
+                        <p style="margin-top: 0.5rem;">This flexibility was necessary when legislators abolished the old franchise tax in 2007 because a straight percentage of gross receipts would be much harder on a grocery store (high turnover, thin margins) than a jewelry store (few items, high markup).</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📋 Other Revenue Sources</div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Insurance premium tax:</strong> $5.3 billion (1.75% accident/health/life; 1.6% property/casualty; 1.35% title; 4.85% independently procured)</li>
+                        <li><strong>Hotel occupancy tax:</strong> Just over $1 billion</li>
+                        <li><strong>Licenses, fees, fines, penalties:</strong> $12.6 billion</li>
+                        <li><strong>Interest and investment income:</strong> $3.2 billion</li>
+                        <li><strong>Lottery:</strong> Just over $4 billion</li>
+                        <li><strong>Land income</strong> (mineral royalties, leases, grazing, timber, sand): $2.8 billion</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the state sales tax rate in Texas?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">5.00%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-1', 25)">6.25%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">7.50%</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-1', 0)">8.25%</div>
+                    <div class="feedback-box" id="feedback-q2-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the largest single source of revenue for Texas state government?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q2-2', 25)">Federal funding</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Sales tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Property tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q2-2', 0)">Severance taxes</div>
+                    <div class="feedback-box" id="feedback-q2-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(2)">✅ Complete Section 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: State Government Spending -->
+        <div id="section3" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📊</span>
+                    <h2>State Government Spending in Texas</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Discuss state government spending in Texas</li>
+                        <li>Understand the balanced budget requirement</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">📋 Fiscal Policy</div>
+                    <div>In economics and political science, <strong>fiscal policy</strong> is the use of government revenue collection (mainly taxes) and expenditure (spending) to influence the economy. While the U.S. Government can borrow money—even for operating expenses—the state government of Texas cannot. The <strong>Texas Constitution requires that Texas operate under a balanced budget</strong>. The state may only spend as much as it estimates it will receive in revenue during any fiscal biennium.</div>
+                </div>
+
+                <p class="content-text">The state government in Texas has budgeted to spend <strong>$251 billion</strong> over the 2020-21 biennial budget cycle, a significant increase over the $217 billion budget for the previous two-year cycle. Lawmakers agreed to increase spending by $11.1 billion on public education and to offset mandated local property tax cuts.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What are the biggest spending categories?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📈 Where the money goes!</p>
+                        <p><strong>Public education</strong> is the state's single largest spending category, followed closely by <strong>health and human services</strong>. While most of the health care portion is paid with federal funds, nearly every public education dollar must be raised locally through state taxes.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Key budget items include:</strong></p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Foundation school program (state's share of K-12 education)</li>
+                            <li>Medicaid and Medicare</li>
+                            <li>Child Protective Services</li>
+                            <li>Transportation</li>
+                            <li>Mental health</li>
+                            <li>Higher education</li>
+                            <li>Criminal justice</li>
+                            <li>Border security</li>
+                            <li>Teacher retirement and health benefits</li>
+                            <li>State employee retirement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card3-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What were the 2020-21 budget highlights?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 💰 Budget priorities!</p>
+                        <p>An optimistic revenue forecast from State Comptroller Glen Hegar allowed legislators to spend <strong>16% more</strong> than in the 2017 budget. Much of the additional spending went to Republican leadership's top priorities:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Education:</strong> $94.5 billion allocated (including K-12 and higher education) – a 10% increase</li>
+                            <li><strong>Health and human services:</strong> $84 billion – increased only 1%, with Medicaid receiving a $900 million cut (mostly federal funding)</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>Historic note:</strong> Governor Greg Abbott approved the budget without a single line-item veto—the first time a Texas governor approved an entire state budget since <strong>Governor Allan Shivers signed a budget without changes in 1955</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What does the Texas Constitution require regarding the state budget?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-1', 25)">Texas must operate under a balanced budget</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Texas can borrow unlimited amounts for operating expenses</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Texas must maintain a budget surplus</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-1', 0)">Texas can run a deficit up to 10% of revenue</div>
+                    <div class="feedback-box" id="feedback-q3-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is Texas' single largest spending category?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Health and human services</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q3-2', 25)">Public education</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Criminal justice</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q3-2', 0)">Transportation</div>
+                    <div class="feedback-box" id="feedback-q3-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(3)">✅ Complete Section 3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: The Texas Budgeting Process -->
+        <div id="section4" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>📝</span>
+                    <h2>The Texas Budgeting Process</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Outline the procedure for a state budget to be developed and approved</li>
+                        <li>Understand the roles of key agencies in the budget process</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">The Texas Constitution has long required state government to operate on a <strong>two-year budget cycle</strong>. This has the advantage of forcing lawmakers and agencies to think ahead in a way that states with annual budgets do not.</p>
+
+                <div class="definition-box">
+                    <div class="definition-term">🏛️ Key Budget Agencies</div>
+                    <div>Responsibility for preparing an initial draft of the budget is shared by the governor, through the <strong>Governor's Office of Budget, Planning, and Policy (GOBPP)</strong>, and the legislature through the <strong>Legislative Budget Board (LBB)</strong>. The LBB appoints a budget director, who brings together budgeting requests from various state agencies and prepares appropriations bills for them.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-1', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is Stage 1 of the budget process?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 📋 The drafting stage!</p>
+                        <p>In the <strong>first stage</strong>, the LBB develops a draft budget based on detailed <strong>legislative appropriations requests (LAR)</strong> from each state agency. The process follows these steps:</p>
+                        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Each agency creates a <strong>strategic plan</strong> providing the basis for LBB funding recommendations</li>
+                            <li>LARs from each agency are sent to the LBB, Comptroller's office, and other agencies by late summer/early fall</li>
+                            <li>The LBB and GOBPP hold hearings with each agency about their LAR</li>
+                            <li>The Comptroller's office prepares the <strong>Biennial Revenue Estimate (BRE)</strong> – a detailed forecast of expected state revenue with a defined spending ceiling</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card4-2', 35)">
+                    <div class="card-prompt">🔍 Click to explore: What is Stage 2 of the budget process?</div>
+                    <div class="card-content">
+                        <p><strong>+35 points!</strong> 🏛️ The legislative stage!</p>
+                        <p>The <strong>second stage</strong> involves the legislative process:</p>
+                        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>By the <strong>seventh day</strong> of each regular legislative session, appropriations bills are submitted by the LBB to the <strong>House Committee on Appropriations</strong> and the <strong>Senate Finance Committee</strong></li>
+                            <li>Committees hold hearings and make changes reflecting BRE limits and funding priorities</li>
+                            <li>Final versions are sent to the full House and Senate for approval</li>
+                            <li>Differences are reconciled in a <strong>conference committee</strong> (composed of representatives from both chambers)</li>
+                            <li>The budget cannot take effect until <strong>"certified" by the Comptroller</strong> – the official ruling that the state has enough money to pay for everything</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">✏️ Line-Item Veto Power</div>
+                    <div>Texas governors have a power U.S. presidents can only dream about. The governor is empowered under the state constitution to review an appropriations bill and to <strong>veto individual spending items without vetoing the entire bill</strong>. Most Texas governors have used this power sparingly. Governor Greg Abbott signed the 2020-2021 appropriations bill without a single line-item veto after having vetoed $120 million from the previous session's budget.</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">👤 Glenn Hegar, Comptroller</div>
+                    <p>Glenn Hegar was elected as the 36th Texas Comptroller of Public Accounts in November 2014. The Comptroller is Texas' chief financial officer — the state's <strong>treasurer, check writer, tax collector, procurement officer, and revenue estimator</strong>. The Comptroller's certification is required before any state budget can take effect.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the Biennial Revenue Estimate (BRE)?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">A list of all state agency requests</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-1', 25)">A detailed forecast of expected state revenue prepared by the Comptroller</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">The governor's budget proposal</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-1', 0)">The final appropriations bill</div>
+                    <div class="feedback-box" id="feedback-q4-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What special power do Texas governors have regarding the budget?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">They can increase spending without legislative approval</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">They can refuse to certify the budget</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q4-2', 25)">They can veto individual spending items without vetoing the entire bill</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q4-2', 0)">They can borrow money without legislative approval</div>
+                    <div class="feedback-box" id="feedback-q4-2"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(4)">✅ Complete Section 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Issues in State Financing -->
+        <div id="section5" class="page">
+            <button class="back-button" onclick="navigateToHome()">← Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>⚠️</span>
+                    <h2>Issues in Texas State Financing</h2>
+                </div>
+
+                <div class="learning-objectives">
+                    <h4>🎯 Learning Objectives</h4>
+                    <ul>
+                        <li>Analyze the effectiveness of the state's financing of public services</li>
+                        <li>Identify continuing issues in state financing in Texas</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">Texas is a large, growing state with a long international border, susceptible to hurricanes and overly dependent on the fortunes of the oil and gas industry, even as concerns over climate change make the future of the fossil fuel industry uncertain. As today's college students become tomorrow's voters and elected officials, there are a number of nagging problems that will need to be faced.</p>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-1', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What's the problem with property taxes?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🏠 Property tax challenges!</p>
+                        <p>Texas continues to fund a lot of its public school obligations, as well as community colleges, with <strong>local property taxes</strong>. This system depends on the government assessing the value of every piece of real estate and capital equipment in its jurisdiction and deriving a fair value every year.</p>
+                        <p style="margin-top: 0.5rem;"><strong>The problems:</strong></p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Harris County had to resolve more than <strong>388,000 property tax protests</strong> in 2017, removing more than $5.8 billion from the property tax rolls</li>
+                            <li>Property tax value reflects the value of an often speculative investment more than the taxpayer's actual ability to pay</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-term">🚫 Constitutional Income Tax Ban</div>
+                    <div>In November 2019, Texas voters approved a state constitutional amendment to <strong>prohibit the imposition of a state income tax</strong> – an "insurance" measure sought by Texas Republicans who see the possibility of Democratic legislative majorities in the future. The income tax prohibition could only be removed by another constitutional amendment, which would take a <strong>two-thirds vote of the House and Senate</strong> and a majority of voters in a subsequent election.</div>
+                </div>
+
+                <div class="interactive-card" onclick="revealCard(this, 'card5-2', 30)">
+                    <div class="card-prompt">🔍 Click to explore: What other financing issues does Texas face?</div>
+                    <div class="card-content">
+                        <p><strong>+30 points!</strong> 🔮 Future challenges!</p>
+                        <p><strong>Health Care:</strong> Paid largely with federal funds, health care closely rivals education as the state's largest spending area. Texas' rejection of Medicare expansion during the Obama administration left counties, hospitals, insurance companies and service providers to pay for increasing indigent health care needs.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Gambling Revenue:</strong> Texas has chosen not to follow all of its bordering states in its rejection of casino gambling. While Texans gamble, they travel to Louisiana, Arkansas, New Mexico, and Oklahoma—or do so illegally—depriving Texas of potential revenue. Colorado has netted more than $1 billion annually from recreational marijuana.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Higher Education:</strong> As college replaces high school as the minimum education for many jobs, how will Texas accommodate increasing high school graduates and those who cannot afford rapidly rising tuition, fees, textbooks, and housing?</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">📋 The Bottom Line</div>
+                    <p>Texas legislators do many things, but the <strong>only thing they are constitutionally required to do</strong> each session is to adopt a budget. It is always the most important and most difficult task taken on by the legislature, although it is seldom the issue that generates the most constituent interest and media attention. More attention and scrutiny from ordinary Texans is the beginning of any long-term solution to the state's budget challenges.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What did Texas voters approve in November 2019 regarding taxes?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">A 1% increase in the sales tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">A cap on property tax increases</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-1', 25)">A constitutional amendment prohibiting a state income tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-1', 0)">Legalization of casino gambling</div>
+                    <div class="feedback-box" id="feedback-q5-1"></div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">❓ What is the ONLY thing Texas legislators are constitutionally required to do each session?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Pass education reform</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Redraw legislative districts</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q5-2', 25)">Adopt a budget</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q5-2', 0)">Confirm gubernatorial appointments</div>
+                    <div class="feedback-box" id="feedback-q5-2"></div>
+                </div>
+
+                <!-- Glossary Section -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📚 Chapter Glossary</h3>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Ad valorem taxes:</span> Taxes that multiply the appraised value of a property by a tax rate set by the governing body of the local government.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Appropriations:</span> Authorization by the legislature to a government agency or body to spend up to a particular amount of money.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Biennial Revenue Estimate (BRE):</span> A detailed forecast of the revenue that the state is expected to take in over the next biennium, prepared by the Comptroller's office.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Debt:</span> The total amount the government owes across all years.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Deficit:</span> The annual amount by which expenditures are greater than revenues.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Excise taxes:</span> Taxes applied to specific goods or services as a source of revenue.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Fiscal policy:</span> The use of government revenue collection (mainly taxes) and expenditure (spending) to influence the economy.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Progressive tax:</span> A tax that tends to increase the effective tax rate as the wealth or income of the taxpayer increases.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Regressive tax:</span> A tax applied at a lower overall rate as individuals' income rises, thus the tax burden falls more heavily on lower-income individuals.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Severance taxes:</span> Taxes imposed on the removal of natural resources within a taxing jurisdiction, such as oil, natural gas, coal, uranium, and timber.
+                    </div>
+                    
+                    <div class="glossary-item">
+                        <span class="glossary-term">Strategic plan:</span> A plan that includes a mission statement, goals, population served, means to achieve goals, and measures to assess success.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="complete-section-btn" onclick="completeSection(5)">✅ Complete Section 5</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div id="reportPage" class="page">
+            <div class="report-container">
+                <div class="report-header-bar">
+                    <h1>💰 TCC Texas Government Trailblazer Trek</h1>
+                    <div class="report-scores">
+                        <span class="score-badge">⭐ <span id="reportTotalPoints">0</span> pts</span>
+                        <span class="score-badge">✓ <span id="reportPercentage">0</span>%</span>
+                        <span class="score-badge">📊 <span id="reportCompletion">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <button class="report-back-button no-print" onclick="navigateToHome()">← Back to Home</button>
+                    
+                    <div class="report-main">
+                        <h2 class="report-title">TCC Trailblazer Trek - Completion Report</h2>
+                        <p class="report-subtitle">Chapter 14: Financing State Government</p>
+                        
+                        <div class="report-grade-display" id="gradeDisplay">
+                            <div class="letter-grade" id="letterGrade">A</div>
+                            <div class="grade-percentage" id="gradePercentage">95%</div>
+                        </div>
+
+                        <div class="report-info">
+                            <div class="report-info-item">
+                                <div class="report-info-label">Student Name</div>
+                                <div class="report-info-value" id="reportStudentName">Not Entered</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Date Completed</div>
+                                <div class="report-info-value" id="reportDate">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Time Completed</div>
+                                <div class="report-info-value" id="reportTime">-</div>
+                            </div>
+                            <div class="report-info-item">
+                                <div class="report-info-label">Level Achieved</div>
+                                <div class="report-info-value" id="reportLevel">Explorer</div>
+                            </div>
+                        </div>
+
+                        <table class="section-status-table">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Introduction to State Financing</td>
+                                    <td id="status1">❌</td>
+                                    <td id="points1">0/145</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Texas Revenue Sources</td>
+                                    <td id="status2">❌</td>
+                                    <td id="points2">0/175</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>State Government Spending</td>
+                                    <td id="status3">❌</td>
+                                    <td id="points3">0/165</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>The Texas Budgeting Process</td>
+                                    <td id="status4">❌</td>
+                                    <td id="points4">0/170</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Issues in State Financing</td>
+                                    <td id="status5">❌</td>
+                                    <td id="points5">0/160</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: var(--highlight-yellow); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📝 Instructor Note</h4>
+                            <p>This report documents the student's completion of Chapter 14: Financing State Government. The percentage score reflects both content exploration and knowledge check performance. Students should aim for 80% or higher to demonstrate mastery.</p>
+                        </div>
+
+                        <button class="print-button no-print" onclick="window.print()">🖨️ Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const gameState = {
+            studentName: '',
+            totalPoints: 0,
+            currentLevel: 'Explorer',
+            sectionsCompleted: [],
+            cardsRevealed: [],
+            questionsAnswered: [],
+            quizCorrect: 0,
+            quizTotal: 0,
+            sectionPoints: {
+                1: { earned: 0, max: 145 },
+                2: { earned: 0, max: 175 },
+                3: { earned: 0, max: 165 },
+                4: { earned: 0, max: 170 },
+                5: { earned: 0, max: 160 }
+            }
+        };
+
+        // Level Progression
+        const levels = {
+            0: 'Explorer',
+            130: 'Scholar',
+            260: 'Budget Analyst',
+            390: 'Revenue Expert',
+            520: 'Fiscal Strategist',
+            650: 'Finance Master',
+            780: 'Texas Budget Sage'
+        };
+
+        // Navigation Functions
+        function navigateToHome() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('homePage').classList.add('active');
+            updateProgress();
+        }
+
+        function navigateToSection(sectionNum) {
+            if (!gameState.studentName) {
+                alert('Please enter your name first!');
+                document.getElementById('studentName').focus();
+                return;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`section${sectionNum}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function startAdventure() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            if (!nameInput) {
+                alert('Please enter your name to begin!');
+                return;
+            }
+            gameState.studentName = nameInput;
+            updateProgress();
+            alert(`Welcome, ${nameInput}! 💰 Your journey through Texas state financing begins now! Click on any section to start learning.`);
+        }
+
+        // Card Interaction
+        function revealCard(element, cardId, points) {
+            if (gameState.cardsRevealed.includes(cardId)) {
+                return;
+            }
+
+            gameState.cardsRevealed.push(cardId);
+            element.classList.add('revealed');
+            
+            let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+            gameState.sectionPoints[sectionNum].earned += points;
+            
+            awardPoints(points);
+        }
+
+        // Knowledge Check Handler
+        function handleAnswer(element, isCorrect, questionId, points) {
+            if (gameState.questionsAnswered.includes(questionId)) {
+                return;
+            }
+
+            gameState.questionsAnswered.push(questionId);
+            gameState.quizTotal++;
+            
+            const options = element.parentElement.querySelectorAll('.kc-option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none';
+            });
+
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.classList.add('correct', 'show');
+                feedback.textContent = '✓ Correct! Well done!';
+                gameState.quizCorrect++;
+                
+                let sectionNum = parseInt(element.closest('.page').id.replace('section', ''));
+                gameState.sectionPoints[sectionNum].earned += points;
+                
+                awardPoints(points);
+            } else {
+                element.classList.add('incorrect');
+                feedback.classList.add('incorrect', 'show');
+                feedback.textContent = '✗ Not quite. The correct answer has been highlighted.';
+                
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Points System
+        function awardPoints(points) {
+            gameState.totalPoints += points;
+            updateScore();
+            showPointsPopup(points);
+            updateLevel();
+        }
+
+        function showPointsPopup(points) {
+            const popup = document.getElementById('pointsPopup');
+            popup.textContent = `+${points} points!`;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateScore() {
+            document.getElementById('totalPoints').textContent = gameState.totalPoints;
+        }
+
+        function updateLevel() {
+            let newLevel = 'Explorer';
+            for (let threshold in levels) {
+                if (gameState.totalPoints >= parseInt(threshold)) {
+                    newLevel = levels[threshold];
+                }
+            }
+            gameState.currentLevel = newLevel;
+            document.getElementById('currentLevel').textContent = newLevel;
+        }
+
+        // Section Completion
+        function completeSection(sectionNum) {
+            if (!gameState.sectionsCompleted.includes(sectionNum)) {
+                gameState.sectionsCompleted.push(sectionNum);
+                
+                gameState.sectionPoints[sectionNum].earned += 50;
+                awardPoints(50);
+                
+                const card = document.getElementById(`card${sectionNum}`);
+                card.classList.add('completed');
+                
+                alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
+                navigateToHome();
+            }
+        }
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completedCount = gameState.sectionsCompleted.length;
+            const percentage = Math.round((completedCount / totalSections) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        // Report Generation
+        function generateReport() {
+            document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('reportLevel').textContent = gameState.currentLevel;
+            
+            const maxPoints = Object.values(gameState.sectionPoints).reduce((sum, section) => sum + section.max, 0);
+            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            
+            const totalSections = Object.keys(gameState.sectionPoints).length;
+            const completionPercentage = Math.round((gameState.sectionsCompleted.length / totalSections) * 100);
+            
+            let letterGrade = 'F';
+            let gradeColor = '#B71C1C';
+            
+            if (percentage >= 90) {
+                letterGrade = 'A';
+                gradeColor = '#1B5E20';
+            } else if (percentage >= 80) {
+                letterGrade = 'B';
+                gradeColor = '#00695C';
+            } else if (percentage >= 70) {
+                letterGrade = 'C';
+                gradeColor = '#F57C00';
+            } else if (percentage >= 60) {
+                letterGrade = 'D';
+                gradeColor = '#E65100';
+            }
+            
+            document.getElementById('letterGrade').textContent = letterGrade;
+            document.getElementById('gradePercentage').textContent = percentage + '%';
+            document.getElementById('gradeDisplay').style.background = gradeColor;
+            
+            document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
+            document.getElementById('reportPercentage').textContent = percentage;
+            document.getElementById('reportCompletion').textContent = completionPercentage;
+            
+            for (let i = 1; i <= totalSections; i++) {
+                const statusCell = document.getElementById(`status${i}`);
+                const pointsCell = document.getElementById(`points${i}`);
+                
+                if (gameState.sectionsCompleted.includes(i)) {
+                    statusCell.textContent = '✅';
+                    statusCell.style.color = '#1B5E20';
+                } else {
+                    statusCell.textContent = '❌';
+                    statusCell.style.color = '#B71C1C';
+                }
+                
+                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+            }
+            
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('reportPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateScore();
+        updateLevel();
+        updateProgress();
+    </script>
+</body>
+</html>
