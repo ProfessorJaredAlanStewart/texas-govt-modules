@@ -640,35 +640,35 @@
                     <div class="section-number">1</div>
                     <h3>Federalism Defined and Contrasted</h3>
                     <p>Learn what federalism is, how it differs from other systems, and identify its key characteristics.</p>
-                    <div class="points-indicator">🏆 195 points available</div>
+                    <div class="points-indicator">🏆 245 points available</div>
                 </div>
 
                 <div class="section-card" onclick="navigateToSection(2)">
                     <div class="section-number">2</div>
                     <h3>Federalism and the Constitution</h3>
                     <p>Explore the constitutional provisions that establish and regulate federal-state relationships.</p>
-                    <div class="points-indicator">🏆 195 points available</div>
+                    <div class="points-indicator">🏆 275 points available</div>
                 </div>
 
                 <div class="section-card" onclick="navigateToSection(3)">
                     <div class="section-number">3</div>
                     <h3>Distribution of Finances</h3>
                     <p>Understand how federal, state, and local governments raise and spend public money.</p>
-                    <div class="points-indicator">🏆 190 points available</div>
+                    <div class="points-indicator">🏆 270 points available</div>
                 </div>
 
                 <div class="section-card" onclick="navigateToSection(4)">
                     <div class="section-number">4</div>
                     <h3>Evolution of Federalism: National Power vs States</h3>
                     <p>Trace key Supreme Court cases and conflicts that shaped federal-state power dynamics.</p>
-                    <div class="points-indicator">🏆 195 points available</div>
+                    <div class="points-indicator">🏆 275 points available</div>
                 </div>
 
                 <div class="section-card" onclick="navigateToSection(5)">
                     <div class="section-number">5</div>
                     <h3>From Dual to New Federalism</h3>
                     <p>Examine how federalism evolved through different eras from the 1870s to today.</p>
-                    <div class="points-indicator">🏆 195 points available</div>
+                    <div class="points-indicator">🏆 275 points available</div>
                 </div>
             </div>
 
@@ -1386,31 +1386,31 @@
                         <td>1</td>
                         <td>Federalism Defined and Contrasted</td>
                         <td id="status1">❌</td>
-                        <td id="points1">0/195</td>
+                        <td id="points1">0/245</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Federalism and the Constitution</td>
                         <td id="status2">❌</td>
-                        <td id="points2">0/195</td>
+                        <td id="points2">0/275</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Distribution of Finances</td>
                         <td id="status3">❌</td>
-                        <td id="points3">0/190</td>
+                        <td id="points3">0/270</td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Evolution: National Power vs States</td>
                         <td id="status4">❌</td>
-                        <td id="points4">0/195</td>
+                        <td id="points4">0/275</td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>From Dual to New Federalism</td>
                         <td id="status5">❌</td>
-                        <td id="points5">0/195</td>
+                        <td id="points5">0/275</td>
                     </tr>
                 </tbody>
             </table>
@@ -1459,11 +1459,11 @@
             quizCorrect: 0,
             quizTotal: 0,
             sectionPoints: {
-                1: { max: 195, earned: 0 },
-                2: { max: 195, earned: 0 },
-                3: { max: 190, earned: 0 },
-                4: { max: 195, earned: 0 },
-                5: { max: 195, earned: 0 }
+                1: { max: 245, earned: 0 },
+                2: { max: 275, earned: 0 },
+                3: { max: 270, earned: 0 },
+                4: { max: 275, earned: 0 },
+                5: { max: 275, earned: 0 }
             }
         };
 
@@ -1637,7 +1637,7 @@
             document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
             
             // Calculate percentage (total possible points including bonuses)
-            const maxPoints = 1220; // Base points plus completion bonuses (970 + 250)
+            const maxPoints = 1340; // Base points plus completion bonuses
             const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
             
             // Update scores in header
