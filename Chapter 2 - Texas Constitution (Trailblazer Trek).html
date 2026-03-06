@@ -580,12 +580,23 @@
         li {
             margin: 0.5rem 0;
         }
+        /* Time Analysis Section */
+        .time-analysis-section { background: var(--bg-light); padding: 25px; border-radius: 12px; margin: 30px 0; text-align: left; border: 2px solid var(--primary-blue); }
+        .time-analysis-section h3 { color: var(--primary-blue); margin-bottom: 15px; border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; text-align: center; }
+        .time-analysis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 15px; }
+        .time-stat-box { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .time-stat-value { font-size: 1.6em; font-weight: bold; color: var(--primary-green); }
+        .time-stat-label { color: var(--text-secondary); font-size: 0.85em; margin-top: 4px; }
+        .time-warning { background: linear-gradient(135deg, #ffebee, #ffcdd2); border-left: 5px solid #B71C1C; padding: 15px 20px; border-radius: 8px; margin-top: 15px; color: var(--text-primary); font-size: 0.95em; }
+        @media (max-width: 768px) { .time-analysis-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media print { .no-print, .back-button { display: none !important; } }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>🏛️ Chapter 2: The Texas Constitution - Trailblazer Trek</h1>
         <div class="score-display">
+            &#9201;&#65039; <span id="elapsedTime">0:00</span> |
             Score: <span id="totalPoints">0</span> | Level: <span id="currentLevel">Explorer</span>
         </div>
     </div>
@@ -1257,6 +1268,9 @@
                     <div>Date: <strong id="reportDate"></strong></div>
                     <div>Time: <strong id="reportTime"></strong></div>
                 </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 0.5rem;">
+                    <div>Total Time Spent: <strong id="reportTotalTime">-</strong></div>
+                </div>
                 <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
                     <div>Total Points: <strong id="reportTotalPoints"></strong></div>
                     <div>Percentage: <strong id="reportPercentage"></strong>%</div>
@@ -1277,39 +1291,15 @@
                         <th>Title</th>
                         <th>Status</th>
                         <th>Points</th>
+                        <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Introduction & Constitutional Foundations</td>
-                        <td id="status1">❌</td>
-                        <td id="points1">0/240</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Mexican Era Constitutions</td>
-                        <td id="status2">❌</td>
-                        <td id="points2">0/240</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Independence & Early Statehood</td>
-                        <td id="status3">❌</td>
-                        <td id="points3">0/245</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Civil War & Reconstruction</td>
-                        <td id="status4">❌</td>
-                        <td id="points4">0/240</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Current Constitution of 1876</td>
-                        <td id="status5">❌</td>
-                        <td id="points5">0/245</td>
-                    </tr>
+                    <tr><td>1</td><td>Introduction &amp; Constitutional Foundations</td><td id="status1">&#10060;</td><td id="points1">0/240</td><td id="time1">--:--</td></tr>
+                    <tr><td>2</td><td>Mexican Era Constitutions</td><td id="status2">&#10060;</td><td id="points2">0/240</td><td id="time2">--:--</td></tr>
+                    <tr><td>3</td><td>Independence &amp; Early Statehood</td><td id="status3">&#10060;</td><td id="points3">0/245</td><td id="time3">--:--</td></tr>
+                    <tr><td>4</td><td>Civil War &amp; Reconstruction</td><td id="status4">&#10060;</td><td id="points4">0/240</td><td id="time4">--:--</td></tr>
+                    <tr><td>5</td><td>Current Constitution of 1876</td><td id="status5">&#10060;</td><td id="points5">0/245</td><td id="time5">--:--</td></tr>
                 </tbody>
             </table>
 
@@ -1330,6 +1320,20 @@
                 <div class="metric-box">
                     <div class="metric-value" id="metricEngagement">0%</div>
                     <div class="metric-label">Content Engagement</div>
+                </div>
+            </div>
+
+            <!-- Time Analysis -->
+            <div class="time-analysis-section">
+                <h3>&#9201;&#65039; Time Analysis</h3>
+                <div class="time-analysis-grid">
+                    <div class="time-stat-box"><div class="time-stat-value" id="totalModuleTime">0:00</div><div class="time-stat-label">Total Module Time</div></div>
+                    <div class="time-stat-box"><div class="time-stat-value" id="avgSectionTime">0:00</div><div class="time-stat-label">Avg per Section</div></div>
+                    <div class="time-stat-box"><div class="time-stat-value" id="fastestSection">-</div><div class="time-stat-label">Fastest Section</div></div>
+                    <div class="time-stat-box"><div class="time-stat-value" id="slowestSection">-</div><div class="time-stat-label">Slowest Section</div></div>
+                </div>
+                <div id="timeWarning" class="time-warning" style="display:none;">
+                    &#9888;&#65039; <strong>Pacing Alert:</strong> <span id="timeWarningText"></span>
                 </div>
             </div>
 
@@ -1362,8 +1366,58 @@
                 3: { max: 245, earned: 0 },
                 4: { max: 240, earned: 0 },
                 5: { max: 245, earned: 0 }
-            }
+            },
+            moduleStartTime: Date.now(),
+            sectionTimers: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0 },
+            currentSection: null,
+            sectionEntryTime: null
         };
+
+        function formatTime(ms) {
+            var totalSec = Math.floor(ms / 1000), hrs = Math.floor(totalSec / 3600), mins = Math.floor((totalSec % 3600) / 60), secs = totalSec % 60;
+            if (hrs > 0) return hrs + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+            return mins + ':' + String(secs).padStart(2, '0');
+        }
+        setInterval(function() { var el = document.getElementById('elapsedTime'); if (el) el.textContent = formatTime(Date.now() - gameState.moduleStartTime); }, 1000);
+
+        const sectionElements = {
+            '1': { cards: ['card1-1','card1-2','card1-3'], questions: ['q1-1','q1-2','q1-3'], minSeconds: 100 },
+            '2': { cards: ['card2-1','card2-2','card2-3'], questions: ['q2-1','q2-2','q2-3'], minSeconds: 100 },
+            '3': { cards: ['card3-1','card3-2','card3-3'], questions: ['q3-1','q3-2','q3-3'], minSeconds: 90 },
+            '4': { cards: ['card4-1','card4-2','card4-3'], questions: ['q4-1','q4-2','q4-3'], minSeconds: 90 },
+            '5': { cards: ['card5-1','card5-2','card5-3'], questions: ['q5-1','q5-2','q5-3'], minSeconds: 100 }
+        };
+        const pacingAlertShown = new Set();
+        function checkSectionPacing(sectionNum) {
+            var key = String(sectionNum); if (pacingAlertShown.has(key)) return;
+            var elements = sectionElements[key]; if (!elements) return;
+            var allCards = elements.cards.every(function(id) { return gameState.cardsRevealed.includes(id); });
+            var allQs = elements.questions.every(function(id) { return gameState.questionsAnswered.includes(id); });
+            if (!allCards || !allQs) return; pacingAlertShown.add(key);
+            var sectionMs = gameState.sectionTimers[key] || 0;
+            if (gameState.currentSection === key && gameState.sectionEntryTime) sectionMs += Date.now() - gameState.sectionEntryTime;
+            var threshold = (elements.minSeconds || 120) * 1000;
+            if (sectionMs >= 0 && sectionMs < threshold) showPacingWarning(key, sectionMs, elements.minSeconds);
+        }
+        function showPacingWarning(sectionNum, ms, expectedMin) {
+            var timeStr = ms > 0 ? formatTime(ms) : 'never opened';
+            var expectedStr = expectedMin ? Math.ceil(expectedMin / 60) : 3;
+            var overlay = document.getElementById('pacingWarningOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div'); overlay.id = 'pacingWarningOverlay';
+                overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;display:flex;justify-content:center;align-items:center;';
+                var box = document.createElement('div'); box.id = 'pacingWarningBox';
+                box.style.cssText = 'background:white;border-radius:16px;padding:35px 40px;max-width:520px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.3);border-top:6px solid #B71C1C;';
+                overlay.appendChild(box); document.body.appendChild(overlay);
+            }
+            document.getElementById('pacingWarningBox').innerHTML =
+                '<div style="font-size:3em;margin-bottom:10px;">&#9888;&#65039;</div>' +
+                '<div style="font-size:1.4em;font-weight:bold;color:#B71C1C;margin-bottom:12px;">Pacing Alert</div>' +
+                '<div style="font-size:1.05em;color:#212121;line-height:1.6;margin-bottom:8px;">Section ' + sectionNum + ' was completed in <strong>' + timeStr + '</strong>.</div>' +
+                '<div style="font-size:0.95em;color:#424242;line-height:1.5;margin-bottom:20px;">This section typically takes about ' + expectedStr + ' minutes to read carefully. Rushing through may affect your understanding of the material. This time will appear on your completion report.</div>' +
+                '<button onclick="document.getElementById(\'pacingWarningOverlay\').style.display=\'none\';" style="background:linear-gradient(135deg,#005A87,#00695C);color:white;border:none;padding:12px 30px;border-radius:8px;font-size:1em;font-weight:bold;cursor:pointer;">I Understand</button>';
+            overlay.style.display = 'flex';
+        }
 
         // Level Thresholds
         const levels = {
@@ -1377,6 +1431,10 @@
 
         // Navigation Functions
         function navigateToHome() {
+            if (gameState.currentSection && gameState.sectionEntryTime) {
+                gameState.sectionTimers[gameState.currentSection] += Date.now() - gameState.sectionEntryTime;
+                gameState.currentSection = null; gameState.sectionEntryTime = null;
+            }
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById('homePage').classList.add('active');
             updateProgress();
@@ -1387,6 +1445,12 @@
                 alert('Please enter your name first!');
                 return;
             }
+            if (gameState.currentSection && gameState.sectionEntryTime) {
+                gameState.sectionTimers[gameState.currentSection] += Date.now() - gameState.sectionEntryTime;
+                gameState.currentSection = null; gameState.sectionEntryTime = null;
+            }
+            gameState.currentSection = String(sectionNum);
+            gameState.sectionEntryTime = Date.now();
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(`section${sectionNum}`).classList.add('active');
         }
@@ -1511,6 +1575,9 @@
                 const cards = document.querySelectorAll('.section-card');
                 cards[sectionNum - 1].classList.add('completed');
                 
+                // Check pacing before navigating away
+                checkSectionPacing(sectionNum);
+                
                 alert(`🎉 Section ${sectionNum} completed! +50 bonus points!`);
                 navigateToHome();
             }
@@ -1529,78 +1596,83 @@
 
         // Report Generation
         function generateReport() {
-            // Update report data
+            if (gameState.currentSection && gameState.sectionEntryTime) {
+                gameState.sectionTimers[gameState.currentSection] += Date.now() - gameState.sectionEntryTime;
+                gameState.currentSection = null; gameState.sectionEntryTime = null;
+            }
+
             document.getElementById('reportStudentName').textContent = gameState.studentName || 'Not Entered';
             document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
             document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
             
-            // Calculate percentage (total possible points including bonuses)
-            const maxPoints = 1210; // Base points plus completion bonuses (960 + 250)
-            const percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
+            var maxPoints = 1210;
+            var percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
             
-            // Update scores in header
             document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
             document.getElementById('reportPercentage').textContent = percentage;
             document.getElementById('reportCompletion').textContent = Math.round((gameState.sectionsCompleted.length / 5) * 100);
-            
-            // Update main report scores
             document.getElementById('finalPoints').textContent = gameState.totalPoints;
             document.getElementById('finalLevel').textContent = gameState.currentLevel;
             document.getElementById('sectionsCount').textContent = gameState.sectionsCompleted.length;
             
-            // Calculate letter grade
-            let letterGrade = 'F';
-            let gradeColor = '#B71C1C';
-            
-            if (percentage >= 90) {
-                letterGrade = 'A';
-                gradeColor = '#1B5E20';
-            } else if (percentage >= 80) {
-                letterGrade = 'B';
-                gradeColor = '#00695C';
-            } else if (percentage >= 70) {
-                letterGrade = 'C';
-                gradeColor = '#F57C00';
-            } else if (percentage >= 60) {
-                letterGrade = 'D';
-                gradeColor = '#E65100';
-            }
+            var letterGrade = 'F', gradeColor = '#B71C1C';
+            if (percentage >= 90) { letterGrade = 'A'; gradeColor = '#1B5E20'; }
+            else if (percentage >= 80) { letterGrade = 'B'; gradeColor = '#00695C'; }
+            else if (percentage >= 70) { letterGrade = 'C'; gradeColor = '#F57C00'; }
+            else if (percentage >= 60) { letterGrade = 'D'; gradeColor = '#E65100'; }
             
             document.getElementById('letterGrade').textContent = letterGrade;
             document.getElementById('gradePercentage').textContent = percentage + '%';
             document.getElementById('gradeDisplay').style.background = gradeColor;
+
+            var totalModuleMs = Date.now() - gameState.moduleStartTime;
+            document.getElementById('reportTotalTime').textContent = formatTime(totalModuleMs);
+            document.getElementById('totalModuleTime').textContent = formatTime(totalModuleMs);
             
-            // Update section statuses
-            for (let i = 1; i <= 5; i++) {
-                const statusCell = document.getElementById(`status${i}`);
-                const pointsCell = document.getElementById(`points${i}`);
+            var visitedCount = 0, totalSectionMs = 0, fastestMs = Infinity, slowestMs = 0;
+            var fastestName = '-', slowestName = '-', rushSections = [];
+
+            for (var i = 1; i <= 5; i++) {
+                var statusCell = document.getElementById('status' + i);
+                var pointsCell = document.getElementById('points' + i);
+                var timeCell = document.getElementById('time' + i);
+                var sectionMs = gameState.sectionTimers[String(i)] || 0;
+                var isCompleted = gameState.sectionsCompleted.includes(i);
+
+                timeCell.textContent = sectionMs > 0 ? formatTime(sectionMs) : '--:--';
+
+                if (sectionMs > 0) {
+                    visitedCount++; totalSectionMs += sectionMs;
+                    if (sectionMs < fastestMs) { fastestMs = sectionMs; fastestName = formatTime(sectionMs) + ' (S' + i + ')'; }
+                    if (sectionMs > slowestMs) { slowestMs = sectionMs; slowestName = formatTime(sectionMs) + ' (S' + i + ')'; }
+                    var secThreshold = (sectionElements[String(i)] && sectionElements[String(i)].minSeconds || 120) * 1000;
+                    if (sectionMs < secThreshold && isCompleted) rushSections.push('Section ' + i + ' (' + formatTime(sectionMs) + ')');
+                } else if (isCompleted) { rushSections.push('Section ' + i + ' (never opened)'); }
                 
-                if (gameState.sectionsCompleted.includes(i)) {
-                    statusCell.textContent = '✅';
-                    statusCell.style.color = '#1B5E20';
-                } else {
-                    statusCell.textContent = '❌';
-                    statusCell.style.color = '#B71C1C';
-                }
-                
-                pointsCell.textContent = `${gameState.sectionPoints[i].earned}/${gameState.sectionPoints[i].max}`;
+                if (isCompleted) { statusCell.textContent = '\u2705'; statusCell.style.color = '#1B5E20'; }
+                else { statusCell.textContent = '\u274C'; statusCell.style.color = '#B71C1C'; }
+                pointsCell.textContent = gameState.sectionPoints[i].earned + '/' + gameState.sectionPoints[i].max;
             }
+
+            document.getElementById('avgSectionTime').textContent = visitedCount > 0 ? formatTime(Math.round(totalSectionMs / visitedCount)) : '--:--';
+            document.getElementById('fastestSection').textContent = visitedCount > 0 ? fastestName : '-';
+            document.getElementById('slowestSection').textContent = visitedCount > 0 ? slowestName : '-';
+
+            var warningEl = document.getElementById('timeWarning');
+            var warningTextEl = document.getElementById('timeWarningText');
+            if (rushSections.length > 0) {
+                warningEl.style.display = 'block';
+                warningTextEl.textContent = rushSections.join(', ') + (rushSections.length === 1 ? ' was' : ' were') + ' completed faster than expected. This may indicate the material was not thoroughly reviewed.';
+            } else { warningEl.style.display = 'none'; }
             
-            // Update metrics
             document.getElementById('metricPoints').textContent = gameState.totalPoints;
-            document.getElementById('metricSections').textContent = `${gameState.sectionsCompleted.length}/5`;
-            
-            const quizPercentage = gameState.quizTotal > 0 
-                ? Math.round((gameState.quizCorrect / gameState.quizTotal) * 100)
-                : 0;
+            document.getElementById('metricSections').textContent = gameState.sectionsCompleted.length + '/5';
+            var quizPercentage = gameState.quizTotal > 0 ? Math.round((gameState.quizCorrect / gameState.quizTotal) * 100) : 0;
             document.getElementById('metricQuiz').textContent = quizPercentage + '%';
-            
-            const totalCards = 15; // Total interactive cards in the module
-            const engagementPercentage = Math.round((gameState.cardsRevealed.length / totalCards) * 100);
+            var engagementPercentage = Math.round((gameState.cardsRevealed.length / 15) * 100);
             document.getElementById('metricEngagement').textContent = engagementPercentage + '%';
             
-            // Navigate to report
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.page').forEach(function(page) { page.classList.remove('active'); });
             document.getElementById('reportPage').classList.add('active');
         }
 
