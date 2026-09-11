@@ -869,7 +869,7 @@
                     <div class="section-number">8</div>
                     <h3>Political Participation Beyond Voting</h3>
                     <p>Discover other ways citizens participate in the political process.</p>
-                    <div class="points-indicator">🌟 205 points available</div>
+                    <div class="points-indicator">🌟 270 points available</div>
                 </div>
             </div>
 
@@ -1617,6 +1617,25 @@
 
                 <div style="text-align: center; margin-top: 2rem;">
                     
+                <div class="interactive-card" onclick="revealCard(this, 'card8-upd', 15)">
+                    <div class="card-prompt">&#128269; Click to explore: What happened to Roe v. Wade after 1973?</div>
+                    <div class="card-content">
+                        <p><strong>+15 points!</strong> &#9878;&#65039; The same strategy, reversed!</p>
+                        <p style="margin-top: 0.5rem;">The right established in <em>Roe</em> did not last. In 2022, in <strong>Dobbs v. Jackson Women's Health Organization</strong>, the U.S. Supreme Court overruled <em>Roe</em>, holding that the Constitution contains no right to abortion and returning the issue to the states. Just as activists once used the courts to <em>win</em> abortion rights, opponents spent decades using litigation to <em>reverse</em> them, the same participation strategy running the other direction.</p>
+                        <p style="margin-top: 0.5rem;">Texas had prepared for this. A 2021 &quot;trigger law,&quot; the Human Life Protection Act, took effect in August 2022 and bans nearly all abortions from conception. The only exception is a serious risk to the pregnant patient's life or a major bodily function; there are no exceptions for rape, incest, or fatal fetal anomalies, and providers face penalties up to life in prison and $100,000-plus fines.</p>
+                        <p style="margin-top: 0.5rem;">In 2025 the Legislature passed the <strong>Life of the Mother Act</strong> (SB 31) to clarify when doctors may act in a medical emergency. It did not expand access or add new exceptions.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">&#10067; Which 2022 Supreme Court decision overturned Roe v. Wade?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q8-upd', 50)">Dobbs v. Jackson Women's Health Organization</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-upd', 0)">Planned Parenthood v. Casey</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-upd', 0)">Obergefell v. Hodges</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q8-upd', 0)">Shelby County v. Holder</div>
+                    <div class="feedback-box" id="feedback-q8-upd"></div>
+                </div>
+
                 <div class="reflection-box" id="reflection-section8">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">Voting is only one way to shape government, and arguably not the most powerful. Pick a form of participation beyond voting from this section, and argue when it can matter more than a ballot &#8212; drawing on something real if you can.</div>
@@ -1691,7 +1710,7 @@
                                 <tr><td>5</td><td>Voter Decision Making</td><td id="status5">&#10060;</td><td id="points5">0/190</td><td id="time5">--:--</td></tr>
                                 <tr><td>6</td><td>Voter Turnout in Texas</td><td id="status6">&#10060;</td><td id="points6">0/160</td><td id="time6">--:--</td></tr>
                                 <tr><td>7</td><td>Increasing Voter Turnout</td><td id="status7">&#10060;</td><td id="points7">0/160</td><td id="time7">--:--</td></tr>
-                                <tr><td>8</td><td>Political Participation Beyond Voting</td><td id="status8">&#10060;</td><td id="points8">0/160</td><td id="time8">--:--</td></tr>
+                                <tr><td>8</td><td>Political Participation Beyond Voting</td><td id="status8">&#10060;</td><td id="points8">0/225</td><td id="time8">--:--</td></tr>
                             </tbody>
                         </table>
 
@@ -1739,7 +1758,7 @@
                 5: { earned: 0, max: 220 },
                 6: { earned: 0, max: 205 },
                 7: { earned: 0, max: 205 },
-                8: { earned: 0, max: 205 }
+                8: { earned: 0, max: 270 }
             },
             moduleStartTime: Date.now(),
             sectionTimers: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0 },

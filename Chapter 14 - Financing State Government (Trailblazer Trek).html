@@ -842,7 +842,7 @@
                     <div class="section-number">1</div>
                     <h3>Introduction to State Financing</h3>
                     <p>Understand the basics of how Texas funds its government operations.</p>
-                    <div class="points-indicator">🌟 155 points available</div>
+                    <div class="points-indicator">🌟 220 points available</div>
                 </div>
 
                 <div class="section-card" id="card2" onclick="navigateToSection(2)">
@@ -938,6 +938,25 @@
 
                 <div style="text-align: center; margin-top: 2rem;">
                     
+                <div class="interactive-card" onclick="revealCard(this, 'card1-upd', 15)">
+                    <div class="card-prompt">&#128269; Click to explore: How has Texas cut property taxes since 2023?</div>
+                    <div class="card-content">
+                        <p><strong>+15 points!</strong> &#127968; Relief, and new tax bans!</p>
+                        <p style="margin-top: 0.5rem;">Because Texas has no income tax, property taxes carry a heavy load, and cutting them has been a top priority. In 2023, voters approved <strong>Proposition 4</strong>, raising the homestead exemption from school-district property taxes from $40,000 to $100,000.</p>
+                        <p style="margin-top: 0.5rem;">In November 2025, voters went further: <strong>Proposition 13</strong> raised that homestead exemption to <strong>$140,000</strong>, and <strong>Proposition 9</strong> added a large exemption for business personal property (equipment and inventory used to produce income). Elderly and disabled homeowners received an additional increase.</p>
+                        <p style="margin-top: 0.5rem;">Voters also wrote several tax bans into the Texas Constitution in 2025: no personal capital-gains tax (Prop 2), no estate or &quot;death&quot; tax (Prop 8), and no securities-transaction tax (Prop 6). Combined with the 2019 ban on a state income tax, these make it constitutionally hard for future legislatures to raise new kinds of revenue, deepening Texas's reliance on sales and property taxes.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <div class="kc-question">&#10067; What did Texas voters approve in November 2025 regarding property taxes?</div>
+                    <div class="kc-option" onclick="handleAnswer(this, true, 'q1-upd', 50)">Raising the school homestead exemption to $140,000</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-upd', 0)">A new statewide property tax</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-upd', 0)">Eliminating all property taxes</div>
+                    <div class="kc-option" onclick="handleAnswer(this, false, 'q1-upd', 0)">A state income tax to replace property taxes</div>
+                    <div class="feedback-box" id="feedback-q1-upd"></div>
+                </div>
+
                 <div class="reflection-box" id="reflection-section1">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">A government's budget is its values written in numbers. Explain in your own words what makes financing a state like Texas genuinely hard, and why the choices made in a budget matter as much as any law the Legislature passes.</div>
@@ -968,11 +987,11 @@
                     </ul>
                 </div>
 
-                <p class="content-text">Texas is one of only seven states that do not levy a state income tax. The other 43 states collect an income tax ranging from 2% in Tennessee to more than 13% in California. Accordingly, Texas has to find other ways to pay for government services.</p>
+                <p class="content-text">Texas is one of nine states that do not levy a personal income tax. The other 41 states collect an income tax, with top rates ranging from about 2.5% in Arizona to more than 13% in California. Accordingly, Texas has to find other ways to pay for government services.</p>
 
                 <figure class="chapter-image">
-                    <img src="images/tx14_no_income_tax.jpg" alt="The Texas economy thriving without a state income tax — Texas is one of only seven states that do not collect income tax, relying instead on sales taxes, severance taxes, and federal funding" loading="lazy">
-                    <figcaption>No state income tax — Texas is one of only seven states without an income tax. In 2019, voters approved a constitutional amendment permanently banning one. This forces the state to rely on sales taxes, severance taxes, and federal funding to pay for services.
+                    <img src="images/tx14_no_income_tax.jpg" alt="The Texas economy thriving without a state income tax — Texas is one of only nine states that do not collect a personal income tax, relying instead on sales taxes, severance taxes, and federal funding" loading="lazy">
+                    <figcaption>No state income tax — Texas is one of nine states without a personal income tax. In 2019, voters approved a constitutional amendment permanently banning one. This forces the state to rely on sales taxes, severance taxes, and federal funding to pay for services.
                         <span class="img-credit">Source: Wikimedia Commons / Public Domain</span>
                     </figcaption>
                 </figure>
@@ -1139,7 +1158,7 @@
                     <div class="card-prompt">🔍 Click to explore: What were the 2020-21 budget highlights?</div>
                     <div class="card-content">
                         <p><strong>+15 points!</strong> 💰 Budget priorities!</p>
-                        <p>An optimistic revenue forecast from State Comptroller Glen Hegar allowed legislators to spend <strong>16% more</strong> than in the 2017 budget. Much of the additional spending went to Republican leadership's top priorities:</p>
+                        <p>An optimistic revenue forecast from then-Comptroller Glenn Hegar allowed legislators to spend <strong>16% more</strong> than in the 2017 budget. Much of the additional spending went to Republican leadership's top priorities:</p>
                         <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
                             <li><strong>Education:</strong> $94.5 billion allocated (including K-12 and higher education) – a 10% increase</li>
                             <li><strong>Health and human services:</strong> $84 billion – increased only 1%, with Medicaid receiving a $900 million cut (mostly federal funding)</li>
@@ -1247,8 +1266,8 @@
                 </div>
 
                 <div class="info-box">
-                    <div class="info-box-title">👤 Glenn Hegar, Comptroller</div>
-                    <p>Glenn Hegar was elected as the 36th Texas Comptroller of Public Accounts in November 2014. The Comptroller is Texas' chief financial officer — the state's <strong>treasurer, check writer, tax collector, procurement officer, and revenue estimator</strong>. The Comptroller's certification is required before any state budget can take effect.</p>
+                    <div class="info-box-title">👤 The Comptroller's Office</div>
+                    <p>Glenn Hegar served as the 36th Texas Comptroller (elected in 2014) until 2025, when he left to become Chancellor of the Texas A&M University System. Don Huffines, appointed by Governor Abbott in 2026, currently holds the office. The Comptroller is Texas' chief financial officer — the state's <strong>treasurer, check writer, tax collector, procurement officer, and revenue estimator</strong>. The Comptroller's certification is required before any state budget can take effect.</p>
                 </div>
 
                 <div class="knowledge-check">
@@ -1479,7 +1498,7 @@
                         <table class="section-status-table">
                             <thead><tr><th>Section</th><th>Topic</th><th>Status</th><th>Points</th><th>Time</th></tr></thead>
                             <tbody>
-                                <tr><td>1</td><td>Introduction to State Financing</td><td id="status1">&#10060;</td><td id="points1">0/135</td><td id="time1">--:--</td></tr>
+                                <tr><td>1</td><td>Introduction to State Financing</td><td id="status1">&#10060;</td><td id="points1">0/200</td><td id="time1">--:--</td></tr>
                                 <tr><td>2</td><td>Texas Revenue Sources</td><td id="status2">&#10060;</td><td id="points2">0/200</td><td id="time2">--:--</td></tr>
                                 <tr><td>3</td><td>State Government Spending</td><td id="status3">&#10060;</td><td id="points3">0/165</td><td id="time3">--:--</td></tr>
                                 <tr><td>4</td><td>The Texas Budgeting Process</td><td id="status4">&#10060;</td><td id="points4">0/170</td><td id="time4">--:--</td></tr>
@@ -1524,7 +1543,7 @@
             quizCorrect: 0,
             quizTotal: 0,
             sectionPoints: {
-                1: { earned: 0, max: 155 },
+                1: { earned: 0, max: 220 },
                 2: { earned: 0, max: 220 },
                 3: { earned: 0, max: 205 },
                 4: { earned: 0, max: 205 },
