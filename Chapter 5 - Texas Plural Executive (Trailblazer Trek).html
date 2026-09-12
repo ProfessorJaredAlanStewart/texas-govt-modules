@@ -922,6 +922,7 @@
 
             <div style="text-align: center; margin-top: 2rem;">
                 <button class="report-button" onclick="generateReport()">📊 Generate Completion Report</button>
+                <button class="report-button" onclick="navigateToReview()" style="margin-left:0.6rem; background:#00788a;">&#128214; Chapter Review &amp; Resources</button>
             </div>
         </div>
 
@@ -941,7 +942,7 @@
                     </ul>
                 </div>
 
-                <p class="content-text">In its 2019 session, the Texas Legislature failed to pass a "Sunset" bill that would have continued the existence of the Texas State Board of Plumbing Examiners. The bill had stalled amid controversy over whether or not to phase out this small agency and combine its functions into the larger Texas Department of Licensing and Regulation.</p>
+                <p class="content-text">In its 2019 session, the Texas Legislature failed to pass a &ldquo;<strong>Sunset</strong>&rdquo; bill that would have continued the existence of the Texas State Board of Plumbing Examiners. The bill had stalled amid controversy over whether or not to phase out this small agency and combine its functions into the larger Texas Department of Licensing and Regulation.</p>
 
                 <figure class="chapter-image">
                     <img src="images/tx5_governors_mansion.jpg" alt="The Texas Governor's Mansion in Austin, the official residence of the governor since 1856 and the oldest continuously occupied governor's residence west of the Mississippi" loading="lazy">
@@ -1128,17 +1129,8 @@
 
                 <div class="powers-list">
                     <h4>🏛️ Constitutional and Statutory Duties of the Governor</h4>
-                    <ul>
-                        <li>Signing or vetoing bills passed by the Legislature</li>
-                        <li>Serving as commander-in-chief of the state's military forces</li>
-                        <li>Convening special sessions of the Legislature for specific purposes</li>
-                        <li>Delivering a report on the condition of the state to the Legislature at the beginning of each regular session</li>
-                        <li>Estimating of the amounts of money required to be raised by taxation</li>
-                        <li>Accounting for all public monies received and paid out by the Governor and recommending a budget for the next two years</li>
-                        <li>Granting reprieves and commutations of punishment and pardons upon the recommendation of the Board of Pardons and Paroles</li>
-                        <li>Declaring special elections to fill vacancies in certain elected offices</li>
-                        <li>Appointing qualified Texans to state offices that carry out the laws and direct the policies of state government</li>
-                    </ul>
+                    
+                    <p>The Texas Constitution and statutes assign the governor a wide range of duties, even though the office&#39;s power is deliberately limited. The governor <strong>signs or vetoes</strong> bills passed by the Legislature and serves as <strong>commander-in-chief</strong> of the state&#39;s military forces. The governor can convene the Legislature in <strong>special session</strong> for specific purposes and delivers a &ldquo;state of the state&rdquo; report at the start of each regular session, along with an estimate of the revenue the state must raise and a recommended two-year budget. On the recommendation of the Board of Pardons and Paroles, the governor may grant reprieves, commutations, and <strong>pardons</strong>. The governor also declares special elections to fill certain vacancies and <strong>appoints</strong> qualified Texans to the many state offices that carry out the laws and set the direction of state government.</p>
                 </div>
 
                 <figure class="chapter-image">
@@ -1198,9 +1190,16 @@
                     <h2>Governor's Powers: Veto, Clemency, and Budget</h2>
                 </div>
 
+                <div class="learning-objectives">
+                    <h4>&#127919; Learning Objectives</h4>
+                    <ul>
+                        <li>Explain the governor's key formal powers, including the line-item veto, clemency, and the budget process.</li>
+                    </ul>
+                </div>
+
                 <div class="definition-box">
                     <div class="definition-term">✍️ Veto Power</div>
-                    <div>The governor has the power to either approve or veto bills passed by the Texas Legislature. The Governor has line-item veto power, enabling the governor to veto individual components (or lines) of a bill. The Governor of Texas' line-item veto power applies only to spending measures, only to a bill that "contains several items of appropriation."</div>
+                    <div>The governor has the power to either approve or veto bills passed by the Texas Legislature. The Governor has <strong>line-item veto</strong> power, enabling the governor to veto individual components (or lines) of a bill. The Governor of Texas' line-item veto power applies only to spending measures, only to a bill that "contains several items of appropriation."</div>
                 </div>
 
                 <figure class="chapter-image">
@@ -1222,7 +1221,7 @@
                     <div class="card-prompt">🔍 Click to explore: What is clemency power?</div>
                     <div class="card-content">
                         <p><strong>+15 points!</strong> ⚖️ Clemency explained!</p>
-                        <p>The governor has the authority to grant clemency upon the written recommendation of a majority of the Board of Pardons and Paroles. Clemency includes full pardons after conviction or successful completion of a term of deferred adjudication community supervision, conditional pardons, pardons based on innocence, commutations of sentence, and reprieves. In capital cases, clemency includes commutation of sentence to life in prison and a reprieve for execution. The governor may also grant a one-time reprieve of execution, not to exceed 30 days, without a Board recommendation.</p>
+                        <p>The governor has the authority to grant <strong>clemency</strong> upon the written recommendation of a majority of the Board of Pardons and Paroles. Clemency includes full pardons after conviction or successful completion of a term of deferred adjudication community supervision, conditional pardons, pardons based on innocence, commutations of sentence, and reprieves. In capital cases, clemency includes commutation of sentence to life in prison and a reprieve for execution. The governor may also grant a one-time reprieve of execution, not to exceed 30 days, without a Board recommendation.</p>
                     </div>
                 </div>
 
@@ -1434,7 +1433,7 @@
                     </ul>
                 </div>
 
-                <p class="content-text">Texas fragmented the Governor's power at the end of Reconstruction and dispersed executive power by creating a plural executive. Article 4 of the Texas Constitution describes the executive department (branch) of Texas. Texas utilizes a plural executive which means the power of the Governor is limited and distributed amongst other government officials.</p>
+                <p class="content-text">Texas fragmented the Governor's power at the end of Reconstruction and dispersed executive power by creating a plural executive. Article 4 of the Texas Constitution describes the executive department (branch) of Texas. Texas utilizes a <strong>plural executive</strong>, which means the power of the Governor is limited and distributed amongst other government officials.</p>
 
                 <figure class="chapter-image">
                     <img src="images/tx5_plural_executive.jpg" alt="The Texas State Capitol where multiple independently elected executive officials — including the Lieutenant Governor, Attorney General, Comptroller, and Land Commissioner — share executive power rather than answering to the governor" loading="lazy">
@@ -1627,6 +1626,70 @@
         </div>
 
         <!-- Report Page -->
+        <div id="chapterReview" class="page">
+            <button class="back-button" onclick="navigateToHome()">&larr; Back to Home</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <span>&#128214;</span>
+                    <h2>Chapter Review &amp; Resources</h2>
+                </div>
+                <p>Use this page to review Chapter 5. It gathers the chapter summary, self-check review questions, critical-thinking prompts, and sources for further study. For key terms, see <strong>Section 8: Key Terms and Glossary</strong> in this chapter. This page is for study only and is not scored.</p>
+
+                <h3>&#128221; Chapter Summary</h3>
+                <p>Texas has a <strong>plural executive</strong>: rather than concentrating authority in the governor, the 1876 Constitution deliberately fragmented executive power across several independently elected officials &mdash; a reaction against the centralized Reconstruction governorship of E. J. Davis. The governor therefore holds weaker formal powers than most governors or the president, sharing authority with a separately elected <strong>lieutenant governor</strong> (who leads the Senate), <strong>attorney general</strong>, <strong>comptroller</strong>, land commissioner, agriculture commissioner, and elected boards and commissions &mdash; none of whom answer to the governor. Within that constraint the governor still wields real formal power &mdash; signing or vetoing bills (including a <strong>line-item veto</strong> on spending), granting <strong>clemency</strong> on the recommendation of the Board of Pardons and Paroles, recommending a budget, convening special sessions, and appointing thousands of officials &mdash; plus considerable <strong>informal power</strong> through relationships, persuasion, and the visibility of the office. The lieutenant governor&#39;s grip on the Senate often makes that office, not the governorship, the most powerful in Austin.</p>
+
+                <h3>&#9989; Review Questions</h3>
+                <p>Test your recall, then click each question to reveal the answer.</p>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">1. What is a plural executive?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> An executive branch in which power is divided among several independently elected officials rather than concentrated in a single chief executive.</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">2. Why did Texas create a plural executive?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> The 1876 framers, reacting against the centralized power of Reconstruction Governor E. J. Davis, deliberately fragmented and weakened the executive branch.</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">3. Name three statewide executive officials besides the governor.</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> Any of: lieutenant governor, attorney general, comptroller, land commissioner, and agriculture commissioner (plus elected boards and commissions).</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">4. What is the line-item veto, and what does it apply to?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> The governor's power to veto individual spending items in an appropriations bill without vetoing the whole bill; it applies only to spending measures.</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">5. How can the governor grant clemency?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> Generally only on the written recommendation of the Board of Pardons and Paroles; the governor may act alone only for a single 30-day reprieve.</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">6. Why is the lieutenant governor often called the most powerful official in Texas?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> As presiding officer of the Senate, the lieutenant governor controls committee assignments, the flow of legislation, and much of the agenda.</p>
+                </details>
+                <details style="margin:0.4rem 0; padding:0.5rem 0.85rem; background:#eef3f8; border-radius:6px;">
+                    <summary style="cursor:pointer; font-weight:600;">7. What are &ldquo;informal&rdquo; powers?</summary>
+                    <p style="margin:0.4rem 0 0;"><strong>Answer:</strong> Powers not written in law &mdash; persuasion, relationships, party leadership, media attention, and the prestige of the office &mdash; that a skilled governor uses to shape policy.</p>
+                </details>
+
+                <h3>&#129300; Critical-Thinking Questions</h3>
+                <p>These open-ended questions have no single correct answer; use them for discussion or writing.</p>
+                <ul>
+                    <li style="margin:0.35rem 0;">Texas deliberately weakened its governor. Does a fragmented, plural executive make government more accountable to voters, or just harder to hold responsible? Explain.</li>
+                    <li style="margin:0.35rem 0;">If the lieutenant governor is more powerful than the governor, is that a healthy division of power or a flaw in the design? Why?</li>
+                    <li style="margin:0.35rem 0;">The governor can generally grant clemency only on the Board of Pardons and Paroles' recommendation. What are the benefits and risks of limiting clemency this way?</li>
+                    <li style="margin:0.35rem 0;">Informal powers can matter as much as formal ones. Should we be comfortable with a governor's influence resting so heavily on persuasion and relationships rather than defined authority?</li>
+                    <li style="margin:0.35rem 0;">Would Texas be governed better or worse if it consolidated executive power in a stronger single governor, as the federal government does? Argue your position.</li>
+                </ul>
+
+                <h3>&#128218; References &amp; Further Study</h3>
+                <ul>
+                    <li style="margin:0.35rem 0;">OpenStax / <em>Texas Government</em> (OER) &mdash; the openly licensed base text this module adapts.</li>
+                    <li style="margin:0.35rem 0;">Texas Constitution, Article IV (the Executive Department). <a href="https://statutes.capitol.texas.gov" target="_blank" rel="noopener">statutes.capitol.texas.gov</a></li>
+                    <li style="margin:0.35rem 0;">Office of the Texas Governor &mdash; the governor&#39;s duties and current initiatives. <a href="https://gov.texas.gov" target="_blank" rel="noopener">gov.texas.gov</a></li>
+                    <li style="margin:0.35rem 0;">Official statewide office sites (Attorney General, Comptroller, General Land Office, Agriculture) &mdash; for current officeholders and responsibilities.</li>
+                    <li style="margin:0.35rem 0;">Handbook of Texas Online (TSHA) &mdash; historical background on the plural executive. <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">tshaonline.org/handbook</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div id="reportPage" class="page">
             <div class="report-container">
                 <div class="report-header-bar">
@@ -1926,6 +1989,16 @@
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById('homePage').classList.add('active');
             updateProgress();
+        }
+
+        function navigateToReview() {
+            if (gameState.currentSection && gameState.sectionEntryTime) {
+                gameState.sectionTimers[gameState.currentSection] += Date.now() - gameState.sectionEntryTime;
+                gameState.currentSection = null; gameState.sectionEntryTime = null;
+            }
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('chapterReview').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function navigateToSection(sectionNum) {
