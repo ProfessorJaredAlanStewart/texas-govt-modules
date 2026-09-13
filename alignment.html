@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THECB / ACGM Alignment &mdash; Texas Government Trailblazer Trek</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-blue:#002b5c; --secondary-blue:#00788a; --gold:#FFD700;
+  --bg-light:#F5F7FA; --bg-white:#FFFFFF; --bg-section:#e8f4f6;
+  --text-primary:#212121; --text-secondary:#424242; --success:#4a8c2a;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg-light);color:var(--text-primary);
+ font-family:'EB Garamond',Garamond,serif;font-size:18px;line-height:1.6;}
+header{background:var(--primary-blue);color:#fff;padding:1rem 1.5rem;
+ display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;}
+header h1{font-size:1.15rem;margin:0;font-family:'Inter',sans-serif;font-weight:700;}
+header a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);
+ padding:.35rem .8rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.85rem;}
+header a:hover,header a:focus-visible{background:rgba(255,255,255,.15);}
+main{max-width:1150px;margin:0 auto;padding:2rem 1.25rem 4rem;}
+h2{font-size:1.7rem;color:var(--primary-blue);border-bottom:3px solid var(--secondary-blue);
+ padding-bottom:.4rem;margin-top:2.5rem;}
+h3{color:var(--primary-blue);margin-bottom:.3rem;}
+.lede{background:var(--bg-white);border-left:5px solid var(--secondary-blue);
+ padding:1rem 1.25rem;border-radius:8px;}
+table{width:100%;border-collapse:collapse;background:var(--bg-white);
+ border-radius:8px;overflow:hidden;margin-top:1rem;font-size:.95rem;}
+caption{text-align:left;font-style:italic;color:var(--text-secondary);padding:.5rem 0;}
+th,td{padding:.5rem .6rem;border-bottom:1px solid #dde5ec;text-align:left;vertical-align:top;}
+thead th{background:var(--primary-blue);color:#fff;font-family:'Inter',sans-serif;
+ font-size:.85rem;text-align:center;}
+thead th:first-child{text-align:left;}
+.matrix td{text-align:center;font-size:1.1rem;}
+.matrix .chname{text-align:left;font-weight:600;width:24%;}
+.chnum{display:inline-block;background:var(--secondary-blue);color:#fff;border-radius:50%;
+ width:1.6em;height:1.6em;line-height:1.6em;text-align:center;font-size:.8rem;
+ font-family:'Inter',sans-serif;margin-right:.35rem;}
+.matrix td.p{background:#d9ecd0;color:var(--success);font-weight:700;}
+.matrix td.s{background:#e8f4f6;color:var(--secondary-blue);}
+tr.evidence td{font-size:.85rem;color:var(--text-secondary);background:#fbfcfd;
+ padding:.35rem .6rem .7rem 2.6rem;border-bottom:2px solid #eef2f6;text-align:left;}
+.legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin:.8rem 0 0;font-size:.9rem;}
+.legend span{display:inline-flex;align-items:center;gap:.4rem;}
+.dot-p{color:var(--success);font-size:1.1rem;} .dot-s{color:var(--secondary-blue);font-size:1.1rem;}
+ol.key{background:var(--bg-white);border-radius:8px;padding:1rem 1rem 1rem 2.2rem;}
+ol.key li{margin:.3rem 0;}
+.core-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem;}
+.core-card{background:var(--bg-white);border-top:4px solid var(--secondary-blue);
+ padding:1rem 1.1rem;border-radius:8px;}
+.core-def{font-style:italic;color:var(--text-secondary);font-size:.9rem;}
+.prim{font-weight:700;color:var(--success);}
+footer{margin-top:3rem;font-size:.85rem;color:var(--text-secondary);border-top:1px solid #d5dee6;padding-top:1rem;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+ clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+a{color:var(--secondary-blue);}
+a:focus-visible,[tabindex]:focus-visible{outline:3px solid #0b5fff;outline-offset:3px;}
+@media (max-width:760px){ body{font-size:16px;} .matrix .chname{width:auto;} table{font-size:.85rem;} }
+@media print{ body{background:#fff;} header a{display:none;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>&#9878;&#65039; Texas Government Trailblazer Trek &mdash; THECB / ACGM Alignment</h1>
+  <a href="index.html">&larr; Back to modules</a>
+</header>
+<main>
+  <p class="lede">This document maps the eighteen Trailblazer Trek modules to the Texas Higher Education
+  Coordinating Board&rsquo;s <strong>ACGM learning outcomes for GOVT 2306 (Texas Government)</strong>, to the
+  THECB <strong>Core Objectives</strong>, and to the statutory content requirements for the government sequence.
+  It is intended for curriculum committees, department chairs, and faculty evaluating the Trek for adoption.
+  All modules are free, openly licensed (CC&nbsp;BY&nbsp;4.0), and require no student purchase or account.</p>
+
+  <h2>ACGM Learning Outcomes for GOVT 2306</h2>
+  <p>Upon successful completion of this course, students will:</p>
+  <ol class="key"><li><strong>Outcome 1.</strong> Explain the origin and development of the Texas constitution.</li><li><strong>Outcome 2.</strong> Describe state and local political systems and their relationship with the federal government.</li><li><strong>Outcome 3.</strong> Describe separation of powers and checks and balances in both theory and practice in Texas.</li><li><strong>Outcome 4.</strong> Demonstrate knowledge of the legislative, executive, and judicial branches of Texas government.</li><li><strong>Outcome 5.</strong> Evaluate the role of public opinion, interest groups, and political parties in Texas.</li><li><strong>Outcome 6.</strong> Analyze the state and local election process.</li><li><strong>Outcome 7.</strong> Identify the rights and responsibilities of citizens.</li><li><strong>Outcome 8.</strong> Analyze issues, policies and political culture of Texas.</li></ol>
+
+  <h2>Chapter-to-Outcome Matrix</h2>
+  <div class="legend">
+    <span><span class="dot-p">&#9679;</span> <strong>Primary</strong> &mdash; the outcome is a central focus of the chapter</span>
+    <span><span class="dot-s">&#9675;</span> <strong>Supporting</strong> &mdash; the outcome is meaningfully addressed</span>
+  </div>
+  <table class="matrix">
+    <caption>Each chapter is followed by the specific content evidencing its coverage.</caption>
+    <thead><tr><th scope="col">Module</th><th scope="col" title="Outcome 1">1</th><th scope="col" title="Outcome 2">2</th><th scope="col" title="Outcome 3">3</th><th scope="col" title="Outcome 4">4</th><th scope="col" title="Outcome 5">5</th><th scope="col" title="Outcome 6">6</th><th scope="col" title="Outcome 7">7</th><th scope="col" title="Outcome 8">8</th></tr></thead>
+    <tbody>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">1</span> Welcome to Texas</th>
+<td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Six Flags through statehood, Reconstruction, and Spindletop; Elazar's political-culture typology; current majority-minority demographics.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">2</span> The Texas Constitution</th>
+<td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">All seven Texas constitutions (1824/1827 Mexican through 1876), the Davis reaction that shaped the 1876 design, the amendment process, and Article I. Section 6 covers Article II separation of powers, the specific checks each branch holds, and how power is scattered further in practice.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">3</span> Federalism</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Enumerated, reserved, and concurrent powers; supremacy, full faith and credit, privileges and immunities; McCulloch and Gibbons; dual to cooperative to new federalism.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">4</span> The Texas Legislature</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Bicameral structure, 140-day biennial sessions, Speaker and Lieutenant Governor power, committees, how a bill becomes law, redistricting including the 2025 mid-decade redraw.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">5</span> The Texas Plural Executive</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Governor's formal and informal powers, line-item veto, clemency, appointments; the separately elected executive officers; the Railroad Commission.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">6</span> The Texas Court System</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Trial and appellate structure, the bifurcated high courts, the new Fifteenth Court of Appeals, partisan judicial selection and reform proposals, criminal and civil process.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">7</span> Local Government</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Counties and the commissioners court, general-law versus home-rule cities, council-manager and strong-mayor forms, special districts, annexation, and state preemption.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">8</span> Voting and Political Participation</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Registration and photo-ID rules, the poll tax and white primary, the Voting Rights Act and Shelby County, heuristics, turnout, and non-voting participation.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">9</span> Elections and Campaigns</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Primaries, runoffs, general and special elections, open versus closed versus top-two systems, campaign finance from the Tillman Act to Citizens United, the Electoral College.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">10</span> Political Parties</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Madison on factions, the one-party era, the Shivercrat movement and realignment, party organization from precinct to state convention, third parties, polarization.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">11</span> Interest Groups and Lobbying</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Material, solidary, and purposive benefits; the free rider problem; PACs and the friendly incumbent rule; grassroots and grasstops lobbying; Texas Ethics Commission regulation.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">12</span> Public Policy</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">The policy-making cycle, Lowi's typology, public goods; education finance and the 2025 ESA program; health policy and Medicaid non-expansion; gun policy including permitless carry.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">13</span> The Criminal Justice System</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Offense classification, indigent defense and Gideon, Fifth, Sixth and Eighth Amendment rights, bail and 2025's Proposition 3, the death penalty, exonerations, TDCJ.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">14</span> Financing State Government</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Sales, property, franchise and severance taxes; no income tax; the biennial budget, LBB, Comptroller's revenue estimate, pay-as-you-go; the 2026-27 budget and property-tax amendments.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">15</span> Public Opinion and the Media</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Political socialization, polling methodology and sampling, push polls and the Bradley effect, the fourth estate, agenda setting, framing, priming, and media bias.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">16</span> Civil Liberties and Civil Rights</th>
+<td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Liberties versus rights; the Texas Bill of Rights and the 1972 Texas ERA; incorporation; Texas v. Johnson, Smith v. Allwright, Sweatt, Hernandez, Lawrence, Plyler, Fisher; levels of scrutiny; citizen responsibilities.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">17</span> Energy, Water, and the Environment</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">ERCOT and the separate grid, Winter Storm Uri and the SB 2/SB 3 reforms, oil and gas and severance revenue, renewables and storage, water law and the rule of capture, Proposition 4.</td></tr>
+        <tr>
+          <th scope="row" class="chname"><span class="chnum">18</span> The Texas Bureaucracy and Sunset Review</th>
+<td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class="p"><span class="mark">&#9679;</span><span class="sr-only">Primary coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td><td class="s"><span class="mark">&#9675;</span><span class="sr-only">Supporting coverage</span></td><td class=""><span class="mark"></span><span class="sr-only">Not covered</span></td>
+        </tr>
+        <tr class="evidence"><td colspan="9">Delegated authority, boards and commissions with staggered terms, merit versus patronage, Sunset review, administrative rulemaking and the Texas Register, capture, open records and open meetings.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Outcome Coverage Index</h2>
+  <p>Read the other direction: for each outcome, which modules carry it.</p>
+  <table>
+    <thead><tr><th scope="col">#</th><th scope="col">Outcome</th><th scope="col">Primary</th><th scope="col">Supporting</th></tr></thead>
+    <tbody><tr><th scope="row">1</th><td>Explain the origin and development of the Texas constitution.</td><td class="prim">Ch&nbsp;2</td><td>Ch&nbsp;1, Ch&nbsp;16</td></tr><tr><th scope="row">2</th><td>Describe state and local political systems and their relationship with the federal government.</td><td class="prim">Ch&nbsp;3, Ch&nbsp;7</td><td>Ch&nbsp;12, Ch&nbsp;17</td></tr><tr><th scope="row">3</th><td>Describe separation of powers and checks and balances in both theory and practice in Texas.</td><td class="prim">Ch&nbsp;2</td><td>Ch&nbsp;3, Ch&nbsp;4, Ch&nbsp;5, Ch&nbsp;6, Ch&nbsp;16, Ch&nbsp;18</td></tr><tr><th scope="row">4</th><td>Demonstrate knowledge of the legislative, executive, and judicial branches of Texas government.</td><td class="prim">Ch&nbsp;4, Ch&nbsp;5, Ch&nbsp;6, Ch&nbsp;18</td><td>Ch&nbsp;13, Ch&nbsp;14, Ch&nbsp;17</td></tr><tr><th scope="row">5</th><td>Evaluate the role of public opinion, interest groups, and political parties in Texas.</td><td class="prim">Ch&nbsp;10, Ch&nbsp;11, Ch&nbsp;15</td><td>Ch&nbsp;8, Ch&nbsp;9</td></tr><tr><th scope="row">6</th><td>Analyze the state and local election process.</td><td class="prim">Ch&nbsp;8, Ch&nbsp;9</td><td>&mdash;</td></tr><tr><th scope="row">7</th><td>Identify the rights and responsibilities of citizens.</td><td class="prim">Ch&nbsp;16</td><td>Ch&nbsp;1, Ch&nbsp;8, Ch&nbsp;11, Ch&nbsp;13, Ch&nbsp;18</td></tr><tr><th scope="row">8</th><td>Analyze issues, policies and political culture of Texas.</td><td class="prim">Ch&nbsp;1, Ch&nbsp;12, Ch&nbsp;14, Ch&nbsp;17</td><td>Ch&nbsp;7, Ch&nbsp;10, Ch&nbsp;13</td></tr></tbody>
+  </table>
+  <p><strong>Every ACGM outcome has primary coverage in at least one module</strong>, and every module
+  addresses at least one outcome. Outcome&nbsp;7 (rights and responsibilities of citizens) is carried
+  primarily by Chapter&nbsp;16, which was built specifically to close that gap.</p>
+
+  <h2>THECB Core Objectives</h2>
+  <p>GOVT 2306 carries the core objectives below. Each is addressed by a recurring structural feature
+  of every module, not by isolated assignments.</p>
+  <div class="core-grid"><div class="core-card"><h3>Critical Thinking</h3><p class="core-def">Inquiry, analysis, evaluation, synthesis, creativity, and innovation.</p><p>Every chapter ends with five <strong>Critical-Thinking Questions</strong> that require students to weigh competing positions rather than recall facts. Contested topics are presented with the strongest case on each side, and reflection prompts explicitly ask students to state what evidence would change their mind. Knowledge checks use plausible distractors drawn from common misconceptions.</p></div><div class="core-card"><h3>Communication</h3><p class="core-def">Effective development, interpretation, and expression of ideas through written, oral, and visual communication.</p><p>Each section requires a written <strong>Reflection</strong> of at least fifty words in the student's own words, scored and retained in the Completion Report. Prompts ask students to explain a position, not merely assert one. Reflections and the Completion Report give instructors an artifact suitable for direct assessment.</p></div><div class="core-card"><h3>Personal Responsibility</h3><p class="core-def">The ability to connect choices, actions, and consequences to ethical decision-making.</p><p>Chapter 16 closes on the responsibilities that accompany rights &mdash; voting, jury service, obeying the law, defending the liberties of people one opposes. Chapter 18 closes on the accountability tools a citizen can personally use. The academic-integrity provisions (reflection originality, pacing checks, and the tamper-evident Completion Report hash) make integrity itself part of the exercise.</p></div><div class="core-card"><h3>Social Responsibility</h3><p class="core-def">Intercultural competence, knowledge of civic responsibility, and the ability to engage effectively in regional, national, and global communities.</p><p>Chapter 16 traces the civil-rights struggles of Black and Mexican American Texans through Smith v. Allwright, Sweatt v. Painter, and Hernandez v. Texas. Chapters 7, 8, 17, and 18 identify concrete points of civic engagement &mdash; commissioners court, groundwater district boards, rulemaking comment periods, Sunset hearings &mdash; where participation is realistically available.</p></div></div>
+
+  <h2>Statutory Content Requirements</h2>
+  <table>
+    <thead><tr><th scope="col">Requirement</th><th scope="col">What it requires</th><th scope="col">Where the Trek addresses it</th></tr></thead>
+    <tbody><tr><th scope="row">Texas Education Code &sect;51.301</th><td>Requires instruction including consideration of the U.S. Constitution and the constitutions of the states, &ldquo;with special emphasis on that of Texas.&rdquo;</td><td>Chapter 2 covers all seven Texas constitutions and the 1876 document in depth. Chapter 16 covers the Texas Bill of Rights (Article I) alongside the federal Bill of Rights and the Fourteenth Amendment, including provisions where Texas protects more than the federal floor.</td></tr><tr><th scope="row">SB 1 (80th Legislature) civil-rights content</th><td>Coverage of civil-rights history in the required government sequence.</td><td>Chapter 16, Section 6 covers Juneteenth, Jim Crow, the poll tax and white primary, the NAACP and LULAC and the American GI Forum, and the landmark Texas cases; Section 7 covers modern equal-protection debates.</td></tr></tbody>
+  </table>
+
+  <h2>Assessment Evidence Available to Instructors</h2>
+  <p>Each module generates a <strong>Completion Report</strong> that instructors can collect as direct
+  evidence of student learning. It records points earned by section, knowledge-check accuracy, the full
+  text of each written reflection, and time on task, and it carries a tamper-evident integrity hash.
+  Because reflections are written in the student&rsquo;s own words and prompts require students to weigh
+  competing positions, the reports are usable artifacts for Critical Thinking and Communication
+  assessment as well as for participation credit.</p>
+
+  <h2>Accessibility and Licensing</h2>
+  <p>All modules are licensed <strong>CC&nbsp;BY&nbsp;4.0</strong> and may be adopted, adapted, and
+  redistributed with attribution; see <a href="LICENSE">LICENSE</a> and
+  <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>. Every scored activity is operable by keyboard and exposed
+  to assistive technology, every image carries descriptive alternative text, and each page declares its
+  language; current conformance status and known limitations are documented in
+  <a href="ACCESSIBILITY.md">ACCESSIBILITY.md</a>.</p>
+
+  <footer>
+    <p>Texas Government Trailblazer Trek &mdash; Tarrant County College. Outcome text is quoted from the
+    THECB Lower-Division Academic Course Guide Manual (ACGM) entry for GOVT&nbsp;2306. Because Texas law
+    and policy change each biennium, module content is reviewed on a per-session cadence; verify currency
+    against the session most recently concluded before adoption.</p>
+  </footer>
+</main>
+</body>
+</html>
