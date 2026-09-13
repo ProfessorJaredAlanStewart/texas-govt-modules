@@ -1,5 +1,5 @@
 /**
- * Chapter 16 — Civil Liberties and Civil Rights in Texas
+ * Chapter 16. Civil Liberties and Civil Rights in Texas
  * Trailblazer Trek lecture deck (GOVT 2306)
  *
  * Design goals, in priority order:
@@ -15,7 +15,7 @@ const pres = new pptx();
 pres.layout = "LAYOUT_WIDE";            // 13.333 x 7.5
 pres.author = "Tarrant County College";
 pres.company = "Tarrant County College";
-pres.title = "Ch 16 — Civil Liberties and Civil Rights in Texas";
+pres.title = "Ch 16. Civil Liberties and Civil Rights in Texas";
 
 // ── Palette: constitutional / documentary, tied to the course brand ──
 const INK   = "002B5C";   // dominant navy
@@ -53,8 +53,8 @@ function lightSlide(title, kicker) {
   }
   if (title) {
     s.addText(title, {
-      x: M, y: kicker ? 0.66 : 0.5, w: W - M * 2 - 1.0, h: 0.85, isTextBox: true, margin: 0,
-      fontFace: H, fontSize: 32, bold: true, color: INK,
+      x: M, y: kicker ? 0.60 : 0.46, w: W - M * 2 - 0.5, h: 1.1, isTextBox: true, margin: 0,
+      fontFace: H, fontSize: 40, bold: true, color: INK,
     });
   }
   n += 1;
@@ -74,7 +74,7 @@ function circle(s, x, y, glyph, fill) {
     fontFace: B, fontSize: 19, color: WHITE, align: "center", valign: "middle",
   });
 }
-// Landmark-case card — the deck's signature repeated element
+// Landmark-case card, the deck's signature repeated element
 function caseCard(s, x, y, w, h, name, year, holding, why) {
   s.addShape(pres.ShapeType.roundRect, {
     x, y, w, h, rectRadius: 0.08,
@@ -107,7 +107,7 @@ function caseCard(s, x, y, w, h, name, year, holding, why) {
     });
   }
 }
-// Two-sided debate block — used for every contested question
+// Two-sided debate block, used for every contested question
 function twoSides(s, y, leftTitle, leftPts, rightTitle, rightPts, h) {
   const cw = (W - M * 2 - 0.4) / 2;
   const boxH = h || 2.55;
@@ -131,7 +131,7 @@ function twoSides(s, y, leftTitle, leftPts, rightTitle, rightPts, h) {
 }
 
 
-// Critical-thinking pause — deliberately styled unlike the content slides so the
+// Critical-thinking pause, deliberately styled unlike the content slides so the
 // class registers a change of mode. Instructors can drop these without breaking
 // anything around them.
 function discussionSlide(kicker, title, questions) {
@@ -142,8 +142,8 @@ function discussionSlide(kicker, title, questions) {
     fontFace: B, fontSize: 12, bold: true, color: GOLD, charSpacing: 2.5,
   });
   s.addText(title, {
-    x: M, y: 1.0, w: W - M * 2, h: 0.75, isTextBox: true, margin: 0,
-    fontFace: H, fontSize: 31, bold: true, color: WHITE,
+    x: M, y: 0.95, w: W - M * 2, h: 1.0, isTextBox: true, margin: 0,
+    fontFace: H, fontSize: 38, bold: true, color: WHITE,
   });
   let y = 2.15;
   questions.forEach((q, i) => {
@@ -174,24 +174,23 @@ function discussionSlide(kicker, title, questions) {
   });
   s.addText("Civil Liberties and\nCivil Rights in Texas", {
     x: M, y: 2.6, w: 9.4, h: 1.9, isTextBox: true, margin: 0,
-    fontFace: H, fontSize: 42, bold: true, color: WHITE, lineSpacing: 46,
+    fontFace: H, fontSize: 50, bold: true, color: WHITE, lineSpacing: 56,
   });
   s.addText("Freedom from government. Equal treatment by government.\nWhy the difference decides the case.", {
     x: M, y: 4.6, w: 9.4, h: 0.9, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 16, color: "C3D0E0", lineSpacing: 24,
   });
-  s.addShape(pres.ShapeType.rect, { x: M, y: 5.75, w: 1.1, h: 0.035, fill: { color: GOLD } });
   s.addText("GOVT 2306  ·  Texas Government Trailblazer Trek  ·  Tarrant County College", {
     x: M, y: 6.0, w: 10, h: 0.3, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 11.5, color: "8FA3BC",
   });
   notes(s, `
-CHAPTER 16 — CIVIL LIBERTIES AND CIVIL RIGHTS IN TEXAS
+CHAPTER 16: CIVIL LIBERTIES AND CIVIL RIGHTS IN TEXAS
 Full deck runs about 70 minutes with two discussion breaks; see the "How to use
 this deck" slide for shorter versions.
 
 OPENING (2 min). Ask before showing anything else: "Name a right you have."
-Students almost always name liberties — speech, religion, guns. Note that, then
+Students almost always name liberties, speech, religion, guns. Note that, then
 ask: "Is the right to be treated equally by your government on that list?" That
 gap IS the chapter. Write both words on the board and leave them there.
 
@@ -203,11 +202,11 @@ primary, and the modern right to privacy all started here.
 
 /* ══════════════════ 2. HOW TO USE (faculty) ══════════════════ */
 {
-  const s = lightSlide("How to use this deck", "For the instructor — delete before class");
+  const s = lightSlide("How to use this deck", "For the instructor: delete before class");
   const rows = [
     ["\u23F1", "Timing", "Full deck ~80 min with all three discussion pauses. For a 50-min class, keep one pause and cut the limits-on-speech and sources slides.", TEAL],
-    ["\u270E", "Editable", "Everything is a real text box or shape. Change wording, reorder, delete freely — nothing is a flattened image.", GOLD],
-    ["\u2696", "Neutral by design", "Contested questions appear as paired panels, never labeled by party. Three gold \u201CPause and think\u201D slides carry 2\u20133 discussion questions each \u2014 use one question, not all three.", CRIM],
+    ["\u270E", "Editable", "Everything is a real text box or shape. Change wording, reorder, delete freely. Nothing is a flattened image.", GOLD],
+    ["\u2696", "Neutral by design", "Contested questions appear as paired panels, never labeled by party. Three gold \u201CPause and think\u201D slides carry 2\u20133 discussion questions each. Use one question, not all three.", CRIM],
     ["\u2611", "Ties to the module", "Slide order follows Chapter 16's eight sections, so lecture and homework reinforce each other. Assessment items are in TEST-BANK.md Part A.", INK],
   ];
   let y = 1.85;
@@ -224,7 +223,7 @@ primary, and the modern right to privacy all started here.
     y += 1.16;
   });
   notes(s, `
-INSTRUCTOR-ONLY SLIDE — delete it before projecting.
+INSTRUCTOR-ONLY SLIDE: delete it before projecting.
 
 Everything in this deck is editable. If you disagree with a framing, change it;
 nothing here is locked or rendered as an image.
@@ -240,7 +239,7 @@ a course in how the system works, not a verdict.
 {
   const s = lightSlide("Where we're going", "Learning objectives");
   const obj = [
-    ["Distinguish", "civil liberties from civil rights — and explain why the difference decides how a case is argued."],
+    ["Distinguish", "civil liberties from civil rights, and explain why the difference decides how a case is argued."],
     ["Explain", "how federal rights reach Texas through the Fourteenth Amendment and selective incorporation."],
     ["Identify", "the landmark cases Texas gave the nation, from Smith v. Allwright to Lawrence v. Texas."],
     ["Apply", "the three levels of scrutiny to a current equal-protection dispute."],
@@ -263,7 +262,7 @@ a course in how the system works, not a verdict.
     y += 0.88;
   });
   notes(s, `
-TIMING: 1 minute. Don't read these aloud line by line — students tune out.
+TIMING: 1 minute. Don't read these aloud line by line, students tune out.
 
 Point at #1 and #4 only. Those are the two things they will actually be assessed
 on and the two they most often get wrong. Everything else supports them.
@@ -342,7 +341,7 @@ TIMING: 6 minutes. This is the highest-value slide in the deck.
 Teach the test at the bottom, not the lists. Students memorize lists and then
 misapply them; the two sentences transfer.
 
-WORKED EXAMPLE — put it on the board:
+WORKED EXAMPLE: put it on the board:
 A city bans all protests within 500 feet of city hall.
   → LIBERTIES claim. The city had no power to silence peaceful assembly.
 Now change one fact: the city permits some groups to march and denies others
@@ -350,7 +349,7 @@ because of their message or their members' ethnicity.
   → RIGHTS claim. Same ordinance, unequal application.
 
 COMMON MISCONCEPTION: students think liberties are "in the Bill of Rights" and
-rights are "civil rights era." Not so — both appear in both places. The
+rights are "civil rights era." Not so, both appear in both places. The
 distinction is about what government is being accused of, not where the text sits.
 
 COLD CALL: "You're denied a business permit. What do you need to know before you
@@ -367,9 +366,9 @@ can tell me which kind of claim you have?" (Answer: whether others got one.)
     fontFace: B, fontSize: 9.5, color: MUTE, italic: true,
   });
   const bul = [
-    "Size and diversity — a huge, fast-growing state with large Black, Mexican American, and immigrant communities generated more disputes.",
+    "Size and diversity. A huge, fast-growing state with large Black, Mexican American, and immigrant communities generated more disputes.",
     "A tradition of limited government and local control meant state laws regularly tested federal limits.",
-    "Individual Texans willing to carry a case all the way up — a dentist, a mail carrier, a defendant, sixteen families.",
+    "Individual Texans willing to carry a case all the way up: a dentist, a mail carrier, a defendant, sixteen families.",
   ];
   s.addText(bul.map((t, i) => ({ text: t, options: { bullet: true, breakLine: i !== bul.length - 1 } })), {
     x: M, y: 1.95, w: 6.7, h: 2.5, isTextBox: true, margin: 0,
@@ -383,14 +382,14 @@ can tell me which kind of claim you have?" (Answer: whether others got one.)
     x: M + 0.3, y: 4.95, w: 0.8, h: 1.0, isTextBox: true, margin: 0,
     fontFace: H, fontSize: 52, bold: true, color: GOLD, align: "center", valign: "middle",
   });
-  s.addText("landmark U.S. Supreme Court cases in this chapter began in Texas — on speech, voting, schools, ethnicity, privacy, immigration, and admissions.", {
+  s.addText("landmark U.S. Supreme Court cases in this chapter began in Texas, covering speech, voting, schools, ethnicity, privacy, immigration, and admissions.", {
     x: M + 1.2, y: 4.95, w: 5.3, h: 1.1, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13, color: WHITE, lineSpacing: 17, valign: "middle",
   });
   notes(s, `
 TIMING: 3 minutes.
 
-The point is not Texas pride — it's that constitutional law is made by ordinary
+The point is not Texas pride, it's that constitutional law is made by ordinary
 people with specific grievances, not by philosophers.
 
 Preview the seven so students hear the names early: Johnson (flag burning),
@@ -398,7 +397,7 @@ Smith v. Allwright (white primary), Sweatt (UT law school), Hernandez (juries),
 Lawrence (privacy), Plyler (school access), Fisher (admissions).
 
 If you want a hook: ask which of those they've heard of. Most will know flag
-burning and none will know Hernandez. That asymmetry is worth naming out loud —
+burning and none will know Hernandez. That asymmetry is worth naming out loud , 
 whose rights cases get remembered is itself a question worth asking.
   `);
 }
@@ -407,12 +406,12 @@ whose rights cases get remembered is itself a question worth asking.
 {
   const s = lightSlide("Texas put its Bill of Rights first", "Article I");
   s.addImage({ path: "images/tx2_texas_constitutions.jpg", x: M, y: 1.85, w: 4.5, h: 3.0 });
-  s.addText("Texas has had seven constitutions. The 1876 document opens with rights — before it describes a single power.", {
+  s.addText("Texas has had seven constitutions. The 1876 document opens with rights, before it describes a single power.", {
     x: M, y: 4.95, w: 4.5, h: 0.7, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 11.5, color: MUTE, italic: true, lineSpacing: 15,
   });
   const facts = [
-    ["Placement", "The U.S. Bill of Rights arrived in 1791 as ten amendments. Texas put rights in Article I — first, before any grant of power."],
+    ["Placement", "The U.S. Bill of Rights arrived in 1791 as ten amendments. Texas put rights in Article I: first, before any grant of power."],
     ["Reason", "The framers of 1876 had just lived through Reconstruction and Governor E. J. Davis. They stated the limits up front."],
     ["Force", "Section 29: everything in Article I is \u201Cexcepted out of the general powers of government,\u201D and any contrary law \u201Cshall be void.\u201D"],
   ];
@@ -432,7 +431,7 @@ whose rights cases get remembered is itself a question worth asking.
 TIMING: 4 minutes.
 
 The placement is the lesson. Ask: "Why would you put limits on government BEFORE
-you describe the government?" Answer: because you don't trust it — and Texans in
+you describe the government?" Answer: because you don't trust it, and Texans in
 1876 had a specific reason not to.
 
 Connect back to Chapter 2. This is the same Davis reaction that produced the weak
@@ -440,7 +439,7 @@ governor, the part-time legislature, and elected judges. One historical grievanc
 shaped the whole document.
 
 Section 29 is worth reading aloud. Most state constitutions don't say this so
-bluntly. Rights here are not favors the legislature grants — they are boundaries
+bluntly. Rights here are not favors the legislature grants, they are boundaries
 it cannot cross.
   `);
 }
@@ -456,7 +455,7 @@ it cannot cross.
     x: M + 0.4, y: 2.1, w: W - M * 2 - 0.8, h: 0.75, isTextBox: true, margin: 0,
     fontFace: H, fontSize: 19, italic: true, color: INK, lineSpacing: 26,
   });
-  s.addText("Texas Constitution, Article I, Section 3a — adopted by Texas voters in 1972", {
+  s.addText("Texas Constitution, Article I, Section 3a. Adopted by Texas voters in 1972", {
     x: M + 0.4, y: 2.92, w: W - M * 2 - 0.8, h: 0.3, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 11.5, color: GOLD, bold: true,
   });
@@ -491,7 +490,7 @@ This surprises students, and the surprise is pedagogically useful. Many arrive
 believing Texas is uniformly less protective of rights than the federal
 government. Here is a documented counterexample.
 
-ASK: "If the federal ERA had passed, would this Texas provision matter?" Yes —
+ASK: "If the federal ERA had passed, would this Texas provision matter?" Yes , 
 it covers more categories.
 
 Set up the next slide: if Texas can protect MORE, can it protect LESS? That is
@@ -504,7 +503,7 @@ the floor-and-ceiling idea, and it is the structural key to the whole chapter.
   const s = lightSlide("Federal floor, state ceiling", "How the two constitutions fit");
   // ceiling
   s.addShape(pres.ShapeType.rect, { x: 2.2, y: 2.0, w: 8.9, h: 0.16, fill: { color: GOLD } });
-  s.addText("STATE CEILING — Texas may protect MORE", {
+  s.addText("STATE CEILING: Texas may protect MORE", {
     x: 2.2, y: 1.62, w: 8.9, h: 0.34, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13, bold: true, color: GOLD,
   });
@@ -520,14 +519,14 @@ the floor-and-ceiling idea, and it is the structural key to the whole chapter.
   s.addText([
     { text: "Texas courts read Article I independently of federal law", options: { bullet: true, breakLine: true } },
     { text: "Texas bans imprisonment for debt; guarantees \u201Copen courts\u201D", options: { bullet: true, breakLine: true } },
-    { text: "A Texan whose federal claim fails may still win under the Texas Constitution — lawyers here plead both", options: { bullet: true } },
+    { text: "A Texan whose federal claim fails may still win under the Texas Constitution, and lawyers here plead both", options: { bullet: true } },
   ], {
     x: 2.45, y: 3.02, w: 8.4, h: 1.4, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13, color: BODY, lineSpacing: 18, paraSpaceAfter: 6,
   });
   // floor
   s.addShape(pres.ShapeType.rect, { x: 2.2, y: 4.85, w: 8.9, h: 0.16, fill: { color: INK } });
-  s.addText("FEDERAL FLOOR — no state may go BELOW", {
+  s.addText("FEDERAL FLOOR: no state may go BELOW", {
     x: 2.2, y: 5.08, w: 8.9, h: 0.34, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13, bold: true, color: INK,
   });
@@ -540,14 +539,14 @@ the floor-and-ceiling idea, and it is the structural key to the whole chapter.
     fontFace: B, fontSize: 13.5, italic: true, color: INK,
   });
   notes(s, `
-TIMING: 4 minutes. Draw this on the board as you talk — it lands better built
+TIMING: 4 minutes. Draw this on the board as you talk, it lands better built
 live than shown finished.
 
 THE ONE-SENTENCE VERSION: the U.S. Constitution is a floor, not a ceiling.
 
 Two consequences students should be able to state back:
   1. When the Supreme Court NARROWS a federal right, Texans do not automatically
-     lose it — Texas courts may still protect it under Article I.
+     lose it. Texas courts may still protect it under Article I.
   2. When the Supreme Court EXPANDS a federal right, Texas must comply even if
      state law says otherwise.
 
@@ -567,7 +566,7 @@ the slide that matters professionally.
   const steps = [
     ["1833", "Barron v. Baltimore", "Bill of Rights binds only the federal government. Texans look to their state constitution."],
     ["1868", "Fourteenth Amendment", "No STATE shall deprive any person of liberty without due process, nor deny equal protection."],
-    ["1925+", "Selective incorporation", "The Court applies the Bill of Rights to the states one provision at a time — speech 1925, religion 1940s, criminal rights 1960s, arms 2010."],
+    ["1925+", "Selective incorporation", "The Court applies the Bill of Rights to the states one provision at a time: speech 1925, religion 1940s, criminal rights 1960s, arms 2010."],
   ];
   const cw = (W - M * 2 - 0.7) / 3;
   steps.forEach(([yr, t, d], i) => {
@@ -612,7 +611,7 @@ TIMING: 5 minutes.
 THE FACT THAT SURPRISES THEM: for 80 years the Bill of Rights did not restrain
 Texas at all. Say it plainly and let it sit.
 
-"Selective" is the word to emphasize — not all at once, one right at a time,
+"Selective" is the word to emphasize, not all at once, one right at a time,
 across a century. Two provisions still are NOT incorporated: the Fifth
 Amendment's grand jury requirement and the Seventh Amendment's civil jury right.
 That is why Texas can structure those matters its own way.
@@ -628,7 +627,7 @@ equal protection = rights engine.
 
 /* ══════════════════ 10. TEXAS v JOHNSON ══════════════════ */
 {
-  const s = lightSlide("Protection doesn't depend on approval", "Expression — Dallas, 1984");
+  const s = lightSlide("Protection doesn't depend on approval", "Expression: Dallas, 1984");
   caseCard(s, M, 1.85, 6.35, 3.5, "Texas v. Johnson", "DECIDED 1989 · 5–4",
     "Burning the American flag in political protest is expressive conduct protected by the First Amendment.",
     "Government may not prohibit expression simply because society finds the idea offensive or disagreeable.");
@@ -676,7 +675,7 @@ what are its limits? Not everything is protected.
     ["\u203C", "True threats", "Serious expressions of intent to commit violence"],
     ["\u2696", "Defamation", "False statements of fact that damage reputation"],
     ["\u2716", "Obscenity", "As narrowly defined by the Court"],
-    ["\u23F1", "Time, place, manner", "Content-neutral rules — a parade permit is fine"],
+    ["\u23F1", "Time, place, manner", "Content-neutral rules; a parade permit is fine"],
   ];
   const cw = (W - M * 2 - 0.6) / 3;
   items.forEach(([g, t, d], i) => {
@@ -707,7 +706,7 @@ what are its limits? Not everything is protected.
     fontFace: B, fontSize: 13, color: WHITE, lineSpacing: 17,
   });
   notes(s, `
-TIMING: 3 minutes. Move briskly — this is a reference slide, not a discussion one.
+TIMING: 3 minutes. Move briskly, this is a reference slide, not a discussion one.
 
 The distinction that does all the work: regulating the TIME, PLACE, or MANNER of
 speech is generally fine; regulating the VIEWPOINT is generally not. A city can
@@ -715,7 +714,7 @@ require a parade permit. It cannot grant permits only to parades it agrees with.
 
 COMMON MISCONCEPTION: "hate speech is illegal." In the United States it generally
 is not, unless it crosses into incitement, true threats, or harassment. Students
-often find this genuinely surprising, and some find it troubling — that reaction
+often find this genuinely surprising, and some find it troubling, that reaction
 is worth acknowledging rather than brushing past. Many other democracies draw
 this line differently.
   `);
@@ -743,13 +742,13 @@ this line differently.
 TIMING: 4 minutes.
 
 Both clauses are in the same sentence of the First Amendment, and they can point
-in opposite directions. That tension is the entire subject — not a flaw in the
+in opposite directions. That tension is the entire subject, not a flaw in the
 Constitution but a genuine difficulty.
 
 DOCTRINAL SHIFT WORTH NAMING: for decades courts used the three-part Lemon test
 for Establishment Clause questions. In recent years the Supreme Court has moved
 toward asking whether a practice fits the nation's history and traditions. That
-shift is not academic — it is why the next slide's case came out the way it did
+shift is not academic, it is why the next slide's case came out the way it did
 at the appellate level.
 
 Keep your own view out of it here. Students in a Texas classroom hold sincere and
@@ -758,7 +757,7 @@ whether the room is safe for theirs.
   `);
 }
 
-/* ══════════════════ 13. SB 10 — CONTESTED, LIVE ══════════════════ */
+/* ══════════════════ 13. SB 10: CONTESTED, LIVE ══════════════════ */
 {
   const s = lightSlide("A dispute still unfolding", "Ten Commandments in Texas classrooms");
   s.addText("Senate Bill 10 (2025) requires every Texas public-school classroom to display a specified version of the Ten Commandments. House 82–46, Senate 20–11; signed by the governor.", {
@@ -791,7 +790,7 @@ whether the room is safe for theirs.
 TIMING: 7 minutes including discussion. This is the deck's main discussion slide.
 
 ⚠ CHECK CURRENCY BEFORE TEACHING. This litigation was live as of the 2026–27
-academic year. Confirm the current posture before class — a Supreme Court grant,
+academic year. Confirm the current posture before class, a Supreme Court grant,
 denial, or ruling would change the last box. The module and this deck are
 reviewed each legislative session.
 
@@ -811,19 +810,19 @@ genuinely unsettled law, not a case with an obvious answer.
   `);
 }
 
-/* ══════════════ 13b. CRITICAL THINKING — EXPRESSION ══════════════ */
+/* ══════════════ 13b. CRITICAL THINKING: EXPRESSION ══════════════ */
 {
   const s = discussionSlide("Pause and think", "Expression, religion, and the limits of tolerance", [
-    "Texas v. Johnson protected speech many Americans found deeply offensive. Is there any expression you would give government the power to punish \u2014 and who would you trust to draw that line?",
+    "Texas v. Johnson protected speech many Americans found deeply offensive. Is there any expression you would give government the power to punish, and who would you trust to draw that line?",
     "The Establishment and Free Exercise Clauses can point in opposite directions. When a school accommodates one student\u2019s faith, when does accommodation become endorsement?",
     "Both sides of the Ten Commandments dispute claim to be protecting children. What evidence would actually settle which is right?",
   ]);
   notes(s, `
-CRITICAL-THINKING PAUSE — 5 to 8 minutes. Optional; cut it if you are short on
+CRITICAL-THINKING PAUSE: 5 to 8 minutes. Optional; cut it if you are short on
 time, since nothing later depends on it.
 
 HOW TO RUN IT: pick ONE question rather than all three. Give students 90 seconds
-to write an answer before anyone speaks — written-first produces far better
+to write an answer before anyone speaks, written-first produces far better
 discussion than cold open debate, and it gives quieter students a foothold.
 
 Q1 is the strongest for a general class. Most students will initially say "no
@@ -834,26 +833,26 @@ about where and who decides.
 Q2 rewards students who read the module. There is no clean answer, and saying so
 is honest.
 
-Q3 is the one to use if the room is tense — it redirects from belief to evidence,
+Q3 is the one to use if the room is tense, it redirects from belief to evidence,
 which lowers the temperature without dodging the question.
 
 Do not resolve these. The point is that students can hold the tension.
   `);
 }
 
-/* ══════════════════ 14. SECTION BREAK — RIGHTS ══════════════════ */
+/* ══════════════════ 14. SECTION BREAK: RIGHTS ══════════════════ */
 {
   const s = darkSlide();
   n += 1;
   s.addText("PART TWO", { x: M, y: 2.5, w: 8, h: 0.34, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, bold: true, color: GOLD, charSpacing: 3 });
   s.addText("The long struggle\nfor civil rights", { x: M, y: 2.95, w: 9.5, h: 1.6, isTextBox: true, margin: 0, fontFace: H, fontSize: 38, bold: true, color: WHITE, lineSpacing: 42 });
-  s.addText("Freedom on paper in 1865. Equal citizenship took a century more — and three Texans who refused to wait.", { x: M, y: 4.75, w: 9.5, h: 0.8, isTextBox: true, margin: 0, fontFace: B, fontSize: 15, color: "C3D0E0", lineSpacing: 22 });
+  s.addText("Freedom on paper in 1865. Equal citizenship took a century more, and three Texans who refused to wait.", { x: M, y: 4.75, w: 9.5, h: 0.8, isTextBox: true, margin: 0, fontFace: B, fontSize: 15, color: "C3D0E0", lineSpacing: 22 });
   notes(s, `
-TRANSITION SLIDE — 1 minute, or a natural break point if you split this across
+TRANSITION SLIDE: 1 minute, or a natural break point if you split this across
 two class meetings.
 
-Reset the frame here: everything before this slide was about LIBERTIES —
-government power over individuals. Everything after is about RIGHTS — equal
+Reset the frame here: everything before this slide was about LIBERTIES , 
+government power over individuals. Everything after is about RIGHTS: equal
 treatment. Say that explicitly; students lose the thread otherwise.
 
 If you are teaching this in one 50-minute session, this is where to stop and pick
@@ -865,12 +864,12 @@ up next time.
 {
   const s = lightSlide("Freedom on paper, then a century of resistance", "From emancipation to Jim Crow");
   s.addImage({ path: "images/tx1_juneteenth.jpg", x: M, y: 1.85, w: 5.0, h: 3.2 });
-  s.addText("Juneteenth — June 19, 1865, Galveston", { x: M, y: 5.15, w: 5.0, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11, color: MUTE, italic: true });
+  s.addText("Juneteenth: June 19, 1865, Galveston", { x: M, y: 5.15, w: 5.0, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11, color: MUTE, italic: true });
   const rows = [
     ["1865", "General Granger reaches Galveston and announces that all enslaved Texans are free. Now a state and federal holiday."],
-    ["1876+", "After Reconstruction ends, Texas builds Jim Crow — segregation by law in schools, transit, and public accommodations."],
+    ["1876+", "After Reconstruction ends, Texas builds Jim Crow: segregation by law in schools, transit, and public accommodations."],
     ["1902", "A poll tax prices poor Black, Mexican American, and white Texans out of voting."],
-    ["Ongoing", "The Democratic primary — the only election that mattered in a one-party state — bars Black Texans entirely."],
+    ["Ongoing", "The Democratic primary, the only election that mattered in a one-party state, bars Black Texans entirely."],
   ];
   let y = 1.9;
   rows.forEach(([d, t]) => {
@@ -884,13 +883,13 @@ up next time.
 TIMING: 4 minutes.
 
 The sequence is the point: legal freedom in 1865 did not produce equal
-citizenship. Ask why not — students usually name violence and social custom, and
+citizenship. Ask why not, students usually name violence and social custom, and
 miss the LEGAL machinery. Push them toward the poll tax and the white primary.
 
 WHY THE WHITE PRIMARY WAS SO EFFECTIVE: in a one-party state the Democratic
 primary decided every office. The November election was a formality. Excluding
 Black voters from the primary excluded them from the only contest that mattered
-— while technically leaving them "the vote."
+,  while technically leaving them "the vote."
 
 Juneteenth is worth a moment. Many students celebrate it without knowing it
 originates in Galveston, or that it marks enforcement rather than the
@@ -904,43 +903,43 @@ Emancipation Proclamation itself.
   const cards = [
     ["Smith v. Allwright", "1944 · 8–1", "A party running the decisive election performs a public function and may not discriminate by race.", "Dr. Lonnie Smith, a Houston dentist, was turned away from the 1940 primary. Thurgood Marshall argued it. Struck down white primaries across the South."],
     ["Sweatt v. Painter", "1950 · unanimous", "A hastily built separate law school could not be equal to UT Law in faculty, reputation, or standing.", "Heman Sweatt, a Houston mail carrier, applied to UT Law. Direct stepping stone to Brown v. Board four years later."],
-    ["Hernandez v. Texas", "1954 · unanimous", "Equal protection covers any group treated as \u201Ca class apart\u201D — not only Black and white citizens.", "Jackson County had seated no juror of Mexican descent in 25 years. First case argued by Mexican American attorneys at the Court. Decided two weeks before Brown."],
+    ["Hernandez v. Texas", "1954 · unanimous", "Equal protection covers any group treated as \u201Ca class apart\u201D, not only Black and white citizens.", "Jackson County had seated no juror of Mexican descent in 25 years. First case argued by Mexican American attorneys at the Court. Decided two weeks before Brown."],
   ];
   const cw = (W - M * 2 - 0.6) / 3;
   cards.forEach(([nm, yr, held, why], i) => {
     caseCard(s, M + i * (cw + 0.3), 1.95, cw, 3.55, nm, yr, held, why);
   });
   notes(s, `
-TIMING: 10 minutes — the heart of the chapter. Roughly 3 minutes per case.
+TIMING: 10 minutes. the heart of the chapter. Roughly 3 minutes per case.
 
 Teach these as PEOPLE, not citations. A dentist. A mail carrier. A defendant.
 None held office. None had power. Each changed the law for millions.
 
 SMITH: Texas had defended the white primary for two decades, and in 1935 the
 Court had ALLOWED it, reasoning a party was a private club. Smith reversed that.
-Note the young Thurgood Marshall — future Justice — arguing it.
+Note the young Thurgood Marshall, future Justice, arguing it.
 
 SWEATT: the state's response to a qualified Black applicant was to invent a
-separate law school in rented rooms. Vinson's reasoning — that a school cannot be
-equal in faculty, reputation, and alumni standing — is what made Brown possible.
+separate law school in rented rooms. Vinson's reasoning, that a school cannot be
+equal in faculty, reputation, and alumni standing, is what made Brown possible.
 
 HERNANDEZ: the one students have never heard of, and the one with the widest
 reach today. Warren's "class apart" logic protects every ethnic group in America.
 Argued by Gus Garcia and Carlos Cadena with LULAC and the American GI Forum.
-Ask why this case is so much less famous than Brown — it is a good question with
+Ask why this case is so much less famous than Brown, it is a good question with
 no comfortable answer.
   `);
 }
 
-/* ══════════════ 16b. CRITICAL THINKING — THE STRUGGLE ══════════════ */
+/* ══════════════ 16b. CRITICAL THINKING: THE STRUGGLE ══════════════ */
 {
   const s = discussionSlide("Pause and think", "How rights actually get won", [
-    "A dentist, a mail carrier, and a criminal defendant changed federal law. What does that suggest about how constitutional change actually happens \u2014 and what it costs the people who start it?",
+    "A dentist, a mail carrier, and a criminal defendant changed federal law. What does that suggest about how constitutional change actually happens, and what it costs the people who start it?",
     "Hernandez v. Texas protects every ethnic group in America, yet almost no one has heard of it. Why do some rights cases become famous and others disappear?",
     "Texas ended the white primary in 1944 and the poll tax in the 1960s. Which barriers to equal citizenship, if any, do you think a future course will describe as obvious in hindsight?",
   ]);
   notes(s, `
-CRITICAL-THINKING PAUSE — 5 to 8 minutes.
+CRITICAL-THINKING PAUSE: 5 to 8 minutes.
 
 Q1 connects the whole chapter. Push past "ordinary people can make a difference"
 to the harder part: Smith, Sweatt, and Hernandez took real personal risk, waited
@@ -964,7 +963,7 @@ answers; the analytical move is asking them WHY they expect hindsight to shift.
   const tiers = [
     ["STRICT SCRUTINY", "Race, national origin, fundamental rights", "Government needs a COMPELLING interest and a NARROWLY TAILORED law", "Almost nothing survives", CRIM],
     ["INTERMEDIATE", "Sex", "An IMPORTANT interest, SUBSTANTIALLY related", "Sometimes survives", GOLD],
-    ["RATIONAL BASIS", "Everything else — age, income, occupation", "Any LEGITIMATE purpose, rationally related", "Almost always survives", TEAL],
+    ["RATIONAL BASIS", "Everything else: age, income, occupation", "Any LEGITIMATE purpose, rationally related", "Almost always survives", TEAL],
   ];
   let y = 1.9;
   tiers.forEach(([t, applies, test, outcome, col]) => {
@@ -984,7 +983,7 @@ TIMING: 6 minutes. If students remember ONE framework from this course, make it
 this one. It transfers to every rights dispute they will read about for the rest
 of their lives.
 
-THE KEY INSIGHT — say it directly: the level of scrutiny usually determines the
+THE KEY INSIGHT: say it directly: the level of scrutiny usually determines the
 outcome. Strict scrutiny is nearly fatal to a law. Rational basis is nearly
 always survivable. So the real fight in most modern cases is not "is this
 discrimination?" but "which tier applies?"
@@ -992,7 +991,7 @@ discrimination?" but "which tier applies?"
 TEXAS WRINKLE: the Texas ERA names sex, race, color, creed, and national origin
 explicitly, so a state claim can rest on text rather than judicial interpretation.
 
-QUICK PRACTICE — put one on the board and cold call:
+QUICK PRACTICE: put one on the board and cold call:
   "A Texas law gives a property tax break to homeowners over 65." → rational
   basis (age), and it survives.
   "A city hires only men as firefighters." → intermediate scrutiny, and it fails.
@@ -1023,7 +1022,7 @@ THE TEXTUAL HOOK: the Fourteenth Amendment says "any PERSON," not "any citizen."
 Have a student read the clause aloud and find that word. It does a lot of work.
 
 Another 5–4 case. The dissent argued this was a policy judgment for legislatures
-rather than courts — worth presenting fairly.
+rather than courts, worth presenting fairly.
 
 CURRENCY NOTE: state authority over immigration is actively litigated, including
 Texas's SB 4 (2023). Check the posture before teaching if you plan to go beyond
@@ -1052,7 +1051,7 @@ the reasoning; you do not need to invite disclosure, and you should not.
     s.addText(tension, { x: M + 8.15, y: y + 0.14, w: W - M - 8.15 - M - 0.05, h: 0.9, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, italic: true, color: MUTE, lineSpacing: 15 });
     y += 1.18;
   });
-  s.addText("Each row states the dispute, not a verdict. Ask which level of scrutiny applies — that is the analytical question.", {
+  s.addText("Each row states the dispute, not a verdict. Ask which level of scrutiny applies. That is the analytical question.", {
     x: M, y: 6.55, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, italic: true, color: INK,
   });
   notes(s, `
@@ -1079,7 +1078,7 @@ Part A items assess the scrutiny framework rather than any position.
   `);
 }
 
-/* ══════════════ 19b. CRITICAL THINKING — APPLYING THE FRAMEWORK ══════════════ */
+/* ══════════════ 19b. CRITICAL THINKING: APPLYING THE FRAMEWORK ══════════════ */
 {
   const s = discussionSlide("Pause and think", "Apply the framework, not your priors", [
     "Pick any dispute from the previous slide. Which level of scrutiny should apply to that classification, and what is the strongest argument for the tier you did NOT choose?",
@@ -1087,7 +1086,7 @@ Part A items assess the scrutiny framework rather than any position.
     "When the Supreme Court narrows a federal right, Texas courts may still protect it under Article I. Is that a healthy safety valve, or does it let a state substitute its judgment for the nation\u2019s?",
   ]);
   notes(s, `
-CRITICAL-THINKING PAUSE — 6 to 10 minutes. This is the most assessment-aligned
+CRITICAL-THINKING PAUSE: 6 to 10 minutes. This is the most assessment-aligned
 of the three; Q1 mirrors the format of several TEST-BANK Part A items and the
 Chapter 16 reflection prompt.
 
@@ -1129,7 +1128,7 @@ analytical work than anything else on this slide.
   });
   notes(s, `
 TIMING: 4 minutes. This is the chapter's closing argument and it satisfies ACGM
-Outcome 7 (rights AND responsibilities) — do not skip it for time.
+Outcome 7 (rights AND responsibilities), do not skip it for time.
 
 ITEM 3 IS THE HARD ONE and the most important. Ask directly: "Is there a liberty
 you would deny to people you strongly oppose?" Let the discomfort sit. Then:
@@ -1139,7 +1138,7 @@ Connect back to Johnson. The principle that protected a flag burner in Dallas is
 the same principle that protects a protest you support.
 
 CLOSING LINE that works: "The next landmark case hasn't been filed yet. It will
-start the same way all of these did — with one person who knew their rights."
+start the same way all of these did, with one person who knew their rights."
   `);
 }
 
@@ -1147,9 +1146,9 @@ start the same way all of these did — with one person who knew their rights."
 {
   const s = lightSlide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 16 in the Trailblazer Trek — 8 sections, 1,495 points. Students submit the Completion Report.", TEAL],
+    ["\u25B6", "Complete the module", "Chapter 16 in the Trailblazer Trek: 8 sections, 1,495 points. Students submit the Completion Report.", TEAL],
     ["\u270E", "Written reflection", "Each section requires 50+ words in the student's own words. Section 7 asks for the strongest case on BOTH sides of a current debate.", GOLD],
-    ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only — students have seen those.", CRIM],
+    ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only, since students have seen those.", CRIM],
   ];
   const cw = (W - M * 2 - 0.7) / 3;
   cols.forEach(([g, t, d, c], i) => {
@@ -1162,16 +1161,16 @@ start the same way all of these did — with one person who knew their rights."
   s.addShape(pres.ShapeType.roundRect, { x: M, y: 5.3, w: W - M * 2, h: 1.1, rectRadius: 0.07, fill: { color: PARCH }, line: { color: GOLD, width: 1.5 } });
   s.addText([
     { text: "ACGM outcomes assessed by this chapter:  ", options: { bold: true, color: INK } },
-    { text: "Outcome 7 (rights and responsibilities of citizens) — primary.   Outcomes 1 and 3 — supporting.   See ALIGNMENT.md.", options: { color: BODY } },
+    { text: "Outcome 7 (rights and responsibilities of citizens) is primary. Outcomes 1 and 3 are supporting.   See ALIGNMENT.md.", options: { color: BODY } },
   ], { x: M + 0.32, y: 5.55, w: W - M * 2 - 0.64, h: 0.7, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, lineSpacing: 18 });
   notes(s, `
-INSTRUCTOR SLIDE — keep it or delete it depending on whether you want students to
+INSTRUCTOR SLIDE: keep it or delete it depending on whether you want students to
 see the assessment plan. Many instructors do show it; transparency about what is
 graded reduces anxiety and email.
 
 If you assign the module as homework BEFORE lecture, this deck works as
 consolidation and you can cut slides 4 and 9 (they will have the basics).
-If you lecture FIRST, keep everything — the module then serves as review.
+If you lecture FIRST, keep everything, the module then serves as review.
 
 The Completion Report carries a tamper-evident integrity hash, so it is usable as
 a graded artifact. Reflections are included in full in the report.
@@ -1182,10 +1181,10 @@ a graded artifact. Reflections are included in full in the report.
 {
   const s = lightSlide("Sources and further reading", "References");
   const refs = [
-    ["Primary law", "Texas Constitution, Article I (Bill of Rights) — statutes.capitol.texas.gov   ·   U.S. Constitution, First and Fourteenth Amendments — archives.gov"],
-    ["The cases", "Opinions and oral argument audio for Johnson, Smith, Sweatt, Hernandez, Lawrence, Plyler, and Fisher — oyez.org"],
-    ["Texas history", "Handbook of Texas Online (Texas State Historical Association) — entries on Juneteenth, the white primary, LULAC, the American GI Forum, Heman Sweatt, and Barbara Jordan"],
-    ["Openly licensed text", "OpenStax, American Government 3e (CC BY 4.0) — chapters on civil liberties and civil rights"],
+    ["Primary law", "Texas Constitution, Article I (Bill of Rights) at statutes.capitol.texas.gov   ·   U.S. Constitution, First and Fourteenth Amendments at archives.gov"],
+    ["The cases", "Opinions and oral argument audio for Johnson, Smith, Sweatt, Hernandez, Lawrence, Plyler, and Fisher at oyez.org"],
+    ["Texas history", "Handbook of Texas Online (Texas State Historical Association), entries on Juneteenth, the white primary, LULAC, the American GI Forum, Heman Sweatt, and Barbara Jordan"],
+    ["Openly licensed text", "OpenStax, American Government 3e (CC BY 4.0), chapters on civil liberties and civil rights"],
     ["Images", "Wikimedia Commons, public domain, as credited in the module"],
   ];
   let y = 1.9;
@@ -1194,13 +1193,13 @@ a graded artifact. Reflections are included in full in the report.
     s.addText(d, { x: M + 2.6, y: y - 0.03, w: W - M - 2.6 - M, h: 0.8, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: BODY, lineSpacing: 17 });
     y += 0.92;
   });
-  s.addText("This deck is licensed CC BY 4.0. Adopt it, adapt it, share it — attribution appreciated.", {
+  s.addText("This deck is licensed CC BY 4.0. Adopt it, adapt it, share it. Attribution appreciated.", {
     x: M, y: 6.45, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, italic: true, color: MUTE,
   });
   notes(s, `
 Leave this slide up during questions so students can photograph it.
 
-Oyez is the single best resource to point students toward — free, and the oral
+Oyez is the single best resource to point students toward, free, and the oral
 argument audio makes these cases feel like arguments between real people rather
 than settled text. Smith v. Allwright with a young Thurgood Marshall is
 especially worth assigning.
@@ -1215,11 +1214,10 @@ entries into your own materials.
   const s = darkSlide();
   n += 1;
   s.addText("The question to leave with", { x: M, y: 2.3, w: 9, h: 0.4, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, bold: true, color: GOLD, charSpacing: 2 });
-  s.addText("\u201CIs there a liberty you would\ndeny to people you oppose?\u201D", { x: M, y: 2.85, w: 11, h: 1.7, isTextBox: true, margin: 0, fontFace: H, fontSize: 34, bold: true, color: WHITE, lineSpacing: 42 });
-  s.addShape(pres.ShapeType.rect, { x: M, y: 4.85, w: 1.1, h: 0.035, fill: { color: GOLD } });
+  s.addText("\u201CIs there a liberty you would\ndeny to people you oppose?\u201D", { x: M, y: 2.85, w: 11, h: 1.7, isTextBox: true, margin: 0, fontFace: H, fontSize: 40, bold: true, color: WHITE, lineSpacing: 42 });
   s.addText("And what would that cost you if the majority changed its mind about your group?", { x: M, y: 5.15, w: 11, h: 0.5, isTextBox: true, margin: 0, fontFace: B, fontSize: 15, color: "C3D0E0" });
   notes(s, `
-CLOSING — 2 minutes, or use as the exit-ticket prompt.
+CLOSING: 2 minutes, or use as the exit-ticket prompt.
 
 Let the question sit without answering it. Silence is fine here.
 
