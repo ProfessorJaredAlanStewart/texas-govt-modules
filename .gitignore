@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+slides/*.pdf
+slides/slide-*.jpg
