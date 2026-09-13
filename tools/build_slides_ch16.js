@@ -628,7 +628,7 @@ equal protection = rights engine.
 
 /* ══════════════════ 10. TEXAS v JOHNSON ══════════════════ */
 {
-  const s = lightSlide("Speech we hate is still speech", "Expression — Dallas, 1984");
+  const s = lightSlide("Protection doesn't depend on approval", "Expression — Dallas, 1984");
   caseCard(s, M, 1.85, 6.35, 3.5, "Texas v. Johnson", "DECIDED 1989 · 5–4",
     "Burning the American flag in political protest is expressive conduct protected by the First Amendment.",
     "Government may not prohibit expression simply because society finds the idea offensive or disagreeable.");
@@ -663,7 +663,7 @@ WHAT STUDENTS GET WRONG: they think this case says flag burning is a good idea,
 or that the Court approved of Johnson. It says neither. It says the state lacked
 power to punish him for the idea he expressed.
 
-BRIDGE TO THE NEXT SLIDE: if this principle protects speech we find offensive,
+BRIDGE TO THE NEXT SLIDE: if this principle protects speech many find deeply offensive,
 what are its limits? Not everything is protected.
   `);
 }
@@ -814,7 +814,7 @@ genuinely unsettled law, not a case with an obvious answer.
 /* ══════════════ 13b. CRITICAL THINKING — EXPRESSION ══════════════ */
 {
   const s = discussionSlide("Pause and think", "Expression, religion, and the limits of tolerance", [
-    "Texas v. Johnson protected speech most Americans found offensive. Is there any expression you would give government the power to punish \u2014 and who would you trust to draw that line?",
+    "Texas v. Johnson protected speech many Americans found deeply offensive. Is there any expression you would give government the power to punish \u2014 and who would you trust to draw that line?",
     "The Establishment and Free Exercise Clauses can point in opposite directions. When a school accommodates one student\u2019s faith, when does accommodation become endorsement?",
     "Both sides of the Ten Commandments dispute claim to be protecting children. What evidence would actually settle which is right?",
   ]);
