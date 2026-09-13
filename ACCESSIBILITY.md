@@ -26,22 +26,47 @@ and the work that remains, and it is updated as items are remediated.
 
 ## Known limitations and roadmap
 
-We are actively working toward full WCAG 2.1 AA conformance. Current
-priorities:
+**Resolved (September 2026): keyboard and screen-reader access to all scored
+activities.** Previously the reveal cards and knowledge-check options were
+mouse-only `div` elements, which meant a keyboard-only or screen-reader user
+could not reveal content, answer questions, or earn points. Every chapter in
+this repository now provides:
 
-1. **Keyboard and screen-reader support for the gamified interactions.**
-   The reveal cards and knowledge-check options currently respond to
-   mouse/tap via click handlers on non-button elements and are **not yet
-   fully keyboard-operable or exposed to assistive technology as
-   interactive controls.** Converting them to keyboard-focusable,
-   ARIA-labeled controls (or native buttons) is the top remediation item.
-2. **Alternative text for images.** Descriptive alt text is being reviewed
-   and completed **chapter by chapter**.
-3. **A full WCAG 2.1 AA audit**, including keyboard-only and screen-reader
-   testing of every interactive element, is planned; results and fixes will
-   be logged here.
-4. **Media.** Any audio or video added in the future will include captions
-   and transcripts.
+- **Full keyboard operation.** Reveal cards, knowledge-check options, and the
+  home-page navigation cards are reachable with Tab and activated with Enter
+  or Space.
+- **Correct semantics.** Reveal cards expose `role="button"` with
+  `aria-expanded` and `aria-controls`; knowledge checks are labelled groups;
+  answered options are marked `aria-disabled` and removed from the tab order,
+  so keyboard users cannot re-answer a closed question.
+- **Announcements.** Quiz feedback, reflection word counts and feedback,
+  section-gate messages, and the running point total are announced politely
+  via ARIA live regions.
+- **Visible focus.** A high-contrast focus indicator is applied to every
+  interactive element, with a `:focus` fallback for older browsers.
+- **Accessible names.** Reflection textareas carry an `aria-label` derived
+  from their prompt (a placeholder alone is not an accessible name), and the
+  progress bar exposes `role="progressbar"` with a live `aria-valuenow`.
+- **Page language.** Every chapter declares `lang="en"`.
+- **Reduced motion.** Animations are suppressed for users who set the
+  `prefers-reduced-motion` preference.
+
+These behaviours are verified by an automated test (jsdom) that simulates a
+keyboard-only user revealing a card and answering a knowledge check, and
+confirms points are actually awarded. All 16 chapters pass.
+
+**Still outstanding:**
+
+1. **Verification with real assistive technology.** The automated tests
+   confirm semantics and keyboard operation, but the modules have not yet been
+   tested end-to-end with JAWS, NVDA, or VoiceOver by a screen-reader user.
+2. **Colour-contrast audit.** The navy/teal palette was chosen for readability
+   but has not been formally measured against the 4.5:1 (text) and 3:1
+   (non-text) WCAG thresholds in every context.
+3. **Alternative text review.** Every image has descriptive alt text; the
+   descriptions would still benefit from review by a subject-matter expert for
+   accuracy and concision.
+4. **A formal WCAG 2.1 AA conformance report (VPAT/ACR).**
 
 ## Reporting a barrier / getting help
 
