@@ -630,7 +630,7 @@
         </div>
         <div class="header-right">
             <span class="header-badge">GOVT 2306</span>
-            <span class="header-badge">&#11088; 15 Modules</span>
+            <span class="header-badge">&#11088; <span id="moduleCountBadge">17</span> Modules</span>
         </div>
     </header>
 
@@ -644,7 +644,7 @@
             <div class="hero-stats">
                 <div class="hero-stat">
                     <span class="hero-stat-icon">&#128214;</span>
-                    <span class="hero-stat-label">15 Chapters</span>
+                    <span class="hero-stat-label"><span id="chapterCountStat">17</span> Chapters</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-icon">&#127942;</span>
@@ -939,8 +939,20 @@
             { num: 13, title: "Criminal Justice System",         desc: "Texas criminal justice process, incarceration, reform efforts, and the death penalty",          file: "Chapter 13 - Criminal Justice System (Trailblazer Trek).html",       icon: "&#128739;&#65039;" },
             { num: 14, title: "Financing State Government",      desc: "Texas budget, revenue sources, taxation (no income tax!), and spending priorities",             file: "Chapter 14 - Financing State Government (Trailblazer Trek).html",    icon: "&#128176;" },
             { num: 15, title: "Public Opinion and the Media",    desc: "Media landscape in Texas, polling, public sentiment, and the role of digital media",            file: "Chapter 15 - Public Opinion and the Media (Trailblazer Trek).html",  icon: "&#128240;" },
-            { num: 16, title: "Civil Liberties and Civil Rights", desc: "Liberties vs. rights, the Texas Bill of Rights, landmark Texas cases, today's equal-protection debates, and citizen responsibilities", file: "Chapter 16 - Civil Liberties and Civil Rights (Trailblazer Trek).html", icon: "&#9878;&#65039;" }
+            { num: 16, title: "Civil Liberties and Civil Rights", desc: "Liberties vs. rights, the Texas Bill of Rights, landmark Texas cases, today's equal-protection debates, and citizen responsibilities", file: "Chapter 16 - Civil Liberties and Civil Rights (Trailblazer Trek).html", icon: "&#9878;&#65039;" },
+            { num: 17, title: "Energy, Water, and the Environment", desc: "ERCOT and the Texas grid, Winter Storm Uri and its reforms, oil and gas, renewables, water law and the rule of capture, and the 2025 water fund", file: "Chapter 17 - Energy Water and the Environment (Trailblazer Trek).html", icon: "&#9889;" }
         ];
+
+        // Keep the header badge and hero stat in sync with the chapter list so
+        // they can never drift when chapters are added.
+        function syncChapterCounts() {
+            var n = chapters.length;
+            var b = document.getElementById('moduleCountBadge');
+            var s = document.getElementById('chapterCountStat');
+            if (b) { b.textContent = n; }
+            if (s) { s.textContent = n; }
+        }
+
 
         // ── Build chapter cards ──
         const grid = document.getElementById('chapterGrid');
@@ -1054,6 +1066,7 @@
         window.addEventListener('scroll', () => {
             document.getElementById('scrollBtn').classList.toggle('visible', window.scrollY > 500);
         });
+            document.addEventListener('DOMContentLoaded', syncChapterCounts);
     </script>
 <!-- A11Y-ENHANCEMENT-START -->
 <style>
