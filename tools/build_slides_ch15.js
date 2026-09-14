@@ -89,7 +89,6 @@ If you compress, shorten #1, since the discussion pause covers it.
     s.addText(d, { x: M + 2.3, y, w: 5.55, h: 0.74, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.8;
   });
-  k.defBox(s, M, 6.8, W - M * 2, 0.25, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -167,7 +166,6 @@ lives.
     s.addText(d, { x: M + 2.45, y, w: 5.4, h: 0.84, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.9;
   });
-  k.defBox(s, M, 6.45, W - M * 2, 0.6, "", "");
   N(s, `
 TIMING: 6 minutes. Candidate to compress in a 50 minute class.
 
@@ -235,7 +233,6 @@ something.
     s.addText(d, { x: M + 2.45, y, w: 5.4, h: 0.86, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.92;
   });
-  k.defBox(s, M, 6.55, W - M * 2, 0.5, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -272,7 +269,6 @@ government without a subscription, it is the practical answer.
     s.addText(d, { x: M + 2.3, y, w: 5.55, h: 0.9, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.96;
   });
-  k.defBox(s, M, 6.75, W - M * 2, 0.3, "", "");
   N(s, `
 TIMING: 6 minutes.
 

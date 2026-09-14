@@ -170,7 +170,6 @@ some interests are better represented, and it has nothing to do with corruption.
     s.addText(d, { x: M + 2.6, y, w: 5.25, h: 0.74, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.8;
   });
-  k.defBox(s, M, 6.75, W - M * 2, 0.3, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -285,7 +284,6 @@ different critique than bribery and a more accurate one.
     s.addText(d, { x: M + 2.4, y, w: 5.45, h: 0.76, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.82;
   });
-  k.defBox(s, M, 6.85, W - M * 2, 0.2, "", "");
   N(s, `
 TIMING: 7 minutes.
 
@@ -323,7 +321,6 @@ hearing. Most students have no idea. Say it directly; a few will act on it.
     s.addText(d, { x: M + 2.2, y, w: 5.65, h: 0.84, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.9;
   });
-  k.defBox(s, M, 6.5, W - M * 2, 0.55, "", "");
   N(s, `
 TIMING: 6 minutes.
 

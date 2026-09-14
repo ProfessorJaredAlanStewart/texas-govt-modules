@@ -93,7 +93,6 @@ chapter.
     s.addText(d, { x: M + 0.32, y: y + 0.37, w: 7.1, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, color: C.BODY, valign: "top" });
     y += 0.78;
   });
-  k.defBox(s, M, 6.65, W - M * 2, 0.4, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -230,7 +229,6 @@ structure does not capture.
     s.addText(d, { x: M + 2.4, y, w: 5.45, h: 0.82, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.9;
   });
-  k.defBox(s, M, 6.45, W - M * 2, 0.6, "", "");
   N(s, `
 TIMING: 6 minutes.
 

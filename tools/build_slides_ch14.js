@@ -87,7 +87,6 @@ If you compress, shorten #1 by pointing at the chart rather than narrating it.
     s.addText(d, { x: M + 2.65, y, w: 5.2, h: 0.74, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.8;
   });
-  k.defBox(s, M, 6.8, W - M * 2, 0.25, "", "");
   N(s, `
 TIMING: 7 minutes.
 
@@ -129,7 +128,6 @@ budget.
     s.addText(d, { x: M + 0.32, y: y + 0.4, w: 7.0, h: 0.34, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, color: C.BODY, valign: "top" });
     y += 0.9;
   });
-  k.defBox(s, M, 6.5, W - M * 2, 0.55, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -345,7 +343,6 @@ for you."
     s.addText(d, { x: M + 2.45, y, w: 5.4, h: 0.84, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.92;
   });
-  k.defBox(s, M, 6.6, W - M * 2, 0.45, "", "");
   N(s, `
 TIMING: 6 minutes.
 

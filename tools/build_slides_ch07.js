@@ -287,7 +287,7 @@ disputes over drainage, roads, and utilities.
     s.addText(d, { x: M + 2.5, y, w: 5.35, h: 0.78, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.72;
   });
-  k.defBox(s, M, 6.42, W - M * 2, 0.65, "The same design, one level down",
+  k.defBox(s, M, 6.25, W - M * 2, 0.82, "The same design, one level down",
     "County government mirrors the state's plural executive. Nobody is in charge, every officer answers to voters directly, and the county judge cannot direct the sheriff or the clerk. The 1876 logic runs all the way down.");
   N(s, `
 TIMING: 6 minutes. Candidate to compress in a 50 minute class.
@@ -327,7 +327,7 @@ Chapter 18 returns to this.
     s.addText(d, { x: M + 2.6, y, w: 5.25, h: 0.72, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.68;
   });
-  k.defBox(s, M, 6.45, W - M * 2, 0.62, "Why this matters more than it sounds",
+  k.defBox(s, M, 6.25, W - M * 2, 0.82, "Why this matters more than it sounds",
     "Special districts levy a large share of the property taxes Texans pay, and their elections are held on dates almost nobody marks. A seat can be decided by a few dozen votes. This is the lowest-attention, highest-leverage arena in Texas government.");
   N(s, `
 TIMING: 7 minutes. The most surprising slide in the chapter.
@@ -433,7 +433,7 @@ consolidation has costs.
     ["\u2611", "Local elections", "Frequently held on their own dates with single-digit turnout. Your vote carries the most weight here by a wide margin.", C.INK],
   ];
   k.rows(s, 1.95, places, { labelW: 2.85, rowH: 1.0, gap: 0.08 });
-  k.defBox(s, M, 6.3, W - M * 2, 0.75, "The arithmetic of attention",
+  k.defBox(s, M, 6.23, W - M * 2, 0.82, "The arithmetic of attention",
     "A statewide race is decided by millions of votes. A school board seat can be decided by a few dozen. The same hour of civic effort is worth far more locally, which is exactly backwards from where most people spend their attention.");
   N(s, `
 TIMING: 5 minutes.

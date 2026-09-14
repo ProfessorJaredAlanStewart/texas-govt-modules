@@ -123,7 +123,7 @@ The closing line is the thesis. Write it on the board.
     s.addText(d, { x: M + 2.2, y, w: 5.4, h: 0.78, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16 });
     y += 0.84;
   });
-  k.defBox(s, M, 6.22, W - M * 2, 0.72, "Notice the pattern",
+  k.defBox(s, M, 6.12, W - M * 2, 0.82, "Notice the pattern",
     "Most of these are powers to STOP things. The Texas governor is far better equipped to block than to build, which is exactly what the 1876 framers intended.");
   N(s, `
 TIMING: 7 minutes.
@@ -164,7 +164,7 @@ another piece of the 1876 design.
     s.addText(d, { x: M + 2.7, y, w: 5.1, h: 0.82, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16 });
     y += 0.84;
   });
-  k.defBox(s, M, 6.22, W - M * 2, 0.72, "Also elected, and often overlooked",
+  k.defBox(s, M, 6.12, W - M * 2, 0.82, "Also elected, and often overlooked",
     "The three-member Railroad Commission, which regulates oil and gas rather than railroads, and the fifteen-member State Board of Education, which sets curriculum standards and approves textbooks.");
   N(s, `
 TIMING: 7 minutes. Verify every name before class.

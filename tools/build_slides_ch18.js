@@ -94,7 +94,6 @@ If you compress, shorten #2 since the structure repeats Chapter 5's logic.
     s.addText(d, { x: M + 1.85, y, w: 6.0, h: 0.72, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.8;
   });
-  k.defBox(s, M, 6.5, W - M * 2, 0.55, "", "");
   N(s, `
 TIMING: 6 minutes.
 
@@ -414,7 +413,6 @@ collateral consequence that outlasts a sentence.
     s.addText(d, { x: M + 2.55, y, w: 5.3, h: 0.74, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.8;
   });
-  k.defBox(s, M, 6.8, W - M * 2, 0.25, "", "");
   N(s, `
 TIMING: 6 minutes.
 

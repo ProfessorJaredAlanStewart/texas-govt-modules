@@ -91,7 +91,7 @@ Objective 2 is where the class discussion lives.
     s.addText(d, { x: M + 2.35, y, w: 5.5, h: 1.0, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 1.08;
   });
-  k.defBox(s, M, 6.3, W - M * 2, 0.75, "The federalism point",
+  k.defBox(s, M, 6.23, W - M * 2, 0.82, "The federalism point",
     "This is Chapter 3 made physical. Texas accepted a real operational cost in exchange for regulatory independence, and that trade was deliberate rather than accidental.");
   N(s, `
 TIMING: 7 minutes.
@@ -176,7 +176,6 @@ region. There was no unaffected region.
     s.addText(d, { x: M + 2.45, y, w: 5.4, h: 1.02, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 1.1;
   });
-  k.defBox(s, M, 6.45, W - M * 2, 0.6, "", "");
   N(s, `
 TIMING: 6 minutes. Verify currency before teaching.
 

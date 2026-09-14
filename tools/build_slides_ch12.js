@@ -392,7 +392,6 @@ is answerable in principle and keeps the room analytical.
     s.addText(d, { x: M + 2.65, y, w: 5.2, h: 0.72, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.78;
   });
-  k.defBox(s, M, 6.6, W - M * 2, 0.45, "", "");
   N(s, `
 TIMING: 6 minutes.
 

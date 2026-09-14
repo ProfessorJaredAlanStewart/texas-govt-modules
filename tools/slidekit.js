@@ -289,7 +289,7 @@ function makeKit(pres) {
       fontFace: F.B, fontSize: 14, bold: true, color: C.GOLD,
     });
     s.addText(body, {
-      x: x + 0.3, y: y + 0.58, w: w - 0.6, h: h - 0.78, isTextBox: true, margin: 0,
+      x: x + 0.3, y: y + 0.58, w: w - 0.6, h: Math.max(0.22, h - 0.78), isTextBox: true, margin: 0,
       fontFace: F.B, fontSize: T.small + 0.5, color: C.BODY, lineSpacing: 17,
     });
   };

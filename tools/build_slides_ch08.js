@@ -88,7 +88,7 @@ If you teach both, cross-reference them explicitly.
     s.addText(d, { x: M + 2.05, y, w: 5.75, h: 1.05, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 17, valign: "top" });
     y += 1.05;
   });
-  k.defBox(s, M, 6.25, W - M * 2, 0.8, "A free ID exists, and few people know it",
+  k.defBox(s, M, 6.23, W - M * 2, 0.82, "A free ID exists, and few people know it",
     "Texans who lack an accepted photo ID can obtain an Election Identification Certificate at no cost from the Department of Public Safety. Both sides of the ID debate agree it is underused. Tell your students it exists.");
   N(s, `
 TIMING: 6 minutes. The most practically useful slide in the course.
@@ -129,7 +129,7 @@ Have the registration deadline for your next election on the board.
     s.addText(d, { x: M + 2.2, y, w: 5.6, h: 0.7, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.70;
   });
-  k.defBox(s, M, 6.2, W - M * 2, 0.8, "Early voting is the norm here",
+  k.defBox(s, M, 6.18, W - M * 2, 0.82, "Early voting is the norm here",
     "Texas opens in-person early voting from the seventeenth day before Election Day through the fourth day before it. A majority of Texas ballots are now cast before Election Day, which is not true in every state.");
   N(s, `
 TIMING: 6 minutes.
@@ -401,7 +401,7 @@ which is a useful thing to surface.
     s.addText(d, { x: M + 2.5, y, w: 5.3, h: 0.72, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.72;
   });
-  k.defBox(s, M, 6.3, W - M * 2, 0.72, "The unopposed race problem",
+  k.defBox(s, M, 6.2, W - M * 2, 0.82, "The unopposed race problem",
     "Many Texas local offices draw a single candidate. Where nobody files, there is effectively no election, and a seat with real taxing authority is filled by default.");
   N(s, `
 TIMING: 6 minutes.

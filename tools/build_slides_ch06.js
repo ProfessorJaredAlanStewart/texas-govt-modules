@@ -90,7 +90,7 @@ If you must compress, move quickly through #1 and #4.
     s.addText(d, { x: M + 0.35, y: y + 0.34, w: 7.0, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, color: C.BODY, valign: "top" });
     y += 0.74;
   });
-  k.defBox(s, M, 6.35, W - M * 2, 0.72, "Common law still matters",
+  k.defBox(s, M, 6.25, W - M * 2, 0.82, "Common law still matters",
     "Alongside written law, Texas courts follow precedent under stare decisis. A prior appellate decision binds lower courts in similar cases, which is why a single ruling can change outcomes statewide.");
   N(s, `
 TIMING: 5 minutes.

@@ -346,7 +346,7 @@ sober sentence, not a flourish.
     s.addText(d, { x: M + 2.0, y, w: 5.7, h: 1.0, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16 });
     y += 1.02;
   });
-  k.defBox(s, M, 6.22, W - M * 2, 0.78, "The pattern worth noticing",
+  k.defBox(s, M, 6.18, W - M * 2, 0.82, "The pattern worth noticing",
     "States sue the federal government far more when the other party holds the White House. This is a structural feature of American federalism, not a Texas quirk, and it runs in both directions.");
   N(s, `
 TIMING: 6 minutes.
