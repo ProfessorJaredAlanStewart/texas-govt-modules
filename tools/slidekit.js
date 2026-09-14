@@ -59,7 +59,7 @@ function makeKit(pres) {
   kit.pageNum = function (s, color) {
     kit.n += 1;
     s.addText(String(kit.n), {
-      x: W - M - 0.5, y: HT - 0.62, w: 0.5, h: 0.3, isTextBox: true, margin: 0,
+      x: W - M - 0.5, y: HT - 0.4, w: 0.5, h: 0.26, isTextBox: true, margin: 0,
       fontFace: F.B, fontSize: 10, color: color || C.MUTE, align: "right",
     });
   };
@@ -320,7 +320,7 @@ function makeKit(pres) {
       y += 1.42;
     });
     s.addText(String(kit.n), {
-      x: W - M - 0.5, y: HT - 0.62, w: 0.5, h: 0.3, isTextBox: true, margin: 0,
+      x: W - M - 0.5, y: HT - 0.4, w: 0.5, h: 0.26, isTextBox: true, margin: 0,
       fontFace: F.B, fontSize: 10, color: "6E8099", align: "right",
     });
     return s;

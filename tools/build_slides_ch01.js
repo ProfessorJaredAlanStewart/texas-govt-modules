@@ -94,11 +94,11 @@ culture has missed the point of the chapter.
   flags.forEach(([nm, d]) => {
     s.addText(nm, {
       x: M, y: y + 0.02, w: 2.3, h: 0.3, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 13.5, bold: true, color: C.GOLD,
+      fontFace: "Calibri", fontSize: 13.5, bold: true, color: C.GOLD, valign: "top",
     });
     s.addText(d, {
       x: M + 2.35, y, w: 4.0, h: 0.68, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 16,
+      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 16, valign: "top",
     });
     y += 0.78;
   });
@@ -137,14 +137,14 @@ toward Spain and Mexico, which students rarely name.
     { text: " such as Stephen F. Austin to recruit colonists to a thinly populated frontier. Land was cheap and the terms were generous.", options: { color: C.BODY } },
   ], {
     x: M, y: 1.95, w: 6.65, h: 1.2, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19,
+    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19, valign: "top",
   });
   s.addText([
     { text: "Then the terms changed.  ", options: { bold: true, color: C.INK } },
     { text: "Mexico restricted further immigration, moved to enforce customs duties, and in 1835 Santa Anna replaced the federalist constitution with centralized rule. Settlers who had come expecting local autonomy lost it. Slavery was also a live issue, since Mexico had moved against it and the settlers' cotton economy depended on it.", options: { color: C.BODY } },
   ], {
     x: M, y: 3.15, w: 6.65, h: 1.7, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19,
+    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19, valign: "top",
   });
   k.statCallout(s, M, 5.0, 6.65, 1.35, "1836",
     "Independence declared March 2. The Alamo falls March 6. Santa Anna is defeated at San Jacinto on April 21, after a battle lasting about 18 minutes.");
@@ -185,7 +185,7 @@ instructive move is to ask what each version leaves out.
     { text: " reshaped the map of North America and reopened the national fight over whether slavery would expand into new territory.", options: { color: C.BODY } },
   ], {
     x: 6.5, y: 4.75, w: W - M - 6.5, h: 2.0, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13, lineSpacing: 18,
+    fontFace: "Calibri", fontSize: 13, lineSpacing: 18, valign: "top",
   });
   N(s, `
 TIMING: 6 minutes. This is a candidate to cut in a 50 minute class.
@@ -218,7 +218,7 @@ settlement. That sets up the demographics section later.
   k.rows(s, 1.95, rows, { labelW: 1.9 });
   s.addText("Every structural oddity you will study in Chapter 2 and Chapter 5 traces back to the last row of this slide.", {
     x: M, y: 6.55, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13, italic: true, color: C.INK,
+    fontFace: "Calibri", fontSize: 13, italic: true, color: C.INK, valign: "top",
   });
   N(s, `
 TIMING: 8 minutes. The most important slide in the chapter for everything that
@@ -258,11 +258,11 @@ slide.
   ];
   s.addText("What his government did", {
     x: 7.3, y: 1.95, w: 5.4, h: 0.36, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 14, bold: true, color: C.INK,
+    fontFace: "Calibri", fontSize: 14, bold: true, color: C.INK, valign: "top",
   });
   s.addText(what.map((t, i) => ({ text: t, options: { bullet: true, breakLine: i !== what.length - 1 } })), {
     x: 7.3, y: 2.4, w: 5.4, h: 1.6, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13, color: C.BODY, lineSpacing: 19, paraSpaceAfter: 6,
+    fontFace: "Calibri", fontSize: 13, color: C.BODY, lineSpacing: 19, paraSpaceAfter: 6, valign: "top",
   });
   k.defBox(s, M, 4.9, W - M * 2, 1.5, "The reaction that built modern Texas government",
     "When Democrats regained control, they wrote a constitution designed to make another Davis impossible: a weak governor, a plural executive of separately elected officials, a legislature meeting only 140 days every two years, elected judges, and a long document requiring voter approval to change. Texas still governs itself inside that reaction today.");
@@ -326,13 +326,13 @@ exit ticket.
     { text: "Oil money shaped Texas politics, funded its universities through the Permanent University Fund, and still fills the Rainy Day Fund through severance taxes.", options: { bold: true, color: C.INK } },
   ], {
     x: 6.3, y: 1.95, w: W - M - 6.3, h: 2.2, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19,
+    fontFace: "Calibri", fontSize: 13.5, lineSpacing: 19, valign: "top",
   });
   k.statCallout(s, 6.3, 4.3, W - M - 6.3, 1.3, "42%",
     "of United States crude oil production comes from Texas today. Energy revenue still links oil prices to school funding and highway budgets.");
   s.addText("Chapter 14 traces where that money goes. Chapter 17 traces what it costs.", {
     x: 6.3, y: 5.75, w: W - M - 6.3, h: 0.4, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 12.5, italic: true, color: C.MUTE,
+    fontFace: "Calibri", fontSize: 12.5, italic: true, color: C.MUTE, valign: "top",
   });
   N(s, `
 TIMING: 5 minutes.
@@ -367,11 +367,11 @@ crashes?" That question does real work and sets up the finance chapter.
     k.circle(s, M, y, g, col, 0.44);
     s.addText(t, {
       x: M + 0.62, y: y - 0.04, w: 6.5, h: 0.34, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 14.5, bold: true, color: C.INK,
+      fontFace: "Calibri", fontSize: 14.5, bold: true, color: C.INK, valign: "top",
     });
     s.addText(d, {
       x: M + 0.62, y: y + 0.32, w: 6.5, h: 0.95, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 17,
+      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 17, valign: "top",
     });
     y += 1.42;
   });
@@ -404,7 +404,7 @@ Demographic Center projections and ask students what the state looks like in
   const s = k.slide("Why Texans expect what they expect", "Political culture");
   s.addText("Political scientist Daniel Elazar argued in 1966 that American states carry distinct political cultures, meaning shared assumptions about what government is for and who should take part.", {
     x: M, y: 1.9, w: W - M * 2, h: 0.6, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 14, color: C.BODY, lineSpacing: 19,
+    fontFace: "Calibri", fontSize: 14, color: C.BODY, lineSpacing: 19, valign: "top",
   });
   const cults = [
     ["MORALISTIC", "Government is a positive force that should advance the common good. Participation is a civic duty.", "Minimal presence in Texas", C.MUTE],
@@ -422,21 +422,21 @@ Demographic Center projections and ask students what the state looks like in
     });
     s.addText(t, {
       x: M + 0.2, y: y + 0.24, w: 2.5, h: 0.36, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 13.5, bold: true, color: C.WHITE,
+      fontFace: "Calibri", fontSize: 13.5, bold: true, color: C.WHITE, valign: "top",
     });
     s.addText(tag, {
       x: M + 0.2, y: y + 0.64, w: 2.5, h: 0.3, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 10.5, color: C.WHITE,
+      fontFace: "Calibri", fontSize: 10.5, color: C.WHITE, valign: "top",
     });
     s.addText(d, {
       x: M + 3.15, y: y + 0.24, w: W - M * 2 - 3.45, h: 0.75, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 13, color: C.BODY, lineSpacing: 18,
+      fontFace: "Calibri", fontSize: 13, color: C.BODY, lineSpacing: 18, valign: "top",
     });
     y += 1.27;
   });
   s.addText("Texas is usually classified as a blend of the traditionalistic and individualistic types.", {
     x: M, y: 6.5, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13.5, italic: true, bold: true, color: C.INK,
+    fontFace: "Calibri", fontSize: 13.5, italic: true, bold: true, color: C.INK, valign: "top",
   });
   N(s, `
 TIMING: 7 minutes. This is the analytical payoff of the chapter and the idea
@@ -500,7 +500,7 @@ rather than a description. Redirect to evidence every time.
   k.rows(s, 1.95, links, { labelW: 2.7 });
   s.addText("Texas government is not a random collection of quirks. It is a set of answers to problems Texans actually had.", {
     x: M, y: 6.55, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 13.5, italic: true, color: C.INK,
+    fontFace: "Calibri", fontSize: 13.5, italic: true, color: C.INK, valign: "top",
   });
   N(s, `
 TIMING: 4 minutes. Do not skip this slide for time. It is what makes the rest of
@@ -539,11 +539,11 @@ way."
     k.circle(s, x + 0.28, 2.25, g, col);
     s.addText(t, {
       x: x + 0.28, y: 2.95, w: cw - 0.56, h: 0.6, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 15, bold: true, color: C.INK, lineSpacing: 19,
+      fontFace: "Calibri", fontSize: 15, bold: true, color: C.INK, lineSpacing: 19, valign: "top",
     });
     s.addText(d, {
       x: x + 0.28, y: 3.6, w: cw - 0.56, h: 1.25, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 12, color: C.BODY, lineSpacing: 16,
+      fontFace: "Calibri", fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top",
     });
   });
   k.defBox(s, M, 5.3, W - M * 2, 1.1, "ACGM outcomes assessed by this chapter",
@@ -577,17 +577,17 @@ full text of each reflection, so it works as a graded artifact.
   refs.forEach(([t, d]) => {
     s.addText(t.toUpperCase(), {
       x: M, y, w: 2.5, h: 0.3, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 11, bold: true, color: C.GOLD, charSpacing: 1.2,
+      fontFace: "Calibri", fontSize: 11, bold: true, color: C.GOLD, charSpacing: 1.2, valign: "top",
     });
     s.addText(d, {
       x: M + 2.6, y: y - 0.03, w: W - M - 2.6 - M, h: 0.78, isTextBox: true, margin: 0,
-      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 17,
+      fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 17, valign: "top",
     });
     y += 0.78;
   });
   s.addText("This deck is licensed CC BY 4.0. Adopt it, adapt it, share it. Attribution appreciated.", {
     x: M, y: 6.5, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
-    fontFace: "Calibri", fontSize: 12.5, italic: true, color: C.MUTE,
+    fontFace: "Calibri", fontSize: 12.5, italic: true, color: C.MUTE, valign: "top",
   });
   N(s, `
 Leave this up during questions so students can photograph it.
