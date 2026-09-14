@@ -591,7 +591,7 @@
         .nav-tabs {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -697,7 +697,7 @@
         <div class="header-right">
             <a class="header-badge" href="alignment.html" style="text-decoration:none;color:inherit;" title="THECB / ACGM outcome alignment">GOVT 2306 &#9432;</a>
                 <a class="header-badge" href="instructors.html" style="text-decoration:none;color:inherit;" title="Slides, test bank, alignment, and adoption guidance">&#128218; Instructors</a>
-            <span class="header-badge">&#11088; <span id="moduleCountBadge">17</span> Modules</span>
+            <span class="header-badge">&#11088; <span id="moduleCountBadge">18</span> Modules</span>
         </div>
     </header>
 
@@ -711,7 +711,7 @@
             <div class="hero-stats">
                 <div class="hero-stat">
                     <span class="hero-stat-icon">&#128214;</span>
-                    <span class="hero-stat-label"><span id="chapterCountStat">17</span> Chapters</span>
+                    <span class="hero-stat-label"><span id="chapterCountStat">18</span> Chapters</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-icon">&#127942;</span>
@@ -732,8 +732,13 @@
     <!-- TCC four-color brand stripe between hero and body -->
     <div class="brand-stripe-separator" aria-hidden="true"></div>
 
-    <!-- ══════════ NAV TABS ══════════ -->
-    <div class="container">
+    <!-- ══════════ NAV TABS + CHAPTERS ══════════
+         The nav tabs live inside the chapters band so the tab strip and the
+         chapter list read as one continuous surface. Kept as a separate
+         element they sat on the page background, which put a short pale
+         strip between the hero stripe and the tan band. -->
+    <section class="band band-chapters">
+      <div class="container">
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="scrollToSection('chapters')">&#128218; Chapters</button>
             <button class="nav-tab" onclick="scrollToSection('howto')">&#128640; How It Works</button>
@@ -743,11 +748,6 @@
             <button class="nav-tab" onclick="scrollToSection('faq')">&#10067; FAQ</button>
         </div>
 
-        <!-- ══════════ CHAPTERS ══════════ -->
-    </div><!-- end nav container -->
-
-    <section class="band band-chapters">
-      <div class="container">
         <div id="chapters">
             <div class="section-title">
                 <span>&#128218;</span>
