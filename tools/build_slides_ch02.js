@@ -275,9 +275,9 @@ restraint, which is exactly what 1876 abandoned.
       x: M + 2.7, y, w: 4.9, h: 0.75, isTextBox: true, margin: 0,
       fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16, valign: "top",
     });
-    y += 0.82;
+    y += 0.72;
   });
-  k.defBox(s, M, 5.15, W - M * 2, 1.25, "Article I comes first, on purpose",
+  k.defBox(s, M, 5.7, W - M * 2, 1.25, "Article I comes first, on purpose",
     "The Bill of Rights opens the document, before any description of government power. Section 29 declares that everything in it is excepted out of the general powers of government and that any contrary law shall be void. Rights are stated as boundaries, not as grants.");
   N(s, `
 TIMING: 8 minutes. The most important slide in the chapter.

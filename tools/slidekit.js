@@ -178,7 +178,8 @@ function makeKit(pres) {
       });
     }
     s.addText(lead, {
-      x: x + 0.28, y: y + (meta ? 0.9 : 0.66), w: w - 0.56, h: 1.15, isTextBox: true, margin: 0,
+      x: x + 0.28, y: y + (meta ? 0.9 : 0.66), w: w - 0.56,
+      h: Math.max(0.5, h - (meta ? 0.9 : 0.66) - (why ? 1.12 : 0.2)), isTextBox: true, margin: 0,
       fontFace: F.B, fontSize: T.body, color: C.BODY, lineSpacing: 18,
     });
     if (why) {

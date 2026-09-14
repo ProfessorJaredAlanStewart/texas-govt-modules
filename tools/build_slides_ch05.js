@@ -264,9 +264,9 @@ story about accumulated appointments.
   informal.forEach(([t, d]) => {
     s.addText(t, { x: 5.4, y: y + 0.02, w: 2.6, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 13.5, bold: true, color: C.GOLD });
     s.addText(d, { x: 8.1, y, w: W - M - 8.1, h: 0.85, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16 });
-    y += 0.92;
+    y += 0.80;
   });
-  k.defBox(s, M, 4.8, W - M * 2, 1.5, "Two governors, same constitution",
+  k.defBox(s, M, 5.3, W - M * 2, 1.5, "Two governors, same constitution",
     "George W. Bush built a working relationship with Democratic Lieutenant Governor Bob Bullock and passed much of his agenda in a divided Capitol. Other governors holding identical formal powers accomplished far less. The constitution sets the floor and the ceiling; the officeholder decides where in between the office actually operates.");
   N(s, `
 TIMING: 6 minutes.

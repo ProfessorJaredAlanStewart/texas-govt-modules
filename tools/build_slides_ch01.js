@@ -215,9 +215,9 @@ settlement. That sets up the demographics section later.
     ["\u2692", "1866 to 1869", "Three constitutions in four years as Texas is rewritten first by former Confederates, then under congressional Reconstruction.", C.TEAL],
     ["\u265C", "1870 to 1874", "Governor E. J. Davis leads a centralized Reconstruction government. The backlash reshapes Texas government permanently.", C.INK],
   ];
-  k.rows(s, 1.95, rows, { labelW: 1.9 });
+  k.rows(s, 1.95, rows, { labelW: 1.9, rowH: 1.0, gap: 0.08 });
   s.addText("Every structural oddity you will study in Chapter 2 and Chapter 5 traces back to the last row of this slide.", {
-    x: M, y: 6.55, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
+    x: M, y: 6.45, w: W - M * 2, h: 0.42, isTextBox: true, margin: 0,
     fontFace: "Calibri", fontSize: 13, italic: true, color: C.INK, valign: "top",
   });
   N(s, `
@@ -373,9 +373,9 @@ crashes?" That question does real work and sets up the finance chapter.
       x: M + 0.62, y: y + 0.32, w: 6.5, h: 0.95, isTextBox: true, margin: 0,
       fontFace: "Calibri", fontSize: 12.5, color: C.BODY, lineSpacing: 17, valign: "top",
     });
-    y += 1.42;
+    y += 1.28;
   });
-  k.defBox(s, M, 5.15, W - M * 2, 1.25, "A caution worth teaching",
+  k.defBox(s, M, 5.9, W - M * 2, 1.15, "A caution worth teaching",
     "Demographic change does not translate mechanically into political change. Texas has grown more diverse for two decades while remaining Republican statewide, and Republicans made notable gains among Hispanic voters in recent elections. Chapter 10 examines why the relationship is looser than headlines suggest.");
   N(s, `
 TIMING: 5 minutes.
@@ -497,9 +497,9 @@ rather than a description. Redirect to evidence every time.
     ["\u2691", "Elected judges", "Distrust of appointed power made the judiciary answerable to voters. Chapter 6.", C.GOLD],
     ["\u26FD", "Oil and the budget", "Spindletop linked school funding and highways to energy prices. Chapters 14 and 17.", C.CRIM],
   ];
-  k.rows(s, 1.95, links, { labelW: 2.7 });
+  k.rows(s, 1.95, links, { labelW: 2.7, rowH: 1.0, gap: 0.08 });
   s.addText("Texas government is not a random collection of quirks. It is a set of answers to problems Texans actually had.", {
-    x: M, y: 6.55, w: W - M * 2, h: 0.4, isTextBox: true, margin: 0,
+    x: M, y: 6.45, w: W - M * 2, h: 0.42, isTextBox: true, margin: 0,
     fontFace: "Calibri", fontSize: 13.5, italic: true, color: C.INK, valign: "top",
   });
   N(s, `

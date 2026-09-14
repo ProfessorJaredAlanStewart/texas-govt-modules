@@ -265,7 +265,7 @@ walk its actual history. Students are surprised how visible the record is.
     { text: "The citizen-legislature model ", options: { bold: true, color: C.INK } },
     { text: "assumes members hold other jobs and return home to live under the laws they pass. Supporters argue this keeps government close to ordinary life and prevents a professional political class. Critics argue it guarantees that only certain kinds of people can serve, and that a part-time legislature facing full-time lobbyists is outmatched on expertise.", options: { color: C.BODY } },
   ], {
-    x: 5.6, y: 3.3, w: W - M - 5.6, h: 1.9, isTextBox: true, margin: 0,
+    x: 5.6, y: 3.3, w: W - M - 5.6, h: 1.3, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 12.5, lineSpacing: 17, valign: "top",
   });
   k.defBox(s, M, 4.7, W - M * 2, 1.9, "The 89th Legislature, 2025",
