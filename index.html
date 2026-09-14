@@ -170,6 +170,72 @@
             padding: 2.5rem 1.5rem 3rem;
         }
 
+
+        /* ── SCROLL BANDS ──
+           Each section gets a full-width tint so the page reads as distinct
+           zones while scrolling. All bands are light, so the existing dark
+           body copy keeps its contrast everywhere. */
+        .band {
+            padding: 3.25rem 0;
+            position: relative;
+        }
+        .band > .container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        /* The colour change is the divider; this hairline just crisps the seam. */
+        .band + .band { border-top: 1px solid rgba(0, 43, 92, 0.07); }
+        .band :where(#chapters, #howto, #scoring, #submit, #tips, #faq,
+                     .instructor-tools) { margin-top: 0; }
+        @media (max-width: 768px) {
+            .band { padding: 2.25rem 0; }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .band { scroll-margin-top: 1rem; }
+        }
+        .band-chapters {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(0,43,92,0.05) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(176,125,43,0.07) 0%, transparent 46%),
+                #f7f3ea;
+        }
+        .band-tools {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(0,120,138,0.10) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(0,43,92,0.05) 0%, transparent 46%),
+                #eaf3f5;
+        }
+        .band-howto {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(0,43,92,0.07) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(0,120,138,0.06) 0%, transparent 46%),
+                #f5f7fa;
+        }
+        .band-scoring {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(176,125,43,0.10) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(0,43,92,0.04) 0%, transparent 46%),
+                #fbf6e7;
+        }
+        .band-submit {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(152,0,46,0.07) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(0,43,92,0.05) 0%, transparent 46%),
+                #f4eff1;
+        }
+        .band-tips {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(141,198,63,0.14) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(0,120,138,0.05) 0%, transparent 46%),
+                #eef5e6;
+        }
+        .band-faq {
+            background:
+                radial-gradient(ellipse at 85% 6%, rgba(0,43,92,0.06) 0%, transparent 52%),
+                radial-gradient(ellipse at 8% 94%, rgba(176,125,43,0.05) 0%, transparent 46%),
+                #f2f4f8;
+        }
+
         /* ── SECTION TITLES ── */
         .section-title {
             display: flex;
@@ -678,6 +744,10 @@
         </div>
 
         <!-- ══════════ CHAPTERS ══════════ -->
+    </div><!-- end nav container -->
+
+    <section class="band band-chapters">
+      <div class="container">
         <div id="chapters">
             <div class="section-title">
                 <span>&#128218;</span>
@@ -689,7 +759,11 @@
                 <!-- Chapters injected by JS -->
             </div>
         </div>
+      </div>
+    </section>
 
+    <section class="band band-tools">
+      <div class="container">
         <div class="section instructor-tools" id="instructorTools">
             <div class="section-header">
                 <span>&#128104;&#8205;&#127979;</span>
@@ -724,7 +798,12 @@
         </div>
 
         <!-- ══════════ HOW IT WORKS ══════════ -->
-        <div id="howto" style="margin-top:3rem;">
+      </div>
+    </section>
+
+    <section class="band band-howto">
+      <div class="container">
+        <div id="howto">
             <div class="section-title">
                 <span>&#128640;</span>
                 <h2>How It Works</h2>
@@ -766,7 +845,12 @@
         </div>
 
         <!-- ══════════ SCORING ══════════ -->
-        <div id="scoring" style="margin-top:3rem;">
+      </div>
+    </section>
+
+    <section class="band band-scoring">
+      <div class="container">
+        <div id="scoring">
             <div class="section-title">
                 <span>&#11088;</span>
                 <h2>How Scoring Works</h2>
@@ -814,7 +898,12 @@
         </div>
 
         <!-- ══════════ SUBMITTING ══════════ -->
-        <div id="submit" style="margin-top:3rem;">
+      </div>
+    </section>
+
+    <section class="band band-submit">
+      <div class="container">
+        <div id="submit">
             <div class="section-title">
                 <span>&#128232;</span>
                 <h2>Submitting Your Score</h2>
@@ -833,7 +922,12 @@
         </div>
 
         <!-- ══════════ TIPS ══════════ -->
-        <div id="tips" style="margin-top:3rem;">
+      </div>
+    </section>
+
+    <section class="band band-tips">
+      <div class="container">
+        <div id="tips">
             <div class="section-title">
                 <span>&#128161;</span>
                 <h2>Tips for Success</h2>
@@ -869,7 +963,12 @@
         </div>
 
         <!-- ══════════ FAQ ══════════ -->
-        <div id="faq" style="margin-top:3rem;">
+      </div>
+    </section>
+
+    <section class="band band-faq">
+      <div class="container">
+        <div id="faq">
             <div class="section-title">
                 <span>&#10067;</span>
                 <h2>Frequently Asked Questions</h2>
@@ -909,8 +1008,9 @@
                 </div>
             </div>
         </div>
+      </div>
+    </section>
 
-    </div><!-- end container -->
 
     <!-- ══════════ FOOTER ══════════ -->
     <footer class="footer">
