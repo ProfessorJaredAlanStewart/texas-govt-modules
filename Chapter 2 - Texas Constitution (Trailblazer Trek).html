@@ -1737,6 +1737,7 @@
                     <tr><td>3</td><td>Independence &amp; Early Statehood</td><td id="status3">&#10060;</td><td id="points3">0/270</td><td id="time3">--:--</td></tr>
                     <tr><td>4</td><td>Civil War &amp; Reconstruction</td><td id="status4">&#10060;</td><td id="points4">0/270</td><td id="time4">--:--</td></tr>
                     <tr><td>5</td><td>Current Constitution of 1876</td><td id="status5">&#10060;</td><td id="points5">0/270</td><td id="time5">--:--</td></tr>
+                    <tr><td>6</td><td>Separation of Powers &amp; Checks and Balances</td><td id="status6">&#10060;</td><td id="points6">0/270</td><td id="time6">--:--</td></tr>
                 </tbody>
             </table>
 
@@ -1747,7 +1748,7 @@
                     <div class="metric-label">Total Points Earned</div>
                 </div>
                 <div class="metric-box">
-                    <div class="metric-value" id="metricSections">0/5</div>
+                    <div class="metric-value" id="metricSections">0/6</div>
                     <div class="metric-label">Sections Completed</div>
                 </div>
                 <div class="metric-box">
@@ -1779,7 +1780,7 @@
                 <ul>
                     <li>Final Points: <span id="finalPoints">0</span></li>
                     <li>Achievement Level: <span id="finalLevel">Explorer</span></li>
-                    <li>Sections Completed: <span id="sectionsCount">0</span> of 5</li>
+                    <li>Sections Completed: <span id="sectionsCount">0</span> of 6</li>
                 </ul>
                 <p style="margin-top: 1rem;"><strong>Great work exploring the Texas Constitution!</strong> You've learned about Texas' unique journey through multiple constitutions and the principles that shape our state government today.</p>
             </div>
@@ -1812,7 +1813,7 @@
                 6: { max: 270, earned: 0 }
             },
             moduleStartTime: Date.now(),
-            sectionTimers: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0 },
+            sectionTimers: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0 },
             currentSection: null,
             sectionEntryTime: null
         };
@@ -2179,12 +2180,13 @@
             document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
             document.getElementById('reportTime').textContent = new Date().toLocaleTimeString();
             
-            var maxPoints = 1350;
+            var sectionCount = Object.keys(gameState.sectionPoints).length;
+            var maxPoints = Object.values(gameState.sectionPoints).reduce(function(sum, s) { return sum + s.max; }, 0);
             var percentage = Math.round((gameState.totalPoints / maxPoints) * 100);
             
             document.getElementById('reportTotalPoints').textContent = gameState.totalPoints;
             document.getElementById('reportPercentage').textContent = percentage;
-            document.getElementById('reportCompletion').textContent = Math.round((gameState.sectionsCompleted.length / 5) * 100);
+            document.getElementById('reportCompletion').textContent = Math.round((gameState.sectionsCompleted.length / sectionCount) * 100);
             document.getElementById('finalPoints').textContent = gameState.totalPoints;
             document.getElementById('finalLevel').textContent = gameState.currentLevel;
             document.getElementById('sectionsCount').textContent = gameState.sectionsCompleted.length;
@@ -2206,7 +2208,7 @@
             var visitedCount = 0, totalSectionMs = 0, fastestMs = Infinity, slowestMs = 0;
             var fastestName = '-', slowestName = '-', rushSections = [];
 
-            for (var i = 1; i <= 5; i++) {
+            for (var i = 1; i <= sectionCount; i++) {
                 var statusCell = document.getElementById('status' + i);
                 var pointsCell = document.getElementById('points' + i);
                 var timeCell = document.getElementById('time' + i);
@@ -2240,10 +2242,10 @@
             } else { warningEl.style.display = 'none'; }
             
             document.getElementById('metricPoints').textContent = gameState.totalPoints;
-            document.getElementById('metricSections').textContent = gameState.sectionsCompleted.length + '/5';
+            document.getElementById('metricSections').textContent = gameState.sectionsCompleted.length + '/' + sectionCount;
             var quizPercentage = gameState.quizTotal > 0 ? Math.round((gameState.quizCorrect / gameState.quizTotal) * 100) : 0;
             document.getElementById('metricQuiz').textContent = quizPercentage + '%';
-            var engagementPercentage = Math.round((gameState.cardsRevealed.length / 15) * 100);
+            var engagementPercentage = Math.round((gameState.cardsRevealed.length / document.querySelectorAll('[onclick*="revealCard("]').length) * 100);
             document.getElementById('metricEngagement').textContent = engagementPercentage + '%';
             
             document.querySelectorAll('.page').forEach(function(page) { page.classList.remove('active'); });
@@ -2256,7 +2258,69 @@
         updateProgress();
     </script>
     <!-- ============================================================ -->
-    <!-- TCC Trailblazer Trek — Resume & Integrity Extensions          -->
+    <!-- Trek time guard: pause section timers when idle or hidden; repair restored state -->
+<script id="trek-time-guard">
+(function () {
+    'use strict';
+    if (typeof gameState === 'undefined' || !gameState || !gameState.sectionTimers) { return; }
+    var copy = function (o) { try { return JSON.parse(JSON.stringify(o)); } catch (e) { return null; } };
+    var DEF_TIMERS = copy(gameState.sectionTimers) || {};
+    var DEF_POINTS = gameState.sectionPoints ? copy(gameState.sectionPoints) : null;
+    var IDLE_MS = 10 * 60 * 1000;
+    var lastActive = Date.now();
+    var hiddenAt = null;
+
+    window.__trekRepairState = function () {
+        var gs = gameState;
+        // A save made mid-section carries an old entry timestamp; crediting it
+        // would add all the time the student was away.
+        gs.currentSection = null;
+        gs.sectionEntryTime = null;
+        if (!gs.sectionTimers || typeof gs.sectionTimers !== 'object') { gs.sectionTimers = {}; }
+        Object.keys(DEF_TIMERS).forEach(function (k) {
+            var v = gs.sectionTimers[k];
+            if (typeof v !== 'number' || !isFinite(v) || v < 0) { gs.sectionTimers[k] = 0; }
+        });
+        if (DEF_POINTS && gs.sectionPoints && typeof gs.sectionPoints === 'object') {
+            Object.keys(DEF_POINTS).forEach(function (k) {
+                var d = DEF_POINTS[k], cur = gs.sectionPoints[k];
+                if (!cur || typeof cur !== 'object') { gs.sectionPoints[k] = copy(d); }
+                else if (d && typeof d === 'object' && 'max' in d) { cur.max = d.max; }
+            });
+        }
+    };
+
+    function tick() {
+        var gs = gameState;
+        if (!gs.currentSection || !gs.sectionEntryTime) { return; }
+        var now = Date.now();
+        var until = Math.min(now, lastActive + IDLE_MS);
+        if (hiddenAt !== null) { until = Math.min(until, hiddenAt); }
+        var add = until - gs.sectionEntryTime;
+        if (add > 0) {
+            var k = gs.currentSection;
+            gs.sectionTimers[k] = (Number(gs.sectionTimers[k]) || 0) + add;
+        }
+        gs.sectionEntryTime = now;
+    }
+
+    ['mousemove', 'mousedown', 'keydown', 'scroll', 'wheel', 'touchstart'].forEach(function (ev) {
+        window.addEventListener(ev, function () { lastActive = Date.now(); }, { passive: true, capture: true });
+    });
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            hiddenAt = Date.now();
+            tick();
+        } else {
+            hiddenAt = null;
+            lastActive = Date.now();
+            if (gameState.currentSection && gameState.sectionEntryTime) { gameState.sectionEntryTime = Date.now(); }
+        }
+    });
+    setInterval(tick, 15000);
+})();
+</script>
+<!-- TCC Trailblazer Trek — Resume & Integrity Extensions          -->
     <!-- Injected by tools/inject_extras.py — do not hand-edit         -->
     <!-- Provides:                                                     -->
     <!--   1. Auto-save / resume via localStorage                      -->
@@ -2734,6 +2798,7 @@
                     }
                     gameState[k] = v;
                 });
+                if (window.__trekRepairState) { try { window.__trekRepairState(); } catch (e) {} }
                 if (saved._elapsedAtSave && 'moduleStartTime' in gameState) {
                     gameState.moduleStartTime = Date.now() - saved._elapsedAtSave;
                 }
