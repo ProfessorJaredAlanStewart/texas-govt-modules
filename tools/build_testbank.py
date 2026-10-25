@@ -13,7 +13,7 @@ Outputs
   test-bank.csv         spreadsheet / LMS-friendly flat file
   qti/                  Canvas-importable QTI 1.2 packages (one .zip per bank)
 """
-import re, os, csv, glob, html, zipfile, shutil, sys, uuid
+import re, os, csv, glob, html, zipfile, shutil, sys, json, hashlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from testbank_items import ITEMS as NEW_ITEMS
@@ -187,21 +187,50 @@ def qti_item(ident, stem, options, correct):
   </resprocessing>
 </item>'''
 
+IDENTS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qti_idents.json")
+
+def load_idents():
+    """Canvas matches imported questions by ident. Keep every existing ident so
+    re-importing a rebuilt bank updates questions in place instead of adding
+    duplicates. Keys are test-bank codes (4.B13 = Ch 4, 13th knowledge check)."""
+    try:
+        with open(IDENTS_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    except FileNotFoundError:
+        return {}
+
+def stable_hex(seed):
+    return hashlib.md5(seed.encode("utf-8")).hexdigest()[:8]
+
+def zip_write(z, name, data):
+    info = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_DEFLATED
+    z.writestr(info, data)
+
 def write_qti(chapters):
     if os.path.isdir("qti"):
         shutil.rmtree("qti")
     os.makedirs("qti", exist_ok=True)
     made = []
+    reg = load_idents()
     banks = [("summative", "new", "Trailblazer Trek — Summative Bank (unseen items)"),
              ("practice", "kcs", "Trailblazer Trek — Practice Bank (module knowledge checks)")]
     for slug, key, title in banks:
+        letter = "A" if key == "new" else "B"
+        breg = reg.setdefault(slug, {})
+        breg.setdefault("items", {})
         items = []
         for n in sorted(chapters):
             for i, it in enumerate(chapters[n][key], 1):
-                ident = f"i{slug}{n}_{i}_{uuid.uuid4().hex[:8]}"
+                code = f"{n}.{letter}{i}"
+                ident = breg["items"].get(code)
+                if not ident:
+                    ident = f"i{slug}{n}_{i}_{stable_hex(slug + ':' + code)}"
+                    breg["items"][code] = ident
                 stem = f"[Ch {n}] {it['stem']}"
                 items.append(qti_item(ident, stem, it["options"], it["correct"]))
-        bank_id = f"bank_{slug}_{uuid.uuid4().hex[:8]}"
+        bank_id = breg.get("bank") or f"bank_{slug}_{stable_hex(slug)}"
+        breg["bank"] = bank_id
         xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2">
   <objectbank ident="{bank_id}">
@@ -224,8 +253,8 @@ def write_qti(chapters):
 </manifest>'''
         path = os.path.join("qti", f"trailblazer-{slug}-qti.zip")
         with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
-            z.writestr(f"{slug}.xml", xml)
-            z.writestr("imsmanifest.xml", manifest)
+            zip_write(z, f"{slug}.xml", xml)
+            zip_write(z, "imsmanifest.xml", manifest)
         made.append((path, len(items)))
     readme = """# QTI packages
 
@@ -252,6 +281,9 @@ If your LMS rejects the package, `test-bank.csv` can be reshaped to most
 importers' expected column formats.
 """
     open(os.path.join("qti", "README.md"), "w", encoding="utf-8").write(readme)
+    with open(IDENTS_PATH, "w", encoding="utf-8") as fh:
+        json.dump(reg, fh, indent=1)
+        fh.write("\n")
     return made
 
 if __name__ == "__main__":

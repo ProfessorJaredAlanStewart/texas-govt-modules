@@ -711,8 +711,8 @@ packages are in `qti/`.
 **4.B13** Approximately what percentage of the Texas Legislature is female?
 
 - A. 50%
-- B. 40%
-- C. 27% **← correct**
+- B. 34% **← correct**
+- C. 27%
 - D. 15%
 
 **4.B14** How many days does the governor have to act on a bill during a regular session?
