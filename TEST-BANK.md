@@ -1630,7 +1630,7 @@ packages are in `qti/`.
 **9.B2** When are Texas primary elections typically held?
 
 - A. The first Tuesday in January
-- B. The second Tuesday in March on even-numbered years **← correct**
+- B. The first Tuesday in March in even-numbered years **← correct**
 - C. The first Monday in November
 - D. The last Tuesday in February
 
@@ -1701,8 +1701,8 @@ packages are in `qti/`.
 
 - A. 29
 - B. 55
-- C. 38 **← correct**
-- D. 40
+- C. 38
+- D. 40 **← correct**
 
 **9.B13** What is the "coattail effect"?
 
