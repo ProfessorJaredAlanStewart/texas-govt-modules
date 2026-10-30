@@ -78,7 +78,7 @@ changed after the 2020 census.
   const types = [
     ["Primary", "March of even years. Voters choose each party's nominee. A majority is required to win."],
     ["Runoff", "May, between the top two finishers when nobody clears fifty percent. Turnout drops sharply."],
-    ["General", "November of even years. Fills the office. A plurality wins, so no runoff is needed."],
+    ["General", "November of even years. Fills the office. For state and federal offices a plurality wins, so no runoff is needed."],
     ["Special", "Any time, to fill a vacancy or decide a measure. Often decided by very few voters."],
   ];
   let y = 1.95;
@@ -93,8 +93,12 @@ changed after the 2020 census.
 TIMING: 6 minutes.
 
 THE MAJORITY RULE IN PRIMARIES matters and students miss it. A primary requires
-more than fifty percent. A general election needs only a plurality. That is why
-Texas holds runoffs after primaries but never after general elections.
+more than fifty percent. A general election for partisan state and federal office
+needs only a plurality. That is why Texas holds runoffs after primaries but not
+after the November general election for those offices. Note the exception
+students will actually encounter: most city and school board charters require a
+majority, so May local elections and special elections to fill vacancies do go
+to runoffs.
 
 THE MIDTERM TIMING POINT IS THE ANALYTICAL ONE. Texas deliberately elects its
 governor in non-presidential years. The stated rationale was insulating state
@@ -113,16 +117,16 @@ Chapter 8.
   const s = k.slide("Who gets to vote in a party's primary", "Primary systems");
   k.figure(s, "tx9_primary_voters.jpg", 8.5, 1.95, 4.2, 2.2, null);
   const systems = [
-    ["Open primary", "Any registered voter may vote in one party's primary without registering with that party. Texas uses this system.", C.TEAL],
+    ["Open primary", "Any registered voter may vote in one party's primary without registering with that party. Texas uses this system, though a primary vote binds you to that party's runoff for the cycle (some call it semi-open).", C.TEAL],
     ["Closed primary", "Only voters registered with the party may participate. Common in states with party registration.", C.GOLD],
-    ["Top-two or jungle", "All candidates appear on one ballot regardless of party. The two highest finishers advance, even if they share a party. Used in California and Louisiana.", C.CRIM],
+    ["Top-two or jungle", "All candidates appear on one ballot regardless of party. The two highest finishers advance, even if they share a party. Used in California and Washington; Louisiana runs a similar all-candidate election with a runoff, though it moved congressional races to closed party primaries in 2026.", C.CRIM],
   ];
   let y = 1.95;
   systems.forEach(([t, d, col]) => {
     s.addShape(pres.ShapeType.roundRect, { x: M, y, w: 7.6, h: 1.15, rectRadius: 0.07, fill: { color: C.WHITE }, line: { color: C.LINE, width: 1 } });
     s.addShape(pres.ShapeType.roundRect, { x: M, y, w: 0.14, h: 1.15, rectRadius: 0.07, fill: { color: col } });
     s.addText(t, { x: M + 0.34, y: y + 0.14, w: 7.0, h: 0.32, isTextBox: true, margin: 0, fontFace: B, fontSize: 13.5, bold: true, color: C.INK, valign: "top" });
-    s.addText(d, { x: M + 0.34, y: y + 0.48, w: 7.0, h: 0.58, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 16, valign: "top" });
+    s.addText(d, { x: M + 0.34, y: y + 0.46, w: 7.0, h: 0.62, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, color: C.BODY, lineSpacing: 14, valign: "top" });
     y += 1.25;
   });
   k.defBox(s, M, 5.75, W - M * 2, 1.2, "Two terms worth knowing",
@@ -159,7 +163,7 @@ primary until Smith v. Allwright rejected it. Worth naming.
     ["2", "File and pay", "File an application with the party or the appropriate authority and pay a filing fee, or submit a petition of signatures instead."],
     ["3", "Win the primary", "A majority is required. If nobody clears fifty percent, the top two meet in a May runoff."],
     ["4", "Build a campaign", "Raise money, hire staff or recruit volunteers, and build name recognition across a very large state."],
-    ["5", "Win the general", "A plurality wins in November. No runoff follows."],
+    ["5", "Win the general", "For state and federal office a plurality wins in November and no runoff follows; many local offices require a majority."],
   ];
   let y = 1.95;
   steps.forEach(([n, t, d]) => {
@@ -185,7 +189,7 @@ files, a seat with taxing authority is filled by default. A student in this room
 could run.
 
 INCUMBENCY IS THE STRUCTURAL ADVANTAGE to name here: name recognition, donor
-networks, staff, media access, and in legislative races the franking privilege.
+networks, staff, media access, and in congressional races the franking privilege.
 Challengers start far behind, which is why most incumbents win.
   `);
 }

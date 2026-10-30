@@ -47,7 +47,7 @@ packages are in `qti/`.
 - C. Hispanic Texans **← correct**
 - D. Asian Texans
 
-> *Rationale:* Texas lost its white majority in 2004 and by 2022 Hispanic Texans had become the largest single group, at roughly 40 percent, essentially even with non-Hispanic white Texans.
+> *Rationale:* Texas lost its white majority in 2004 and by 2022 Hispanic Texans had become the largest single group; as of the July 2025 estimates they are about 41 percent of the population, compared with about 37 percent non-Hispanic white.
 
 **1.A3** *(Outcome 1 · Comprehension)* Which sequence correctly orders these events in Texas history?
 
@@ -249,7 +249,7 @@ packages are in `qti/`.
 
 - A. Three
 - B. Five
-- C. Eight **← correct**
+- C. Seven **← correct**
 - D. Ten
 
 **2.B4** What was the official religion under the Mexican Constitution of 1824?
@@ -381,7 +381,7 @@ packages are in `qti/`.
 
 **2.C6** Name three features of the 1876 constitution designed to limit government power.
 
-> *Answer:* Any three of: biennial legislative sessions, a plural executive, elected judges, a balanced-budget (pay-as-you-go) requirement, amendment only by popular vote, and deliberately low official salaries.
+> *Answer:* Any three of: biennial legislative sessions, a plural executive, elected judges, a $200,000 ceiling on state debt (the pay-as-you-go rule was added in 1942), amendment only by popular vote, and deliberately low official salaries.
 
 ---
 
@@ -485,11 +485,11 @@ packages are in `qti/`.
 - C. Sales taxes
 - D. Property taxes
 
-**3.B8** What percentage of state revenue comes from federal grants?
+**3.B8** Roughly what share of state government revenue nationwide comes from federal transfers?
 
 - A. 10%
 - B. 20%
-- C. 30% **← correct**
+- C. About one-third **← correct**
 - D. 50%
 
 **3.B9** What is the primary source of tax revenue for local governments?
@@ -781,7 +781,7 @@ packages are in `qti/`.
 
 **4.C6** How much are Texas legislators paid?
 
-> *Answer:* A constitutionally fixed $600 per month ($7,200 a year), plus a per diem ($267 per day in 2025) for each day in session.
+> *Answer:* A constitutionally fixed $600 per month ($7,200 a year), plus a per diem ($221 per day, set by the Texas Ethics Commission; unchanged since 2019) for each day in session.
 
 **4.C7** What does the phrase “pale, male, and stale” describe?
 
@@ -875,12 +875,12 @@ packages are in `qti/`.
 - C. 35 years old
 - D. 21 years old
 
-**5.B6** Approximately how many appointments does a governor make in a four-year term?
+**5.B6** Approximately how many appointments does a Texas governor make over a four-year term, according to the Governor's Office?
 
-- A. 500
-- B. 1,000
-- C. 3,000 **← correct**
-- D. 10,000
+- A. About 150
+- B. About 1,500 **← correct**
+- C. About 15,000
+- D. About 150,000
 
 **5.B7** What majority is required to override a governor's veto in Texas?
 
@@ -903,11 +903,11 @@ packages are in `qti/`.
 - C. The Comptroller
 - D. The Lieutenant Governor
 
-**5.B10** How many state boards, commissions, and agencies make up the Texas executive branch?
+**5.B10** Roughly how many state boards, commissions, and other bodies receive appointments from the Texas governor?
 
 - A. 100
 - B. 200
-- C. Over 400 **← correct**
+- C. More than 300 **← correct**
 - D. 50
 
 **5.B11** Who is the day-to-day presiding officer of the Texas Senate?
@@ -1030,8 +1030,8 @@ packages are in `qti/`.
 
 **6.B2** In Texas, what is the maximum percentage of fault a plaintiff can have and still recover damages?
 
-- A. 50 percent
-- B. 49 percent **← correct**
+- A. 50 percent **← correct**
+- B. 49 percent
 - C. 25 percent
 - D. 0 percent
 
@@ -1073,11 +1073,11 @@ packages are in `qti/`.
 **6.B8** How many state district courts does Texas have?
 
 - A. 254
-- B. 472 **← correct**
+- B. About 500 (519 in 2026) **← correct**
 - C. 822
 - D. 14
 
-**6.B9** How many courts of appeals does Texas have?
+**6.B9** How many regional courts of appeals does Texas have (not counting the statewide Fifteenth Court of Appeals)?
 
 - A. 9
 - B. 14 **← correct**
@@ -1237,11 +1237,11 @@ packages are in `qti/`.
 - C. The federal government increasing regulation
 - D. Declining voter participation in local elections
 
-**7.B2** How many independent school districts exist in Texas?
+**7.B2** Approximately how many independent school districts exist in Texas?
 
 - A. 254
-- B. 1,214
-- C. 1,079 **← correct**
+- B. 1,225
+- C. 1,020 **← correct**
 - D. 2,600
 
 **7.B3** How must local governments in Texas obtain their power?
@@ -1293,7 +1293,7 @@ packages are in `qti/`.
 - C. 254 **← correct**
 - D. 300
 
-**7.B10** When was the last new county (Loving County) established in Texas?
+**7.B10** Loving County, the last Texas county to be organized, was organized in what year?
 
 - A. 1876
 - B. 1901
@@ -1314,18 +1314,18 @@ packages are in `qti/`.
 - C. Income tax
 - D. Federal grants
 
-**7.B13** Approximately how many special purpose districts exist in Texas?
+**7.B13** Approximately how many special purpose districts (not counting school districts) exist in Texas?
 
 - A. 254
-- B. 1,031
+- B. 1,020
 - C. 1,500
-- D. 3,350 **← correct**
+- D. 3,000 **← correct**
 
-**7.B14** When are school board trustees typically elected in Texas?
+**7.B14** On which date are Texas school board trustees most commonly elected?
 
-- A. November of even-numbered years
-- B. May of odd-numbered years **← correct**
-- C. March of even-numbered years
+- A. The November general election date in even-numbered years only
+- B. The first Saturday in May (uniform election date) **← correct**
+- C. The March primary date
 - D. They are appointed, not elected
 
 **7.B15** How many community college districts exist in Texas?
@@ -1333,7 +1333,7 @@ packages are in `qti/`.
 - A. 50 **← correct**
 - B. 100
 - C. 254
-- D. 1,031
+- D. 1,020
 
 **7.B16** What is the purpose of a TIRZ?
 
@@ -1481,11 +1481,11 @@ packages are in `qti/`.
 - C. When voters become exhausted from too many elections in one year
 - D. When ballots are too long and confusing to read
 
-**8.B9** Which type of voting involves looking at a candidate's past actions to predict future behavior?
+**8.B9** Which type of voting involves judging a candidate or party mainly on its past performance, such as the state of the economy under the incumbents?
 
 - A. Pocketbook voting
-- B. Retrospective voting
-- C. Prospective voting **← correct**
+- B. Retrospective voting **← correct**
+- C. Prospective voting
 - D. Strategic voting
 
 **8.B10** What is "political efficacy"?
@@ -1652,7 +1652,7 @@ packages are in `qti/`.
 
 - A. Strictly closed – voters must register with a party
 - B. A blanket/jungle primary system
-- C. Between open and semi-open – no party registration required **← correct**
+- C. Open (sometimes called semi-open) – no party registration required, but a primary vote binds you to that party's runoff **← correct**
 - D. Completely open with no restrictions
 
 **9.B6** What is "frontloading" in presidential primaries?
@@ -1662,7 +1662,7 @@ packages are in `qti/`.
 - C. When front-runner candidates receive extra media coverage
 - D. When delegates are allocated before voting begins
 
-**9.B7** Which states have special permission to hold early presidential primaries/caucuses?
+**9.B7** Which states have traditionally been allowed to vote first in the presidential nominating calendar? (The Democratic Party reordered its 2024 calendar to begin with South Carolina.)
 
 - A. California, Texas, and Florida
 - B. New York, Pennsylvania, and Ohio
@@ -1833,7 +1833,7 @@ packages are in `qti/`.
 
 - A. 1952 with Dwight Eisenhower
 - B. 1972 with Richard Nixon
-- C. 1979 with the election of William P. Clements **← correct**
+- C. 1978, with the election of William P. Clements (he took office in January 1979) **← correct**
 - D. 2003 when Republicans gained the trifecta
 
 **10.B5** What is a "trifecta" in state politics?
@@ -1850,12 +1850,12 @@ packages are in `qti/`.
 - C. When third parties become more popular
 - D. The process of registering with a political party
 
-**10.B7** Political scientists often refer to party identification as what?
+**10.B7** According to the chapter, party identification is the single strongest ___ of how a Texan votes.
 
-- A. A social movement
-- B. A constitutional right
-- C. A "vote determinant" **← correct**
-- D. A media phenomenon
+- A. cause of turnout
+- B. predictor **← correct**
+- C. constitutional requirement
+- D. media effect
 
 **10.B8** Does Texas have a system of party registration?
 
@@ -2198,12 +2198,12 @@ packages are in `qti/`.
 - C. Redistributive policy
 - D. Private policy
 
-**12.B4** What are the five stages of the policy-making process in order?
+**12.B4** What are the stages of the policy-making process in order?
 
-- A. Adoption, Definition, Implementation, Agenda, Evaluation
-- B. Agenda, Definition, Evaluation, Adoption, Implementation
-- C. Problem Definition, Agenda Setting, Policy Adoption, Implementation, Evaluation **← correct**
-- D. Evaluation, Definition, Agenda, Implementation, Adoption
+- A. Adoption, formulation, implementation, agenda setting, evaluation
+- B. Agenda setting, evaluation, formulation, adoption, implementation
+- C. Agenda setting, formulation, adoption, implementation, evaluation **← correct**
+- D. Evaluation, agenda setting, formulation, implementation, adoption
 
 **12.B5** Why is policymaking described as a "cycle"?
 
@@ -2298,7 +2298,7 @@ packages are in `qti/`.
 
 **12.C4** What is the basic allotment, and how has it changed?
 
-> *Answer:* The guaranteed per-student funding a district receives; it rose from $5,140 (2018) to $6,160 (HB3, 2019), then sat flat until a small increase to about $6,215 (HB2, 2025).
+> *Answer:* The guaranteed per-student funding a district receives; it rose from $5,140 (2018) to $6,160 (HB 3, 2019), then sat flat until HB 2 (2025) added a $55 adjustment, to $6,215, while routing most new money through targeted allotments.
 
 **12.C5** What did Texas's Senate Bill 2 (2025) create?
 
@@ -2354,7 +2354,7 @@ packages are in `qti/`.
 
 > *Rationale:* Proposition 3 amended the constitution to require judges to deny bail to defendants accused of certain serious violent felonies.
 
-**13.A5** *(Outcome 8 · Analysis)* Texas leads the nation in both executions and exonerations. The most defensible inference from this pairing is that:
+**13.A5** *(Outcome 8 · Analysis)* Texas leads the nation in executions and ranks near the top in exonerations. The most defensible inference from this pairing is that:
 
 - A. Texas courts are uniquely lenient
 - B. The scale of the system makes both outcomes more visible and keeps the risk of error central to policy debate **← correct**
@@ -2393,21 +2393,21 @@ packages are in `qti/`.
 - C. Kelo v. City of New London
 - D. Batson v. Kentucky
 
-**13.B5** How many public defender's offices exist in Texas?
+**13.B5** How do most Texas counties provide lawyers for defendants who cannot afford one?
 
-- A. 254 (one for each county)
-- B. 19 public defender's offices **← correct**
-- C. 1 statewide office
-- D. 100 regional offices
+- A. A single statewide public defender's office
+- B. Court-appointed private attorneys paid by the county **← correct**
+- C. Federal public defenders
+- D. Law-school clinics
 
-**13.B6** What makes Texas unusual regarding crime victim rights?
+**13.B6** What is notable about Texas and crime victim rights?
 
 - A. Texas has no constitutional protections for crime victims
-- B. Texas is one of the only states with a specific constitutional list of crime victim rights **← correct**
+- B. Texas was among the first states (1989) to add a specific list of crime victims' rights to its constitution, Article I, Section 30 **← correct**
 - C. Texas allows victims to determine criminal sentences
 - D. Texas requires victims to participate in all trials
 
-**13.B7** What percentage of Texas jail inmates are awaiting trial (not yet convicted)?
+**13.B7** According to Chief Justice Nathan Hecht's 2017 State of the Judiciary address, what share of Texas jail inmates were awaiting trial (not yet convicted)?
 
 - A. One-quarter (25%)
 - B. One-third (33%)
@@ -2501,11 +2501,11 @@ packages are in `qti/`.
 
 **13.C6** How has the death penalty narrowed, and where does Texas stand?
 
-> *Answer:* The Supreme Court barred executing people with intellectual disabilities, those under 18, and for non-homicide crimes; Texas still leads the nation with 600 executions since 1982, though new sentences and executions have fallen sharply.
+> *Answer:* The Supreme Court barred executing people with intellectual disabilities, those under 18, and for non-homicide crimes; Texas still leads the nation with more than 600 executions since 1982 (603 as of October 2026), though new sentences and executions have fallen sharply.
 
 **13.C7** Why is Texas notable for both executions and exonerations?
 
-> *Answer:* It carries out more executions than any other state and also clears more wrongful convictions — a pairing that keeps the risk of error central.
+> *Answer:* It carries out more executions than any other state and also ranks second nationally (after Illinois) in exonerations — a pairing that keeps the risk of error central.
 
 ---
 
@@ -2623,7 +2623,7 @@ packages are in `qti/`.
 - C. A constitutional amendment prohibiting a state income tax **← correct**
 - D. Legalization of casino gambling
 
-**14.B10** What is the ONLY thing Texas legislators are constitutionally required to do each session?
+**14.B10** What is the one thing the Texas Constitution effectively requires legislators to accomplish every regular session?
 
 - A. Pass education reform
 - B. Redraw legislative districts
@@ -2700,7 +2700,7 @@ packages are in `qti/`.
 - C. Two different polling firms' methodologies
 - D. Registered voters and likely voters
 
-> *Rationale:* The Bradley effect refers to respondents giving socially acceptable answers to live interviewers that diverge from their actual votes, detectable by comparing live and automated polling.
+> *Rationale:* The Bradley effect refers to respondents giving socially acceptable answers to live interviewers that diverge from their actual votes. Nate Silver's 2010 Proposition 19 analysis detected a version of it by comparing live-interviewer and automated polls.
 
 **15.A5** *(Outcome 5 · Analysis)* Describing the press as the 'fourth estate' emphasizes its role as:
 
@@ -2769,12 +2769,12 @@ packages are in `qti/`.
 - C. Discrepancies between polls and outcomes when voters misrepresent their voting intentions due to social desirability bias **← correct**
 - D. The momentum gained from winning early primaries
 
-**15.B9** How many conglomerates control most broadcast media in the United States today?
+**15.B9** Which statement best describes ownership of U.S. broadcast media today?
 
-- A. Over fifty
-- B. Twenty
-- C. Six **← correct**
-- D. Three
+- A. More than fifty independent companies own most stations, as in the 1980s
+- B. A handful of conglomerates control most broadcast and cable networks **← correct**
+- C. The federal government owns most networks
+- D. Each state licenses its own network
 
 **15.B10** What is "agenda setting"?
 
@@ -2817,7 +2817,7 @@ packages are in `qti/`.
 
 **15.C5** What is the Bradley effect?
 
-> *Answer:* A gap between what respondents tell live interviewers (the socially acceptable answer) and how they actually vote — detectable by comparing live and automated polls.
+> *Answer:* A gap between what respondents tell live interviewers (the socially acceptable answer) and how they actually vote — Nate Silver's 2010 Proposition 19 analysis detected a version of it by comparing live-interviewer and automated polls.
 
 **15.C6** What do “fourth estate” and “agenda setting” mean?
 
@@ -2985,7 +2985,7 @@ packages are in `qti/`.
 
 **16.C7** What is the current status of Texas's Ten Commandments classroom law?
 
-> *Answer:* A district judge blocked it in 2025; the full Fifth Circuit upheld it 9–8 in April 2026; the challengers have asked the U.S. Supreme Court to hear the case.
+> *Answer:* A district judge blocked it for the districts sued in August 2025; the full Fifth Circuit upheld it 9–8 in April 2026; the families petitioned the U.S. Supreme Court in August 2026 (No. 26-257), and that petition is pending.
 
 ---
 
@@ -3293,7 +3293,7 @@ packages are in `qti/`.
 
 **18.C4** What has Sunset accomplished, and what are its limits?
 
-> *Answer:* Since 1977, 95 agencies abolished (42 outright, 53 consolidated), about $1 billion in savings, roughly $16 returned per $1 spent. Critics note most reviewed agencies are continued, abolitions usually involve small entities, and the 12-year cycle is long.
+> *Answer:* Since 1977, 96 agencies abolished (42 outright, 54 consolidated), about $1.1 billion in savings since 1985, roughly $17 returned per $1 spent (Sunset Commission, Sept 2025). Critics note most reviewed agencies are continued, abolitions usually involve small entities, and the 12-year cycle is long.
 
 **18.C5** What is administrative rulemaking, and how can the public participate?
 

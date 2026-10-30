@@ -155,7 +155,7 @@ carry about which party stood where.
   k.timeline(s, 1.95, [
     ["1952", "Shivercrats", "Democratic Governor Allan Shivers backs Republican Eisenhower. Conservative Texas Democrats begin voting Republican for president while staying Democratic locally."],
     ["1960s", "National divergence", "The national Democratic Party embraces civil rights legislation. Conservative white southern voters begin reconsidering their party attachment."],
-    ["1978 to 1994", "Statewide breakthrough", "Bill Clements wins the governorship in 1978, the first Republican since Reconstruction. George W. Bush wins in 1994, and Republicans consolidate statewide control."],
+    ["1978 to 1998", "Statewide breakthrough", "Bill Clements wins the governorship in 1978, the first Republican since Reconstruction. George W. Bush wins in 1994, the last year any Democrat wins a statewide office; in 1998 Republicans sweep every statewide race, and after the 2002 election they control the governorship and both chambers."],
   ], 2.7);
   k.defBox(s, M, 4.95, W - M * 2, 2.0, "The distinction that matters",
     "Most Texans did not change their political beliefs. The parties changed what they stood for nationally, and voters re-sorted to match. A conservative Texan in 1950 and a conservative Texan in 2000 may hold similar views while wearing different labels. Political scientists call this realignment: a durable shift in which groups attach to which party, rather than a change in what those groups believe.");
@@ -259,7 +259,7 @@ disagree about its causes.
     y += 1.1;
   });
   k.defBox(s, M, 5.35, W - M * 2, 1.6, "Temporary and permanent organization",
-    "The conventions above are the temporary organization: they meet, act, and dissolve. The permanent organization is the standing structure of precinct chairs, county chairs, and the state executive committee, elected by voters in the primary. Precinct chair races are often uncontested, which means a motivated person can take one with very few votes.");
+    "The conventions above are the temporary organization: they meet, act, and dissolve. The permanent organization is the standing structure: precinct chairs and county chairs, elected by voters in the March primary, and the state chair, vice chair, and State Executive Committee, elected by delegates at the state convention. Precinct chair races are often uncontested, which means a motivated person can take one with very few votes.");
   N(s, `
 TIMING: 6 minutes. Candidate to compress in a 50 minute class.
 
@@ -285,7 +285,7 @@ DISTINGUISH TEMPORARY FROM PERMANENT clearly; it is a common exam item.
     "Texas Republicans generally emphasize", [
       "Lower taxes and limited regulation of business",
       "Restrictive immigration enforcement and border security",
-      "Support for oil and gas production alongside an all-of-the-above energy stance",
+      "Support for oil and gas production and a free-market energy policy that opposes subsidies and mandates, including for renewables",
       "Restrictions on abortion and expanded school choice",
       "Strong support for gun rights under the Second Amendment",
     ],
@@ -363,7 +363,7 @@ all system, and movements across the spectrum have used it.
   const s = k.slide("How nominees actually get chosen", "Candidate and delegate selection");
   k.figure(s, "tx10_delegates.jpg", 8.5, 1.95, 4.2, 2.2, null);
   const steps = [
-    ["Primary", "Texas voters choose nominees in March. Texas uses an open primary, so any registered voter may participate in one party's contest."],
+    ["Primary", "Texas voters choose nominees in March. Texas has no party registration, so any registered voter may vote in either party's primary, but voting in one party's primary bars that voter from the other party's runoff and conventions that year."],
     ["Runoff", "If nobody wins a majority, the top two meet in May. Runoff turnout is typically a small fraction of the primary."],
     ["Delegates", "Presidential contests also allocate delegates to the national convention, based on primary results under each party's rules."],
     ["Convention", "Delegates selected through the precinct and county process attend the state convention, which adopts the platform and elects leadership."],
@@ -375,7 +375,7 @@ all system, and movements across the spectrum have used it.
     y += 0.88;
   });
   k.defBox(s, M, 5.6, W - M * 2, 1.35, "The Texas Two-Step, now retired",
-    "Texas Democrats once used a hybrid in which voters both cast a primary ballot and attended an evening caucus, with delegates allocated from each. It drew national attention in the 2008 presidential race and was criticized as confusing and as favoring voters who could attend an evening meeting. The party abandoned it in 2015.");
+    "Texas Democrats once used a hybrid in which voters both cast a primary ballot and attended an evening caucus, with delegates allocated from each. It drew national attention in the 2008 presidential race and was criticized as confusing and as favoring voters who could attend an evening meeting. The Democratic National Committee refused to approve it again in June 2015, and Texas Democrats have allocated all delegates by primary vote since 2016.");
   N(s, `
 TIMING: 5 minutes.
 

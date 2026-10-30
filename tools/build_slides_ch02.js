@@ -20,9 +20,9 @@ About 70 minutes with both discussion pauses. See "How to use this deck" for a
 
 OPENING (2 min). Ask: "How long is the U.S. Constitution?" Most students guess
 too high. It runs roughly 7,500 words including amendments. Then ask about the
-Texas Constitution. It runs past 86,000 words with over 500 amendments. Let the
-gap sit, then ask why a state document would need eleven times the text of the
-one that governs the whole country.
+Texas Constitution. It runs past 90,000 words with nearly 550 amendments. Let
+the gap sit, then ask why a state document would need twelve times the text of
+the one that governs the whole country.
 
 That question is the chapter. The answer is that the U.S. Constitution grants
 powers broadly and trusts interpretation, while the Texas Constitution restricts
@@ -100,7 +100,9 @@ Objectives 1 and 3 are supporting detail. If you run short, compress them.
     y += 0.6;
   });
   N(s, `
-TIMING: 6 minutes. Do not narrate all eight. Pick three and move.
+TIMING: 6 minutes. Do not narrate all eight. Pick three and move. Eight
+documents, seven Texas constitutions: the 1824 charter was Mexico's national
+constitution.
 
 THE THREE THAT MATTER:
   1836, because an independent nation had to invent a government from scratch.
@@ -210,7 +212,7 @@ not editorializing.
   ], 2.6);
   k.figure(s, "tx2_reconstruction.jpg", M, 4.85, 5.2, 1.65, null);
   k.defBox(s, 6.1, 4.85, W - M - 6.1, 1.65, "Why 1869 mattered so much",
-    "It gave the governor a four year term, control of appointments, authority over voter registration, and a state police force. Those powers went to E. J. Davis, and the reaction against how he used them produced the constitution Texas still has.");
+    "It gave the governor a four year term, control of appointments including judges, and the first constitutional provision for voter registration; the Legislature then added a state police force under his control in 1870. Those powers went to E. J. Davis, and the reaction against how he used them produced the constitution Texas still has.");
   N(s, `
 TIMING: 6 minutes.
 
@@ -224,8 +226,9 @@ was resented" miss that the resentment attached to real expansions of democracy
 as well as to centralized power. Both are true and both belong in the account.
 
 The centralization is the mechanical point that matters for the next slide. Four
-year term, appointment power, control of registration, and a state police force
-are the specific powers the 1876 framers stripped out.
+year term, appointment power, and control of registration are the specific
+powers the 1876 framers stripped out; the Legislature had already repealed the
+state police in 1873.
   `);
 }
 
@@ -260,8 +263,8 @@ restraint, which is exactly what 1876 abandoned.
   k.figure(s, "tx2_1876_convention.jpg", 8.3, 1.95, 4.4, 2.55, null);
   const design = [
     ["Weak governor", "Short term, limited appointment power, almost no removal power."],
-    ["Plural executive", "Attorney general, comptroller, land commissioner, and agriculture commissioner all elected separately."],
-    ["Part-time legislature", "140 days every two years, with low pay."],
+    ["Plural executive", "Lieutenant governor, attorney general, comptroller, land commissioner, and (until 1996) treasurer all elected separately; the agriculture commissioner was added by statute in 1907."],
+    ["Part-time legislature", "Meets once every two years, with low pay. (The 140-day cap was added by amendment in 1960.)"],
     ["Elected judges", "The judiciary answers to voters, not to whoever appoints."],
     ["Restricted, not granted", "The document limits in detail rather than granting power broadly, so change usually requires amendment."],
   ];
@@ -284,14 +287,15 @@ TIMING: 8 minutes. The most important slide in the chapter.
 
 THE ARGUMENT: every item on this list is a specific answer to a specific Davis
 power. He had a long term, so they shortened it. He appointed local officials, so
-they made them elected. He had a state police force, so they abolished it. He
+they made them elected. He had a state police force, so the Legislature repealed
+it in 1873 and the framers made sure nothing like it could be revived. He
 controlled registration, so they stripped that out.
 
 THE DEEPEST STRUCTURAL POINT, and the one students find hardest: the U.S.
 Constitution GRANTS powers and leaves the details to interpretation. The Texas
 Constitution RESTRICTS in detail. That is why Texas needs an amendment for things
-other states handle by statute, and why the document has grown past 86,000 words
-with more than 500 amendments.
+other states handle by statute, and why the document has grown past 90,000 words
+with nearly 550 amendments.
 
 ASK: "What is the cost of a government designed to be weak?" Let them work toward
 it. Answers include slow response to crisis, diffuse accountability, and power
@@ -308,8 +312,8 @@ Forward reference to Chapter 11.
     ["Step 1", "Two-thirds of each chamber", "Both the House and Senate must approve by a two-thirds vote of all members elected."],
     ["Step 2", "Voters decide", "A simple majority of those voting. The governor has no role and cannot veto."],
   ], 2.5);
-  k.statCallout(s, M, 4.75, 7.5, 1.3, "500+",
-    "amendments adopted since 1876, out of nearly 700 proposed. The document now runs past 86,000 words, about eleven times the length of the U.S. Constitution.");
+  k.statCallout(s, M, 4.75, 7.5, 1.3, "547",
+    "amendments adopted since 1876, out of 731 proposed, through the November 2025 election. The document now runs past 90,000 words, about twelve times the length of the U.S. Constitution.");
   s.addText("Because the constitution restricts in detail, ordinary policy changes often require amending it. That is the cause, not carelessness.", {
     x: M, y: 6.25, w: 7.5, h: 0.55, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 12.5, italic: true, color: C.INK, lineSpacing: 17, valign: "top",
@@ -324,10 +328,11 @@ WHY SO MANY AMENDMENTS: this is the payoff of the previous slide. Because the
 document restricts rather than grants, routine adjustments need constitutional
 change. Other states pass a statute; Texas holds an election.
 
-MAKE IT CONCRETE AND CURRENT. In 2025 Texans voted on amendments including
-raising the homestead exemption to \$140,000, dedicating up to \$1 billion a year
-to water infrastructure, and banning several new taxes. Those are policy
-decisions made by constitutional amendment.
+MAKE IT CONCRETE AND CURRENT. On November 4, 2025, Texans approved all 17
+proposed amendments, including raising the school homestead exemption to
+\$140,000, dedicating up to \$1 billion a year to the Texas Water Fund through
+2047, and banning capital-gains, securities-transaction, and inheritance taxes.
+Those are policy decisions made by constitutional amendment.
 
 CIVIC POINT WORTH MAKING: amendment elections are usually held in odd-numbered
 November years with very low turnout. A small, motivated electorate is rewriting
@@ -374,8 +379,8 @@ them to read for exceptions rather than assume clean rules.
 {
   const s = k.slide("Two constitutions, two philosophies", "Texas and the United States compared");
   const rows = [
-    ["Length", "About 7,500 words", "More than 86,000 words"],
-    ["Amendments", "27 in over 230 years", "More than 500 since 1876"],
+    ["Length", "About 7,500 words", "More than 90,000 words"],
+    ["Amendments", "27 in over 230 years", "547 since 1876 (through Nov. 2025)"],
     ["Approach", "Grants powers broadly, trusts interpretation", "Restricts in detail, trusts almost no one"],
     ["Bill of Rights", "Added afterward as ten amendments", "Article I, placed first, before any power"],
     ["Executive", "One president who appoints the cabinet", "Plural executive of separately elected officials"],
@@ -481,7 +486,7 @@ narrative and spend the time on the 1876 design and separation of powers.
     ["The document itself", "Texas Constitution, full text with all amendments, at statutes.capitol.texas.gov. Article I is short and written for citizens rather than lawyers."],
     ["Constitutional history", "Handbook of Texas Online, Texas State Historical Association. Entries on the Constitutional Convention of 1875, the constitutions of 1861, 1866, and 1869, and E. J. Davis."],
     ["Amendments", "Texas Legislative Council publishes an analysis of every proposed amendment before each election, written in plain language."],
-    ["Comparison", "National Conference of State Legislatures maintains comparative data on state constitutions, length, and amendment rates."],
+    ["Comparison", "Council of State Governments, The Book of the States, publishes comparative tables on state constitutions, their length, and amendment counts; Ballotpedia tracks each state's amendment elections."],
     ["Openly licensed text", "OpenStax, American Government 3e (CC BY 4.0), the base text this module adapts."],
     ["Images", "Wikimedia Commons, public domain, as credited in the module."],
   ];

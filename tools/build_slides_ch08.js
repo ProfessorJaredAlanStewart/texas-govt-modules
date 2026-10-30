@@ -79,7 +79,7 @@ If you teach both, cross-reference them explicitly.
   const reqs = [
     ["Who may register", "A United States citizen, a resident of the county, at least 17 years and 10 months old, not finally convicted of a felony unless the sentence is fully completed, and not declared mentally incapacitated by a court."],
     ["The deadline", "Thirty days before the election. Texas has no same-day registration and no automatic registration."],
-    ["How", "Paper application by mail or in person. Texas does not offer full online voter registration."],
+    ["How", "Paper application by mail or in person, or online only as part of a driver license renewal or address change at DPS. Texas has no stand-alone online registration."],
     ["At the polls", "One of seven accepted photo IDs. Voters who cannot reasonably obtain one may sign a declaration and present an alternative document."],
   ];
   let y = 1.95;
@@ -98,9 +98,14 @@ registered, and several will turn 18 this term. The 17 years and 10 months rule
 means a student can register before their birthday, which almost nobody knows.
 
 TEXAS IS AN OUTLIER ON THREE COUNTS worth stating neutrally: no same-day
-registration, no automatic registration, and no full online registration. Roughly
-half the states offer at least one. That is a factual comparison, not an
-argument.
+registration, no automatic registration, and no full online registration. More
+than forty states offer online registration, and about half offer same-day or
+automatic registration; only a handful of states offer none of the three. That
+is a factual comparison, not an argument.
+
+If a student registered through the DPS website, have them confirm at
+VoteTexas.gov; in 2026 DPS failed to forward a large number of those
+applications to the counties (a lawsuit filed in October 2026 put it above 500,000).
 
 THE ELECTION IDENTIFICATION CERTIFICATE is genuinely underused and both sides of
 the ID debate say so. Supporters of ID laws want it publicized because it answers
@@ -130,7 +135,7 @@ Have the registration deadline for your next election on the board.
     y += 0.70;
   });
   k.defBox(s, M, 6.18, W - M * 2, 0.82, "Early voting is the norm here",
-    "Texas opens in-person early voting from the seventeenth day before Election Day through the fourth day before it. A majority of Texas ballots are now cast before Election Day, which is not true in every state.");
+    "Texas opens in-person early voting on the seventeenth day before Election Day (the twelfth day before a May election) and closes it on the fourth day before. A majority of Texas ballots are now cast before Election Day, which is not true in every state.");
   N(s, `
 TIMING: 6 minutes.
 
@@ -161,7 +166,7 @@ provisions, not about early voting itself.
     ["1923", "White primary", "State law bars Black voters from the Democratic primary, the only election that mattered in a one-party state."],
     ["1944", "Smith v. Allwright", "A Houston dentist, represented by Thurgood Marshall, wins at the Supreme Court. White primaries fall across the South."],
     ["1964 to 1966", "Poll tax ends", "The Twenty-Fourth Amendment bars it federally, and Harper v. Virginia Board of Elections ends it in state elections."],
-    ["1965", "Voting Rights Act", "Federal law bars racially discriminatory election practices. Texas becomes subject to federal preclearance."],
+    ["1965", "Voting Rights Act", "Federal law bars racially discriminatory election practices. Texas is brought under federal preclearance in 1975, when the Act is extended to language minorities."],
     ["2013", "Shelby County v. Holder", "The Supreme Court strikes the coverage formula. Preclearance no longer applies, and Texas may change election law without prior federal approval."],
   ];
   let y = 1.95;
@@ -182,6 +187,9 @@ of disenfranchisement and students should see how it worked.
 
 SMITH V. ALLWRIGHT connects directly to Chapter 16. Same case, different frame:
 here it is voting rights, there it is equal protection. Cross-reference it.
+
+TEXAS WAS NOT COVERED IN 1965; it was added in 1975 because of discrimination
+against Mexican American voters. That is why Shelby County mattered so much here.
 
 SHELBY COUNTY IS THE PIVOT to the modern debate. Say what it did in neutral
 terms: it struck down the formula determining which jurisdictions needed federal
@@ -270,9 +278,9 @@ would. Most admit party label or skipping. That honesty is the lesson.
 {
   const s = k.slide("Near the bottom, consistently", "Turnout");
   k.figure(s, "tx8_empty_polling.jpg", 8.5, 1.95, 4.2, 2.3, null);
-  s.addText("Texas turnout ranks among the lowest in the nation across election types. The pattern holds in presidential years, midterms, and especially in local and amendment elections.", {
-    x: M, y: 1.95, w: 7.6, h: 0.8, isTextBox: true, margin: 0,
-    fontFace: B, fontSize: 13.5, color: C.BODY, lineSpacing: 18, valign: "top",
+  s.addText("Texas turnout ranks among the lowest in the nation: fifth-lowest in 2024 at 56.6 percent of eligible voters, and 44th of 51 in the 2018 midterm. The pattern holds in presidential years, midterms, and especially in local and amendment elections.", {
+    x: M, y: 1.95, w: 7.6, h: 0.9, isTextBox: true, margin: 0,
+    fontFace: B, fontSize: 12.5, color: C.BODY, lineSpacing: 17, valign: "top",
   });
   const causes = [
     ["A young population", "Texas is younger than the national average, and young people vote least in every state."],
@@ -328,11 +336,13 @@ each change would cost.
       "Expanded poll watcher access raises concerns about voter intimidation",
     ], 2.7);
   k.defBox(s, M, 5.65, W - M * 2, 1.3, "Where it stands",
-    "Federal courts have upheld some provisions of SB 1 and struck down others, and litigation has continued. Earlier Texas voter identification laws were also found by federal courts to burden minority voters, and the Legislature revised the law in 2017 to add alternatives for voters who cannot reasonably obtain photo ID. Verify the current posture before teaching.");
+    "Trial courts blocked several SB 1 provisions between 2023 and 2025, but the Fifth Circuit reversed each of those rulings (Aug. 2025, Feb. 2026, Aug. 2026), and the Supreme Court declined to hear the case in June 2026. As of fall 2026 SB 1 is fully in effect. Earlier Texas voter identification laws were found by federal courts to burden minority voters, and the Legislature revised the law in 2017 to add alternatives for voters who cannot reasonably obtain photo ID.");
   N(s, `
 TIMING: 8 minutes with discussion. The most contested slide in the chapter.
 
-CHECK CURRENCY BEFORE CLASS. This litigation has been active for years.
+CHECK CURRENCY BEFORE CLASS. As of October 2026 the Fifth Circuit had reversed
+every lower-court ruling against SB 1 and the law is in force; plaintiffs could
+still bring as-applied challenges.
 
 DO NOT REFEREE. Both columns contain claims supported by evidence. The mail
 ballot rejection increase is documented. The rarity of prosecuted in-person fraud

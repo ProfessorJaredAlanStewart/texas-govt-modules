@@ -222,7 +222,7 @@ something.
   k.figure(s, "tx15_texas_media.jpg", 8.5, 1.95, 4.2, 2.15, null);
   const media = [
     ["Newspapers", "Metro dailies still do much of the original reporting on state government, though newsroom staffing has fallen sharply."],
-    ["Television", "Twenty media markets, the second most of any state. Local stations reach large audiences, with limited statehouse coverage."],
+    ["Television", "Twenty media markets, the most of any state. Local stations reach large audiences, with limited statehouse coverage."],
     ["Digital nonprofits", "The Texas Tribune, founded in 2009, provides nonprofit statehouse reporting that other outlets republish for free."],
     ["Social media", "A primary news source for many Texans. Algorithmic and social filtering shape what each person sees."],
     ["News deserts", "Many rural Texas counties have lost their local paper entirely, leaving county and school board decisions uncovered."],
@@ -242,7 +242,9 @@ rural Texas. Research consistently finds that when local papers close, local
 government borrowing costs rise and contested races decline. Accountability
 depends on someone watching.
 
-THE TWENTY MARKETS FACT connects to Chapter 9 and campaign cost. It also explains
+THE TWENTY MARKETS FACT (Texas has more Nielsen markets than any other state;
+Dallas-Fort Worth is the nation's fourth-largest and Houston its sixth) connects
+to Chapter 9 and campaign cost. It also explains
 why statewide officials get less scrutiny than students expect: no single outlet
 reaches most Texans.
 
@@ -401,7 +403,7 @@ Q3 is the constitutional question and works well if you taught Chapter 16.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 15 in the Trailblazer Trek: 6 sections, 1,420 points. Students submit the Completion Report.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 15 in the Trailblazer Trek: 6 sections, 1,230 points. Students submit the Completion Report.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to evaluate a real poll and compare coverage across outlets.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];

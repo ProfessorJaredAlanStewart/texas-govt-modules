@@ -117,8 +117,8 @@ amusement park. It is the reverse. The park opened in 1961 and took the existing
 slogan, which refers to the six sovereign governments.
 
 The French claim is thin and worth saying so. La Salle's colony lasted about
-five years, was a disaster, and ended in mutiny and disease. It is included by
-tradition more than by significance.
+four years, was a disaster, and ended in mutiny, disease, and a Karankawa
+attack. It is included by tradition more than by significance.
 
 COLD CALL: "Which of these six governments still shapes Texas law today?" Push
 toward Spain and Mexico, which students rarely name.
@@ -212,7 +212,7 @@ settlement. That sets up the demographics section later.
   const rows = [
     ["\u2691", "1861", "Texas adopts an Ordinance of Secession by a vote of 166 to 8 and joins the Confederacy. Governor Sam Houston refuses to swear loyalty and is removed from office.", C.CRIM],
     ["\u2696", "1865", "On June 19, Union General Gordon Granger arrives in Galveston and announces that all enslaved Texans are free. The date becomes Juneteenth.", C.GOLD],
-    ["\u2692", "1866 to 1869", "Three constitutions in four years as Texas is rewritten first by former Confederates, then under congressional Reconstruction.", C.TEAL],
+    ["\u2692", "1861 to 1869", "Three constitutions in eight years as Texas is rewritten first for the Confederacy, then by former Confederates under Presidential Reconstruction, then under congressional Reconstruction.", C.TEAL],
     ["\u265C", "1870 to 1874", "Governor E. J. Davis leads a centralized Reconstruction government. The backlash reshapes Texas government permanently.", C.INK],
   ];
   k.rows(s, 1.95, rows, { labelW: 1.9, rowH: 1.0, gap: 0.08 });
@@ -265,7 +265,7 @@ slide.
     fontFace: "Calibri", fontSize: 13, color: C.BODY, lineSpacing: 19, paraSpaceAfter: 6, valign: "top",
   });
   k.defBox(s, M, 4.9, W - M * 2, 1.5, "The reaction that built modern Texas government",
-    "When Democrats regained control, they wrote a constitution designed to make another Davis impossible: a weak governor, a plural executive of separately elected officials, a legislature meeting only 140 days every two years, elected judges, and a long document requiring voter approval to change. Texas still governs itself inside that reaction today.");
+    "When Democrats regained control, they wrote a constitution designed to make another Davis impossible: a weak governor, a plural executive of separately elected officials, a legislature meeting only once every two years (today capped at 140 days), elected judges, and a long document requiring voter approval to change. Texas still governs itself inside that reaction today.");
   N(s, `
 TIMING: 6 minutes. This is the single most consequential slide in Chapter 1 for
 the rest of the course.
@@ -358,9 +358,9 @@ crashes?" That question does real work and sets up the finance chapter.
   const s = k.slide("Who Texans are now", "Demographics");
   k.figure(s, "tx1_dallas_skyline.jpg", 7.55, 1.95, 5.15, 2.75, null);
   const facts = [
-    ["\u25B2", "Growth", "Roughly 31.3 million people as of 2024, up from 29.1 million in 2020. Frequently the largest numeric gain of any state.", C.TEAL],
-    ["\u2302", "Urban", "Four of the fifteen largest cities in the United States are in Texas. Growth is concentrated in Houston, Dallas-Fort Worth, San Antonio, and Austin.", C.GOLD],
-    ["\u2696", "Majority-minority", "Texas lost its white majority in 2004. Since about 2022, Hispanic Texans have been the largest group, roughly 40 percent, about even with non-Hispanic white Texans.", C.CRIM],
+    ["\u25B2", "Growth", "Roughly 31.7 million people as of July 2025, up from 29.1 million in 2020. Texas added about 391,000 residents in a single year, the largest numeric gain of any state.", C.TEAL],
+    ["\u2302", "Urban", "Five of the fifteen largest cities in the United States are in Texas, and four of the top ten. Growth is concentrated in Houston, Dallas-Fort Worth, San Antonio, and Austin.", C.GOLD],
+    ["\u2696", "Majority-minority", "Texas lost its white majority in 2004. Since 2022, Hispanic Texans have been the largest group: about 41 percent in 2025, compared with about 37 percent non-Hispanic white.", C.CRIM],
   ];
   let y = 1.95;
   facts.forEach(([g, t, d, col]) => {
@@ -493,7 +493,7 @@ rather than a description. Redirect to evidence every time.
   const s = k.slide("What the history actually explains", "Putting it together");
   const links = [
     ["\u2696", "Weak governor", "The reaction to Governor Davis produced a deliberately fragmented executive. Chapter 5.", C.INK],
-    ["\u23F1", "140 day sessions", "The same reaction limited the Legislature to a short biennial session. Chapter 4.", C.TEAL],
+    ["\u23F1", "140 day sessions", "The same reaction limited the Legislature to a biennial session; the 140-day cap was added by amendment in 1960. Chapter 4.", C.TEAL],
     ["\u2691", "Elected judges", "Distrust of appointed power made the judiciary answerable to voters. Chapter 6.", C.GOLD],
     ["\u26FD", "Oil and the budget", "Spindletop linked school funding and highways to energy prices. Chapters 14 and 17.", C.CRIM],
   ];

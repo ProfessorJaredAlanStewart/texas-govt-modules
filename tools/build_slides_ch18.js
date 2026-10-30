@@ -64,7 +64,7 @@ seriously.
   N(s, `
 TIMING: 1 minute.
 
-Point at #4 and #5. Objective 4 covers the tool Texas invented and other states
+Point at #4 and #5. Objective 4 covers the tool Texas made famous and other states
 copied. Objective 5 is the one with a practical payoff students can actually use.
 
 If you compress, shorten #2 since the structure repeats Chapter 5's logic.
@@ -77,7 +77,7 @@ If you compress, shorten #2 since the structure repeats Chapter 5's logic.
   k.figure(s, "tx1_texas_capitol.jpg", 8.5, 1.95, 4.2, 2.15, null);
   s.addText([
     { text: "Bureaucracy ", options: { bold: true, color: C.INK } },
-    { text: "is the permanent administrative machinery of government: the agencies, boards, and commissions that carry out what the Legislature decides. In Texas roughly 300,000 people work in state government, and none of them are elected to the jobs they do.", options: { color: C.BODY } },
+    { text: "is the permanent administrative machinery of government: the agencies, boards, and commissions that carry out what the Legislature decides. In Texas about 370,000 full-time-equivalent employees work in state government (FY2025), more than half of them at public colleges and universities, and none of them are elected to the jobs they do.", options: { color: C.BODY } },
   ], {
     x: M, y: 1.95, w: 7.6, h: 1.2, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13.5, lineSpacing: 19, valign: "top",
@@ -233,14 +233,14 @@ arrangement.
 
 /* 8 */
 {
-  const s = k.slide("The tool Texas invented", "Sunset review");
+  const s = k.slide("The tool Texas made famous", "Sunset review");
   k.figure(s, "tx4_texas_capitol_interior.jpg", 8.5, 1.95, 4.2, 2.1, null);
   s.addText("Under the Texas Sunset Act of 1977, most state agencies are automatically abolished on a set date unless the Legislature affirmatively votes to continue them. The burden of proof falls on the agency to justify its own existence.", {
     x: M, y: 1.95, w: 7.6, h: 0.95, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13.5, color: C.BODY, lineSpacing: 18, valign: "top",
   });
   const how = [
-    ["The cycle", "About 130 agencies are reviewed on a roughly twelve year cycle, a handful each session."],
+    ["The cycle", "About 130 agencies are reviewed on a roughly twelve-year cycle, twenty to thirty each biennium."],
     ["The commission", "The Sunset Advisory Commission has twelve members: five senators, five representatives, and two public members."],
     ["The process", "Staff conduct an in-depth evaluation, the commission holds public hearings and adopts recommendations, and the Legislature acts."],
     ["The outcomes", "An agency may be continued, continued with changes, consolidated with another, or abolished outright."],
@@ -251,8 +251,8 @@ arrangement.
     s.addText(d, { x: M + 2.0, y, w: 5.85, h: 0.74, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 0.82;
   });
-  k.statCallout(s, M, 6.4, W - M * 2, 0.65, "38 states",
-    "have adopted some form of sunset review since Texas created it. Colorado was first; Texas built the model others studied.");
+  k.statCallout(s, M, 6.4, W - M * 2, 0.65, "36 states",
+    "have adopted some form of sunset review. Colorado passed the first sunset law in 1976; Texas followed in 1977, and its version became the model others studied.");
   N(s, `
 TIMING: 7 minutes. The distinctive Texas contribution.
 
@@ -268,9 +268,10 @@ THE PUBLIC MEMBERS are worth naming. Two of the twelve commission members are
 private citizens appointed by the lieutenant governor and speaker. That is unusual
 in Texas oversight structures.
 
-TEXAS IS THE MODEL OTHERS COPIED, which is a rare case of Texas exporting an
-institution rather than importing one. Students find that satisfying and it is
-accurate.
+TEXAS IS THE MODEL OTHERS COPIED. Colorado passed the first sunset law in 1976;
+Texas followed in 1977 and its version became the one other states studied. That
+is a rare case of Texas exporting an institution rather than importing one.
+Students find that satisfying and it is accurate.
   `);
 }
 
@@ -291,7 +292,7 @@ accurate.
       "Recommendations can be weakened or ignored when the Legislature acts on them",
     ], 2.85);
   k.defBox(s, M, 5.05, W - M * 2, 2.0, "A fair reading",
-    "The Sunset Commission reports that roughly 95 agencies have been abolished or consolidated and that the process has produced savings and revenue gains many times its operating cost. It is also true that most agencies are continued, which supporters read as evidence that most agencies are justified and critics read as evidence the process is not stringent. Both readings use the same number.");
+    "The Sunset Commission reports that since 1977 it has abolished 42 agencies and consolidated 54 more (96 in all), and that reviews since 1985 have produced about $1.1 billion in savings and revenue, roughly $17 for every $1 the process costs (as of September 2025). It is also true that most agencies are continued, which supporters read as evidence that most agencies are justified and critics read as evidence the process is not stringent. Both readings use the same number.");
   N(s, `
 TIMING: 7 minutes.
 

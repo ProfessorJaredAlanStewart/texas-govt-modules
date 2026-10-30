@@ -82,7 +82,7 @@ Objective 2 is where the class discussion lives.
   });
   const pts = [
     ["Why it is separate", "Because the grid does not cross state lines in a way that triggers federal jurisdiction, ERCOT largely falls outside Federal Energy Regulatory Commission regulation of interstate transmission."],
-    ["Who oversees it", "The Public Utility Commission of Texas, whose three commissioners are appointed by the governor, oversees ERCOT. The Legislature sets the statutory framework."],
+    ["Who oversees it", "The Public Utility Commission of Texas, whose five commissioners are appointed by the governor with Senate consent, oversees ERCOT. The Legislature sets the statutory framework."],
     ["The trade", "Independence from federal regulation, and very limited ability to import power from neighboring states during a crisis."],
   ];
   let y = 3.0;
@@ -348,7 +348,7 @@ consequences for agriculture and for the towns that depend on it.
     ["Regional planning", "The Texas Water Development Board coordinates sixteen regional planning groups that produce a state water plan every five years, projecting supply and demand fifty years out."],
     ["The gap", "State water plans have consistently projected that without new supply and infrastructure, Texas would face serious shortages during drought, with substantial economic losses."],
     ["Aging systems", "Many Texas water systems lose a significant share of treated water to leaks before it reaches a tap, and small rural systems often lack the capital to replace lines."],
-    ["Proposition 4, 2025", "Voters approved dedicating up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years, passing with roughly 71 percent support."],
+    ["Proposition 4, 2025", "Voters approved dedicating up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years, passing with about 70 percent support."],
   ];
   let y = 1.95;
   pts.forEach(([t, d], i) => {
@@ -358,14 +358,14 @@ consequences for agriculture and for the towns that depend on it.
     s.addText(d, { x: M + 0.28, y: y + 0.46, w: W - M * 2 - 0.56, h: 0.62, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 16, valign: "top" });
     y += 1.19;
   });
-  s.addText("Seventy-one percent approval is unusual in Texas politics. Water is one of the few issues where the coalition is not partisan.", {
+  s.addText("Seventy percent approval is unusual in Texas politics. Water is one of the few issues where the coalition is not partisan.", {
     x: M, y: 6.62, w: W - M * 2, h: 0.42, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 12.5, italic: true, color: C.INK, valign: "top",
   });
   N(s, `
 TIMING: 6 minutes.
 
-THE 71 PERCENT NUMBER IS THE STORY. In a state where most issues split sharply,
+THE 70 PERCENT NUMBER IS THE STORY. In a state where most issues split sharply,
 water funding drew support across the political spectrum. Ask students why. The
 usual answer is that water scarcity is concrete, visible, and affects agriculture,
 cities, and industry alike, so the coalition is broad.
@@ -424,7 +424,7 @@ DO NOT DECLARE A WINNER. Both columns contain accurate claims.
 {
   const s = k.discussion("Pause and think", "Commons, trade-offs, and time horizons", [
     "The rule of capture lets a landowner pump groundwater even if a neighbor's well goes dry. It is defended as a property right and criticized as a tragedy of the commons. Can both be true, and how would you resolve it?",
-    "Water funding passed with 71 percent support while energy and environmental questions split Texans sharply. What makes an issue capable of building that kind of coalition?",
+    "Water funding passed with 70 percent support while energy and environmental questions split Texans sharply. What makes an issue capable of building that kind of coalition?",
     "Texas plans water supply fifty years ahead while its Legislature meets 140 days every two years. Which problems does a government like this handle well, and which does it handle badly?",
   ]);
   N(s, `

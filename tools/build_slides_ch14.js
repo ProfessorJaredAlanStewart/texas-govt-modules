@@ -90,9 +90,11 @@ If you compress, shorten #1 by pointing at the chart rather than narrating it.
   N(s, `
 TIMING: 7 minutes.
 
-THE HEADLINE: Texas has no personal income tax, and since 2019 a constitutional
-amendment requires a statewide vote to create one. That is not merely a policy
-choice anymore; it is entrenched.
+THE HEADLINE: Texas has no personal income tax. A 1993 amendment required a
+statewide vote to create one, and in 2019 voters (74 percent) went further and
+wrote an outright ban into the constitution. Repealing it would take two-thirds
+of each chamber plus another statewide vote. That is not merely a policy choice
+anymore; it is entrenched.
 
 THE LOTTERY IS THE BIGGEST MISCONCEPTION in this chapter. Students believe it
 funds public education substantially. It contributes a small share of the
@@ -227,7 +229,7 @@ That was the design intent and it has worked as intended.
   const s = k.discussion("Pause and think", "Constraints and choices", [
     "The comptroller's revenue estimate caps what the entire Legislature may spend. Should one elected official hold that much power over the budget, and what would a better arrangement look like?",
     "Texas budgets two years in advance and requires a supermajority to spend its reserves. Does that discipline protect the state, or does it leave real needs unmet while money sits idle?",
-    "Texas voters amended the constitution in 2019 to require a statewide vote before any income tax could be created. Is entrenching a tax policy in the constitution wise, or does it tie the hands of future Texans facing circumstances we cannot foresee?",
+    "Texas voters amended the constitution in 2019 to prohibit a state income tax outright. Is entrenching a tax policy in the constitution wise, or does it tie the hands of future Texans facing circumstances we cannot foresee?",
   ]);
   N(s, `
 CRITICAL-THINKING PAUSE: 5 to 8 minutes. Optional.
@@ -381,8 +383,9 @@ on the household. That is a real analytical finding, not a partisan claim.
 
 Q3 IS THE BEST EXERCISE if you want students doing the work rather than
 debating. Every option has an organized opponent: raising sales tax hits lower
-earners, raising the franchise tax draws business opposition, an income tax now
-requires a statewide vote, and cutting exemptions creates identifiable losers.
+earners, raising the franchise tax draws business opposition, an income tax is
+now constitutionally banned and would need a new amendment (two-thirds of each
+chamber plus a statewide vote), and cutting exemptions creates identifiable losers.
 Students discover why budgets are hard.
 
 Q2 is the values question and should not be resolved by you.
@@ -393,7 +396,7 @@ Q2 is the values question and should not be resolved by you.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 14 in the Trailblazer Trek: 5 sections, 1,245 points. Students submit the Completion Report.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 14 in the Trailblazer Trek: 5 sections, 1,055 points. Students submit the Completion Report.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to weigh the low tax, low service trade-off.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];

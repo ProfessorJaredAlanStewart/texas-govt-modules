@@ -141,8 +141,9 @@ the edges are where every real dispute lives.
 
 TRY THESE OUT LOUD:
   "Who regulates marijuana?" Reserved to states, except federal law still
-  classifies it as a controlled substance, so growers cannot use national banks.
-  Both answers are correct, which is the lesson.
+  controls it (medical marijuana moved to Schedule III in 2026; the rest is
+  Schedule I), so most growers cannot use national banks. Both answers are
+  correct, which is the lesson.
   "Who controls elections?" States run them, but the Constitution and federal
   voting-rights law constrain how. Chapter 8.
   "Who handles a hurricane?" Concurrent, and the coordination failures in real
@@ -204,8 +205,8 @@ either pays in-state or knows someone who does not.
     s.addText(d, { x: M + 0.26, y: y + 0.45, w: 7.0, h: 0.4, isTextBox: true, margin: 0, fontFace: B, fontSize: 12, color: C.BODY, lineSpacing: 15 });
     y += 0.96;
   });
-  k.statCallout(s, M, 5.85, W - M * 2, 0.9, "~1/3",
-    "of the Texas state budget comes from federal funds. Texas both depends on that money and regularly litigates against the conditions attached to it.");
+  k.statCallout(s, M, 5.85, W - M * 2, 0.9, "~30%",
+    "of the Texas state budget comes from federal funds: $100.9 billion of $338.0 billion in 2026-27. Texas both depends on that money and regularly litigates against the conditions attached to it.");
   N(s, `
 TIMING: 7 minutes. The most important section in the chapter.
 
@@ -215,8 +216,9 @@ attach conditions to highway money. States are technically free to refuse, and
 functionally never do. That is how Washington legislates in areas it does not
 control.
 
-THE TENSION IS REAL AND WORTH STATING NEUTRALLY. Texas receives roughly a third of
-its budget from Washington while frequently suing over federal requirements.
+THE TENSION IS REAL AND WORTH STATING NEUTRALLY. Texas receives roughly 30
+percent of its budget from Washington while frequently suing over federal
+requirements.
 Critics call that inconsistent. Defenders answer that accepting money is not
 consent to unlimited conditions, and that the same argument gets made by states of
 both parties depending on who holds the White House. Both positions are
@@ -233,7 +235,7 @@ coverage.
 {
   const s = k.discussion("Pause and think", "Who should decide?", [
     "Washington cannot set a state drinking age directly, but it can withhold highway money until states comply. Is that legitimate persuasion or coercion dressed up as a grant?",
-    "Texas receives roughly a third of its budget from the federal government and regularly sues over federal requirements. Is that inconsistent, or is accepting money different from consenting to conditions?",
+    "Texas receives roughly 30 percent of its budget from the federal government and regularly sues over federal requirements. Is that inconsistent, or is accepting money different from consenting to conditions?",
     "Pick one policy area: immigration, environmental rules, education, or health care. Who should decide, Austin or Washington, and what principle are you using to answer?",
   ]);
   N(s, `
@@ -261,7 +263,7 @@ principle would survive a change in administration.
 {
   const s = k.slide("The balance has moved, repeatedly", "Dual to cooperative to new federalism");
   k.timeline(s, 1.95, [
-    ["1789 to 1930s", "Dual federalism", "The layer cake. National and state governments operate in separate spheres, each supreme in its own domain. Courts police the boundary."],
+    ["1870s to 1930s", "Dual federalism", "The layer cake. National and state governments operate in separate spheres, each supreme in its own domain. Courts police the boundary."],
     ["1930s to 1970s", "Cooperative federalism", "The marble cake. The New Deal and Great Society blend the levels through jointly funded, jointly administered programs."],
     ["1970s to now", "New federalism", "A partial return of authority to states through block grants and reduced regulation. The pendulum has not swung cleanly."],
   ], 2.6);
@@ -290,7 +292,11 @@ DO NOT PRESENT THIS AS PROGRESS TOWARD A CORRECT ANSWER. It is a pendulum, and
 which direction counts as improvement is a value judgment. After September 11 the
 federal government recentralized authority in homeland security even during the
 new federalism era. The trend line is not clean.
-  `);
+  
+PERIODIZATION NOTE: the 1870s start date follows OpenStax, the base text. Many
+Texas Government textbooks date dual federalism from 1789; say which convention
+you are using if students have seen the other.
+`);
 }
 
 /* 10 THE COURT CASES */
@@ -335,10 +341,10 @@ sober sentence, not a flourish.
   const s = k.slide("Where Texas and Washington collide now", "Federalism in practice");
   k.figure(s, "tx3_texas_legislature.jpg", 8.5, 1.95, 4.2, 2.3, null);
   const fights = [
-    ["Immigration", "Texas has tested the limits of state enforcement authority, including a 2023 law making unlawful entry a state crime. Courts have weighed it against federal primacy over immigration."],
+    ["Immigration", "Texas has tested the limits of state enforcement authority with SB 4, a 2023 law making unlawful entry a state crime. Blocked in court for two years, it took effect in May 2026 after the full Fifth Circuit dismissed the challenge on standing grounds without deciding whether federal law preempts it. New suits are pending."],
     ["Health care", "Texas declined the Affordable Care Act's Medicaid expansion, a choice the Supreme Court made optional in 2012. Chapters 12 and 14."],
     ["Environment", "Texas has repeatedly litigated against federal air quality and emissions rules administered through delegated authority. Chapter 17."],
-    ["Marijuana", "Reserved to the states in practice, yet still a federally controlled substance, which keeps the industry out of national banking."],
+    ["Marijuana", "Reserved to the states in practice, yet still federally controlled: in April 2026 DEA moved state-licensed medical marijuana to Schedule III, but recreational marijuana stays in Schedule I, which keeps much of the industry out of national banking."],
   ];
   let y = 1.95;
   fights.forEach(([t, d]) => {
@@ -352,7 +358,11 @@ sober sentence, not a flourish.
 TIMING: 6 minutes.
 
 CHECK CURRENCY BEFORE TEACHING. Immigration litigation in particular moves fast.
-Confirm the posture of any case you plan to discuss.
+Confirm the posture of any case you plan to discuss. As of October 2026: the en
+banc Fifth Circuit (10-7, April 24, 2026) vacated the injunction against SB 4 for
+lack of standing; a panel stayed a second injunction on May 29, 2026; SB 4 is
+enforceable and the merits remain undecided (LML v. Martin; La Union del Pueblo
+Entero v. Abbott).
 
 THE CLOSING BOX IS THE MOST IMPORTANT LINE ON THIS SLIDE. State attorneys general
 of both parties sue Washington far more when the opposing party holds the
@@ -453,8 +463,9 @@ federal funds in the state budget. It turns an abstract argument about
 intergovernmental relations into a number students can see, and it pairs well
 with Chapter 14.
 
-Oyez has audio for Gibbons and summaries for McCulloch. Hearing lawyers argue
-about the meaning of "commerce" makes the abstraction concrete.
+Oyez has case summaries and the opinions for Gibbons and McCulloch; no argument
+audio exists before 1955. Reading Marshall's definition of "commerce" aloud
+makes the abstraction concrete.
   `);
 }
 
