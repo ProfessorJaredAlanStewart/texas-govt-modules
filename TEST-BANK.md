@@ -903,11 +903,11 @@ packages are in `qti/`.
 - C. The Comptroller
 - D. The Lieutenant Governor
 
-**5.B10** How many state boards, commissions, and agencies make up the Texas executive branch?
+**5.B10** Roughly how many state boards, commissions, and other bodies receive appointments from the Texas governor?
 
 - A. 100
 - B. 200
-- C. Over 400 **← correct**
+- C. More than 300 **← correct**
 - D. 50
 
 **5.B11** Who is the day-to-day presiding officer of the Texas Senate?
