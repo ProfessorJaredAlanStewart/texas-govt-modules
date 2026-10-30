@@ -35,7 +35,7 @@ Set that tone in the first two minutes and the rest of the chapter goes better.
     ["\u23F1", "Timing", "About 75 minutes with all three pauses. For a 50 minute class, cut the victims' rights slide and one pause.", C.TEAL],
     ["\u270E", "Editable", "Everything is a real text box or shape. Change wording, reorder, or delete freely.", C.GOLD],
     ["\u2696", "Handle with care", "Students in your room have lived parts of this. Teach the system, not personal stories, and never call on anyone to share.", C.CRIM],
-    ["\u2611", "Ties to the module", "Slide order follows Chapter 13's eight sections. Assessment items are in TEST-BANK.md Part A.", C.INK],
+    ["\u2611", "Ties to the module", "Slide order follows Chapter 13's nine sections. Assessment items are in TEST-BANK.md Part A.", C.INK],
   ]);
   N(s, `
 INSTRUCTOR-ONLY SLIDE. Delete before projecting.
@@ -354,7 +354,7 @@ are both in the room.
   const facts = [
     ["How it works", "A capital felony conviction leads to a separate punishment phase. The jury must find future dangerousness and weigh mitigating evidence. The only alternatives are death or life without parole."],
     ["Automatic review", "Every death sentence is automatically reviewed by the Texas Court of Criminal Appeals. Chapter 6."],
-    ["Exonerations", "Texas also leads in exonerations. The Timothy Cole Act compensates the wrongfully convicted, and DNA testing has overturned convictions."],
+    ["Exonerations", "Texas ranks second only to Illinois in exonerations (more than 400 since 1989, per the National Registry of Exonerations). The Timothy Cole Act compensates the wrongfully convicted, and DNA testing has overturned convictions."],
   ];
   let y = 3.2;
   facts.forEach(([t, d]) => {
@@ -372,8 +372,8 @@ are both in the room.
   N(s, `
 TIMING: 8 minutes. Handle carefully and state both cases fairly.
 
-THE JUXTAPOSITION IS THE LESSON: Texas leads the nation in executions and also in
-exonerations. Both are documented. Put them side by side and let students sit with
+THE JUXTAPOSITION IS THE LESSON: Texas leads the nation in executions and ranks
+second in exonerations (behind Illinois). Both are documented. Put them side by side and let students sit with
 it rather than resolving it for them.
 
 FUTURE DANGEROUSNESS is the element that distinguishes Texas capital sentencing.
@@ -397,7 +397,7 @@ course.
   const s = k.slide("What happens after sentencing", "Corrections and reentry");
   k.figure(s, "tx13_texas_prison.jpg", 8.5, 1.95, 4.2, 2.1, null);
   const parts = [
-    ["TDCJ", "The Texas Department of Criminal Justice runs state prisons, state jails, parole supervision, and community supervision, under a nine-member board appointed by the governor."],
+    ["TDCJ", "The Texas Department of Criminal Justice runs state prisons, state jails, and parole supervision, and funds and sets standards for local community supervision (probation) departments, under a nine-member board appointed by the governor."],
     ["Probation", "Community supervision imposed instead of incarceration, with conditions. Violating them can send a person to prison."],
     ["Parole", "Supervised release before a sentence ends, decided by the Board of Pardons and Paroles rather than by a judge."],
     ["Reentry", "Roughly nine of every ten people in Texas prisons will be released. What happens after release determines whether the system reduces crime or recycles it."],
@@ -433,7 +433,7 @@ Chapter 18 covers the licensing side.
 /* 13 */
 {
   const s = k.discussion("Pause and think", "Justice, error, and purpose", [
-    "Texas leads the nation in executions and in exonerations. How should a state weigh the possibility of irreversible error against the case for capital punishment?",
+    "Texas leads the nation in executions and is second in exonerations. How should a state weigh the possibility of irreversible error against the case for capital punishment?",
     "Bail is constitutionally about ensuring a defendant returns to court, not about punishment. Given that, what would a bail system designed only for that purpose look like?",
     "Nine of every ten people in Texas prisons will be released. Should the primary goal of corrections be punishment, deterrence, incapacitation, or rehabilitation, and how would you know if it was working?",
   ]);
@@ -460,7 +460,7 @@ serious problems. That discovery is the learning.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 13 in the Trailblazer Trek: 8 sections, 1,760 points, one of the longest in the course.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 13 in the Trailblazer Trek: 9 sections, 1,760 points, one of the longest in the course.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to weigh the rights of the accused against public safety.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];

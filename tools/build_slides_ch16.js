@@ -186,8 +186,8 @@ function discussionSlide(kicker, title, questions) {
   });
   notes(s, `
 CHAPTER 16: CIVIL LIBERTIES AND CIVIL RIGHTS IN TEXAS
-Full deck runs about 70 minutes with two discussion breaks; see the "How to use
-this deck" slide for shorter versions.
+Full deck runs about 80 minutes with all three discussion pauses; see the "How to
+use this deck" slide for shorter versions.
 
 OPENING (2 min). Ask before showing anything else: "Name a right you have."
 Students almost always name liberties, speech, religion, guns. Note that, then
@@ -382,7 +382,7 @@ can tell me which kind of claim you have?" (Answer: whether others got one.)
     x: M + 0.3, y: 4.95, w: 0.8, h: 1.0, isTextBox: true, margin: 0,
     fontFace: H, fontSize: 52, bold: true, color: GOLD, align: "center", valign: "middle",
   });
-  s.addText("landmark U.S. Supreme Court cases in this chapter began in Texas, covering speech, voting, schools, ethnicity, privacy, immigration, and admissions.", {
+  s.addText("of this chapter's landmark U.S. Supreme Court cases began in Texas, covering speech, voting, schools, ethnicity, privacy, immigration, and admissions. An eighth, Roe v. Wade, began in Dallas.", {
     x: M + 1.2, y: 4.95, w: 5.3, h: 1.1, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13, color: WHITE, lineSpacing: 17, valign: "middle",
   });
@@ -394,7 +394,8 @@ people with specific grievances, not by philosophers.
 
 Preview the seven so students hear the names early: Johnson (flag burning),
 Smith v. Allwright (white primary), Sweatt (UT law school), Hernandez (juries),
-Lawrence (privacy), Plyler (school access), Fisher (admissions).
+Lawrence (privacy), Plyler (school access), Fisher (admissions). Roe v. Wade
+(Dallas County, 1973) also began here and is covered in the privacy section.
 
 If you want a hook: ask which of those they've heard of. Most will know flag
 burning and none will know Hernandez. That asymmetry is worth naming out loud , 
@@ -612,9 +613,10 @@ THE FACT THAT SURPRISES THEM: for 80 years the Bill of Rights did not restrain
 Texas at all. Say it plainly and let it sit.
 
 "Selective" is the word to emphasize, not all at once, one right at a time,
-across a century. Two provisions still are NOT incorporated: the Fifth
-Amendment's grand jury requirement and the Seventh Amendment's civil jury right.
-That is why Texas can structure those matters its own way.
+across a century. The main provisions still NOT incorporated are the Fifth
+Amendment's grand jury requirement and the Seventh Amendment's civil jury right
+(the Third Amendment has never been tested at the Court). That is why Texas can
+structure those matters its own way.
 
 TIE IT TOGETHER: every time a headline says "a federal judge struck down a Texas
 law under the First Amendment," incorporation is the reason a federal amendment
@@ -731,7 +733,7 @@ this line differently.
   s.addShape(pres.ShapeType.roundRect, { x: M + cw + 0.45, y: 1.9, w: cw, h: 2.2, rectRadius: 0.07, fill: { color: WHITE }, line: { color: "E0D7C6", width: 1 } });
   circle(s, M + cw + 0.73, 2.12, "\u271D", GOLD);
   s.addText("Free Exercise Clause", { x: M + cw + 1.37, y: 2.18, w: cw - 1.2, h: 0.38, isTextBox: true, margin: 0, fontFace: B, fontSize: 15, bold: true, color: INK });
-  s.addText("Government may not interfere with individuals practicing their faith. Texas Article I, Section 6 protects worship and bars religious tests for office.", { x: M + cw + 0.73, y: 2.82, w: cw - 0.56, h: 1.1, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, color: BODY, lineSpacing: 18 });
+  s.addText("Government may not interfere with individuals practicing their faith. Texas Article I, Section 6 protects freedom of worship, and Section 4 bars any religious test for office.", { x: M + cw + 0.73, y: 2.82, w: cw - 0.56, h: 1.1, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, color: BODY, lineSpacing: 18 });
   s.addShape(pres.ShapeType.roundRect, { x: M, y: 4.35, w: W - M * 2, h: 1.95, rectRadius: 0.07, fill: { color: INK } });
   s.addText("Where they collide", { x: M + 0.32, y: 4.55, w: 6, h: 0.36, isTextBox: true, margin: 0, fontFace: B, fontSize: 14, bold: true, color: GOLD });
   s.addText([
@@ -778,7 +780,7 @@ whether the room is safe for theirs.
   // timeline
   const tl = [["Aug 2025", "District judge blocks the law for the districts sued"],
               ["Apr 2026", "Full Fifth Circuit reverses, 9–8, upholding the law"],
-              ["Now", "Families have asked the U.S. Supreme Court to take the case"]];
+              ["Aug 2026", "Families petition the U.S. Supreme Court (No. 26-257); Texas's response due Nov 10, 2026. No decision yet on whether the Court will hear it"]];
   const tw = (W - M * 2 - 0.6) / 3;
   tl.forEach(([d, t], i) => {
     const x = M + i * (tw + 0.3);
@@ -793,6 +795,11 @@ TIMING: 7 minutes including discussion. This is the deck's main discussion slide
 academic year. Confirm the current posture before class, a Supreme Court grant,
 denial, or ruling would change the last box. The module and this deck are
 reviewed each legislative session.
+
+As of Oct 30, 2026: cert petition pending; Texas's brief in opposition due
+Nov 10, 2026. A second petition (Cribbs Ringer v. Comal ISD) and a statewide
+class action (Ashby v. Schertz-Cibolo-Universal City ISD, filed Dec 2025) are
+also pending.
 
 HOW TO RUN THE DISCUSSION (this works better than open debate):
   1. Ask students to argue the side they DISAGREE with, in pairs, for 3 minutes.
@@ -1025,8 +1032,11 @@ Another 5–4 case. The dissent argued this was a policy judgment for legislatur
 rather than courts, worth presenting fairly.
 
 CURRENCY NOTE: state authority over immigration is actively litigated, including
-Texas's SB 4 (2023). Check the posture before teaching if you plan to go beyond
-Plyler itself.
+Texas's SB 4 (2023). As of fall 2026 the law is being enforced: the en banc Fifth
+Circuit vacated the first injunction on standing grounds (Apr 24, 2026), and a
+Fifth Circuit panel stayed a second injunction (May 29, 2026) while the appeal
+proceeds. Check the posture before teaching if you plan to go beyond Plyler
+itself.
 
 This is a slide where students may have personal stakes. Teach the holding and
 the reasoning; you do not need to invite disclosure, and you should not.
@@ -1039,7 +1049,7 @@ the reasoning; you do not need to invite disclosure, and you should not.
   const q = [
     ["\u2611", "Voting", "SB 1 (2021) ended drive-through and 24-hour voting, added mail-ballot ID, expanded poll watchers.", "Integrity and public confidence vs. access for elderly, disabled, and low-income voters"],
     ["\u2696", "Admissions", "Fisher upheld UT's program in 2016; the Court ended race-conscious admissions nationwide in 2023. SB 17 closed DEI offices.", "A colorblind Constitution vs. remedying documented past discrimination"],
-    ["\u2691", "Immigration", "SB 4 (2023) made unlawful entry a state crime; challenged as conflicting with federal authority.", "A border state's self-protection vs. federal supremacy and profiling risk"],
+    ["\u2691", "Immigration", "SB 4 (2023) made unlawful entry a state crime. Blocked for over two years, it took effect in 2026 after the full Fifth Circuit (Apr 2026, 10–7) dismissed the original challenge on standing grounds and a later injunction was stayed; appeals continue.", "A border state's self-protection vs. federal supremacy and profiling risk"],
     ["\u26A5", "Sex and gender", "2023 laws on transition care for minors and school sports; a 2025 law defining sex for state records.", "Protecting minors, women's sports, parental rights vs. discrimination against transgender Texans"],
   ];
   let y = 1.8;

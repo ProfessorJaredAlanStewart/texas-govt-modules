@@ -84,8 +84,8 @@ If you compress anything, compress #4.
   });
   k.defBox(s, M, 3.6, 7.55, 1.5, "Dillon's Rule",
     "The traditional principle that local governments possess only the powers expressly granted by the state, those necessarily implied by a granted power, and those essential to the purpose of the government. Anything doubtful is resolved against the local government.");
-  k.statCallout(s, M, 5.3, W - M * 2, 1.05, "5,300+",
-    "units of local government operate in Texas: 254 counties, more than 1,200 cities, over 1,000 school districts, and thousands of special districts.");
+  k.statCallout(s, M, 5.3, W - M * 2, 1.05, "5,500+",
+    "units of local government operate in Texas: 254 counties, about 1,225 cities, about 1,020 independent school districts, and roughly 3,000 special districts (2022 Census of Governments).");
   s.addText("Texas is a federal partner to Washington and a unitary sovereign over its own cities. That asymmetry explains most of this chapter.", {
     x: M, y: 6.5, w: W - M * 2, h: 0.45, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 12.5, italic: true, color: C.INK, valign: "top",
@@ -103,7 +103,7 @@ DILLON'S RULE IS THE VOCABULARY TO OWN. When a city asks whether it may do
 something, the default answer under Dillon's Rule is no unless the state said
 yes. Home rule, on the next slide, flips that default for larger cities.
 
-THE 5,300 FIGURE surprises students every time. Ask how many governments they
+THE 5,500 FIGURE surprises students every time. Ask how many governments they
 think they live under. Most guess two or three. The real answer is usually five
 or six.
   `);
@@ -220,9 +220,10 @@ is that attention follows media coverage, and media coverage follows scale and
 conflict. Local government is consequential and boring, which is a dangerous
 combination for accountability.
 
-Q1 is the structural question. Some states do give cities constitutional home
-rule protection. Texas gives statutory home rule that the Legislature can narrow,
-which sets up the preemption slide.
+Q1 is the structural question. Texas home rule is written into the state
+constitution (Article XI, Section 5), but that same section makes city charters
+subject to the Legislature's general laws, so the state can narrow home rule by
+statute. That sets up the preemption slide.
 
 Q2 produces good disagreement. Students who value expertise and students who
 value accountability will split, and both are defensible.
@@ -233,14 +234,14 @@ value accountability will split, and both are defensible.
 {
   const s = k.slide("The county is the state's local arm", "County government");
   k.figure(s, "tx7_texas_county_map.jpg", 8.5, 1.95, 4.2, 2.25, null);
-  s.addText("All 254 Texas counties share the same structure, whether they serve 64 people or 4.8 million. Counties are general law units: they administer state functions such as courts, jails, records, roads, and elections, and they cannot pass ordinances the way home rule cities can.", {
+  s.addText("All 254 Texas counties share the same structure, whether they serve about 50 people or 5 million. Counties are general law units: they administer state functions such as courts, jails, records, roads, and elections, and they cannot pass ordinances the way home rule cities can.", {
     x: M, y: 1.95, w: 7.6, h: 1.15, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13.5, color: C.BODY, lineSpacing: 18, valign: "top",
   });
   k.defBox(s, M, 3.25, 7.6, 1.5, "The commissioners court",
     "The governing body of a Texas county, made up of the county judge, elected countywide, and four county commissioners elected from precincts. Despite the name it is an administrative body, not a court, though in smaller counties the county judge also hears certain cases.");
   const facts = [
-    ["Same structure for every county", "Loving County with about 64 residents and Harris County with 4.8 million operate under identical rules."],
+    ["Same structure for every county", "Loving County with roughly 60 residents and Harris County with about 5 million (2025 Census estimates) operate under identical rules."],
     ["No ordinance power", "Counties generally cannot regulate the way cities do, which limits their response to growth in unincorporated areas."],
     ["Road building by precinct", "Each commissioner has historically overseen roads in their own precinct, which critics call inefficient and defenders call responsive."],
   ];
@@ -255,8 +256,9 @@ TIMING: 6 minutes.
 
 THE ONE-SIZE-FITS-ALL PROBLEM is the analytical point. Loving County and Harris
 County have the same governing structure. Ask whether that makes sense. It is
-hard to defend on the merits, and the reason it persists is constitutional:
-changing it requires amending Article IX and a statewide vote.
+hard to defend on the merits, and the reason it persists is constitutional: the
+commissioners court is fixed by Article V, Section 18, so changing it requires a
+constitutional amendment approved by voters statewide.
 
 THE NAME CONFUSION IS WORTH CLEARING UP IMMEDIATELY. The commissioners court is
 not a court. The county judge is often not a lawyer. Both names are historical
@@ -278,8 +280,8 @@ disputes over drainage, roads, and utilities.
     ["Commissioners", "Four, elected by precinct. Set the budget and tax rate with the judge and oversee roads in their precincts."],
     ["Sheriff", "Chief law enforcement officer, runs the county jail, and provides bailiffs."],
     ["District and county attorneys", "Prosecute criminal cases and advise county government."],
-    ["County and district clerks", "Keep records. The county clerk is the chief election officer in most counties."],
-    ["Tax assessor-collector", "Collects property taxes and, in most counties, serves as voter registrar."],
+    ["County and district clerks", "Keep records. The county clerk runs elections in about half of Texas counties, mostly smaller ones; the rest, including Tarrant, Dallas, and Harris, use an appointed elections administrator."],
+    ["Tax assessor-collector", "Collects property taxes and, in counties without an elections administrator, serves as voter registrar."],
   ];
   let y = 1.95;
   officials.forEach(([t, d]) => {
@@ -296,10 +298,12 @@ THE CLOSING BOX IS THE POINT. Do not let students memorize six offices without
 seeing the pattern. Counties replicate the plural executive: fragmented power, no
 chain of command, every official independently elected.
 
-TWO OFFICES DESERVE SPECIAL MENTION because of Chapter 8. The county clerk runs
-elections in most counties, and the tax assessor-collector serves as voter
-registrar. Those are the officials who decide, in practice, how easy it is to
-register and vote in a given county, and almost nobody votes in those races.
+TWO OFFICES DESERVE SPECIAL MENTION because of Chapter 8. In roughly half the
+counties the county clerk runs elections and the tax assessor-collector registers
+voters; in the other half, including most large counties, an appointed elections
+administrator does both. Either way, these are the officials who decide, in
+practice, how easy it is to register and vote, and almost nobody votes in the
+clerk and assessor races.
 
 PATRONAGE: many county offices still operate without merit hiring systems.
 Chapter 18 returns to this.
@@ -357,9 +361,9 @@ individual participation counts for most.
 {
   const s = k.slide("When Austin overrules city hall", "Preemption");
   k.figure(s, "tx7_fort_worth_city_hall.jpg", 8.5, 1.95, 4.2, 2.2, null);
-  s.addText("Because cities are creatures of the state, the Legislature can override local ordinances. As Texas cities have grown more urban and more liberal while the Legislature has remained conservative, preemption has become one of the sharpest conflicts in state politics.", {
-    x: M, y: 1.95, w: 7.6, h: 1.0, isTextBox: true, margin: 0,
-    fontFace: B, fontSize: 13.5, color: C.BODY, lineSpacing: 18, valign: "top",
+  s.addText("Because cities are creatures of the state, the Legislature can override local ordinances. As Texas cities have grown more urban and more liberal while the Legislature has remained conservative, preemption has become one of the sharpest conflicts in state politics. The sharpest recent example is HB 2127 (2023), the \"Regulatory Consistency Act\" that critics call the \"Death Star\" bill. Houston, San Antonio, and El Paso sued; a Travis County judge struck it down in 2023, but the Third Court of Appeals reversed in July 2025 for lack of standing, so the law is in effect.", {
+    x: M, y: 1.95, w: 7.6, h: 1.1, isTextBox: true, margin: 0,
+    fontFace: B, fontSize: 11.5, color: C.BODY, lineSpacing: 15, valign: "top",
   });
   k.twoSides(s, 3.1,
     "The case for state preemption", [
@@ -394,6 +398,9 @@ whether you like the policy in question?" That question does more work than any
 example, and it applies to students on every side.
 
 The closing line matters. Both columns cite real Texas values.
+
+CHECK CURRENCY: as of October 2026 the cities had not won a merits ruling on HB
+2127; they said they could re-file once a specific ordinance is challenged.
   `);
 }
 

@@ -92,9 +92,9 @@ IF YOU TAUGHT CHAPTER 1 OR 2, this is review. Move fast and get to the
 consequence.
 
 THE COMPARISON THAT LANDS: the president appoints the entire cabinet and can
-dismiss any of them. The governor of Texas appoints the secretary of state and
-essentially no other principal executive officer. Everyone else was elected by the
-same voters who elected the governor, and often ran against the governor's
+dismiss any of them. The governor of Texas appoints the secretary of state and a
+handful of agency heads, but every other statewide executive officer was elected
+by the same voters who elected the governor, and often ran against the governor's
 positions.
 
 ASK: "What happens when the governor and the attorney general disagree about
@@ -114,7 +114,7 @@ The closing line is the thesis. Write it on the board.
     ["Veto", "Reject a bill outright. An override requires two-thirds of each chamber, which is rare, especially after a session ends."],
     ["Line-item veto", "Strike individual spending items from an appropriations bill without killing the whole bill. This applies only to spending."],
     ["Special sessions", "Call the Legislature back for up to 30 days, and set the agenda. Lawmakers may consider only what the governor lists."],
-    ["Appointments", "Name thousands of people to boards, commissions, and university regencies over a full term, subject to Senate confirmation."],
+    ["Appointments", "Name roughly 1,500 people per term to boards, commissions, and university regencies, subject to Senate confirmation; over multiple terms that becomes thousands."],
     ["Clemency", "Grant pardons, commutations, and reprieves, but generally only on the written recommendation of the Board of Pardons and Paroles."],
   ];
   let y = 1.95;
@@ -155,7 +155,7 @@ another piece of the 1876 design.
     ["Lieutenant Governor", "Elected statewide. Presides over the Senate and controls its committees and calendar. Widely considered the most powerful office in Texas."],
     ["Attorney General", "The state's lawyer. Represents Texas in court, issues formal legal opinions, and decides which suits to bring or defend."],
     ["Comptroller", "Chief financial officer. Collects taxes and issues the biennial revenue estimate that caps what the Legislature may spend."],
-    ["Land Commissioner", "Runs the General Land Office, manages state lands and the Permanent School Fund, and administers the Alamo."],
+    ["Land Commissioner", "Runs the General Land Office, manages state lands and the Permanent School Fund's land and mineral holdings, and administers the Alamo."],
     ["Agriculture Commissioner", "Regulates agriculture, inspects weights and measures, and administers school nutrition programs."],
   ];
   let y = 1.95;
@@ -318,7 +318,7 @@ support. The answers are revealing.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 5 in the Trailblazer Trek: 7 sections, 1,600 points. Students submit the Completion Report.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 5 in the Trailblazer Trek: 8 sections, 1,600 points. Students submit the Completion Report.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to weigh fragmented power against accountability.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];

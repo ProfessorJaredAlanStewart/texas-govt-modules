@@ -259,8 +259,8 @@ litigation, and a legislator who cares.
   const facts = [
     ["How schools are funded", "A mix of local property taxes and state aid, distributed through the Foundation School Program. The basic allotment per student is set by the Legislature."],
     ["Recapture", "Districts with high property wealth send a share of local revenue to the state for redistribution. Critics call it Robin Hood; defenders call it the constitutional requirement of an efficient system."],
-    ["Recent changes", "House Bill 3 in 2019 raised the basic allotment and cut tax rates. House Bill 2 in 2025 raised it further, to roughly $6,215 per student."],
-    ["Education Savings Accounts", "Senate Bill 2 in 2025 created the state's first program letting families use public funds toward private schooling, after years of failed attempts."],
+    ["Recent changes", "House Bill 3 in 2019 raised the basic allotment from $5,140 to $6,160 and cut tax rates. House Bill 2 in 2025 ($8.5 billion) added only $55 to the base, to $6,215, and put most new money into targeted allotments such as experience-based teacher raises."],
+    ["Education Savings Accounts", "Senate Bill 2 in 2025 created the state's first Education Savings Account program (Texas Education Freedom Accounts), after years of failed attempts. It launched in 2026-27: more than 274,000 students applied for about 110,000 funded slots under the $1 billion cap."],
   ];
   let y = 1.95;
   facts.forEach(([t, d]) => {
@@ -349,7 +349,7 @@ invite disclosure.
   s.addShape(pres.ShapeType.roundRect, { x: M, y: 1.95, w: cw, h: 4.3, rectRadius: 0.08, fill: { color: C.WHITE }, line: { color: C.LINE, width: 1 } });
   s.addText("ENERGY AND ENVIRONMENT", { x: M + 0.28, y: 2.12, w: cw - 0.56, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, bold: true, color: C.TEAL, charSpacing: 1.2, valign: "top" });
   s.addText([
-    { text: "Texas leads the nation in oil and gas production and in wind power at the same time. It runs its own grid through ERCOT, largely outside federal regulation. After Winter Storm Uri in 2021 the Legislature mandated weatherization and created the Texas Energy Fund. The state regulates air and water through the TCEQ under authority delegated by the EPA, and has repeatedly litigated against federal environmental rules.\n\nChapter 17 covers this in depth, including water law and the 2025 water fund.", options: { color: C.BODY } },
+    { text: "Texas leads the nation in oil and gas production and in wind power at the same time. It runs its own grid through ERCOT, largely outside federal regulation. After Winter Storm Uri in 2021 the Legislature mandated power-plant and gas-supply weatherization (SB 3), and in 2023 it created the $10 billion Texas Energy Fund, approved by voters as Proposition 7, to finance new dispatchable generation. The state regulates air and water through the TCEQ under authority delegated by the EPA, and has repeatedly litigated against federal environmental rules.\n\nChapter 17 covers this in depth, including water law and the 2025 water fund.", options: { color: C.BODY } },
   ], { x: M + 0.28, y: 2.5, w: cw - 0.56, h: 3.6, isTextBox: true, margin: 0, fontFace: B, fontSize: 12.5, lineSpacing: 17, valign: "top" });
   s.addShape(pres.ShapeType.roundRect, { x: M + cw + 0.4, y: 1.95, w: cw, h: 4.3, rectRadius: 0.08, fill: { color: C.WHITE }, line: { color: C.LINE, width: 1 } });
   s.addText("GUNS AND PUBLIC SAFETY", { x: M + cw + 0.68, y: 2.12, w: cw - 0.56, h: 0.3, isTextBox: true, margin: 0, fontFace: B, fontSize: 11.5, bold: true, color: C.CRIM, charSpacing: 1.2, valign: "top" });

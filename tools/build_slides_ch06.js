@@ -10,7 +10,7 @@ const B = "Calibri";
 /* 1 */
 {
   const s = k.titleSlide("Chapter 6", "The Texas\nCourt System",
-    "Two supreme courts, a thousand trial courts, and judges who run for office with campaign money.",
+    "Two supreme courts, nearly three thousand courts, and judges who run for office with campaign money.",
     "GOVT 2306  ·  Texas Government Trailblazer Trek  ·  Tarrant County College");
   N(s, `
 CHAPTER 6: THE TEXAS COURT SYSTEM
@@ -221,7 +221,7 @@ Q2 sets up the selection discussion nicely if you are running all three pauses.
 {
   const s = k.slide("Trial courts decide facts", "Trial courts");
   k.figure(s, "tx6_jp_court.jpg", M, 1.95, 4.8, 2.5,
-    "A justice of the peace courtroom. Texas has more than eight hundred JP courts.");
+    "A justice of the peace courtroom. Texas has nearly eight hundred JP courts.");
   const rows = [
     ["District courts", "Felonies, divorce and family matters, land title, and civil disputes above a dollar threshold. One judge, elected in the district."],
     ["County courts", "Constitutional county courts and statutory courts at law. Class A and B misdemeanors, probate, appeals from JP courts."],
@@ -359,7 +359,7 @@ Chapter 13 takes up how well Texas meets the criminal obligation.
 {
   const s = k.slide("Texas elects nearly all of its judges", "Judicial selection");
   k.figure(s, "tx6_judicial_election.jpg", 8.5, 1.95, 4.2, 2.35, null);
-  s.addText("From municipal benches to both high courts, Texas judges run in partisan elections, raise campaign money, and appear on the ballot with party labels. Only a handful of states do this for nearly every judicial office.", {
+  s.addText("From justice of the peace courts to both high courts, Texas judges run in partisan elections, raise campaign money, and appear on the ballot with party labels. Only a handful of states do this for nearly every judicial office.", {
     x: M, y: 1.95, w: 7.6, h: 0.85, isTextBox: true, margin: 0,
     fontFace: B, fontSize: 13.5, color: C.BODY, lineSpacing: 18, valign: "top",
   });
@@ -464,7 +464,7 @@ students past "politicians are corrupt" toward the structural obstacles.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 6 in the Trailblazer Trek: 8 sections, 1,815 points. Students submit the Completion Report.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 6 in the Trailblazer Trek: 9 sections, 1,815 points. Students submit the Completion Report.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to weigh judicial accountability against independence.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];

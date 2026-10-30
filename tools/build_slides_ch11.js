@@ -311,9 +311,9 @@ hearing. Most students have no idea. Say it directly; a few will act on it.
   const rules = [
     ["Registration", "Anyone paid above an inflation-adjusted threshold to communicate with officials must register. The threshold is roughly $1,990 in compensation or about $990 in expenditures per calendar quarter."],
     ["Fees", "$750 per year, or $150 for lobbyists representing only nonprofits."],
-    ["Activity reports", "Registered lobbyists file reports listing clients and expenditures, monthly unless spending is low enough for annual filing."],
-    ["Gift limits", "Gifts to any one official are capped at $500 per year, and reportable gifts above roughly $110 must be disclosed."],
-    ["Penalties", "Fines up to $10,000, and criminal penalties as severe as a second-degree felony for serious violations."],
+    ["Activity reports", "Registered lobbyists file reports listing clients and expenditures: monthly, or annually if they expect to spend no more than an inflation-adjusted ceiling (about $2,290 in 2026)."],
+    ["Gift limits", "Gifts to any one official are capped at $500 per year, and individual gifts above an inflation-adjusted threshold ($110 for 2026, rising to $120) must be itemized; food, drink, and entertainment are itemized above 60 percent of the legislative per diem."],
+    ["Penalties", "Civil penalties from the Ethics Commission of up to $5,000 or three times the amount at issue; criminal penalties range from a Class A misdemeanor (most knowing violations) to a third-degree felony (contingent-fee lobbying) and, for bribery, a second-degree felony with a fine of up to $10,000."],
   ];
   let y = 1.95;
   rules.forEach(([t, d]) => {
@@ -327,6 +327,9 @@ TIMING: 6 minutes.
 VERIFY THE THRESHOLDS BEFORE TEACHING. The Ethics Commission adjusts them for
 inflation, so the exact figures rise over time. The structure is what matters:
 registration above a threshold, fees, periodic reporting, gift caps, penalties.
+Current figures are on the Ethics Commission's lobby filing information page
+(ethics.state.tx.us, "Lobby info" for the current year) and in the annual Texas
+Register adjustment table (1 TAC §18.31).
 
 THE TEXAS APPROACH IS DISCLOSURE, NOT LIMITS. Texas does not cap what an interest
 group may spend on lobbying. It requires that the activity be reported and

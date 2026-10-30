@@ -120,8 +120,8 @@ CURRENCY: verify the current officeholders before class.
     s.addText(d, { x: M, y: y + 0.38, w: 7.4, h: 0.85, isTextBox: true, margin: 0, fontFace: B, fontSize: 13, color: C.BODY, lineSpacing: 18 });
     y += 1.35;
   });
-  k.statCallout(s, M, 5.95, W - M * 2, 1.0, "10,000+",
-    "bills and resolutions filed in a typical regular session. Roughly one in five becomes law. The calendar itself kills most legislation.");
+  k.statCallout(s, M, 5.95, W - M * 2, 1.0, "8,000–9,000",
+    "bills filed in a typical regular session (8,719 in 2025). Roughly one in seven becomes law. The calendar itself kills most legislation.");
   N(s, `
 TIMING: 6 minutes.
 
@@ -162,12 +162,14 @@ compressed calendar. Forward reference to Chapter 11.
     y += 0.72;
   });
   k.defBox(s, M, 5.5, W - M * 2, 1.45, "2025: a mid-decade redraw",
-    "In August 2025, years ahead of the usual schedule, the Legislature passed a new congressional map after a quorum break by House Democrats. Supporters called it a lawful exercise of legislative authority and an accurate reflection of the state's voters. Opponents called it a partisan gerrymander that diluted minority voting strength, and litigation followed. Verify the current status before teaching this.");
+    "In August 2025, years ahead of the usual schedule, the Legislature passed a new congressional map after a quorum break by House Democrats. Supporters called it a lawful exercise of legislative authority and an accurate reflection of the state's voters. Opponents called it a partisan gerrymander that diluted minority voting strength and sued. A federal three-judge panel blocked the map in November 2025, the U.S. Supreme Court stayed that ruling in December, and on April 27, 2026 the Supreme Court summarily reversed the lower court, leaving the map in force for the 2026 elections.");
   N(s, `
 TIMING: 8 minutes. The most contested slide in the chapter.
 
-CHECK CURRENCY FIRST. The 2025 map and its litigation were moving as of the
-2026-27 year. Confirm where it stands before class.
+CHECK CURRENCY FIRST. As of late October 2026 the map is in effect for the
+November 2026 election after the Supreme Court's April 27, 2026 summary reversal
+(Sotomayor, Kagan, and Jackson dissenting). Confirm nothing has changed before
+class.
 
 TEACH THE MECHANICS BEFORE THE POLITICS. Cracking and packing are neutral
 techniques that either party uses when it holds the pen. Students who learn the
@@ -260,7 +262,7 @@ walk its actual history. Students are surprised how visible the record is.
   const s = k.slide("Who serves, and what they are paid", "Compensation and composition");
   k.figure(s, "tx4_citizen_legislature.jpg", M, 1.95, 4.9, 2.5, null);
   k.statCallout(s, 5.6, 1.95, W - M - 5.6, 1.2, "$7,200",
-    "per year, a figure fixed in the constitution, plus a per diem of $267 a day while in session.");
+    "per year, a figure fixed in the constitution, plus a per diem of $221 a day while in session.");
   s.addText([
     { text: "The citizen-legislature model ", options: { bold: true, color: C.INK } },
     { text: "assumes members hold other jobs and return home to live under the laws they pass. Supporters argue this keeps government close to ordinary life and prevents a professional political class. Critics argue it guarantees that only certain kinds of people can serve, and that a part-time legislature facing full-time lobbyists is outmatched on expertise.", options: { color: C.BODY } },
@@ -269,7 +271,7 @@ walk its actual history. Students are surprised how visible the record is.
     fontFace: B, fontSize: 12.5, lineSpacing: 17, valign: "top",
   });
   k.defBox(s, M, 4.7, W - M * 2, 1.9, "The 89th Legislature, 2025",
-    "House: 88 Republicans and 62 Democrats. Senate: 20 Republicans and 11 Democrats. Women hold 61 of the 181 seats, about 34 percent, up from 27 percent four years earlier. The average age is about 55. The body remains less demographically representative than the state it governs, though the gap has narrowed.");
+    "House: 88 Republicans and 62 Democrats. Senate: 20 Republicans and 11 Democrats at the start of the session; a Democrat flipped Senate District 9 in a January 2026 special election, and one Senate seat was vacant as of fall 2026. Women hold 61 of the 181 seats, about 34 percent, up from 27 percent four years earlier. The average age is about 55. The body remains less demographically representative than the state it governs, though the gap has narrowed.");
   N(s, `
 TIMING: 6 minutes.
 
@@ -278,8 +280,8 @@ Texans have declined. Ask why voters would refuse to pay their own
 representatives more. The honest answers include distrust of politicians and a
 genuine preference for amateurs over professionals.
 
-THE PER DIEM IS THE PART STUDENTS MISS. At \$267 a day across a 140 day session,
-per diem far exceeds salary. A legislator earns roughly \$44,580 in a
+THE PER DIEM IS THE PART STUDENTS MISS. At \$221 a day across a 140 day session,
+per diem far exceeds salary. A legislator earns roughly \$38,140 in a
 regular-session year, which changes the picture from the headline \$7,200.
 
 ON COMPOSITION, STAY DESCRIPTIVE. Report the numbers and let students draw
@@ -323,7 +325,7 @@ compensation slide give you the arguments for each.
 {
   const s = k.slide("What students do next", "For the instructor");
   const cols = [
-    ["\u25B6", "Complete the module", "Chapter 4 in the Trailblazer Trek: 8 sections, 1,985 points, one of the longest chapters in the course.", C.TEAL],
+    ["\u25B6", "Complete the module", "Chapter 4 in the Trailblazer Trek: 9 sections, 1,985 points, one of the longest chapters in the course.", C.TEAL],
     ["\u270E", "Written reflection", "Each section requires 50 or more words. Prompts ask students to weigh the citizen-legislature model against its costs.", C.GOLD],
     ["\u2611", "Assessment", "TEST-BANK.md Part A has 5 unseen items for this chapter, tagged to ACGM outcomes. Parts B and C are practice only.", C.CRIM],
   ];
