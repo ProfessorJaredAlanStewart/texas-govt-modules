@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """Build Chapter 18 - The Texas Bureaucracy and Sunset Review."""
+# RETIRED (Oct 2026). This script generated the first draft of Chapter 18 by
+# cloning the Chapter 8 platform. The chapter HTML has since been edited by hand
+# (fact-check pass, completion-report template fix) and is the source of truth.
+# Re-running this would overwrite those edits and re-introduce the Chapter 8
+# report template. Kept for reference only.
+import sys as _sys
+if "--i-know-this-overwrites-the-chapter" not in _sys.argv:
+    _sys.exit("build_ch18.py is retired; the chapter HTML is the source of truth. "
+              "Pass --i-know-this-overwrites-the-chapter to run anyway.")
+
 import re, sys, html as _html
 
 TEMPLATE = "Chapter 8 - Voting Political Participation (Trailblazer Trek).html"

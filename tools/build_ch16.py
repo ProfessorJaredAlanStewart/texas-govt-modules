@@ -2,6 +2,16 @@
 """Build Chapter 16 - Civil Liberties and Civil Rights in Texas from the Chapter 8 template.
 Keeps all platform CSS/JS (point integrity, OOM-safe progress script) intact; replaces content.
 """
+# RETIRED (Oct 2026). This script generated the first draft of Chapter 16 by
+# cloning the Chapter 8 platform. The chapter HTML has since been edited by hand
+# (fact-check pass, completion-report template fix) and is the source of truth.
+# Re-running this would overwrite those edits and re-introduce the Chapter 8
+# report template. Kept for reference only.
+import sys as _sys
+if "--i-know-this-overwrites-the-chapter" not in _sys.argv:
+    _sys.exit("build_ch16.py is retired; the chapter HTML is the source of truth. "
+              "Pass --i-know-this-overwrites-the-chapter to run anyway.")
+
 import re, sys
 
 TEMPLATE = "Chapter 8 - Voting Political Participation (Trailblazer Trek).html"
