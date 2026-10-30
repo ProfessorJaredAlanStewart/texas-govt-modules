@@ -104,8 +104,8 @@ automatic registration; only a handful of states offer none of the three. That
 is a factual comparison, not an argument.
 
 If a student registered through the DPS website, have them confirm at
-VoteTexas.gov; in 2026 DPS failed to forward an unknown number of those
-applications to the counties.
+VoteTexas.gov; in 2026 DPS failed to forward a large number of those
+applications to the counties (a lawsuit filed in October 2026 put it above 500,000).
 
 THE ELECTION IDENTIFICATION CERTIFICATE is genuinely underused and both sides of
 the ID debate say so. Supporters of ID laws want it publicized because it answers

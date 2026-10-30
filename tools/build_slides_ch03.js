@@ -292,7 +292,11 @@ DO NOT PRESENT THIS AS PROGRESS TOWARD A CORRECT ANSWER. It is a pendulum, and
 which direction counts as improvement is a value judgment. After September 11 the
 federal government recentralized authority in homeland security even during the
 new federalism era. The trend line is not clean.
-  `);
+  
+PERIODIZATION NOTE: the 1870s start date follows OpenStax, the base text. Many
+Texas Government textbooks date dual federalism from 1789; say which convention
+you are using if students have seen the other.
+`);
 }
 
 /* 10 THE COURT CASES */

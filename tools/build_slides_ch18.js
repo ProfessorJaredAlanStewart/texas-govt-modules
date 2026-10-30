@@ -252,7 +252,7 @@ arrangement.
     y += 0.82;
   });
   k.statCallout(s, M, 6.4, W - M * 2, 0.65, "36 states",
-    "have adopted some form of sunset review. Colorado was first (1976); Texas, second (1977), built the model others studied.");
+    "have adopted some form of sunset review. Colorado passed the first sunset law in 1976; Texas followed in 1977, and its version became the model others studied.");
   N(s, `
 TIMING: 7 minutes. The distinctive Texas contribution.
 

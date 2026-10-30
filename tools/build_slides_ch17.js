@@ -348,7 +348,7 @@ consequences for agriculture and for the towns that depend on it.
     ["Regional planning", "The Texas Water Development Board coordinates sixteen regional planning groups that produce a state water plan every five years, projecting supply and demand fifty years out."],
     ["The gap", "State water plans have consistently projected that without new supply and infrastructure, Texas would face serious shortages during drought, with substantial economic losses."],
     ["Aging systems", "Many Texas water systems lose a significant share of treated water to leaks before it reaches a tap, and small rural systems often lack the capital to replace lines."],
-    ["Proposition 4, 2025", "Voters approved dedicating up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years, passing with about 70 percent support (70.4%)."],
+    ["Proposition 4, 2025", "Voters approved dedicating up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years, passing with about 70 percent support."],
   ];
   let y = 1.95;
   pts.forEach(([t, d], i) => {

@@ -10,7 +10,7 @@ const B = "Calibri";
 /* 1 */
 {
   const s = k.titleSlide("Chapter 6", "The Texas\nCourt System",
-    "Two supreme courts, nearly three thousand courts, and judges who run for office with campaign money.",
+    "Two supreme courts, more than 2,800 courts, and judges who run for office with campaign money.",
     "GOVT 2306  ·  Texas Government Trailblazer Trek  ·  Tarrant County College");
   N(s, `
 CHAPTER 6: THE TEXAS COURT SYSTEM

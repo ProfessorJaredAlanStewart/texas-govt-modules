@@ -241,7 +241,7 @@ value accountability will split, and both are defensible.
   k.defBox(s, M, 3.25, 7.6, 1.5, "The commissioners court",
     "The governing body of a Texas county, made up of the county judge, elected countywide, and four county commissioners elected from precincts. Despite the name it is an administrative body, not a court, though in smaller counties the county judge also hears certain cases.");
   const facts = [
-    ["Same structure for every county", "Loving County with roughly 60 residents and Harris County with about 5 million (2025 Census estimates) operate under identical rules."],
+    ["Same structure for every county", "Loving County with about 50 residents and Harris County with about 5 million (2025 Census estimates) operate under identical rules."],
     ["No ordinance power", "Counties generally cannot regulate the way cities do, which limits their response to growth in unincorporated areas."],
     ["Road building by precinct", "Each commissioner has historically overseen roads in their own precinct, which critics call inefficient and defenders call responsive."],
   ];
@@ -280,7 +280,7 @@ disputes over drainage, roads, and utilities.
     ["Commissioners", "Four, elected by precinct. Set the budget and tax rate with the judge and oversee roads in their precincts."],
     ["Sheriff", "Chief law enforcement officer, runs the county jail, and provides bailiffs."],
     ["District and county attorneys", "Prosecute criminal cases and advise county government."],
-    ["County and district clerks", "Keep records. The county clerk runs elections in about half of Texas counties, mostly smaller ones; the rest, including Tarrant, Dallas, and Harris, use an appointed elections administrator."],
+    ["County and district clerks", "Keep records. The county clerk runs elections in 111 counties, mostly smaller ones (plus Harris, which abolished its elections administrator in 2023); the other 143, including Tarrant and Dallas, use an appointed elections administrator."],
     ["Tax assessor-collector", "Collects property taxes and, in counties without an elections administrator, serves as voter registrar."],
   ];
   let y = 1.95;
@@ -298,10 +298,11 @@ THE CLOSING BOX IS THE POINT. Do not let students memorize six offices without
 seeing the pattern. Counties replicate the plural executive: fragmented power, no
 chain of command, every official independently elected.
 
-TWO OFFICES DESERVE SPECIAL MENTION because of Chapter 8. In roughly half the
-counties the county clerk runs elections and the tax assessor-collector registers
-voters; in the other half, including most large counties, an appointed elections
-administrator does both. Either way, these are the officials who decide, in
+TWO OFFICES DESERVE SPECIAL MENTION because of Chapter 8. In 111 counties,
+mostly small ones, the county clerk runs elections and the tax assessor-collector
+registers voters; in the other 143, including Tarrant and Dallas, an appointed
+elections administrator does both. Harris County went back to the clerk model in
+2023 after SB 1750 abolished its elections administrator. Either way, these are the officials who decide, in
 practice, how easy it is to register and vote, and almost nobody votes in the
 clerk and assessor races.
 
