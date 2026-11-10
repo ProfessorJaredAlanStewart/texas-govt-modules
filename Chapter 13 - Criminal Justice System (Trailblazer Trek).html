@@ -498,6 +498,8 @@
             color: var(--error);
         }
 
+        .section-finish { margin-top: 2rem; text-align: center; }
+        .section-finish .reflection-box { text-align: left; }
         .nav-buttons {
             display: flex;
             justify-content: space-between;
@@ -1117,9 +1119,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section1">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">On paper, criminal justice is clean rules and fair outcomes; in practice it's messier and higher-stakes. Explain the gap between theory and practice this section sets up, and why closing your eyes to that gap is dangerous for any Texan.</div>
@@ -1129,7 +1129,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(1)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate1" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(2)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(1)">Next Section →</button>
             </div>
         </div>
 
@@ -1268,9 +1271,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section2">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">How Texas classifies an offense shapes everything that follows &#8212; the penalty, the process, the record. Explain how the classification system works, and reason about why where a line is drawn between categories can change a person's whole life.</div>
@@ -1280,7 +1281,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(2)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate2" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(3)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(2)">Next Section →</button>
             </div>
         </div>
 
@@ -1368,9 +1372,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section3">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">The right to a defense is a promise the system makes to everyone, including the guilty. Explain why that promise exists, and argue whether Texas delivers it equally to people who can't afford a strong lawyer.</div>
@@ -1380,7 +1382,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(3)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate3" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(4)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(3)">Next Section →</button>
             </div>
         </div>
 
@@ -1457,9 +1462,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section4">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">Crime victims have rights too, and balancing them against defendants' rights is genuinely hard. Explain the rights this section describes, and reason about where you think Texas strikes the balance well and where it falls short.</div>
@@ -1469,7 +1472,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(4)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate4" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(5)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(4)">Next Section →</button>
             </div>
         </div>
 
@@ -1567,9 +1573,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-extra">
                 <div class="interactive-card" onclick="revealCard(this, 'card5-upd', 15)">
                     <div class="card-prompt">&#128269; Click to explore: How did Texas change its bail rules in 2025?</div>
                     <div class="card-content">
@@ -1588,7 +1592,8 @@
                     <div class="kc-option" onclick="handleAnswer(this, false, 'q5-upd', 0)">Moved bail decisions to the federal government</div>
                     <div class="feedback-box" id="feedback-q5-upd"></div>
                 </div>
-
+            </div>
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section5">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">Bail is supposed to ensure people return to court, not to jail them for being poor &#8212; yet critics say that's what it does. Explain the debate, and argue whether Texas bail practices serve justice or mostly punish lack of money.</div>
@@ -1598,7 +1603,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(5)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate5" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(6)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(5)">Next Section →</button>
             </div>
         </div>
 
@@ -1679,9 +1687,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section6">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">The Fifth Amendment lets a person refuse to incriminate themselves, a right people both rely on and resent. Explain why it exists, and argue why protecting even the guilty with this right ultimately protects the innocent too &#8212; or push back if you disagree.</div>
@@ -1691,7 +1697,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(6)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate6" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(7)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(6)">Next Section →</button>
             </div>
         </div>
 
@@ -1787,9 +1796,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section7">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">The Sixth and Eighth Amendments promise fair trials and ban cruel punishment. Pick one protection from this section and explain what it would mean for it to fail an ordinary Texan &#8212; and why that protection is worth defending even for unpopular defendants.</div>
@@ -1799,7 +1806,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(7)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate7" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(8)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(7)">Next Section →</button>
             </div>
         </div>
 
@@ -1867,9 +1877,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section8">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">The Texas prison system is among the largest in the nation, raising hard questions about purpose and cost. Explain what this section reveals about what Texas prisons are actually for, and argue whether they're achieving it.</div>
@@ -1879,7 +1887,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(8)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate8" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="navigateToSection(9)">Next Section →</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="goNextSection(8)">Next Section →</button>
             </div>
         </div>
 
@@ -1971,9 +1982,7 @@
                 </div>
             </div>
 
-            <div class="nav-buttons">
-                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
-                
+            <div class="section-finish">
                 <div class="reflection-box" id="reflection-section9">
                     <div class="reflection-header">&#128172; Reflection <span class="reflection-points">+25 points</span></div>
                     <div class="reflection-prompt">Pick the glossary term from this chapter most likely to be misunderstood by someone following a Texas criminal case in the news. Define it in your own words, and explain how getting it wrong could lead someone to misjudge guilt, innocence, or fairness.</div>
@@ -1983,7 +1992,10 @@
                 </div>
                 <button class="complete-section-btn" onclick="completeSection(9)">Complete Section ✓</button>
                 <div class="section-gate-msg" id="sectionGate9" style="display:none;margin:15px auto;max-width:420px;padding:12px 18px;background:#fbe9ee;border-left:5px solid #98002e;border-radius:8px;color:#212121;font-size:0.95em;text-align:center;"></div>
-                <button class="nav-button" onclick="generateReport()">View Report 📋</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="navigateToHome()">← Back to Home</button>
+                <button class="nav-button" onclick="finishAndReport(9)">View Report 📋</button>
             </div>
         </div>
 
@@ -2232,7 +2244,7 @@
             '2': { cards: ['card2-1','card2-2'], questions: ['q2-1','q2-2'], minSeconds: 111 },
             '3': { cards: ['card3-1','card3-2'], questions: ['q3-1','q3-2'], minSeconds: 123 },
             '4': { cards: ['card4-1','card4-2'], questions: ['q4-1'], minSeconds: 99 },
-            '5': { cards: ['card5-1','card5-2'], questions: ['q5-1','q5-2'], minSeconds: 120 },
+            '5': { cards: ['card5-1','card5-2','card5-upd'], questions: ['q5-1','q5-2','q5-upd'], minSeconds: 120 },
             '6': { cards: ['card6-1','card6-2'], questions: ['q6-1','q6-2'], minSeconds: 124 },
             '7': { cards: ['card7-1','card7-2'], questions: ['q7-1','q7-2'], minSeconds: 107 },
             '8': { cards: ['card8-1','card8-2'], questions: ['q8-1'], minSeconds: 90 },
@@ -2299,7 +2311,7 @@
             if(gameState.sectionPoints && gameState.sectionPoints[n]) gameState.sectionPoints[n].earned += REFLECTION_POINTS;
             if(typeof checkSectionPacing==='function')checkSectionPacing(String(n));
             if(typeof saveProgress==='function')saveProgress();
-            input.classList.add('locked'); submitBtn.textContent='Saved \u2713'; submitBtn.disabled=true;
+            input.classList.add('locked'); input.readOnly=true; submitBtn.textContent='Saved \u2713'; submitBtn.disabled=true;
             if(words>100){ showFb('verbose','You clearly have a lot to say \u2014 great! For next time, make your point in <strong>100 words or less</strong>. <strong>(Saved &#10003; +25 points)</strong>'); }
             else{ showFb('success','&#10003; Reflection saved! <strong>+25 points</strong> \u2014 thanks for sharing your thinking.'); }
         }
@@ -3949,6 +3961,75 @@ input:focus-visible {
 })();
 </script>
 <!-- A11Y-ENHANCEMENT-END -->
+<!-- Trek reflection guard: keep drafts, restore saved reflections, finish sections from the bottom buttons -->
+<script id="trek-reflection-guard">
+(function () {
+    'use strict';
+    if (typeof gameState === 'undefined' || !gameState) { return; }
+
+    // The completion report prints the Student Reflections block no matter
+    // which button opens it.
+    if (typeof window.generateReport === 'function' && !window.generateReport.__trekWrapped) {
+        var baseReport = window.generateReport;
+        window.generateReport = function () {
+            var out = baseReport.apply(this, arguments);
+            try { if (typeof window.renderReflectionReport === 'function') { window.renderReflectionReport(); } } catch (e) {}
+            return out;
+        };
+        window.generateReport.__trekWrapped = true;
+    }
+
+    // "Next Section" and "View Report" finish the current section first. If
+    // cards, knowledge checks, or the reflection are missing, the existing
+    // gate message says so and the student stays put.
+    function done(n) {
+        var d = gameState.sectionsCompleted || [];
+        return d.indexOf(n) !== -1 || d.indexOf(String(n)) !== -1;
+    }
+    function finish(n) {
+        if (!done(n) && typeof completeSection === 'function') { completeSection(n); }
+        return done(n);
+    }
+    window.goNextSection = function (n) { if (finish(n)) { navigateToSection(n + 1); } };
+    window.finishAndReport = function (n) { if (finish(n)) { window.generateReport(); } };
+
+    function boxes(fn) {
+        Array.prototype.forEach.call(document.querySelectorAll('textarea[id^="reflectionInput"]'), function (ta) {
+            fn(ta, ta.id.replace('reflectionInput', ''));
+        });
+    }
+    // Drafts ride along in gameState, so the existing auto-save keeps them.
+    boxes(function (ta, n) {
+        ta.addEventListener('input', function () {
+            if (!gameState.reflectionDrafts || typeof gameState.reflectionDrafts !== 'object') { gameState.reflectionDrafts = {}; }
+            gameState.reflectionDrafts[n] = ta.value;
+        });
+    });
+    // After a resume, put the text back on screen and show what was credited.
+    function sync() {
+        var refs = gameState.reflections || {}, drafts = gameState.reflectionDrafts || {};
+        boxes(function (ta, n) {
+            var r = refs['reflection' + n];
+            var btn = document.getElementById('reflectionSubmit' + n);
+            var fb = document.getElementById('reflectionFeedback' + n);
+            if (r && r.credited) {
+                ta.value = r.text || '';
+                ta.classList.add('locked'); ta.readOnly = true;
+                if (btn) { btn.textContent = 'Saved ✓'; btn.disabled = true; }
+                if (fb && !fb.innerHTML) {
+                    fb.className = 'reflection-feedback show success'; fb.style.display = 'block';
+                    fb.innerHTML = '&#10003; Reflection saved (+25 points). It will appear on your completion report.';
+                }
+            } else if (drafts[n] && !ta.value) {
+                ta.value = drafts[n];
+            }
+            if (typeof updateReflectionCount === 'function') { try { updateReflectionCount(n); } catch (e) {} }
+        });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', sync); } else { sync(); }
+    window.addEventListener('load', sync);
+})();
+</script>
 <!-- Trek save guard: warn when progress cannot be saved here -->
 <script id="trek-save-guard">
 (function () {
