@@ -2031,7 +2031,7 @@
             if(gameState.sectionPoints && gameState.sectionPoints[n]) gameState.sectionPoints[n].earned += REFLECTION_POINTS;
             if(typeof checkSectionPacing==='function')checkSectionPacing(String(n));
             if(typeof saveProgress==='function')saveProgress();
-            input.classList.add('locked'); submitBtn.textContent='Saved \u2713'; submitBtn.disabled=true;
+            input.classList.add('locked'); input.readOnly=true; submitBtn.textContent='Saved \u2713'; submitBtn.disabled=true;
             if(words>100){ showFb('verbose','You clearly have a lot to say \u2014 great! For next time, make your point in <strong>100 words or less</strong>. <strong>(Saved &#10003; +25 points)</strong>'); }
             else{ showFb('success','&#10003; Reflection saved! <strong>+25 points</strong> \u2014 thanks for sharing your thinking.'); }
         }
@@ -3685,6 +3685,75 @@ input:focus-visible {
 })();
 </script>
 <!-- A11Y-ENHANCEMENT-END -->
+<!-- Trek reflection guard: keep drafts, restore saved reflections, finish sections from the bottom buttons -->
+<script id="trek-reflection-guard">
+(function () {
+    'use strict';
+    if (typeof gameState === 'undefined' || !gameState) { return; }
+
+    // The completion report prints the Student Reflections block no matter
+    // which button opens it.
+    if (typeof window.generateReport === 'function' && !window.generateReport.__trekWrapped) {
+        var baseReport = window.generateReport;
+        window.generateReport = function () {
+            var out = baseReport.apply(this, arguments);
+            try { if (typeof window.renderReflectionReport === 'function') { window.renderReflectionReport(); } } catch (e) {}
+            return out;
+        };
+        window.generateReport.__trekWrapped = true;
+    }
+
+    // "Next Section" and "View Report" finish the current section first. If
+    // cards, knowledge checks, or the reflection are missing, the existing
+    // gate message says so and the student stays put.
+    function done(n) {
+        var d = gameState.sectionsCompleted || [];
+        return d.indexOf(n) !== -1 || d.indexOf(String(n)) !== -1;
+    }
+    function finish(n) {
+        if (!done(n) && typeof completeSection === 'function') { completeSection(n); }
+        return done(n);
+    }
+    window.goNextSection = function (n) { if (finish(n)) { navigateToSection(n + 1); } };
+    window.finishAndReport = function (n) { if (finish(n)) { window.generateReport(); } };
+
+    function boxes(fn) {
+        Array.prototype.forEach.call(document.querySelectorAll('textarea[id^="reflectionInput"]'), function (ta) {
+            fn(ta, ta.id.replace('reflectionInput', ''));
+        });
+    }
+    // Drafts ride along in gameState, so the existing auto-save keeps them.
+    boxes(function (ta, n) {
+        ta.addEventListener('input', function () {
+            if (!gameState.reflectionDrafts || typeof gameState.reflectionDrafts !== 'object') { gameState.reflectionDrafts = {}; }
+            gameState.reflectionDrafts[n] = ta.value;
+        });
+    });
+    // After a resume, put the text back on screen and show what was credited.
+    function sync() {
+        var refs = gameState.reflections || {}, drafts = gameState.reflectionDrafts || {};
+        boxes(function (ta, n) {
+            var r = refs['reflection' + n];
+            var btn = document.getElementById('reflectionSubmit' + n);
+            var fb = document.getElementById('reflectionFeedback' + n);
+            if (r && r.credited) {
+                ta.value = r.text || '';
+                ta.classList.add('locked'); ta.readOnly = true;
+                if (btn) { btn.textContent = 'Saved ✓'; btn.disabled = true; }
+                if (fb && !fb.innerHTML) {
+                    fb.className = 'reflection-feedback show success'; fb.style.display = 'block';
+                    fb.innerHTML = '&#10003; Reflection saved (+25 points). It will appear on your completion report.';
+                }
+            } else if (drafts[n] && !ta.value) {
+                ta.value = drafts[n];
+            }
+            if (typeof updateReflectionCount === 'function') { try { updateReflectionCount(n); } catch (e) {} }
+        });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', sync); } else { sync(); }
+    window.addEventListener('load', sync);
+})();
+</script>
 <!-- Trek save guard: warn when progress cannot be saved here -->
 <script id="trek-save-guard">
 (function () {
