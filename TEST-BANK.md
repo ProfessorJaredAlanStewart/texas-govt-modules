@@ -34,17 +34,17 @@ packages are in `qti/`.
 **1.A1** *(Outcome 8 · Analysis)* A researcher finds that Texans consistently favor low taxes, limited regulation, and deference to established business leaders, while showing little interest in using government to reduce inequality. Using Elazar's typology, this pattern is best described as:
 
 - A. Moralistic
-- B. A blend of traditionalistic and individualistic **← correct**
-- C. Purely moralistic with individualistic elements
-- D. Egalitarian
+- B. Purely moralistic with individualistic elements
+- C. Egalitarian
+- D. A blend of traditionalistic and individualistic **← correct**
 
 > *Rationale:* Elazar's traditionalistic culture emphasizes preserving the existing social order under established elites; individualistic culture treats government as a marketplace serving private and economic interests. Texas is generally classified as a blend of the two.
 
 **1.A2** *(Outcome 8 · Application)* A demographer notes that Texas has had no racial or ethnic majority since 2004 and that one group became the largest in roughly 2022. That largest group is:
 
-- A. Non-Hispanic white Texans
-- B. Black Texans
-- C. Hispanic Texans **← correct**
+- A. Hispanic Texans **← correct**
+- B. Non-Hispanic white Texans
+- C. Black Texans
 - D. Asian Texans
 
 > *Rationale:* Texas lost its white majority in 2004 and by 2022 Hispanic Texans had become the largest single group; as of the July 2025 estimates they are about 41 percent of the population, compared with about 37 percent non-Hispanic white.
@@ -61,8 +61,8 @@ packages are in `qti/`.
 **1.A4** *(Outcome 8 · Analysis)* The 1901 Spindletop gusher is treated as a turning point in Texas history primarily because it:
 
 - A. Ended Reconstruction in Texas
-- B. Transformed a largely rural agricultural economy into an industrial one **← correct**
-- C. Established the Texas Railroad Commission
+- B. Established the Texas Railroad Commission
+- C. Transformed a largely rural agricultural economy into an industrial one **← correct**
 - D. Caused Texas to secede from the Union
 
 > *Rationale:* Spindletop launched the oil boom that industrialized the Texas economy, reshaping its population, politics, and public revenue.
@@ -70,8 +70,8 @@ packages are in `qti/`.
 **1.A5** *(Outcome 7 · Application)* A student argues that Juneteenth deserves its status as a holiday because it marks a legal turning point rather than a cultural celebration alone. The strongest support for that argument is that June 19, 1865 marks when:
 
 - A. The Texas Constitution was ratified
-- B. Union troops reached Galveston and enforced emancipation in Texas **← correct**
-- C. The Civil War formally ended nationwide
+- B. The Civil War formally ended nationwide
+- C. Union troops reached Galveston and enforced emancipation in Texas **← correct**
 - D. Texas was readmitted to the Union
 
 > *Rationale:* Juneteenth commemorates the arrival of Union troops in Galveston enforcing the emancipation of enslaved Texans.
@@ -186,8 +186,8 @@ packages are in `qti/`.
 
 **2.A1** *(Outcome 1 · Analysis)* Texas's 1876 constitution created a weak governor, a part-time legislature, and elected judges. The best explanation for this cluster of choices is that the framers were reacting against:
 
-- A. Federal overreach during the Mexican-American War
-- B. The centralized Reconstruction government of Governor E. J. Davis **← correct**
+- A. The centralized Reconstruction government of Governor E. J. Davis **← correct**
+- B. Federal overreach during the Mexican-American War
 - C. The failures of the Republic of Texas
 - D. Excessive power held by county governments
 
@@ -195,10 +195,10 @@ packages are in `qti/`.
 
 **2.A2** *(Outcome 1 · Application)* A legislator wants to amend the Texas Constitution. Which sequence is required?
 
-- A. A two-thirds vote of each chamber, then approval by a majority of voters **← correct**
-- B. A majority vote of each chamber, then the governor's signature
-- C. A two-thirds vote of each chamber, then the governor's signature
-- D. Approval by voters, then ratification by the Legislature
+- A. A majority vote of each chamber, then the governor's signature
+- B. A two-thirds vote of each chamber, then the governor's signature
+- C. Approval by voters, then ratification by the Legislature
+- D. A two-thirds vote of each chamber, then approval by a majority of voters **← correct**
 
 > *Rationale:* Texas constitutional amendments require a two-thirds vote of all members elected to each chamber and then approval by a majority of voters. The governor plays no formal role.
 
@@ -213,8 +213,8 @@ packages are in `qti/`.
 
 **2.A4** *(Outcome 3 · Comprehension)* Which pairing correctly matches a Texas branch with a check it holds over another branch?
 
-- A. Judiciary: calling special sessions
-- B. Legislature: overriding a veto by two-thirds of each chamber **← correct**
+- A. Legislature: overriding a veto by two-thirds of each chamber **← correct**
+- B. Judiciary: calling special sessions
 - C. Governor: impeaching state officials
 - D. Judiciary: confirming gubernatorial appointments
 
@@ -223,9 +223,9 @@ packages are in `qti/`.
 **2.A5** *(Outcome 1 · Analysis)* Critics call the Texas Constitution excessively long and frequently amended. Supporters of the design would most likely respond that its length and amendment rate:
 
 - A. Prove the document is poorly written
-- B. Reflect deliberate limits on government that require voter approval to change **← correct**
-- C. Show that Texas courts refuse to interpret it
-- D. Result from federal requirements
+- B. Show that Texas courts refuse to interpret it
+- C. Result from federal requirements
+- D. Reflect deliberate limits on government that require voter approval to change **← correct**
 
 > *Rationale:* Because the 1876 document restricts government in detail rather than granting broad authority, changes usually require amendment, which requires a popular vote. Defenders view this as keeping power with the people.
 
@@ -392,8 +392,8 @@ packages are in `qti/`.
 **3.A1** *(Outcome 2 · Application)* A state law conflicts with a valid federal statute enacted within Congress's constitutional powers. Under the supremacy clause, the result is that:
 
 - A. The state law prevails because states are closer to the people
-- B. The federal law prevails **← correct**
-- C. A federal court must first ask the state to repeal its law
+- B. A federal court must first ask the state to repeal its law
+- C. The federal law prevails **← correct**
 - D. The two laws operate simultaneously
 
 > *Rationale:* The supremacy clause makes valid federal law supreme over conflicting state law, provided the federal law is within the powers the Constitution grants.
@@ -410,17 +410,17 @@ packages are in `qti/`.
 **3.A3** *(Outcome 2 · Comprehension)* Which best describes the significance of McCulloch v. Maryland (1819)?
 
 - A. It established that states may tax federal institutions
-- B. It established implied powers under the necessary and proper clause and affirmed national supremacy **← correct**
-- C. It limited the commerce clause to the buying and selling of goods
-- D. It gave states the right to secede
+- B. It limited the commerce clause to the buying and selling of goods
+- C. It gave states the right to secede
+- D. It established implied powers under the necessary and proper clause and affirmed national supremacy **← correct**
 
 > *Rationale:* McCulloch upheld the national bank under the necessary and proper clause, establishing implied powers, and held that a state may not tax a federal institution.
 
 **3.A4** *(Outcome 2 · Analysis)* A policy analyst describes a federal program in which Washington provides money for a broad purpose and lets each state design its own program with few restrictions. This best describes:
 
 - A. A categorical grant under cooperative federalism
-- B. A block grant, associated with new federalism **← correct**
-- C. An unfunded mandate
+- B. An unfunded mandate
+- C. A block grant, associated with new federalism **← correct**
 - D. Dual federalism
 
 > *Rationale:* Block grants provide funds for a broad purpose with few strings, giving states flexibility. They are the signature tool of new federalism.
@@ -579,8 +579,8 @@ packages are in `qti/`.
 
 **4.A1** *(Outcome 4 · Application)* A bill passes the Texas House and Senate in different forms late in the session. The next procedural step is most likely:
 
-- A. The governor chooses which version to sign
-- B. A conference committee works out the differences **← correct**
+- A. A conference committee works out the differences **← correct**
+- B. The governor chooses which version to sign
 - C. The bill dies automatically
 - D. The Texas Supreme Court resolves the conflict
 
@@ -588,8 +588,8 @@ packages are in `qti/`.
 
 **4.A2** *(Outcome 4 · Analysis)* An observer claims the lieutenant governor is more powerful than the governor of Texas. The strongest evidence for this claim is that the lieutenant governor:
 
-- A. Can veto legislation
-- B. Controls Senate committee assignments and the flow of legislation **← correct**
+- A. Controls Senate committee assignments and the flow of legislation **← correct**
+- B. Can veto legislation
 - C. Appoints all state agency heads
 - D. Serves as chief justice of the Texas Supreme Court
 
@@ -598,17 +598,17 @@ packages are in `qti/`.
 **4.A3** *(Outcome 4 · Comprehension)* Texas legislators are paid $7,200 per year plus a per diem while in session. The most commonly cited consequence of this compensation structure is that it:
 
 - A. Guarantees a legislature that mirrors the state's demographics
-- B. Favors candidates with independent wealth, flexible professions, or outside income **← correct**
-- C. Requires legislators to meet year-round
-- D. Is set annually by the Legislative Budget Board
+- B. Requires legislators to meet year-round
+- C. Is set annually by the Legislative Budget Board
+- D. Favors candidates with independent wealth, flexible professions, or outside income **← correct**
 
 > *Rationale:* Low pay tends to restrict who can realistically serve, favoring those with independent means or flexible careers, a common critique of the citizen-legislature model.
 
 **4.A4** *(Outcome 4 · Application)* The governor wants the Legislature to address a single urgent issue in August of an odd-numbered year, after the regular session has ended. The governor may:
 
 - A. Extend the regular session by 30 days
-- B. Call a special session limited to 30 days and set its agenda **← correct**
-- C. Order the Legislature to convene for 140 days
+- B. Order the Legislature to convene for 140 days
+- C. Call a special session limited to 30 days and set its agenda **← correct**
 - D. Pass the measure by executive order
 
 > *Rationale:* Only the governor can call a special session; it may last up to 30 days, and the governor sets the subjects the Legislature may consider.
@@ -795,8 +795,8 @@ packages are in `qti/`.
 
 **5.A1** *(Outcome 4 · Analysis)* The Texas governor's line-item veto applies to:
 
-- A. Any bill passed by the Legislature
-- B. Individual spending items within appropriations bills **← correct**
+- A. Individual spending items within appropriations bills **← correct**
+- B. Any bill passed by the Legislature
 - C. Constitutional amendments
 - D. Judicial decisions
 
@@ -823,18 +823,18 @@ packages are in `qti/`.
 **5.A4** *(Outcome 3 · Analysis)* A governor wishes to grant a pardon to a person convicted of a felony. Under the Texas Constitution, the governor generally may do so only:
 
 - A. With the approval of the Texas Supreme Court
-- B. On the written recommendation of the Board of Pardons and Paroles **← correct**
-- C. After a two-thirds vote of the Senate
-- D. With the consent of the county that prosecuted the case
+- B. After a two-thirds vote of the Senate
+- C. With the consent of the county that prosecuted the case
+- D. On the written recommendation of the Board of Pardons and Paroles **← correct**
 
 > *Rationale:* The governor's clemency power is constrained: a pardon or commutation generally requires a written recommendation from a majority of the Board of Pardons and Paroles. The governor may independently grant only a single 30-day reprieve.
 
 **5.A5** *(Outcome 4 · Analysis)* Despite constitutionally weak formal powers, Texas governors often exert substantial influence. The best explanation is their use of:
 
 - A. Judicial review
-- B. Informal powers such as persuasion, party leadership, media attention, and appointments accumulated over time **← correct**
-- C. The power to dissolve the Legislature
-- D. Direct control over local governments
+- B. The power to dissolve the Legislature
+- C. Direct control over local governments
+- D. Informal powers such as persuasion, party leadership, media attention, and appointments accumulated over time **← correct**
 
 > *Rationale:* Because formal authority is limited, effective Texas governors rely heavily on informal powers and on the long-run effect of thousands of appointments.
 
@@ -976,8 +976,8 @@ packages are in `qti/`.
 
 **6.A1** *(Outcome 4 · Application)* A defendant convicted of a felony in a Texas district court exhausts intermediate appeals and seeks review by the state's highest court for criminal matters. That court is:
 
-- A. The Texas Supreme Court
-- B. The Court of Criminal Appeals **← correct**
+- A. The Court of Criminal Appeals **← correct**
+- B. The Texas Supreme Court
 - C. The Fifteenth Court of Appeals
 - D. A federal district court
 
@@ -986,8 +986,8 @@ packages are in `qti/`.
 **6.A2** *(Outcome 4 · Analysis)* The most frequently cited criticism of electing Texas judges in partisan elections is that it:
 
 - A. Makes judges unaccountable to the public
-- B. Ties judges to campaign contributions and party sweeps, threatening the appearance of impartiality **← correct**
-- C. Prevents voters from removing judges
+- B. Prevents voters from removing judges
+- C. Ties judges to campaign contributions and party sweeps, threatening the appearance of impartiality **← correct**
 - D. Violates the U.S. Constitution
 
 > *Rationale:* Critics argue partisan judicial elections create dependence on campaign money and allow straight-ticket sweeps to decide judgeships, undermining perceived impartiality. Supporters counter that elections provide direct accountability.
@@ -995,8 +995,8 @@ packages are in `qti/`.
 **6.A3** *(Outcome 4 · Comprehension)* An appellate court that sends a case back to the trial court for further proceedings has:
 
 - A. Affirmed the decision
-- B. Reversed the decision
-- C. Remanded the case **← correct**
+- B. Remanded the case **← correct**
+- C. Reversed the decision
 - D. Recused itself
 
 > *Rationale:* To remand is to return a case to a lower court for further action. Affirming upholds the decision; reversing overturns it.
@@ -1004,9 +1004,9 @@ packages are in `qti/`.
 **6.A4** *(Outcome 4 · Application)* A civil dispute involving a Texas state agency arises in 2026. Which court was created specifically to hear such cases statewide?
 
 - A. The Court of Criminal Appeals
-- B. The Fifteenth Court of Appeals **← correct**
-- C. A justice of the peace court
-- D. The Sunset Advisory Commission
+- B. A justice of the peace court
+- C. The Sunset Advisory Commission
+- D. The Fifteenth Court of Appeals **← correct**
 
 > *Rationale:* The Fifteenth Court of Appeals, operating since September 2024, has statewide jurisdiction over certain civil matters involving the state and its agencies.
 
@@ -1185,8 +1185,8 @@ packages are in `qti/`.
 
 **7.A1** *(Outcome 2 · Application)* A Texas city of 30,000 residents adopts its own charter. It may then:
 
-- A. Exercise only powers the Legislature has specifically granted
-- B. Take any action not prohibited by state law or the constitution **← correct**
+- A. Take any action not prohibited by state law or the constitution **← correct**
+- B. Exercise only powers the Legislature has specifically granted
 - C. Ignore state preemption laws
 - D. Levy a state income tax
 
@@ -1195,8 +1195,8 @@ packages are in `qti/`.
 **7.A2** *(Outcome 2 · Analysis)* The Legislature passes a law prohibiting cities from regulating a particular business practice, overriding several local ordinances. This is an example of:
 
 - A. Federalism
-- B. Preemption **← correct**
-- C. Annexation
+- B. Annexation
+- C. Preemption **← correct**
 - D. Home rule
 
 > *Rationale:* Preemption occurs when state law limits or overrides local authority. It has become a recurring flashpoint as urban policy diverges from the Legislature.
@@ -1213,16 +1213,16 @@ packages are in `qti/`.
 **7.A4** *(Outcome 2 · Analysis)* Which statement best explains why special-purpose districts matter despite receiving little public attention?
 
 - A. They are the only governments allowed to levy property taxes
-- B. They outnumber cities and counties and deliver essential services such as schools, water, and hospitals **← correct**
-- C. They are branches of the federal government
-- D. They exist only in rural areas
+- B. They are branches of the federal government
+- C. They exist only in rural areas
+- D. They outnumber cities and counties and deliver essential services such as schools, water, and hospitals **← correct**
 
 > *Rationale:* Texas has thousands of special districts delivering critical services, yet their elections and board meetings draw minimal attention, which raises accountability concerns.
 
 **7.A5** *(Outcome 2 · Application)* A city council adopts an ordinance under a council-manager form of government. Day-to-day implementation is the responsibility of:
 
-- A. The mayor acting alone
-- B. The professional city manager hired by the council **← correct**
+- A. The professional city manager hired by the council **← correct**
+- B. The mayor acting alone
 - C. The county commissioners court
 - D. The governor's office
 
@@ -1381,8 +1381,8 @@ packages are in `qti/`.
 **8.A1** *(Outcome 6 · Application)* A Texan moves to a new county 20 days before an election and wants to vote there. Under Texas law, this voter:
 
 - A. May register at the polls on Election Day
-- B. Missed the registration deadline, which is 30 days before the election **← correct**
-- C. May vote without registering
+- B. May vote without registering
+- C. Missed the registration deadline, which is 30 days before the election **← correct**
 - D. Must obtain a court order
 
 > *Rationale:* Texas requires registration at least 30 days before an election and does not permit same-day registration.
@@ -1390,17 +1390,17 @@ packages are in `qti/`.
 **8.A2** *(Outcome 6 · Analysis)* The Supreme Court's decision in Shelby County v. Holder (2013) affected Texas elections chiefly by:
 
 - A. Striking down the photo-ID requirement
-- B. Ending the coverage formula that had required federal preclearance of Texas election-law changes **← correct**
-- C. Requiring Texas to adopt same-day registration
-- D. Abolishing the poll tax
+- B. Requiring Texas to adopt same-day registration
+- C. Abolishing the poll tax
+- D. Ending the coverage formula that had required federal preclearance of Texas election-law changes **← correct**
 
 > *Rationale:* Shelby County invalidated the coverage formula, ending mandatory federal preclearance for covered jurisdictions including Texas.
 
 **8.A3** *(Outcome 5 · Analysis)* A voter chooses a candidate mainly because the economy has performed well under the incumbent party. This is best described as:
 
 - A. Prospective voting
-- B. Retrospective voting **← correct**
-- C. Pocketbook voting
+- B. Pocketbook voting
+- C. Retrospective voting **← correct**
 - D. Straight-ticket voting
 
 > *Rationale:* Retrospective voting evaluates past performance. Prospective voting looks to future promises; pocketbook voting focuses on one's own financial situation.
@@ -1416,8 +1416,8 @@ packages are in `qti/`.
 
 **8.A5** *(Outcome 6 · Analysis)* Texas turnout is persistently low relative to other states. Which combination of factors is most commonly cited?
 
-- A. A small population and few elections
-- B. A young population, weak political efficacy, and comparatively restrictive election procedures **← correct**
+- A. A young population, weak political efficacy, and comparatively restrictive election procedures **← correct**
+- B. A small population and few elections
 - C. Mandatory voting laws and high registration rates
 - D. Federal limits on state elections
 
@@ -1575,8 +1575,8 @@ packages are in `qti/`.
 
 **9.A1** *(Outcome 6 · Application)* No candidate receives a majority in a Texas party primary. What happens next?
 
-- A. The candidate with the most votes is nominated
-- B. A runoff is held between the top two finishers **← correct**
+- A. A runoff is held between the top two finishers **← correct**
+- B. The candidate with the most votes is nominated
 - C. The party chair selects the nominee
 - D. The office remains vacant
 
@@ -1585,17 +1585,17 @@ packages are in `qti/`.
 **9.A2** *(Outcome 6 · Analysis)* In Texas's open primary system, a registered voter may:
 
 - A. Vote in both parties' primaries in the same election
-- B. Vote in one party's primary without having registered with that party **← correct**
-- C. Vote only in the primary of the party they registered with
-- D. Vote only if they attended a precinct convention
+- B. Vote only in the primary of the party they registered with
+- C. Vote only if they attended a precinct convention
+- D. Vote in one party's primary without having registered with that party **← correct**
 
 > *Rationale:* Texas uses an open primary: voters need not register by party but may participate in only one party's primary per election cycle.
 
 **9.A3** *(Outcome 6 · Comprehension)* Following the 2020 census, Texas casts how many electoral votes?
 
-- A. 38
-- B. 40 **← correct**
-- C. 36
+- A. 36
+- B. 38
+- C. 40 **← correct**
 - D. 42
 
 > *Rationale:* Texas gained two congressional seats after the 2020 census, giving it 38 House seats plus two senators, for 40 electoral votes.
@@ -1612,8 +1612,8 @@ packages are in `qti/`.
 **9.A5** *(Outcome 5 · Analysis)* After Citizens United v. FEC (2010), Super PACs may:
 
 - A. Contribute unlimited sums directly to candidate campaigns
-- B. Raise and spend unlimited sums independently, without coordinating with candidates **← correct**
-- C. Accept money only from individuals
+- B. Accept money only from individuals
+- C. Raise and spend unlimited sums independently, without coordinating with candidates **← correct**
 - D. Operate only in federal elections
 
 > *Rationale:* Super PACs may raise and spend unlimited amounts on independent expenditures but may not contribute to or coordinate with candidate campaigns.
@@ -1763,8 +1763,8 @@ packages are in `qti/`.
 
 **10.A1** *(Outcome 5 · Analysis)* The Shivercrat movement of the 1950s is historically significant because it:
 
-- A. Created the Texas Republican Party
-- B. Signaled the beginning of conservative Texas Democrats shifting toward the Republican Party **← correct**
+- A. Signaled the beginning of conservative Texas Democrats shifting toward the Republican Party **← correct**
+- B. Created the Texas Republican Party
 - C. Established the white primary
 - D. Ended the poll tax
 
@@ -1782,9 +1782,9 @@ packages are in `qti/`.
 **10.A3** *(Outcome 5 · Analysis)* Madison argued in Federalist No. 10 that factions should be:
 
 - A. Suppressed by law
-- B. Allowed to flourish and compete so that none dominates **← correct**
-- C. Limited to two per state
-- D. Replaced by direct democracy
+- B. Limited to two per state
+- C. Replaced by direct democracy
+- D. Allowed to flourish and compete so that none dominates **← correct**
 
 > *Rationale:* Madison held that eliminating factions would require destroying liberty, so the remedy is to let many factions compete and check one another.
 
@@ -1800,9 +1800,9 @@ packages are in `qti/`.
 **10.A5** *(Outcome 5 · Analysis)* Recent Republican gains among Hispanic voters in South Texas most directly complicate which assumption?
 
 - A. That turnout is rising statewide
-- B. That demographic change automatically produces partisan change **← correct**
-- C. That third parties influence Texas elections
-- D. That primaries determine general-election outcomes
+- B. That third parties influence Texas elections
+- C. That primaries determine general-election outcomes
+- D. That demographic change automatically produces partisan change **← correct**
 
 > *Rationale:* The assumption that a growing Hispanic population would necessarily shift Texas toward Democrats is complicated by Republican gains among those same voters.
 
@@ -1937,9 +1937,9 @@ packages are in `qti/`.
 
 **11.A1** *(Outcome 5 · Application)* A professional association offers members discounted insurance and continuing-education courses. In interest-group theory, these are:
 
-- A. Purposive benefits
-- B. Solidary benefits
-- C. Material benefits **← correct**
+- A. Material benefits **← correct**
+- B. Purposive benefits
+- C. Solidary benefits
 - D. Collective goods
 
 > *Rationale:* Material benefits are tangible rewards used to attract members and to counter the free rider problem.
@@ -1947,8 +1947,8 @@ packages are in `qti/`.
 **11.A2** *(Outcome 5 · Analysis)* The free rider problem makes organizing difficult because individuals:
 
 - A. Cannot legally join interest groups
-- B. Can enjoy benefits a group wins without joining or paying **← correct**
-- C. Are required to join multiple groups
+- B. Are required to join multiple groups
+- C. Can enjoy benefits a group wins without joining or paying **← correct**
 - D. Always prefer collective action
 
 > *Rationale:* Because a group's policy victories typically benefit everyone in a category, individuals have an incentive to benefit without bearing the costs of membership.
@@ -1956,16 +1956,16 @@ packages are in `qti/`.
 **11.A3** *(Outcome 5 · Analysis)* Interest-group PACs frequently follow the 'friendly incumbent rule,' meaning they:
 
 - A. Support challengers who share their views
-- B. Support sitting legislators to preserve access and avoid retaliation **← correct**
-- C. Contribute equally to both parties
-- D. Refuse to make contributions
+- B. Contribute equally to both parties
+- C. Refuse to make contributions
+- D. Support sitting legislators to preserve access and avoid retaliation **← correct**
 
 > *Rationale:* Because incumbents usually win and a spurned incumbent may retaliate, groups often back sitting legislators to maintain access.
 
 **11.A4** *(Outcome 5 · Application)* A group organizes thousands of ordinary citizens to email legislators about a bill. This tactic is:
 
-- A. Grasstops lobbying
-- B. Grassroots lobbying **← correct**
+- A. Grassroots lobbying **← correct**
+- B. Grasstops lobbying
 - C. Electioneering
 - D. Regulatory capture
 
@@ -1974,8 +1974,8 @@ packages are in `qti/`.
 **11.A5** *(Outcome 7 · Comprehension)* In Texas, lobbyists who exceed statutory thresholds must register with and report to:
 
 - A. The Sunset Advisory Commission
-- B. The Texas Ethics Commission **← correct**
-- C. The Legislative Budget Board
+- B. The Legislative Budget Board
+- C. The Texas Ethics Commission **← correct**
 - D. The Secretary of State's elections division
 
 > *Rationale:* The Texas Ethics Commission administers lobby registration, activity reports, and gift rules.
@@ -2133,8 +2133,8 @@ packages are in `qti/`.
 **12.A1** *(Outcome 8 · Analysis)* A policy provides benefits to a specific group while spreading its costs across all taxpayers. Using Lowi's typology, this is:
 
 - A. Regulatory policy
-- B. Redistributive policy
-- C. Distributive policy **← correct**
+- B. Distributive policy **← correct**
+- C. Redistributive policy
 - D. Constituent policy
 
 > *Rationale:* Distributive policy concentrates benefits on a particular group while dispersing costs broadly, as with many subsidies.
@@ -2142,8 +2142,8 @@ packages are in `qti/`.
 **12.A2** *(Outcome 8 · Application)* Clean air is difficult for private markets to provide because it is:
 
 - A. Excludable and rivalrous
-- B. Non-excludable and non-rivalrous **← correct**
-- C. Owned by individual landowners
+- B. Owned by individual landowners
+- C. Non-excludable and non-rivalrous **← correct**
 - D. Regulated only by local government
 
 > *Rationale:* Public goods are non-excludable (you cannot readily prevent anyone from benefiting) and non-rivalrous (one person's use does not diminish another's), so markets tend to underprovide them.
@@ -2159,8 +2159,8 @@ packages are in `qti/`.
 
 **12.A4** *(Outcome 8 · Analysis)* Texas declined to expand Medicaid under the Affordable Care Act. The most commonly cited consequence is:
 
-- A. A statewide surplus of insured adults
-- B. A coverage gap for adults earning too much for traditional Medicaid but too little for marketplace subsidies **← correct**
+- A. A coverage gap for adults earning too much for traditional Medicaid but too little for marketplace subsidies **← correct**
+- B. A statewide surplus of insured adults
 - C. The loss of all federal health funding
 - D. Mandatory enrollment in CHIP
 
@@ -2169,9 +2169,9 @@ packages are in `qti/`.
 **12.A5** *(Outcome 8 · Application)* The 2021 Texas law generally permitting adults 21 and older to carry a handgun in public without a license is known as:
 
 - A. Campus carry
-- B. Permitless or constitutional carry **← correct**
-- C. Open carry licensing
-- D. The castle doctrine
+- B. Open carry licensing
+- C. The castle doctrine
+- D. Permitless or constitutional carry **← correct**
 
 > *Rationale:* House Bill 1927 (2021) established permitless carry, sometimes called constitutional carry, for most adults not otherwise barred from possessing a firearm.
 
@@ -2321,16 +2321,16 @@ packages are in `qti/`.
 **13.A1** *(Outcome 7 · Application)* A defendant cannot afford an attorney in a Texas felony case. The right to appointed counsel derives from:
 
 - A. Miranda v. Arizona
-- B. Gideon v. Wainwright **← correct**
-- C. Plyler v. Doe
-- D. Shelby County v. Holder
+- B. Plyler v. Doe
+- C. Shelby County v. Holder
+- D. Gideon v. Wainwright **← correct**
 
 > *Rationale:* Gideon v. Wainwright (1963) established that states must provide counsel to criminal defendants who cannot afford an attorney.
 
 **13.A2** *(Outcome 7 · Analysis)* The most frequently raised structural criticism of indigent defense in Texas is that:
 
-- A. Public defenders are barred by state law
-- B. Judges, who are evaluated partly on docket efficiency, often control appointments and compensation of defense counsel **← correct**
+- A. Judges, who are evaluated partly on docket efficiency, often control appointments and compensation of defense counsel **← correct**
+- B. Public defenders are barred by state law
 - C. Defendants must pay the full cost of counsel
 - D. Only federal courts appoint attorneys
 
@@ -2339,8 +2339,8 @@ packages are in `qti/`.
 **13.A3** *(Outcome 7 · Comprehension)* The Fifth Amendment protection against double jeopardy prevents:
 
 - A. Being questioned without an attorney
-- B. Being tried twice for the same offense by the same sovereign after acquittal **← correct**
-- C. Excessive bail
+- B. Excessive bail
+- C. Being tried twice for the same offense by the same sovereign after acquittal **← correct**
 - D. Cruel and unusual punishment
 
 > *Rationale:* Double jeopardy bars a second prosecution for the same offense by the same level of government after an acquittal.
@@ -2357,9 +2357,9 @@ packages are in `qti/`.
 **13.A5** *(Outcome 8 · Analysis)* Texas leads the nation in executions and ranks near the top in exonerations. The most defensible inference from this pairing is that:
 
 - A. Texas courts are uniquely lenient
-- B. The scale of the system makes both outcomes more visible and keeps the risk of error central to policy debate **← correct**
-- C. Exonerations prove executions are always accurate
-- D. The two statistics are unrelated
+- B. Exonerations prove executions are always accurate
+- C. The two statistics are unrelated
+- D. The scale of the system makes both outcomes more visible and keeps the risk of error central to policy debate **← correct**
 
 > *Rationale:* The combination is frequently cited in debate precisely because it juxtaposes the irreversibility of executions with documented wrongful convictions.
 
@@ -2516,16 +2516,16 @@ packages are in `qti/`.
 **14.A1** *(Outcome 8 · Application)* Texas has no personal income tax. Its single largest source of state tax revenue is the:
 
 - A. Franchise tax
-- B. Sales tax **← correct**
-- C. Severance tax
+- B. Severance tax
+- C. Sales tax **← correct**
 - D. Property tax
 
 > *Rationale:* The state sales tax (6.25 percent, up to 8.25 percent with local add-ons) is the largest state tax revenue source. Property taxes are levied locally, not by the state.
 
 **14.A2** *(Outcome 4 · Analysis)* Before the Texas budget can take effect, the Comptroller must certify that it does not exceed anticipated revenue. This requirement is known as:
 
-- A. The line-item veto
-- B. Pay-as-you-go **← correct**
+- A. Pay-as-you-go **← correct**
+- B. The line-item veto
 - C. Securitization
 - D. The biennial revenue estimate
 
@@ -2542,8 +2542,8 @@ packages are in `qti/`.
 
 **14.A4** *(Outcome 8 · Analysis)* Critics describe the Texas tax structure as regressive primarily because:
 
-- A. It relies on a graduated income tax
-- B. Sales and property taxes consume a larger share of income from lower earners **← correct**
+- A. Sales and property taxes consume a larger share of income from lower earners **← correct**
+- B. It relies on a graduated income tax
 - C. It exempts all businesses from taxation
 - D. Severance taxes are paid by consumers directly
 
@@ -2669,8 +2669,8 @@ packages are in `qti/`.
 **15.A1** *(Outcome 5 · Analysis)* A polling firm surveys 800 respondents drawn to mirror the state's demographics; a competitor surveys 5,000 respondents recruited from its own website visitors. The first poll is likely more accurate because:
 
 - A. Smaller samples are always better
-- B. Representativeness matters more than raw sample size **← correct**
-- C. Online respondents cannot be surveyed
+- B. Online respondents cannot be surveyed
+- C. Representativeness matters more than raw sample size **← correct**
 - D. It has a larger margin of error
 
 > *Rationale:* Accuracy depends primarily on whether the sample represents the population. A large but self-selected sample can be badly biased.
@@ -2678,9 +2678,9 @@ packages are in `qti/`.
 **15.A2** *(Outcome 5 · Application)* A campaign calls voters and asks, 'Would you still support Candidate X if you knew she raised your taxes?' This tactic is:
 
 - A. An exit poll
-- B. A push poll **← correct**
-- C. A representative sample
-- D. Retrospective voting
+- B. A representative sample
+- C. Retrospective voting
+- D. A push poll **← correct**
 
 > *Rationale:* Push polls are campaign messaging disguised as surveys, designed to change opinions rather than measure them.
 
@@ -2704,8 +2704,8 @@ packages are in `qti/`.
 
 **15.A5** *(Outcome 5 · Analysis)* Describing the press as the 'fourth estate' emphasizes its role as:
 
-- A. A branch of government
-- B. A watchdog operating alongside the three branches **← correct**
+- A. A watchdog operating alongside the three branches **← correct**
+- B. A branch of government
 - C. A partisan organization
 - D. A regulated public utility
 
@@ -2836,9 +2836,9 @@ packages are in `qti/`.
 **16.A1** *(Outcome 7 · Analysis)* A Texan claims a city denied her a permit because of her ethnicity. This is best analyzed as:
 
 - A. A civil liberties claim, because government exceeded its power
-- B. A civil rights claim, because government treated her unequally **← correct**
-- C. A federalism claim
-- D. A separation of powers claim
+- B. A federalism claim
+- C. A separation of powers claim
+- D. A civil rights claim, because government treated her unequally **← correct**
 
 > *Rationale:* Civil rights claims concern unequal treatment by government; civil liberties claims concern government exceeding its authority over individuals.
 
@@ -2846,16 +2846,16 @@ packages are in `qti/`.
 
 - A. Rational-basis review
 - B. Intermediate scrutiny
-- C. Strict scrutiny, requiring a compelling interest and narrow tailoring **← correct**
-- D. No review at all
+- C. No review at all
+- D. Strict scrutiny, requiring a compelling interest and narrow tailoring **← correct**
 
 > *Rationale:* Racial classifications trigger strict scrutiny, the most demanding standard, which few such classifications survive.
 
 **16.A3** *(Outcome 7 · Analysis)* Hernandez v. Texas (1954) is a landmark because it held that:
 
 - A. Segregated public schools are unconstitutional
-- B. The Equal Protection Clause protects Mexican Americans as a class, extending beyond a Black-white framework **← correct**
-- C. The white primary was unconstitutional
+- B. The white primary was unconstitutional
+- C. The Equal Protection Clause protects Mexican Americans as a class, extending beyond a Black-white framework **← correct**
 - D. Flag burning is protected expression
 
 > *Rationale:* Decided two weeks before Brown, Hernandez established that any group treated as 'a class apart' receives equal protection, extending the doctrine beyond race as narrowly conceived.
@@ -2871,8 +2871,8 @@ packages are in `qti/`.
 
 **16.A5** *(Outcome 7 · Analysis)* Texas v. Johnson (1989) established the principle that government may not:
 
-- A. Regulate the time, place, or manner of demonstrations
-- B. Prohibit expression simply because society finds the idea offensive **← correct**
+- A. Prohibit expression simply because society finds the idea offensive **← correct**
+- B. Regulate the time, place, or manner of demonstrations
 - C. Require permits for parades
 - D. Punish true threats
 
@@ -2996,25 +2996,25 @@ packages are in `qti/`.
 **17.A1** *(Outcome 8 · Analysis)* The Texas electric grid operated by ERCOT is largely exempt from federal regulation because it:
 
 - A. Was granted a statutory exemption by Congress
-- B. Keeps electricity almost entirely within state lines, avoiding the interstate commerce that triggers FERC jurisdiction **← correct**
-- C. Is owned by the state government
-- D. Produces only renewable energy
+- B. Is owned by the state government
+- C. Produces only renewable energy
+- D. Keeps electricity almost entirely within state lines, avoiding the interstate commerce that triggers FERC jurisdiction **← correct**
 
 > *Rationale:* By avoiding significant interstate transfers, ERCOT remains largely outside Federal Energy Regulatory Commission jurisdiction. The trade-off is limited ability to import power during shortages.
 
 **17.A2** *(Outcome 8 · Application)* During Winter Storm Uri, the largest share of lost generation came from:
 
 - A. Wind turbines exclusively
-- B. Frozen equipment and natural gas supply failures affecting gas, coal, and nuclear plants as well as some wind **← correct**
-- C. A cyberattack
+- B. A cyberattack
+- C. Frozen equipment and natural gas supply failures affecting gas, coal, and nuclear plants as well as some wind **← correct**
 - D. Deliberate exports to other states
 
 > *Rationale:* Although some wind generation iced, the majority of lost capacity was thermal, driven by frozen equipment and failures in the natural gas supply chain.
 
 **17.A3** *(Outcome 8 · Analysis)* Senate Bill 3 (2021) primarily responded to Winter Storm Uri by:
 
-- A. Connecting ERCOT to the national grids
-- B. Requiring weatherization of generators and critical natural gas facilities with inspections and penalties **← correct**
+- A. Requiring weatherization of generators and critical natural gas facilities with inspections and penalties **← correct**
+- B. Connecting ERCOT to the national grids
 - C. Capping residential electricity rates permanently
 - D. Abolishing ERCOT
 
@@ -3031,8 +3031,8 @@ packages are in `qti/`.
 
 **17.A5** *(Outcome 8 · Comprehension)* Texas Proposition 4 (2025) dedicated funding for water infrastructure by:
 
-- A. Creating a new statewide water tax
-- B. Directing up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years **← correct**
+- A. Directing up to $1 billion a year of existing sales tax revenue to the Texas Water Fund for twenty years **← correct**
+- B. Creating a new statewide water tax
 - C. Selling state parkland
 - D. Borrowing from the federal government
 
@@ -3165,17 +3165,17 @@ packages are in `qti/`.
 **18.A2** *(Outcome 4 · Application)* A Texas agency's statutory Sunset date arrives and the Legislature takes no action. The agency is:
 
 - A. Continued automatically for 12 years
-- B. Abolished automatically **← correct**
-- C. Transferred to the governor's office
-- D. Placed under federal supervision
+- B. Transferred to the governor's office
+- C. Placed under federal supervision
+- D. Abolished automatically **← correct**
 
 > *Rationale:* The Sunset Act reverses the usual default: an agency is abolished on its Sunset date unless the Legislature affirmatively passes a bill continuing it.
 
 **18.A3** *(Outcome 4 · Comprehension)* An agency wishes to adopt a new binding rule. Before it takes effect, the agency must:
 
 - A. Obtain the governor's signature
-- B. Publish the proposed rule, allow public comment, and respond to significant comments **← correct**
-- C. Win a two-thirds vote of the Senate
+- B. Win a two-thirds vote of the Senate
+- C. Publish the proposed rule, allow public comment, and respond to significant comments **← correct**
 - D. Receive approval from the Sunset Commission
 
 > *Rationale:* The Administrative Procedure Act requires notice in the Texas Register, a comment period, and responses to significant comments before a rule becomes effective.
@@ -3192,8 +3192,8 @@ packages are in `qti/`.
 **18.A5** *(Outcome 7 · Application)* A Texan wants to obtain inspection reports held by a state agency. Under the Texas Public Information Act, the requester:
 
 - A. Must demonstrate a legal interest and explain the purpose of the request
-- B. May simply request the records, since the Act presumes openness and requires no stated reason **← correct**
-- C. Must first file suit in district court
+- B. Must first file suit in district court
+- C. May simply request the records, since the Act presumes openness and requires no stated reason **← correct**
 - D. May obtain records only through a legislator
 
 > *Rationale:* The Act establishes a strong presumption of openness; requesters need not justify their interest, and an agency seeking to withhold generally must obtain an Attorney General ruling.

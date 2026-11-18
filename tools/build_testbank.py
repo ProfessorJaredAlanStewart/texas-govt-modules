@@ -305,4 +305,10 @@ if __name__ == "__main__":
                 bad.append(f"{n}.A{i} duplicate options")
             if len(it["options"]) != 4:
                 bad.append(f"{n}.A{i} has {len(it['options'])} options")
+    # answer-key spread: no letter should dominate, or "always guess X" beats the test
+    keys = [it["correct"] for n in ch for it in ch[n]["new"]]
+    for j in range(4):
+        share = keys.count(j) / max(1, len(keys))
+        if share > 0.35:
+            bad.append(f"Part A key is {LETTERS[j]} on {share:.0%} of items (rebalance answer positions)")
     print("INTEGRITY:", "; ".join(bad) if bad else "all checks passed")
